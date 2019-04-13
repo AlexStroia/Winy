@@ -2,4 +2,6 @@
     <string name="app_name">Winy</string>
     <string name="login">Login</string>
     <string name="signup">Signup</string>
+    <string name="hint_email">Your e-mail goes here</string>
+    <string name="hint_password">Your password goes here</string>
 </resources>

@@ -1,6 +1,7 @@
-package co.alexdev.winy;
+package co.alexdev.winy.feature;
 
 import androidx.appcompat.app.AppCompatActivity;
+import co.alexdev.winy.R;
 
 import android.os.Bundle;
 
