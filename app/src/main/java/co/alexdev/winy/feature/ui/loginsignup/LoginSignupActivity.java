@@ -1,8 +1,7 @@
-package co.alexdev.winy.feature;
+package co.alexdev.winy.feature.ui.loginsignup;
 
 import androidx.appcompat.app.AppCompatActivity;
 import co.alexdev.winy.R;
-
 import android.os.Bundle;
 
 public class LoginSignupActivity extends AppCompatActivity {
