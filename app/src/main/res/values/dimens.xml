@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_content_margin">8dp</dimen>
+    <dimen name="rounded_button_radius">30dp</dimen>
+
+    <!--LoginSignupActivity-->
+    <dimen name="button_width">180dp</dimen>
+    <dimen name="button_height">64dp</dimen>
+    <dimen name="button_elevation">16dp</dimen>
+    <dimen name="rounded_button_margin">32dp</dimen>
+    <dimen name="rounded_button_margin_top">16dp</dimen>
+</resources>
