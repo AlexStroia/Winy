@@ -9,14 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".feature.ui.signup.SignupActivity"></activity>
-        <activity android:name=".feature.ui.login.ActivityLogin" />
-        <activity android:name=".feature.ui.loginsignup.LoginSignupActivity">
+        <activity android:name=".feature.ui.signup.SignupActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".feature.ui.login.ActivityLogin" />
+        <activity android:name=".feature.ui.loginsignup.LoginSignupActivity">
         </activity>
     </application>
 

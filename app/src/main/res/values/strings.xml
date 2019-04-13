@@ -4,4 +4,10 @@
     <string name="signup">Signup</string>
     <string name="hint_email">Your e-mail goes here</string>
     <string name="hint_password">Your password goes here</string>
+    <string name="hint_firstname">Firstname</string>
+    <string name="hint_lastname">Lastname</string>
+    <string name="hint_password_type2">Password</string>
+    <string name="hint_email_type2">Email</string>
+    <string name="hint_birthdate">Birthdate</string>
+
 </resources>

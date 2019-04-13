@@ -6,6 +6,8 @@ import android.graphics.drawable.Drawable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.View;
 
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.core.content.res.ResourcesCompat;
@@ -15,6 +17,7 @@ public class CustomEditText extends AppCompatEditText {
 
     private Drawable mXicondDrable;
     private Drawable mCheckIconDrawable;
+    private boolean isXbuttonClicked = false;
 
     public CustomEditText(Context context) {
         super(context);
@@ -31,6 +34,12 @@ public class CustomEditText extends AppCompatEditText {
         init();
     }
 
+    /**
+     * Location 0: Start of text (set to null).
+     * Location 1: Top of text (set to null).
+     * Location 2: End of text (set to desired drawable).
+     * Location 3: Bottom of text (set to null).
+     **/
     private void init() {
         mXicondDrable = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_wrong, null);
         mCheckIconDrawable = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_check, null);
@@ -43,7 +52,13 @@ public class CustomEditText extends AppCompatEditText {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                if (charSequence.length() == 0) {
+                    hideDrawable();
+                } else if (charSequence.length() < 3) {
+                    showXiconDrawable();
+                } else {
+                    showCheckiconDrawable();
+                }
             }
 
             @Override
@@ -52,18 +67,68 @@ public class CustomEditText extends AppCompatEditText {
             }
         });
 
+        setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (getCompoundDrawablesRelative()[2] != null) {
+                    float btnStart;
+                    float btnEnd;
+
+                    // Detect the touch in RTL or LTR layout direction.
+                    if (getLayoutDirection() == LAYOUT_DIRECTION_RTL) {
+                        btnEnd = mXicondDrable.getIntrinsicWidth() + getPaddingStart();
+
+                        if (motionEvent.getX() < btnEnd) {
+                            isXbuttonClicked = true;
+                        }
+                    } else {
+                        // Layout is LTR.
+                        // Get the start of the button on the right side.
+                        btnStart = (getWidth() - getPaddingEnd() - mXicondDrable.getIntrinsicWidth());
+
+                        // If the touch occurred after the start of the button,
+                        // set isClearButtonClicked to true.
+                        if (motionEvent.getX() > btnStart) {
+                            isXbuttonClicked = true;
+                        }
+                    }
+
+                    if (isXbuttonClicked) {
+                        // Check for ACTION_DOWN (always occurs before ACTION_UP).
+                        if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                            // Switch to the black version of clear button.
+                            showXiconDrawable();
+                        }
+                        // Check for ACTION_UP.
+                        if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                            // Switch to the opaque version of clear button.
+                            // Clear the text and hide the clear button.
+                            if (getText() != null) {
+                                getText().clear();
+                            }
+                            hideDrawable();
+                            return true;
+                        }
+                    } else {
+                        return false;
+                    }
+                }
+                return false;
+            }
+        });
+
 
     }
 
     private void showXiconDrawable() {
-        setCompoundDrawables(null, null, mXicondDrable, null);
+        setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, mXicondDrable, null);
     }
 
     private void hideDrawable() {
-        setCompoundDrawables(null, null, null, null);
+        setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, null);
     }
 
     private void showCheckiconDrawable() {
-        setCompoundDrawables(null, null, mCheckIconDrawable, null);
+        setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, mCheckIconDrawable, null);
     }
 }
