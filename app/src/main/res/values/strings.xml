@@ -10,4 +10,7 @@
     <string name="hint_email_type2">Email</string>
     <string name="hint_birthdate">Birthdate</string>
 
+    <!--Product Activity-->
+    <string name="home_button_text">Home</string>
+    <string name="settings_button_text">Settings</string>
 </resources>

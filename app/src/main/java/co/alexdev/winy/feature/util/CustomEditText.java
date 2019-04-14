@@ -62,7 +62,7 @@ public class CustomEditText extends AppCompatEditText {
                     showXiconDrawable();
                 } else {
                     isXButtonShown = false;
-                    showCheckiconDrawable();
+                    showCheckIconDrawable();
                 }
             }
 
@@ -130,7 +130,7 @@ public class CustomEditText extends AppCompatEditText {
         setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, null);
     }
 
-    private void showCheckiconDrawable() {
+    private void showCheckIconDrawable() {
         setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, mCheckIconDrawable, null);
     }
 }

@@ -15,4 +15,6 @@
     <dimen name="ic_wine_height">181dp</dimen>
     <dimen name="ic_wine_width">120dp</dimen>
     <dimen name="btn_signup_height">48dp</dimen>
+    <dimen name="bottom_navigation_height">54dp</dimen>
+    <dimen name="bottom_navigation_elevation">16dp</dimen>
 </resources>
