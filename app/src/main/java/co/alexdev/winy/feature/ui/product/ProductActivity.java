@@ -7,6 +7,8 @@ import co.alexdev.winy.databinding.ActivityProductBinding;
 
 import android.os.Bundle;
 
+import com.google.android.material.tabs.TabLayout;
+
 public class ProductActivity extends AppCompatActivity {
 
     private ActivityProductBinding mBinding;
@@ -17,5 +19,7 @@ public class ProductActivity extends AppCompatActivity {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_product);
 
         mBinding.tabLayout.setupWithViewPager(mBinding.viewPager);
+        mBinding.tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mBinding.viewPager));
+        mBinding.viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mBinding.tabLayout));
     }
 }
