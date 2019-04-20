@@ -43,8 +43,8 @@ public class SignupActivity extends AppCompatActivity {
                 ProductActivity.startActivity(this);
                 finish();
             } else if (Constants.FIREBASE_DATABASE.SIGNUP_STATE.FAILURE.equals(signupStateEnum)) {
-                Snackbar.make(binding.coordinator, signupActivityViewModel.userMessage, Snackbar.LENGTH_LONG).show();
                 binding.progressBar.setVisibility(View.GONE);
+                Snackbar.make(binding.coordinator, signupActivityViewModel.userMessage, Snackbar.LENGTH_LONG).show();
             } else if (Constants.FIREBASE_DATABASE.SIGNUP_STATE.STARTED.equals(signupStateEnum)) {
                 binding.progressBar.setVisibility(View.VISIBLE);
             } else {

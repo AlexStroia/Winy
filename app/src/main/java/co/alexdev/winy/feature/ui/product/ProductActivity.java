@@ -28,6 +28,7 @@ public class ProductActivity extends AppCompatActivity {
 
 
     public static void startActivity(Context context) {
-        context.startActivity(new Intent(context, ProductActivity.class));
+        context.startActivity(new Intent(context, ProductActivity.class)
+                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
     }
 }

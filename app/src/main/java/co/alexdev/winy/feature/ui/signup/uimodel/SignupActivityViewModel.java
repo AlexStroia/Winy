@@ -35,13 +35,14 @@ public class SignupActivityViewModel extends ViewModel implements LifecycleObser
         signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.STARTED;
         signupStateEnumLiveData.setValue(signupState);
 
-        if (!Validator.isEmailValid(userCredential.email) && !Validator.isPasswordValid(userCredential.password)
-                && !Validator.isFirstNameValid(userInformation.getFirstname()) && !Validator.isLastNameValid(userInformation.getLastname())) {
+        if (!Validator.isEmailValid(userCredential.email) || !Validator.isPasswordValid(userCredential.password)
+                && !Validator.isFirstNameValid(userInformation.getFirstname()) || !Validator.isLastNameValid(userInformation.getLastname())) {
             signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.FAILURE;
             userMessage = Constants.FIREBASE_DATABASE.MESSAGES.ERROR;
             signupStateEnumLiveData.setValue(signupState);
             return;
         }
+
         firebaseAuth.createUserWithEmailAndPassword(userCredential.email, userCredential.password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {

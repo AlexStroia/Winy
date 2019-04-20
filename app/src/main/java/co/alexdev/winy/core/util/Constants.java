@@ -12,10 +12,15 @@ public class Constants {
         public static class MESSAGES {
             public static final String SUCCES = "You have successfully registered and logged in.";
             public static final String ERROR = "Please complete all required fields.";
+            public static final String LOGIN_ERROR = "Something went wrong, please try again.";
         }
 
         public enum SIGNUP_STATE {
             STARTED, FAILURE, NOT_SET, SUCCES
+        }
+
+        public enum LOGIN_STATE {
+            FAILURE, SUCCES, NOT_SET, LOADING
         }
     }
 }
