@@ -30,9 +30,10 @@ public class SignupActivity extends AppCompatActivity {
         setAnimation();
         binding.setLifecycleOwner(this);
         signupActivityViewModel = ViewModelProviders.of(this).get(SignupActivityViewModel.class);
+        getLifecycle().addObserver(signupActivityViewModel);
         binding.setViewModel(signupActivityViewModel);
 
-        signupActivityViewModel.signupStateLiveData.observe(this, signupState -> {
+        signupActivityViewModel.signupLiveDataMessage.observe(this, signupState -> {
             if (signupState == SIGNUP_STATE.FAILED) {
 
             } else if (signupState == SIGNUP_STATE.STARTED) {
