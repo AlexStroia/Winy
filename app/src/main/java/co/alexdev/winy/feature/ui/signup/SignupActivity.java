@@ -2,10 +2,12 @@ package co.alexdev.winy.feature.ui.signup;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
 import co.alexdev.winy.R;
 import co.alexdev.winy.databinding.ActivitySignupBinding;
-import co.alexdev.winy.feature.ui.loginsignup.LoginSignupActivity;
+import co.alexdev.winy.feature.ui.signup.uimodel.SignupActivityViewModel;
 import co.alexdev.winy.utils.Constants;
+import co.alexdev.winy.utils.Constants.SIGNUP_STATE;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
@@ -19,12 +21,29 @@ import android.view.animation.AccelerateInterpolator;
 public class SignupActivity extends AppCompatActivity {
 
     private ActivitySignupBinding binding;
+    private SignupActivityViewModel signupActivityViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_signup);
         setAnimation();
+        binding.setLifecycleOwner(this);
+        signupActivityViewModel = ViewModelProviders.of(this).get(SignupActivityViewModel.class);
+        binding.setViewModel(signupActivityViewModel);
+
+        signupActivityViewModel.signupStateLiveData.observe(this, signupState -> {
+            if (signupState == SIGNUP_STATE.FAILED) {
+
+            } else if (signupState == SIGNUP_STATE.STARTED) {
+
+            } else if (signupState == SIGNUP_STATE.SUCCES) {
+
+            } else {
+
+            }
+
+        });
     }
 
     private void setAnimation() {

@@ -1,6 +1,7 @@
 package co.alexdev.winy.core;
 
 public class UserCredential {
-    String username;
-    String password;
+    public static String email;
+    public static String password;
+
 }

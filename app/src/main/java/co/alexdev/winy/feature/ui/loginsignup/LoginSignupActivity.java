@@ -16,7 +16,6 @@ public class LoginSignupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login_signup);
-
         binding.btnSignup.setOnClickListener((view) -> SignupActivity.startActivity(this));
     }
 }
