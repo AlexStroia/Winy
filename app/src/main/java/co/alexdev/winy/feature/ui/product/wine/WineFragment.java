@@ -1,4 +1,4 @@
-package co.alexdev.winy.feature.ui.product;
+package co.alexdev.winy.feature.ui.product.wine;
 
 
 import android.os.Bundle;

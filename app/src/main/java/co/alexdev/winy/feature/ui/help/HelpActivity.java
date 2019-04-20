@@ -1,15 +1,15 @@
-package co.alexdev.winy.feature.ui.settings;
+package co.alexdev.winy.feature.ui.help;
 
 import androidx.appcompat.app.AppCompatActivity;
 import co.alexdev.winy.R;
 
 import android.os.Bundle;
 
-public class SettingsActivity extends AppCompatActivity {
+public class HelpActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_help);
     }
 }

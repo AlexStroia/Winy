@@ -20,4 +20,9 @@
     <!--Wine Fragment-->
     <string name="hint_wine_name">Merlot</string>
 
+    <!--SettingsFragment-->
+    <string name="account">Account</string>
+    <string name="help">Help</string>
+    <string name="about">About</string>
+    <string name="logout">Logout</string>
 </resources>
