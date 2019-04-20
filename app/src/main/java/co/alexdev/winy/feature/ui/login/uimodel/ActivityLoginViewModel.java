@@ -14,13 +14,18 @@ import co.alexdev.winy.core.util.Validator;
 public class ActivityLoginViewModel extends ViewModel implements LifecycleObserver {
 
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    private FirebaseAuth.AuthStateListener authStateListener;
 
     private Constants.FIREBASE_DATABASE.LOGIN_STATE loginState = Constants.FIREBASE_DATABASE.LOGIN_STATE.NOT_SET;
     public String loginMessage = "";
     public UserCredential userCredential;
 
     public MutableLiveData<Enum> loginStateEnumLiveData = new MutableLiveData<>();
+
+    //TODO Integrate DAGGER
+    public ActivityLoginViewModel() {
+        userCredential.email = "";
+        userCredential.password = "";
+    }
 
     public void loginUser() {
         loginState = Constants.FIREBASE_DATABASE.LOGIN_STATE.LOADING;

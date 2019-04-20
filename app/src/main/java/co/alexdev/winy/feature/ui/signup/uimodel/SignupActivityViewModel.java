@@ -31,6 +31,12 @@ public class SignupActivityViewModel extends ViewModel implements LifecycleObser
 
     public MutableLiveData<Enum> signupStateEnumLiveData = new MutableLiveData<>();
 
+
+    public SignupActivityViewModel() {
+        userCredential.email = "";
+        userCredential.password = "";
+    }
+
     public void signupUser() {
         signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.STARTED;
         signupStateEnumLiveData.setValue(signupState);
