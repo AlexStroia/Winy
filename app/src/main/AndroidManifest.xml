@@ -17,7 +17,9 @@
         <activity
             android:name=".feature.ui.signup.SignupActivity"
             android:parentActivityName=".feature.ui.loginsignup.LoginSignupActivity" />
-        <activity android:name=".feature.ui.login.ActivityLogin" />
+        <activity
+            android:name=".feature.ui.login.ActivityLogin"
+            android:parentActivityName=".feature.ui.loginsignup.LoginSignupActivity" />
         <activity android:name=".feature.ui.loginsignup.LoginSignupActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
