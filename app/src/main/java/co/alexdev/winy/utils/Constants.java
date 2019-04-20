@@ -12,6 +12,10 @@ public class Constants {
         public static int SUCCES = 1;
         public static int NOT_SET = 2;
     }
+
+    public static class FIREBASE_DATABASE {
+        public static final String USER_REFERENCE ="users";
+    }
 }
 
 
