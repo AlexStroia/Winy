@@ -6,4 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".feature.ui.help.HelpActivity">
 
+    <Button
+        android:id="@+id/btn_feedback"
+        android:layout_width="@dimen/help_activity_base_button_width"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_content_margin"
+        android:layout_marginTop="@dimen/default_content_margin"
+        android:background="@drawable/round_button_ripple"
+        android:text="@string/send_a_feedback"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_report_problem" />
+
+    <Button
+        android:id="@+id/btn_report_problem"
+        android:layout_width="@dimen/help_activity_base_button_width"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_content_margin"
+        android:background="@drawable/round_button_ripple"
+        android:text="@string/report_a_problem"
+        app:layout_constraintBottom_toTopOf="@+id/btn_feedback"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,4 +25,8 @@
     <string name="help">Help</string>
     <string name="about">About</string>
     <string name="logout">Logout</string>
+
+    <!--Help Activity-->
+    <string name="report_a_problem">Report a problem</string>
+    <string name="send_a_feedback">Send a feedback</string>
 </resources>

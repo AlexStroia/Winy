@@ -35,4 +35,7 @@
     <dimen name="menu_account_margin_top">124dp</dimen>
     <dimen name="menu_logout_margin_bottom">124dp</dimen>
 
+    <!--Help Activity-->
+    <dimen name="help_activity_base_button_width">224dp</dimen>
+
 </resources>
