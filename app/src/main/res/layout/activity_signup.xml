@@ -11,94 +11,111 @@
             type="co.alexdev.winy.feature.ui.signup.uimodel.SignupActivityViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:transitionGroup="true"
-        tools:context=".feature.ui.signup.SignupActivity">
+        android:layout_height="match_parent">
 
-        <co.alexdev.winy.feature.util.CustomEditText
-            android:id="@+id/et_firstname"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_firstname"
-            android:text="@={viewModel.userInformation.firstname}"
-            app:layout_constraintBottom_toTopOf="@+id/et_lastname"
-            app:layout_constraintEnd_toEndOf="@+id/et_lastname"
-            app:layout_constraintStart_toStartOf="@+id/et_lastname"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-        <co.alexdev.winy.feature.util.CustomEditText
-            android:id="@+id/et_lastname"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/default_content_margin"
-            android:layout_marginEnd="@dimen/default_content_margin"
-            android:hint="@string/hint_lastname"
-            android:text="@={viewModel.userInformation.lastname}"
-            app:layout_constraintBottom_toTopOf="@+id/et_email"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_firstname" />
+            android:layout_height="match_parent"
+            android:transitionGroup="true"
+            tools:context=".feature.ui.signup.SignupActivity">
 
-        <co.alexdev.winy.feature.util.CustomEditText
-            android:id="@+id/et_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/default_content_margin"
-            android:layout_marginEnd="@dimen/default_content_margin"
-            android:hint="@string/hint_email_type2"
-            android:text="@={viewModel.userCredential.email}"
-            app:layout_constraintBottom_toTopOf="@+id/et_password"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_lastname" />
+            <co.alexdev.winy.feature.util.CustomEditText
+                android:id="@+id/et_firstname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_firstname"
+                android:text="@={viewModel.userInformation.firstname}"
+                app:layout_constraintBottom_toTopOf="@+id/et_lastname"
+                app:layout_constraintEnd_toEndOf="@+id/et_lastname"
+                app:layout_constraintStart_toStartOf="@+id/et_lastname"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-        <co.alexdev.winy.feature.util.CustomEditText
-            android:id="@+id/et_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/default_content_margin"
-            android:layout_marginEnd="@dimen/default_content_margin"
-            android:layout_marginBottom="8dp"
-            android:hint="@string/hint_password_type2"
-            android:inputType="textPassword"
-            android:text="@={viewModel.userCredential.password}"
-            app:layout_constraintBottom_toTopOf="@+id/btn_signup"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_email" />
+            <co.alexdev.winy.feature.util.CustomEditText
+                android:id="@+id/et_lastname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_content_margin"
+                android:layout_marginEnd="@dimen/default_content_margin"
+                android:hint="@string/hint_lastname"
+                android:text="@={viewModel.userInformation.lastname}"
+                app:layout_constraintBottom_toTopOf="@+id/et_email"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_firstname" />
 
-        <Button
-            android:id="@+id/btn_signup"
-            style="@style/ButtonCornerRadiusTheme"
-            android:layout_width="@dimen/signup_button_width"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/default_content_margin"
-            android:layout_marginEnd="@dimen/default_content_margin"
-            android:layout_marginBottom="@dimen/signup_button_margin_bottom"
-            android:onClick="@{() -> viewModel.signupUser()}"
-            android:text="@string/signup"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            <co.alexdev.winy.feature.util.CustomEditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_content_margin"
+                android:layout_marginEnd="@dimen/default_content_margin"
+                android:hint="@string/hint_email_type2"
+                android:text="@={viewModel.userCredential.email}"
+                app:layout_constraintBottom_toTopOf="@+id/et_password"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_lastname" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="@dimen/ic_wine_width"
-            android:layout_height="@dimen/ic_wine_height"
-            android:layout_marginStart="@dimen/default_content_margin"
-            android:layout_marginTop="@dimen/default_content_margin"
-            android:layout_marginEnd="@dimen/default_content_margin"
-            android:layout_marginBottom="@dimen/default_content_margin"
-            android:contentDescription="@string/wine_picture"
-            android:rotation="20"
-            app:layout_constraintBottom_toTopOf="@+id/et_firstname"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="spread"
-            app:srcCompat="@drawable/ic_wine" />
+            <co.alexdev.winy.feature.util.CustomEditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_content_margin"
+                android:layout_marginEnd="@dimen/default_content_margin"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/hint_password_type2"
+                android:inputType="textPassword"
+                android:text="@={viewModel.userCredential.password}"
+                app:layout_constraintBottom_toTopOf="@+id/btn_signup"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/btn_signup"
+                style="@style/ButtonCornerRadiusTheme"
+                android:layout_width="@dimen/signup_button_width"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_content_margin"
+                android:layout_marginEnd="@dimen/default_content_margin"
+                android:layout_marginBottom="@dimen/signup_button_margin_bottom"
+                android:onClick="@{() -> viewModel.signupUser()}"
+                android:text="@string/signup"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="@dimen/ic_wine_width"
+                android:layout_height="@dimen/ic_wine_height"
+                android:layout_marginStart="@dimen/default_content_margin"
+                android:layout_marginTop="@dimen/default_content_margin"
+                android:layout_marginEnd="@dimen/default_content_margin"
+                android:layout_marginBottom="@dimen/default_content_margin"
+                android:contentDescription="@string/wine_picture"
+                android:rotation="20"
+                app:layout_constraintBottom_toTopOf="@+id/et_firstname"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="spread"
+                app:srcCompat="@drawable/ic_wine" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

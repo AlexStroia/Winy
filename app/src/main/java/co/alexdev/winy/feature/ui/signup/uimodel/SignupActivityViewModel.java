@@ -1,6 +1,7 @@
 package co.alexdev.winy.feature.ui.signup.uimodel;
 
 import android.text.TextUtils;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -20,32 +21,35 @@ public class SignupActivityViewModel extends ViewModel implements LifecycleObser
     public UserCredential userCredential;
     public UserInformation userInformation = new UserInformation();
     private String userUID;
-    private String userMessage;
+    public String userMessage = "";
 
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private FirebaseAuth.AuthStateListener authStateListener;
+    private Constants.FIREBASE_DATABASE.SIGNUP_STATE signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.NOT_SET;
 
-    private int signupState = Constants.SIGNUP_STATE.NOT_SET;
-    public MutableLiveData<String> signupLiveDataMessage = new MutableLiveData();
+    public MutableLiveData<Enum> signupStateEnumLiveData = new MutableLiveData<>();
 
     public void signupUser() {
-        signupState = Constants.SIGNUP_STATE.STARTED;
+        signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.STARTED;
+        signupStateEnumLiveData.setValue(signupState);
         firebaseAuth.createUserWithEmailAndPassword(userCredential.email, userCredential.password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        signupState = Constants.SIGNUP_STATE.SUCCES;
                         if (!TextUtils.isEmpty(userUID)) {
                             firebaseDatabase.getReference().child(Constants.FIREBASE_DATABASE.USER_REFERENCE)
                                     .child(userUID)
                                     .setValue(userInformation);
                             userMessage = Constants.FIREBASE_DATABASE.MESSAGES.SUCCES;
+                            signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.SUCCES;
                         }
                     } else {
+                        signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.FAILURE;
                         userMessage = Objects.requireNonNull(task.getException()).getMessage();
                     }
+
+                    signupStateEnumLiveData.setValue(signupState);
                 });
-        signupLiveDataMessage.setValue(userMessage);
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)

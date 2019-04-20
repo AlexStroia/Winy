@@ -5,6 +5,9 @@ import androidx.databinding.DataBindingUtil;
 import co.alexdev.winy.R;
 import co.alexdev.winy.databinding.ActivityProductBinding;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
@@ -21,5 +24,10 @@ public class ProductActivity extends AppCompatActivity {
         mBinding.tabLayout.setupWithViewPager(mBinding.viewPager);
         mBinding.tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mBinding.viewPager));
         mBinding.viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mBinding.tabLayout));
+    }
+
+
+    public static void startActivity(Context context) {
+        context.startActivity(new Intent(context, ProductActivity.class));
     }
 }
