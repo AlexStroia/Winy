@@ -11,17 +11,16 @@
         android:theme="@style/AppTheme">
         <activity android:name=".feature.ui.help.HelpActivity"></activity>
         <activity android:name=".feature.ui.account.AccountActivity" />
-        <activity android:name=".feature.ui.settings.SettingsActivity" />
-        <activity android:name=".feature.ui.product.ProductActivity">
+        <activity android:name=".feature.ui.product.ProductActivity" />
+        <activity android:name=".feature.ui.signup.SignupActivity" android:parentActivityName=".feature.ui.loginsignup.LoginSignupActivity" />
+        <activity android:name=".feature.ui.login.ActivityLogin" />
+        <activity android:name=".feature.ui.loginsignup.LoginSignupActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".feature.ui.signup.SignupActivity" />
-        <activity android:name=".feature.ui.login.ActivityLogin" />
-        <activity android:name=".feature.ui.loginsignup.LoginSignupActivity" />
     </application>
 
 </manifest>

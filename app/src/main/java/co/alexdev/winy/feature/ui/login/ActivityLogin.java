@@ -2,6 +2,7 @@ package co.alexdev.winy.feature.ui.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import co.alexdev.winy.R;
+import co.alexdev.winy.feature.ui.signup.SignupActivity;
 
 import android.os.Bundle;
 
