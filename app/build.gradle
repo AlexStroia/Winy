@@ -18,7 +18,6 @@ android {
         }
     }
 
-
     dataBinding {
         enabled true
     }
@@ -43,4 +42,7 @@ dependencies {
 
     //Firebase
     implementation 'com.google.firebase:firebase-core:16.0.8'
+    implementation 'com.google.firebase:firebase-auth:16.2.1'
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
+
 }
