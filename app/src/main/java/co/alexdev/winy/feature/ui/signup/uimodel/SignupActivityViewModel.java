@@ -12,9 +12,10 @@ import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ViewModel;
-import co.alexdev.winy.core.UserCredential;
-import co.alexdev.winy.core.UserInformation;
-import co.alexdev.winy.utils.Constants;
+import co.alexdev.winy.core.model.UserCredential;
+import co.alexdev.winy.core.model.UserInformation;
+import co.alexdev.winy.core.util.Constants;
+import co.alexdev.winy.core.util.Validator;
 
 public class SignupActivityViewModel extends ViewModel implements LifecycleObserver {
 
@@ -33,6 +34,14 @@ public class SignupActivityViewModel extends ViewModel implements LifecycleObser
     public void signupUser() {
         signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.STARTED;
         signupStateEnumLiveData.setValue(signupState);
+
+        if (!Validator.isEmailValid(userCredential.email) && !Validator.isPasswordValid(userCredential.password)
+                && !Validator.isFirstNameValid(userInformation.getFirstname()) && !Validator.isLastNameValid(userInformation.getLastname())) {
+            signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.FAILURE;
+            userMessage = Constants.FIREBASE_DATABASE.MESSAGES.ERROR;
+            signupStateEnumLiveData.setValue(signupState);
+            return;
+        }
         firebaseAuth.createUserWithEmailAndPassword(userCredential.email, userCredential.password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -47,7 +56,6 @@ public class SignupActivityViewModel extends ViewModel implements LifecycleObser
                         signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.FAILURE;
                         userMessage = Objects.requireNonNull(task.getException()).getMessage();
                     }
-
                     signupStateEnumLiveData.setValue(signupState);
                 });
     }

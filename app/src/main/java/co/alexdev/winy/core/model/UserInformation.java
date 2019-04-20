@@ -1,8 +1,8 @@
-package co.alexdev.winy.core;
+package co.alexdev.winy.core.model;
 
 public class UserInformation {
-    public String firstname;
-    public String lastname;
+    private String firstname;
+    private String lastname;
 
     public UserInformation(){}
 

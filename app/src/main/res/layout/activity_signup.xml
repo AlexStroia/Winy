@@ -46,7 +46,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_firstname" />
 
-            <co.alexdev.winy.feature.util.CustomEditText
+            <co.alexdev.winy.feature.util.CustomEmailEditText
                 android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -84,6 +84,7 @@
                 android:layout_marginBottom="@dimen/signup_button_margin_bottom"
                 android:onClick="@{() -> viewModel.signupUser()}"
                 android:text="@string/signup"
+                android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

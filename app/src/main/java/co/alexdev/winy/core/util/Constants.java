@@ -1,4 +1,4 @@
-package co.alexdev.winy.utils;
+package co.alexdev.winy.core.util;
 
 public class Constants {
 
@@ -11,10 +11,11 @@ public class Constants {
 
         public static class MESSAGES {
             public static final String SUCCES = "You have successfully registered and logged in.";
+            public static final String ERROR = "Please complete all required fields.";
         }
 
         public enum SIGNUP_STATE {
-            STARTED,FAILURE,NOT_SET,SUCCES
+            STARTED, FAILURE, NOT_SET, SUCCES
         }
     }
 }

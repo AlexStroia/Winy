@@ -4,10 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 import co.alexdev.winy.R;
+import co.alexdev.winy.core.util.Validator;
 import co.alexdev.winy.databinding.ActivitySignupBinding;
 import co.alexdev.winy.feature.ui.product.ProductActivity;
 import co.alexdev.winy.feature.ui.signup.uimodel.SignupActivityViewModel;
-import co.alexdev.winy.utils.Constants;
+import co.alexdev.winy.core.util.Constants;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
@@ -40,6 +41,7 @@ public class SignupActivity extends AppCompatActivity {
 
             if (Constants.FIREBASE_DATABASE.SIGNUP_STATE.SUCCES.equals(signupStateEnum)) {
                 ProductActivity.startActivity(this);
+                finish();
             } else if (Constants.FIREBASE_DATABASE.SIGNUP_STATE.FAILURE.equals(signupStateEnum)) {
                 Snackbar.make(binding.coordinator, signupActivityViewModel.userMessage, Snackbar.LENGTH_LONG).show();
                 binding.progressBar.setVisibility(View.GONE);
