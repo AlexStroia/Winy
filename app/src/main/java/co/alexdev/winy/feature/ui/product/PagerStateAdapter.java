@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import java.util.List;
 
 import co.alexdev.winy.feature.ui.product.dish.DishFragment;
-import co.alexdev.winy.feature.ui.product.random.RandomFragment;
 import co.alexdev.winy.feature.ui.product.wine.WineFragment;
 
 public class PagerStateAdapter extends FragmentStatePagerAdapter {
@@ -28,8 +27,6 @@ public class PagerStateAdapter extends FragmentStatePagerAdapter {
                 return new WineFragment();
             case 1:
                 return new DishFragment();
-            case 2:
-                return new RandomFragment();
         }
         return null;
     }

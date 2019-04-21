@@ -1,36 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".feature.ui.product.wine.WineFragment">
 
-    <co.alexdev.winy.feature.util.custom.CustomAutoCompleteTextView
-        android:id="@+id/autoCompleteTextView_wine"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/autocomplete_height"
-        android:paddingStart="@dimen/default_content_padding"
-        android:paddingEnd="@dimen/default_content_padding"
-        android:layout_marginStart="@dimen/default_content_margin"
-        android:layout_marginTop="@dimen/default_content_margin"
-        android:layout_marginEnd="@dimen/default_content_margin"
-        android:hint="@string/hint_wine_name"
-        android:background="@drawable/autocomplete_background_unfocused"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".feature.ui.product.wine.WineFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_wine"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="@dimen/default_content_margin"
-        android:layout_marginTop="@dimen/default_content_margin"
-        android:layout_marginEnd="@dimen/default_content_margin"
-        android:layout_marginBottom="@dimen/default_content_margin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView_wine" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <co.alexdev.winy.feature.util.custom.CustomAutoCompleteTextView
+            android:id="@+id/autoCompleteTextView_wine"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/autocomplete_height"
+            android:layout_marginStart="@dimen/default_content_margin"
+            android:layout_marginTop="@dimen/default_content_margin"
+            android:layout_marginEnd="@dimen/default_content_margin"
+            android:background="@drawable/autocomplete_background_unfocused"
+            android:hint="@string/hint_wine_name"
+            android:paddingStart="@dimen/default_content_padding"
+            android:paddingEnd="@dimen/default_content_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_wine"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/default_content_margin"
+            android:layout_marginTop="@dimen/default_content_margin"
+            android:layout_marginEnd="@dimen/default_content_margin"
+            android:layout_marginBottom="@dimen/default_content_margin"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toTopOf="@+id/rv_wine_recommendation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.563"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pairing_wine_description" />
+
+        <TextView
+            android:id="@+id/tv_product_matches_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_content_margin"
+            android:layout_marginTop="@dimen/default_content_margin"
+            android:maxLines="2"
+            android:text="@string/paired_wines"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView_wine" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_wine_recommendation"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:layout_marginStart="@dimen/default_content_margin"
+            android:layout_marginEnd="@dimen/default_content_margin"
+            android:layout_marginBottom="@dimen/default_content_margin"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_pairing_wine_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_content_margin"
+            android:layout_marginTop="@dimen/default_content_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_product_matches_title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

@@ -22,6 +22,8 @@
     <!--Wine Fragment-->
     <string name="hint_wine_name">Merlot</string>
     <string name="hint_food_name">Steak</string>
+    <string name="icon_wine">Wine icon</string>
+    <string name="paired_wines">Paired wines:</string>
 
     <!--SettingsFragment-->
     <string name="account">Account</string>

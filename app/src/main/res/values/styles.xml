@@ -15,9 +15,8 @@
         <item name="android:layout_marginEnd">@dimen/rounded_button_margin</item>
     </style>
 
-    <style name="RecyclerTextViewWhite" parent="android:Widget.TextView">
+    <style name="RecyclerTextView" parent="android:Widget.TextView">
         <item name="android:layout_marginStart">@dimen/default_content_margin</item>
         <item name="android:layout_marginEnd">@dimen/default_content_margin</item>
-        <item name="android:textColor">@android:color/white</item>
     </style>
 </resources>
