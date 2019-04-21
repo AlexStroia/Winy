@@ -1,4 +1,4 @@
-package co.alexdev.winy.core.model;
+package co.alexdev.winy.core.model.user;
 
 import javax.inject.Singleton;
 

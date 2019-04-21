@@ -1,10 +1,11 @@
-package co.alexdev.winy.core.model;
+package co.alexdev.winy.core.model.user;
 
 public class UserInformation {
     private String firstname;
     private String lastname;
 
-    public UserInformation(){}
+    public UserInformation() {
+    }
 
     public void setFirstname(String firstname) {
         this.firstname = firstname;
