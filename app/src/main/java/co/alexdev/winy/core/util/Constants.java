@@ -12,7 +12,7 @@ public class Constants {
         public static class MESSAGES {
             public static final String SUCCES = "You have successfully registered and logged in.";
             public static final String ERROR = "Please complete all required fields.";
-            public static final String LOGIN_ERROR = "Something went wrong, please try again.";
+            public static final String EMAIL = "Your email format is invalid.";
         }
 
         public enum SIGNUP_STATE {

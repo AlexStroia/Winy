@@ -3,9 +3,6 @@ package co.alexdev.winy.feature.ui.login.uimodel;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
-
-import javax.inject.Inject;
-
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -32,8 +29,15 @@ public class ActivityLoginViewModel extends ViewModel implements LifecycleObserv
 
     public void loginUser() {
         loginState = Constants.FIREBASE_DATABASE.LOGIN_STATE.LOADING;
+        loginStateEnumLiveData.setValue(loginState);
 
-        if (!Validator.isEmailValid(userCredential.getEmail()) || !Validator.isPasswordValid(userCredential.getPassword())) {
+        if (!Validator.isEmailValid(userCredential.getEmail())) {
+            loginState = Constants.FIREBASE_DATABASE.LOGIN_STATE.FAILURE;
+            loginMessage = Constants.FIREBASE_DATABASE.MESSAGES.EMAIL;
+            loginStateEnumLiveData.setValue(loginState);
+            return;
+        }
+        if (!Validator.isPasswordValid(userCredential.getPassword())) {
             loginState = Constants.FIREBASE_DATABASE.LOGIN_STATE.FAILURE;
             loginMessage = Constants.FIREBASE_DATABASE.MESSAGES.ERROR;
             loginStateEnumLiveData.setValue(loginState);
