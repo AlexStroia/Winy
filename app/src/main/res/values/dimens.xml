@@ -3,6 +3,7 @@
     <dimen name="default_content_margin">8dp</dimen>
     <dimen name="rounded_button_radius">30dp</dimen>
     <dimen name="default_content_padding">8dp</dimen>
+    <dimen name="searchbar_corner_radius">8dp</dimen>
 
     <!--LoginSignupActivity-->
     <dimen name="button_width">180dp</dimen>

@@ -1,4 +1,4 @@
-package co.alexdev.winy.feature.util;
+package co.alexdev.winy.feature.util.custom;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

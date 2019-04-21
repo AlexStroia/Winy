@@ -7,22 +7,22 @@
     tools:context=".feature.ui.product.wine.WineFragment">
 
     <co.alexdev.winy.feature.util.custom.CustomAutoCompleteTextView
-        android:id="@+id/autoCompleteTextView_wine"
+        android:id="@+id/autoCompleteTextView_food"
         android:layout_width="0dp"
         android:layout_height="@dimen/autocomplete_height"
         android:paddingStart="@dimen/default_content_padding"
         android:paddingEnd="@dimen/default_content_padding"
         android:layout_marginStart="@dimen/default_content_margin"
-        android:layout_marginTop="@dimen/default_content_margin"
         android:layout_marginEnd="@dimen/default_content_margin"
-        android:hint="@string/hint_wine_name"
+        android:layout_marginTop="@dimen/default_content_margin"
+        android:hint="@string/hint_food_name"
         android:background="@drawable/autocomplete_background_unfocused"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_wine"
+        android:id="@+id/rv_foods"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/default_content_margin"
@@ -32,5 +32,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView_wine" />
+        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView_food" />
 </androidx.constraintlayout.widget.ConstraintLayout>

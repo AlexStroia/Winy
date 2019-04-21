@@ -20,6 +20,7 @@
 
     <!--Wine Fragment-->
     <string name="hint_wine_name">Merlot</string>
+    <string name="hint_food_name">Steak</string>
 
     <!--SettingsFragment-->
     <string name="account">Account</string>

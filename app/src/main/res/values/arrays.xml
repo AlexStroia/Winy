@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pager_titles">
+        <item>WINE PAIRING</item>
+        <item>DISH PAIRING</item>
+        <item>RANDOM</item>
+    </string-array>
+</resources>

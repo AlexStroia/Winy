@@ -1,11 +1,9 @@
-package co.alexdev.winy.feature.ui.product.wine;
+package co.alexdev.winy.feature.ui.product.dish;
 
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-
-import co.alexdev.winy.BuildConfig;
 import co.alexdev.winy.R;
 
 import android.view.LayoutInflater;
@@ -16,12 +14,19 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class WineFragment extends Fragment {
+public class DishFragment extends Fragment {
+
+
+    public DishFragment() {
+        // Required empty public constructor
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_wine, container, false);
+        return inflater.inflate(R.layout.fragment_dish, container, false);
     }
+
 }
