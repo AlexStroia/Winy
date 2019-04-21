@@ -56,13 +56,14 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_wine_recommendation"
             android:layout_width="0dp"
-            android:layout_height="300dp"
+            android:layout_height="0dp"
             android:layout_marginStart="@dimen/default_content_margin"
             android:layout_marginEnd="@dimen/default_content_margin"
             android:layout_marginBottom="@dimen/default_content_margin"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="horizontal"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
 
