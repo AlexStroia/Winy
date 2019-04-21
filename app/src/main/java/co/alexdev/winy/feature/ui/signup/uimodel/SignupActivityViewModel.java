@@ -7,6 +7,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
+import javax.inject.Inject;
+
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.MutableLiveData;
@@ -20,6 +22,7 @@ import co.alexdev.winy.core.util.Validator;
 public class SignupActivityViewModel extends ViewModel implements LifecycleObserver {
 
     public UserCredential userCredential;
+
     public UserInformation userInformation = new UserInformation();
     private String userUID;
     public String userMessage = "";
@@ -32,16 +35,18 @@ public class SignupActivityViewModel extends ViewModel implements LifecycleObser
     public MutableLiveData<Enum> signupStateEnumLiveData = new MutableLiveData<>();
 
 
-    public SignupActivityViewModel() {
-        userCredential.email = "";
-        userCredential.password = "";
+    @Inject
+    public SignupActivityViewModel(UserCredential userCredential) {
+        this.userCredential = userCredential;
+        this.userCredential.setEmail("");
+        this.userCredential.setPassword("");
     }
 
     public void signupUser() {
         signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.STARTED;
         signupStateEnumLiveData.setValue(signupState);
 
-        if (!Validator.isEmailValid(userCredential.email) || !Validator.isPasswordValid(userCredential.password)
+        if (!Validator.isEmailValid(userCredential.getEmail()) || !Validator.isPasswordValid(userCredential.getPassword())
                 && !Validator.isFirstNameValid(userInformation.getFirstname()) || !Validator.isLastNameValid(userInformation.getLastname())) {
             signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.FAILURE;
             userMessage = Constants.FIREBASE_DATABASE.MESSAGES.ERROR;
@@ -49,7 +54,7 @@ public class SignupActivityViewModel extends ViewModel implements LifecycleObser
             return;
         }
 
-        firebaseAuth.createUserWithEmailAndPassword(userCredential.email, userCredential.password)
+        firebaseAuth.createUserWithEmailAndPassword(userCredential.getEmail(), userCredential.getPassword())
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         if (!TextUtils.isEmpty(userUID)) {

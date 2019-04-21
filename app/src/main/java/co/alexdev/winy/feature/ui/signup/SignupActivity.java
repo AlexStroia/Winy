@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 import co.alexdev.winy.R;
-import co.alexdev.winy.core.util.Validator;
+import co.alexdev.winy.core.di.DaggerWinyComponent;
+import co.alexdev.winy.core.di.WinyComponent;
+import co.alexdev.winy.core.util.ViewModelFactory;
 import co.alexdev.winy.databinding.ActivitySignupBinding;
 import co.alexdev.winy.feature.ui.product.ProductActivity;
 import co.alexdev.winy.feature.ui.signup.uimodel.SignupActivityViewModel;
@@ -22,18 +24,26 @@ import android.view.animation.AccelerateInterpolator;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import javax.inject.Inject;
+
 public class SignupActivity extends AppCompatActivity {
 
     private ActivitySignupBinding binding;
     private SignupActivityViewModel signupActivityViewModel;
 
+    @Inject
+    ViewModelFactory factory;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        WinyComponent component = DaggerWinyComponent.builder().build();
+        component.inject(this);
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_signup);
         setAnimation();
         binding.setLifecycleOwner(this);
-        signupActivityViewModel = ViewModelProviders.of(this).get(SignupActivityViewModel.class);
+        signupActivityViewModel = ViewModelProviders.of(this, factory).get(SignupActivityViewModel.class);
         getLifecycle().addObserver(signupActivityViewModel);
         binding.setViewModel(signupActivityViewModel);
 

@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 import co.alexdev.winy.R;
+import co.alexdev.winy.core.di.DaggerWinyComponent;
+import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.util.Constants;
+import co.alexdev.winy.core.util.ViewModelFactory;
 import co.alexdev.winy.databinding.ActivityLoginBinding;
 import co.alexdev.winy.feature.ui.login.uimodel.ActivityLoginViewModel;
 import co.alexdev.winy.feature.ui.product.ProductActivity;
-import co.alexdev.winy.feature.ui.signup.SignupActivity;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
@@ -22,18 +24,26 @@ import android.view.animation.AccelerateInterpolator;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import javax.inject.Inject;
+
 public class ActivityLogin extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
     private ActivityLoginViewModel activityLoginViewModel;
 
+    @Inject
+    ViewModelFactory factory;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+        WinyComponent component = DaggerWinyComponent.builder().build();
+        component.inject(this);
+
         setAnimation();
         binding.setLifecycleOwner(this);
-        activityLoginViewModel = ViewModelProviders.of(this).get(ActivityLoginViewModel.class);
+        activityLoginViewModel = ViewModelProviders.of(this, factory).get(ActivityLoginViewModel.class);
         binding.setViewModel(activityLoginViewModel);
 
         activityLoginViewModel.loginStateEnumLiveData.observe(this, loggedState -> {

@@ -3,6 +3,8 @@ package co.alexdev.winy.feature.ui.loginsignup;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import co.alexdev.winy.R;
+import co.alexdev.winy.core.di.DaggerWinyComponent;
+import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.databinding.ActivityLoginSignupBinding;
 import co.alexdev.winy.feature.ui.login.ActivityLogin;
 import co.alexdev.winy.feature.ui.signup.SignupActivity;
