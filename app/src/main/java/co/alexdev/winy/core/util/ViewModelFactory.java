@@ -5,7 +5,8 @@ import javax.inject.Inject;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-import co.alexdev.winy.core.model.UserCredential;
+
+import co.alexdev.winy.core.model.user.UserCredential;
 import co.alexdev.winy.feature.ui.login.uimodel.ActivityLoginViewModel;
 import co.alexdev.winy.feature.ui.signup.uimodel.SignupActivityViewModel;
 

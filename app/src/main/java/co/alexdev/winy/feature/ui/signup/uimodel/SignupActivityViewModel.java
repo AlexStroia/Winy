@@ -14,8 +14,9 @@ import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ViewModel;
-import co.alexdev.winy.core.model.UserCredential;
-import co.alexdev.winy.core.model.UserInformation;
+
+import co.alexdev.winy.core.model.user.UserCredential;
+import co.alexdev.winy.core.model.user.UserInformation;
 import co.alexdev.winy.core.util.Constants;
 import co.alexdev.winy.core.util.Validator;
 

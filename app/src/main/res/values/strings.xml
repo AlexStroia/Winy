@@ -13,6 +13,7 @@
 
     <!--Product Activity-->
     <string name="home_button_text">Home</string>
+    <string name="home_button_favorites">Favorites</string>
     <string name="settings_button_text">Settings</string>
     <string name="tab_item_wine">Wine Pairing</string>
     <string name="tab_item_food">Dish Pairing</string>

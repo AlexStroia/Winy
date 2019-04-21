@@ -2,7 +2,7 @@ package co.alexdev.winy.core.di;
 
 import javax.inject.Singleton;
 
-import co.alexdev.winy.core.model.UserCredential;
+import co.alexdev.winy.core.model.user.UserCredential;
 import co.alexdev.winy.feature.ui.login.ActivityLogin;
 import co.alexdev.winy.feature.ui.signup.SignupActivity;
 import dagger.Component;

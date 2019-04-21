@@ -6,7 +6,8 @@ import java.util.Objects;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import co.alexdev.winy.core.model.UserCredential;
+
+import co.alexdev.winy.core.model.user.UserCredential;
 import co.alexdev.winy.core.util.Constants;
 import co.alexdev.winy.core.util.Validator;
 
