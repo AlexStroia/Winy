@@ -36,7 +36,7 @@ public class WineAdapter extends ListAdapter<ProductMatches, WineAdapter.WinesVi
         }
 
         public void bind() {
-            
+
         }
     }
 }
