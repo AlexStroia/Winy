@@ -14,7 +14,7 @@ public class DiffCallbacks {
 
         @Override
         public boolean areItemsTheSame(@NonNull ProductMatches oldItem, @NonNull ProductMatches newItem) {
-            return oldItem.getId() == newItem.getId();
+            return oldItem.id== newItem.id;
         }
 
         @Override

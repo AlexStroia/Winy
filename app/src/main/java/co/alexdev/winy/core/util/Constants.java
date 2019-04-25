@@ -20,7 +20,7 @@ public class Constants {
         }
 
         public enum LOGIN_STATE {
-            FAILURE, SUCCES, NOT_SET, LOADING
+            FAILURE, SUCCESS, NOT_SET, LOADING
         }
     }
 }

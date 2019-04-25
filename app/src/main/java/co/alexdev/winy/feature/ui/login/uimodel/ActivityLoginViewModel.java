@@ -47,7 +47,7 @@ public class ActivityLoginViewModel extends ViewModel implements LifecycleObserv
 
         firebaseAuth.signInWithEmailAndPassword(userCredential.getEmail(), userCredential.getPassword()).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                loginState = Constants.FIREBASE_DATABASE.LOGIN_STATE.SUCCES;
+                loginState = Constants.FIREBASE_DATABASE.LOGIN_STATE.SUCCESS;
             } else {
                 loginMessage = Objects.requireNonNull(task.getException()).getMessage();
                 loginState = Constants.FIREBASE_DATABASE.LOGIN_STATE.FAILURE;
