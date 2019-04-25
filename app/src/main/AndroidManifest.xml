@@ -11,12 +11,14 @@
 
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".feature.ui.help.HelpActivity"></activity>
+        <activity android:name=".feature.ui.help.HelpActivity"/>
         <activity android:name=".feature.ui.account.AccountActivity" />
         <activity android:name=".feature.ui.product.ProductActivity" />
         <activity
             android:name=".feature.ui.signup.SignupActivity"
-            android:parentActivityName=".feature.ui.loginsignup.LoginSignupActivity" />
+            android:parentActivityName=".feature.ui.loginsignup.LoginSignupActivity"
+            android:launchMode="singleTop"
+            />
         <activity
             android:name=".feature.ui.login.ActivityLogin"
             android:parentActivityName=".feature.ui.loginsignup.LoginSignupActivity" />
