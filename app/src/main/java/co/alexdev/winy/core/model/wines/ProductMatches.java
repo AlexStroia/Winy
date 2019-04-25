@@ -4,46 +4,14 @@ import java.util.Objects;
 
 public class ProductMatches {
 
-    private int id;
-    private String description;
-    private String price;
-    private String imageUrl;
-    private double averageRating;
-    private int ratingCount;
-    private double score;
-    private String link;
-
-    public int getId() {
-        return id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public double getAverageRating() {
-        return averageRating;
-    }
-
-    public int getRatingCount() {
-        return ratingCount;
-    }
-
-    public double getScore() {
-        return score;
-    }
-
-    public String getLink() {
-        return link;
-    }
+    public final int id = 0;
+    public final String description = "";
+    public final String price = "";
+    public final String imageUrl = "";
+    public final double averageRating = 0.0;
+    public final int ratingCount = 0;
+    public final double score = 0.0;
+    public final  String link = "";
 
     @Override
     public boolean equals(Object o) {
