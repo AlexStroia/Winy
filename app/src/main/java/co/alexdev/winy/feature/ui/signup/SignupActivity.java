@@ -41,7 +41,7 @@ public class SignupActivity extends AppCompatActivity {
         component.inject(this);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_signup);
-        setAnimation();
+
         binding.setLifecycleOwner(this);
         signupActivityViewModel = ViewModelProviders.of(this, factory).get(SignupActivityViewModel.class);
         getLifecycle().addObserver(signupActivityViewModel);
@@ -63,16 +63,7 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
 
-    private void setAnimation() {
-        Slide slideAnim = new Slide(Gravity.RIGHT);
-        slideAnim.setDuration(Constants.AnimDurations.SLIDE_ANIM);
-        slideAnim.setInterpolator(new AccelerateInterpolator());
-        getWindow().setEnterTransition(slideAnim);
-        getWindow().setExitTransition(slideAnim);
-    }
-
     public static void startActivity(Context context) {
-        context.startActivity(new Intent(context, SignupActivity.class),
-                ActivityOptions.makeSceneTransitionAnimation((Activity) context).toBundle());
+        context.startActivity(new Intent(context, SignupActivity.class));
     }
 }

@@ -41,7 +41,6 @@ public class ActivityLogin extends AppCompatActivity {
         WinyComponent component = DaggerWinyComponent.builder().build();
         component.inject(this);
 
-        setAnimation();
         binding.setLifecycleOwner(this);
         activityLoginViewModel = ViewModelProviders.of(this, factory).get(ActivityLoginViewModel.class);
         binding.setViewModel(activityLoginViewModel);
@@ -58,17 +57,7 @@ public class ActivityLogin extends AppCompatActivity {
         });
     }
 
-
-    private void setAnimation() {
-        Slide slideAnim = new Slide(Gravity.RIGHT);
-        slideAnim.setDuration(Constants.AnimDurations.SLIDE_ANIM);
-        slideAnim.setInterpolator(new AccelerateInterpolator());
-        getWindow().setEnterTransition(slideAnim);
-        getWindow().setExitTransition(slideAnim);
-    }
-
     public static void startActivity(Context context) {
-        context.startActivity(new Intent(context, ActivityLogin.class),
-                ActivityOptions.makeSceneTransitionAnimation((Activity) context).toBundle());
+        context.startActivity(new Intent(context, ActivityLogin.class));
     }
 }
