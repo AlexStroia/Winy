@@ -23,6 +23,13 @@ public class Constants {
             FAILURE, SUCCESS, NOT_SET, LOADING
         }
     }
+
+    public static class NETWORK {
+        public static final String HEADER = "header";
+        public static final String X_RAPID_API_HOST = "X-RapidAPI-Host";
+        public static final String X_RAPID_API_KEY = "X-RapidAPI-Key";
+        public static final String CONTENT_TYPE = "application/json; charset=utf-8";
+    }
 }
 
 

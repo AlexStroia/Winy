@@ -19,6 +19,7 @@ android {
         }
         debug {
             buildConfigField 'String', 'BASE_URL', '"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/wine/"'
+            buildConfigField('String', "X_RAPID_API_HOST_HEADER", X_RAPID_API_HOST_HEADER)
             buildConfigField('String', "API_KEY", API_KEY)
         }
     }

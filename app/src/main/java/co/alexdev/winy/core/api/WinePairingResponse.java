@@ -9,7 +9,4 @@ public class WinePairingResponse {
     public List<String> pairedWines;
     public String pairingText;
     public List<ProductMatches> productMatches;
-
-
-
 }
