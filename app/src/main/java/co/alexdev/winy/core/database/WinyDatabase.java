@@ -1,0 +1,15 @@
+package co.alexdev.winy.core.database;
+
+import androidx.room.Database;
+import androidx.room.RoomDatabase;
+
+import co.alexdev.winy.core.model.wines.ProductMatches;
+
+@Database(entities = {ProductMatches.class}, version = 1, exportSchema = false)
+public abstract class WinyDatabase extends RoomDatabase {
+
+    public static final String DATABASE_NAME = "WINY_DB";
+
+    public abstract WinesDao provideWinesDao();
+
+}

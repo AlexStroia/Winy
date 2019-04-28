@@ -15,7 +15,7 @@
         android:layout_marginStart="@dimen/default_content_margin"
         android:layout_marginEnd="@dimen/default_content_margin"
         android:layout_marginTop="@dimen/default_content_margin"
-        android:hint="@string/hint_food_name"
+        android:hint="@string/hint_wine_name"
         android:background="@drawable/autocomplete_background_unfocused"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

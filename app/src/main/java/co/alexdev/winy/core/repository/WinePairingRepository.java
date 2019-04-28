@@ -1,6 +1,7 @@
 package co.alexdev.winy.core.repository;
 
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
@@ -8,8 +9,13 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import co.alexdev.winy.core.api.ApiResponse;
+import co.alexdev.winy.core.api.WinePairingResponse;
 import co.alexdev.winy.core.api.WineResponseService;
+import co.alexdev.winy.core.database.WinesDao;
 import co.alexdev.winy.core.model.wines.ProductMatches;
+import co.alexdev.winy.core.util.DatabaseUtils;
+import co.alexdev.winy.core.util.NetworkBoundsResource;
 import co.alexdev.winy.core.util.Resource;
 import co.alexdev.winy.core.util.WinyExecutor;
 
@@ -19,38 +25,44 @@ public class WinePairingRepository {
 
     private WinyExecutor executor;
     private WineResponseService service;
+    private WinesDao winesDao;
+    private DatabaseUtils databaseUtils;
+
 
     @Inject
-    public WinePairingRepository(WinyExecutor executor, WineResponseService service) {
+    public WinePairingRepository(WinyExecutor executor, WineResponseService service, WinesDao winesDao, DatabaseUtils databaseUtils) {
         this.executor = executor;
         this.service = service;
+        this.winesDao = winesDao;
+        this.databaseUtils = databaseUtils;
     }
 
     public LiveData<Resource<List<ProductMatches>>> getWines(String wine) {
-//        return new NetworkBoundsResource<WinePairingResponse, List<ProductMatches>>(executor) {
-//
-//            @Override
-//            protected void saveCallResult(@NonNull List<ProductMatches> item) {
-//
-//            }
-//
-//            @Override
-//            protected boolean shouldFetch(@NonNull WinePairingResponse data) {
-//                return true;
-//            }
-//
-//            @NonNull
-//            @Override
-//            protected LiveData<WinePairingResponse> loadFromDatabase() {
-//                return null;
-//            }
-//
-//            @NonNull
-//            @Override
-//            protected LiveData<ApiResponse<List<ProductMatches>>> createCall() {
-//                return service.getWines(wine);
-//            }
-//        };
-        return null;
+        return new NetworkBoundsResource<List<ProductMatches>, WinePairingResponse>(executor) {
+
+            @Override
+            protected void saveCallResult(@NonNull WinePairingResponse item) {
+                String wines = databaseUtils.exctractWinesToString(item.pairedWines);
+                List<ProductMatches> productMatches = databaseUtils.appendWinesToProductMatches(wines, item.productMatches);
+                winesDao.insert(productMatches);
+            }
+
+            @Override
+            protected boolean shouldFetch(@NonNull List<ProductMatches> data) {
+                return true;
+            }
+
+            @NonNull
+            @Override
+            protected LiveData<List<ProductMatches>> loadFromDatabase() {
+                return winesDao.loadWines(wine);
+            }
+
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<WinePairingResponse>> createCall() {
+                return service.getWines(wine);
+            }
+        }.asLiveData();
     }
 }

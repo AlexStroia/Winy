@@ -22,7 +22,7 @@
                 android:layout_marginTop="@dimen/default_content_margin"
                 android:layout_marginEnd="@dimen/default_content_margin"
                 android:background="@drawable/autocomplete_background_unfocused"
-                android:hint="@string/hint_wine_name"
+                android:hint="@string/hint_food_name"
                 android:paddingStart="@dimen/default_content_padding"
                 android:paddingEnd="@dimen/default_content_padding"
                 app:layout_constraintEnd_toEndOf="parent"

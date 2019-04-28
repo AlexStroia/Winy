@@ -20,8 +20,8 @@
     <string name="tab_item_random">Random</string>
 
     <!--Wine Fragment-->
-    <string name="hint_wine_name">Merlot</string>
-    <string name="hint_food_name">Steak</string>
+    <string name="hint_food_name">Example: Burger</string>
+    <string name="hint_wine_name">Example: Merlot</string>
     <string name="icon_wine">Wine icon</string>
     <string name="paired_wines">Paired wines:</string>
 

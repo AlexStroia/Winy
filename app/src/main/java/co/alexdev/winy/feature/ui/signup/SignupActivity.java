@@ -1,30 +1,26 @@
 package co.alexdev.winy.feature.ui.signup;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProviders;
-import co.alexdev.winy.R;
-import co.alexdev.winy.core.di.DaggerWinyComponent;
-import co.alexdev.winy.core.di.WinyComponent;
-import co.alexdev.winy.core.util.ViewModelFactory;
-import co.alexdev.winy.databinding.ActivitySignupBinding;
-import co.alexdev.winy.feature.ui.product.ProductActivity;
-import co.alexdev.winy.feature.ui.signup.uimodel.SignupActivityViewModel;
-import co.alexdev.winy.core.util.Constants;
-
-import android.app.Activity;
-import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.transition.Slide;
-import android.view.Gravity;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.snackbar.Snackbar;
 
 import javax.inject.Inject;
+
+import co.alexdev.winy.R;
+import co.alexdev.winy.core.di.DaggerWinyComponent;
+import co.alexdev.winy.core.di.WinyComponent;
+import co.alexdev.winy.core.util.Constants;
+import co.alexdev.winy.core.util.ViewModelFactory;
+import co.alexdev.winy.databinding.ActivitySignupBinding;
+import co.alexdev.winy.feature.ui.product.ProductActivity;
+import co.alexdev.winy.feature.ui.signup.uimodel.SignupActivityViewModel;
 
 public class SignupActivity extends AppCompatActivity {
 
