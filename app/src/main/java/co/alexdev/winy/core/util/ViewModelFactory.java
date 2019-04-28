@@ -24,9 +24,8 @@ public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         if (modelClass.isAssignableFrom(SignupActivityViewModel.class)) {
             return (T) new SignupActivityViewModel(userCredential);
-        } else if (modelClass.isAssignableFrom(ActivityLoginViewModel.class)) {
+        } else if (modelClass.isAssignableFrom(ActivityLoginViewModel.class))
             return (T) new ActivityLoginViewModel(userCredential);
-        }
         return super.create(modelClass);
     }
 }
