@@ -1,8 +1,9 @@
-package co.alexdev.winy.core.di;
+package co.alexdev.winy.core.di.module;
 
 import javax.inject.Singleton;
 
 import co.alexdev.winy.BuildConfig;
+import co.alexdev.winy.core.api.WineResponseService;
 import co.alexdev.winy.core.util.livedata.LiveDataCallAdapterFactory;
 import dagger.Module;
 import dagger.Provides;
@@ -22,5 +23,11 @@ public class ServiceModule {
                 .addCallAdapterFactory(new LiveDataCallAdapterFactory())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+    }
+
+    @Singleton
+    @Provides
+    public WineResponseService createWineResponseService(Retrofit retrofit) {
+        return retrofit.create(WineResponseService.class);
     }
 }

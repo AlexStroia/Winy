@@ -1,4 +1,4 @@
-package co.alexdev.winy.core.di;
+package co.alexdev.winy.core.di.module;
 
 import javax.inject.Singleton;
 
