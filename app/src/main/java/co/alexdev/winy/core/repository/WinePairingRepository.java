@@ -28,7 +28,6 @@ public class WinePairingRepository {
     private WinesDao winesDao;
     private DatabaseUtils databaseUtils;
 
-
     @Inject
     public WinePairingRepository(WinyExecutor executor, WineResponseService service, WinesDao winesDao, DatabaseUtils databaseUtils) {
         this.executor = executor;
@@ -37,13 +36,13 @@ public class WinePairingRepository {
         this.databaseUtils = databaseUtils;
     }
 
-    public LiveData<Resource<List<ProductMatches>>> getWines(String wine) {
+    public LiveData<Resource<List<ProductMatches>>> getWinesByFoodName(String food) {
         return new NetworkBoundsResource<List<ProductMatches>, WinePairingResponse>(executor) {
 
             @Override
             protected void saveCallResult(@NonNull WinePairingResponse item) {
-                String wines = databaseUtils.exctractWinesToString(item.pairedWines);
-                List<ProductMatches> productMatches = databaseUtils.appendWinesToProductMatches(wines, item.productMatches);
+                String wines = databaseUtils.extractWinesToString(item.pairedWines);
+                List<ProductMatches> productMatches = databaseUtils.appendWinesToProductMatches(wines, food, item.productMatches);
                 winesDao.insert(productMatches);
             }
 
@@ -55,14 +54,26 @@ public class WinePairingRepository {
             @NonNull
             @Override
             protected LiveData<List<ProductMatches>> loadFromDatabase() {
-                return winesDao.loadWines(wine);
+                return winesDao.loadWines(food);
             }
 
             @NonNull
             @Override
             protected LiveData<ApiResponse<WinePairingResponse>> createCall() {
-                return service.getWines(wine);
+                return service.getWines(food);
             }
         }.asLiveData();
+    }
+
+    public LiveData<List<ProductMatches>> getAllWinesFromDatabase() {
+        return winesDao.loadAllWinesFromDatabase();
+    }
+
+    public LiveData<List<ProductMatches>> getAllWinesFromDatabaseByFood(String food) {
+        return winesDao.loadWines(food);
+    }
+
+    public LiveData<String> getProductMatches(String food) {
+        return winesDao.getProductMatches(food);
     }
 }

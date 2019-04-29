@@ -13,7 +13,6 @@ import dagger.Provides;
 
 @Module(includes = ContextModule.class)
 public class DatabaseModule {
-    private static final String DATABASE_NAME = "WINY_DATABASE";
 
     @Singleton
     @Provides

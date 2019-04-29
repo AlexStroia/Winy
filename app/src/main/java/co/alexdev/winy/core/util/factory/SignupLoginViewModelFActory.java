@@ -1,21 +1,21 @@
-package co.alexdev.winy.core.util;
-
-import javax.inject.Inject;
+package co.alexdev.winy.core.util.factory;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import javax.inject.Inject;
+
 import co.alexdev.winy.core.model.user.UserCredential;
 import co.alexdev.winy.feature.ui.login.uimodel.ActivityLoginViewModel;
 import co.alexdev.winy.feature.ui.signup.uimodel.SignupActivityViewModel;
 
-public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
+public class SignupLoginViewModelFActory extends ViewModelProvider.NewInstanceFactory {
 
     private UserCredential userCredential;
 
     @Inject
-    public ViewModelFactory(UserCredential userCredential) {
+    public SignupLoginViewModelFActory(UserCredential userCredential) {
         this.userCredential = userCredential;
     }
 

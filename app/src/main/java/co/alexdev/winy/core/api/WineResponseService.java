@@ -7,7 +7,7 @@ import retrofit2.http.Query;
 
 public interface WineResponseService {
 
-    @GET("food/wine/pairing?maxPrice=50")
+    @GET("pairing?maxPrice=50")
     LiveData<ApiResponse<WinePairingResponse>> getWines(@Query("food") String wineName);
 
 

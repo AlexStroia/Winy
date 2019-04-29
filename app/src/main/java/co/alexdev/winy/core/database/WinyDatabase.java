@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase;
 
 import co.alexdev.winy.core.model.wines.ProductMatches;
 
-@Database(entities = {ProductMatches.class}, version = 1, exportSchema = false)
+@Database(entities = {ProductMatches.class}, version = 2, exportSchema = false)
 public abstract class WinyDatabase extends RoomDatabase {
 
     public static final String DATABASE_NAME = "WINY_DB";

@@ -1,14 +1,10 @@
-package co.alexdev.winy.core.model.wines;
-
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+package co.alexdev.winy.feature.ui.product.wine.uimodel;
 
 import java.util.Objects;
 
-@Entity(tableName = "TABLE_PRODUCT_MATCHES")
-public class ProductMatches {
+import co.alexdev.winy.core.model.wines.ProductMatches;
 
-    @PrimaryKey
+public class ProductMatchesViewModel {
     public int id;
     public String description;
     public String price;
@@ -19,6 +15,19 @@ public class ProductMatches {
     public String pairedWines;
     public double score;
     public String link;
+
+    public ProductMatchesViewModel(int id, String description, String price, String imageUrl, double averageRating, int ratingCount, String food, String pairedWines, double score, String link) {
+        this.id = id;
+        this.description = description;
+        this.price = price;
+        this.imageUrl = imageUrl;
+        this.averageRating = averageRating;
+        this.ratingCount = ratingCount;
+        this.food = food;
+        this.pairedWines = pairedWines;
+        this.score = score;
+        this.link = link;
+    }
 
     @Override
     public boolean equals(Object o) {

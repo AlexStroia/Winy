@@ -17,7 +17,7 @@ import co.alexdev.winy.R;
 import co.alexdev.winy.core.di.DaggerWinyComponent;
 import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.util.Constants;
-import co.alexdev.winy.core.util.ViewModelFactory;
+import co.alexdev.winy.core.util.factory.SignupLoginViewModelFActory;
 import co.alexdev.winy.databinding.ActivitySignupBinding;
 import co.alexdev.winy.feature.ui.product.ProductActivity;
 import co.alexdev.winy.feature.ui.signup.uimodel.SignupActivityViewModel;
@@ -28,7 +28,7 @@ public class SignupActivity extends AppCompatActivity {
     private SignupActivityViewModel signupActivityViewModel;
 
     @Inject
-    ViewModelFactory factory;
+    SignupLoginViewModelFActory factory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
