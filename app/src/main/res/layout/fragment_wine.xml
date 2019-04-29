@@ -57,16 +57,23 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_pairing_wine_description" />
 
-                <TextView
-                    android:id="@+id/tv_product_matches_title"
-                    android:layout_width="100dp"
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/default_content_margin"
-                    android:layout_marginTop="@dimen/default_content_margin"
-                    android:maxLines="2"
-                    android:textColor="@color/colorAccent"
+                    android:elevation="@dimen/cardview_default_elevation"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView_wine" />
+                    app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView_wine">
+
+                    <TextView
+                        android:id="@+id/tv_product_matches_title"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/default_content_margin"
+                        android:layout_marginTop="@dimen/default_content_margin"
+                        android:maxLines="2"
+                        android:text="@{viewModel.productMatchesViewModelList.getValue.get(0).description}"
+                        android:textColor="@color/colorAccent" />
+                </androidx.cardview.widget.CardView>
 
 
                 <androidx.recyclerview.widget.RecyclerView
