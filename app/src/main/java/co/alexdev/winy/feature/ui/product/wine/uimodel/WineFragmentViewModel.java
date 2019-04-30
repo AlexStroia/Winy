@@ -42,7 +42,7 @@ public class WineFragmentViewModel extends ViewModel {
         });
     }
 
-    public LiveData<Resource<List<ProductMatches>>> onSearchPressed(String food) {
+    public LiveData<Resource<List<ProductMatches>>> onSearchPressed() {
         return winePairingRepository.getWinesByFoodName(food);
     }
 

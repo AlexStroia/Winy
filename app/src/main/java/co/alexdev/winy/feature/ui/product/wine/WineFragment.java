@@ -2,6 +2,7 @@ package co.alexdev.winy.feature.ui.product.wine;
 
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,9 +61,9 @@ public class WineFragment extends Fragment {
         setPairedWinesRecyclerView();
 
         binding.autoCompleteTextViewWine.setOnEditorActionListener((textView, actionId, keyEvent) -> {
+            wineFragmentViewModel.food = textView.getText().toString();
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                wineFragmentViewModel.onSearchPressed(textView.getText().toString()).observe(this, data -> {
-                    wineFragmentViewModel.food = textView.getText().toString();
+                wineFragmentViewModel.onSearchPressed().observe(this, data -> {
                     wineFragmentViewModel.setPairedWinesViewModelList();
                     wineFragmentViewModel.pairedWinesViewModelLiveData.observe(this.getActivity()
                             , content -> {
@@ -72,8 +73,11 @@ public class WineFragment extends Fragment {
                                     pairedWineAdapter.submitList(content);
                                     wineFragmentViewModel.pairingTextDescription().observe(this,
                                             pairingText -> {
-                                                if (pairingText != null) {
+                                                if (pairingText != null && !TextUtils.isEmpty(pairingText.description)) {
                                                     binding.tvPairingWineDescription.setText(pairingText.description);
+                                                } else {
+                                                    binding.cardview.setVisibility(View.GONE);
+                                                    binding.tvPairingWineDescription.setText("");
                                                 }
                                             });
                                 } else {
@@ -100,7 +104,7 @@ public class WineFragment extends Fragment {
                             wineFragmentViewModel.setProductMatchesListForSearch();
                             binding.autoCompleteTextViewWine.clearFocus();
 
-                            binding.autoCompleteTextViewWine.getText().clear();
+                            //  binding.autoCompleteTextViewWine.getText().clear();
                             break;
                     }
                 });
@@ -112,9 +116,9 @@ public class WineFragment extends Fragment {
 
         binding.autoCompleteTextViewWine.setOnItemClickListener((parent, view, position, id) -> {
             final String searchedQuery = parent.getItemAtPosition(position).toString();
+            wineFragmentViewModel.food = searchedQuery;
 
-            wineFragmentViewModel.onSearchPressed(searchedQuery).observe(this, data -> {
-                wineFragmentViewModel.food = searchedQuery;
+            wineFragmentViewModel.onSearchPressed().observe(this, data -> {
 
                 wineFragmentViewModel.setPairedWinesViewModelList();
 
@@ -126,8 +130,11 @@ public class WineFragment extends Fragment {
                                 pairedWineAdapter.submitList(content);
                                 wineFragmentViewModel.pairingTextDescription().observe(this,
                                         pairingText -> {
-                                            if (pairingText != null) {
+                                            if (pairingText != null && !TextUtils.isEmpty(pairingText.description)) {
                                                 binding.tvPairingWineDescription.setText(pairingText.description);
+                                            } else {
+                                                binding.cardview.setVisibility(View.GONE);
+                                                binding.tvPairingWineDescription.setText("");
                                             }
                                         });
                             } else {
@@ -153,7 +160,7 @@ public class WineFragment extends Fragment {
                         wineFragmentViewModel.setProductMatchesListForSearch();
                         binding.autoCompleteTextViewWine.clearFocus();
 
-                        binding.autoCompleteTextViewWine.getText().clear();
+                        //  binding.autoCompleteTextViewWine.getText().clear();
                         break;
                 }
             });

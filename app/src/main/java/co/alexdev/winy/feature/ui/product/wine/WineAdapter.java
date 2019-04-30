@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import co.alexdev.winy.core.model.wines.ProductMatches;
 import co.alexdev.winy.core.util.DiffCallbacks;
 import co.alexdev.winy.databinding.ItemWineBinding;
 import co.alexdev.winy.feature.ui.product.wine.uimodel.ProductMatchesViewModel;
