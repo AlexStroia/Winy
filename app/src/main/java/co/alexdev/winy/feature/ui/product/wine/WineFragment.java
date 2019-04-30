@@ -25,7 +25,6 @@ import co.alexdev.winy.core.di.module.ContextModule;
 import co.alexdev.winy.core.repository.WinePairingRepository;
 import co.alexdev.winy.core.util.factory.WineViewModelFactory;
 import co.alexdev.winy.databinding.FragmentWineBinding;
-import co.alexdev.winy.feature.ui.product.wine.uimodel.PairingTextViewModel;
 import co.alexdev.winy.feature.ui.product.wine.uimodel.WineFragmentViewModel;
 import co.alexdev.winy.feature.util.KeyboardManager;
 
@@ -72,7 +71,11 @@ public class WineFragment extends Fragment {
                                     binding.tvPairingWineDescription.setVisibility(View.VISIBLE);
                                     pairedWineAdapter.submitList(content);
                                     wineFragmentViewModel.pairingTextDescription().observe(this,
-                                            pairingText -> binding.tvPairingWineDescription.setText(pairingText.description));
+                                            pairingText -> {
+                                                if (pairingText != null) {
+                                                    binding.tvPairingWineDescription.setText(pairingText.description);
+                                                }
+                                            });
                                 } else {
                                     binding.cardview.setVisibility(View.GONE);
                                     binding.tvPairingWineDescription.setVisibility(View.GONE);
@@ -122,7 +125,11 @@ public class WineFragment extends Fragment {
                                 binding.tvPairingWineDescription.setVisibility(View.VISIBLE);
                                 pairedWineAdapter.submitList(content);
                                 wineFragmentViewModel.pairingTextDescription().observe(this,
-                                        pairingText -> binding.tvPairingWineDescription.setText(pairingText.description));
+                                        pairingText -> {
+                                            if (pairingText != null) {
+                                                binding.tvPairingWineDescription.setText(pairingText.description);
+                                            }
+                                        });
                             } else {
                                 binding.cardview.setVisibility(View.GONE);
                                 binding.tvPairingWineDescription.setVisibility(View.GONE);

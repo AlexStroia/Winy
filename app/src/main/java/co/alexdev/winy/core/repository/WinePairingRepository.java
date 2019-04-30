@@ -1,6 +1,8 @@
 package co.alexdev.winy.core.repository;
 
 
+import android.text.TextUtils;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 
@@ -51,12 +53,14 @@ public class WinePairingRepository {
             @Override
             protected void saveCallResult(@NonNull WinePairingResponse item) {
                 pairedWinesDao.deleteAll(food);
-                pairingTextDao.deleteAll(food);
+                if (!TextUtils.isEmpty(item.pairingText)) {
+                    pairingTextDao.deleteAll(food);
+                    pairingTextDao.insert(new PairingText(food, item.pairingText));
+                }
                 List<PairedWines> wines = databaseUtils.createPairedWinesList(item.pairedWines, food);
                 List<ProductMatches> productMatches = databaseUtils.appendFoodToProductMatches(food, item.productMatches);
                 winesDao.insert(productMatches);
                 pairedWinesDao.insert(wines);
-                pairingTextDao.insert(new PairingText(food, item.pairingText));
             }
 
             @Override

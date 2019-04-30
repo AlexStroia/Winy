@@ -4,6 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.alexdev.winy.feature.ui.product.wine.uimodel.ProductMatchesViewModel" />
+    </data>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,24 +23,15 @@
 
             <ImageView
                 android:id="@+id/iv_wine"
-                android:layout_width="411dp"
-                android:layout_height="201dp"
-                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_content_margin"
                 android:contentDescription="@string/icon_wine"
+                app:imageUrl="@{viewModel.link}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_launcher_background" />
-
-            <TextView
-                android:id="@+id/tv_product_matches_title"
-                style="@style/RecyclerTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_wine"
-                tools:text="Franciscan Estate Merlot" />
 
             <TextView
                 android:id="@+id/tv_wine_price"
@@ -42,8 +40,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/default_content_margin"
                 android:layout_marginTop="@dimen/default_content_margin"
+                android:layout_marginBottom="@dimen/default_content_margin"
                 android:maxLines="2"
+                android:text="@{viewModel.price}"
                 android:textColor="@color/colorAccent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_product_matches_description"
                 tools:text="Wine Price" />
@@ -56,9 +57,11 @@
                 android:layout_marginStart="@dimen/default_content_margin"
                 android:layout_marginTop="@dimen/default_content_margin"
                 android:layout_marginEnd="@dimen/default_content_margin"
+                android:maxLines="3"
+                android:text="@{viewModel.description}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_product_matches_title"
+                app:layout_constraintTop_toBottomOf="@+id/iv_wine"
                 tools:text="Merlot, Cabernet, Sauvignon are a great choice for.." />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

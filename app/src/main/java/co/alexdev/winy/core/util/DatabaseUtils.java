@@ -18,8 +18,10 @@ public class DatabaseUtils {
 
     public List<PairedWines> createPairedWinesList(List<String> wines, String food) {
         List<PairedWines> pairedWines = new ArrayList<>();
-        for (String wine : wines) {
-            pairedWines.add(new PairedWines(food, wine));
+        if (wines != null && wines.size() > 0) {
+            for (String wine : wines) {
+                pairedWines.add(new PairedWines(food, wine));
+            }
         }
 
         return pairedWines;
@@ -27,9 +29,11 @@ public class DatabaseUtils {
 
     public List<ProductMatches> appendFoodToProductMatches(String food, List<ProductMatches> productMatches) {
         List<ProductMatches> products = new ArrayList<>();
-        for (ProductMatches product : productMatches) {
-            product.food = food;
-            products.add(product);
+        if (productMatches != null && productMatches.size() > 0) {
+            for (ProductMatches product : productMatches) {
+                product.food = food;
+                products.add(product);
+            }
         }
         return products;
     }
