@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import co.alexdev.winy.core.model.wines.PairedWines;
 import co.alexdev.winy.core.model.wines.ProductMatches;
 
 @Singleton
@@ -15,24 +16,18 @@ public class DatabaseUtils {
     public DatabaseUtils() {
     }
 
-    public String extractWinesToString(List<String> wines) {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        for (int i = 0; i < wines.size(); i++) {
-            if (i != wines.size() - 1) {
-                String wine = wines.get(i).toUpperCase();
-                stringBuilder.append(wine).append(", ");
-            } else {
-                stringBuilder.append(wines);
-            }
+    public List<PairedWines> createPairedWinesList(List<String> wines, String food) {
+        List<PairedWines> pairedWines = new ArrayList<>();
+        for (String wine : wines) {
+            pairedWines.add(new PairedWines(food, wine));
         }
-        return stringBuilder.toString();
+
+        return pairedWines;
     }
 
-    public List<ProductMatches> appendWinesToProductMatches(String wines, String food, List<ProductMatches> productMatches) {
+    public List<ProductMatches> appendFoodToProductMatches(String food, List<ProductMatches> productMatches) {
         List<ProductMatches> products = new ArrayList<>();
         for (ProductMatches product : productMatches) {
-            product.pairedWines = wines;
             product.food = food;
             products.add(product);
         }

@@ -12,7 +12,9 @@ import javax.inject.Singleton;
 import co.alexdev.winy.core.api.ApiResponse;
 import co.alexdev.winy.core.api.WinePairingResponse;
 import co.alexdev.winy.core.api.WineResponseService;
+import co.alexdev.winy.core.database.PairedWinesDao;
 import co.alexdev.winy.core.database.WinesDao;
+import co.alexdev.winy.core.model.wines.PairedWines;
 import co.alexdev.winy.core.model.wines.ProductMatches;
 import co.alexdev.winy.core.util.DatabaseUtils;
 import co.alexdev.winy.core.util.NetworkBoundsResource;
@@ -26,13 +28,16 @@ public class WinePairingRepository {
     private WinyExecutor executor;
     private WineResponseService service;
     private WinesDao winesDao;
+    private PairedWinesDao pairedWinesDao;
     private DatabaseUtils databaseUtils;
 
     @Inject
-    public WinePairingRepository(WinyExecutor executor, WineResponseService service, WinesDao winesDao, DatabaseUtils databaseUtils) {
+    public WinePairingRepository(WinyExecutor executor, WineResponseService service, WinesDao winesDao,
+                                 PairedWinesDao pairedWinesDao, DatabaseUtils databaseUtils) {
         this.executor = executor;
         this.service = service;
         this.winesDao = winesDao;
+        this.pairedWinesDao = pairedWinesDao;
         this.databaseUtils = databaseUtils;
     }
 
@@ -41,9 +46,11 @@ public class WinePairingRepository {
 
             @Override
             protected void saveCallResult(@NonNull WinePairingResponse item) {
-                String wines = databaseUtils.extractWinesToString(item.pairedWines);
-                List<ProductMatches> productMatches = databaseUtils.appendWinesToProductMatches(wines, food, item.productMatches);
+                pairedWinesDao.deleteAll(food);
+                List<PairedWines> wines = databaseUtils.createPairedWinesList(item.pairedWines, food);
+                List<ProductMatches> productMatches = databaseUtils.appendFoodToProductMatches(food, item.productMatches);
                 winesDao.insert(productMatches);
+                pairedWinesDao.insert(wines);
             }
 
             @Override
@@ -73,7 +80,7 @@ public class WinePairingRepository {
         return winesDao.loadWines(food);
     }
 
-    public LiveData<String> getProductMatches(String food) {
-        return winesDao.getProductMatches(food);
+    public LiveData<List<PairedWines>> loadPairedWinesByFood(String food) {
+        return pairedWinesDao.loadPairedWinesByFood(food);
     }
 }

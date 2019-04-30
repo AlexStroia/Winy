@@ -38,6 +38,9 @@
     <dimen name="view_height">72dp</dimen>
     <dimen name="cardview_content_elevation">16dp</dimen>
     <dimen name="cardview_corner_radius">8dp</dimen>
+    <dimen name="textview_product_matches_size">14sp</dimen>
+    <dimen name="cardview_wine_types_height">124dp</dimen>
+    <dimen name="separator_line_height">1dp</dimen>
 
     <!--Settings Fragment-->
     <dimen name="menu_button_width">224dp</dimen>

@@ -12,11 +12,10 @@ public class ProductMatchesViewModel {
     public double averageRating;
     public int ratingCount;
     public String food;
-    public String pairedWines;
     public double score;
     public String link;
 
-    public ProductMatchesViewModel(int id, String description, String price, String imageUrl, double averageRating, int ratingCount, String food, String pairedWines, double score, String link) {
+    public ProductMatchesViewModel(int id, String description, String price, String imageUrl, double averageRating, int ratingCount, String food, double score, String link) {
         this.id = id;
         this.description = description;
         this.price = price;
@@ -24,7 +23,6 @@ public class ProductMatchesViewModel {
         this.averageRating = averageRating;
         this.ratingCount = ratingCount;
         this.food = food;
-        this.pairedWines = pairedWines;
         this.score = score;
         this.link = link;
     }
@@ -42,12 +40,11 @@ public class ProductMatchesViewModel {
                 price.equals(that.price) &&
                 imageUrl.equals(that.imageUrl) &&
                 food.equals(that.food) &&
-                pairedWines.equals(that.pairedWines) &&
                 link.equals(that.link);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, description, price, imageUrl, averageRating, ratingCount, food, pairedWines, score, link);
+        return Objects.hash(id, description, price, imageUrl, averageRating, ratingCount, food, score, link);
     }
 }

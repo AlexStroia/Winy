@@ -12,13 +12,14 @@
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".feature.ui.product.wine.WineFragment">
+        <!--<androidx.core.widget.NestedScrollView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--tools:context=".feature.ui.product.wine.WineFragment">-->
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -53,27 +54,19 @@
                     app:layout_behavior="@string/appbar_scrolling_view_behavior"
                     app:layout_constraintBottom_toTopOf="@+id/rv_wine_recommendation"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.563"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_pairing_wine_description" />
 
-                <androidx.cardview.widget.CardView
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_wine_matches"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:elevation="@dimen/cardview_default_elevation"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView_wine">
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="@+id/autoCompleteTextView_wine"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_product_matches"
+                    tools:visibility="visible">
 
-                    <TextView
-                        android:id="@+id/tv_product_matches_title"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/default_content_margin"
-                        android:layout_marginTop="@dimen/default_content_margin"
-                        android:maxLines="2"
-                        android:text="@{viewModel.productMatchesViewModelList.getValue.get(0).description}"
-                        android:textColor="@color/colorAccent" />
-                </androidx.cardview.widget.CardView>
+                </androidx.recyclerview.widget.RecyclerView>
 
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -97,7 +90,7 @@
                     android:layout_marginStart="@dimen/default_content_margin"
                     android:layout_marginTop="@dimen/default_content_margin"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_product_matches_title" />
+                    app:layout_constraintTop_toBottomOf="@+id/rv_wine_matches" />
 
                 <ProgressBar
                     android:id="@+id/progressBar"
@@ -107,10 +100,19 @@
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@+id/rv_wine"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/tv_product_matches_title"
+                    app:layout_constraintStart_toStartOf="@+id/rv_wine_matches"
                     app:layout_constraintTop_toTopOf="@+id/autoCompleteTextView_wine" />
 
+                <TextView
+                    android:id="@+id/tv_product_matches"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/paired_wines"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="@+id/autoCompleteTextView_wine"
+                    app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView_wine" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
+        <!--</androidx.core.widget.NestedScrollView>-->
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

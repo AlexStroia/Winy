@@ -2,15 +2,18 @@ package co.alexdev.winy.feature.ui.product.wine;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Objects;
 
@@ -33,6 +36,7 @@ public class WineFragment extends Fragment {
     WinePairingRepository repository;
     private WineViewModelFactory factory;
     private WineFragmentViewModel wineFragmentViewModel;
+    private PairedWineAdapter pairedWineAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,15 +46,24 @@ public class WineFragment extends Fragment {
         component.inject(this);
         factory = new WineViewModelFactory(repository);
 
-        wineFragmentViewModel = ViewModelProviders.of(this, factory).get(WineFragmentViewModel.class);
+        wineFragmentViewModel =
+                ViewModelProviders.of(this.getActivity(), factory).get(WineFragmentViewModel.class);
 
         binding.setLifecycleOwner(this);
         binding.setViewModel(wineFragmentViewModel);
 
+        setPairedWinesRecyclerView();
+
         binding.autoCompleteTextViewWine.setOnEditorActionListener((textView, actionId, keyEvent) -> {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 wineFragmentViewModel.onSearchPressed(textView.getText().toString()).observe(this, data -> {
-                    wineFragmentViewModel.searchedQuery = textView.getText().toString();
+                    wineFragmentViewModel.food = textView.getText().toString();
+
+                    wineFragmentViewModel.setPairedWinesViewModelList();
+                    wineFragmentViewModel.pairedWinesViewModelLiveData.observe(this.getActivity(), content -> {
+                        pairedWineAdapter.submitList(content);
+                    });
+
                     switch (data.status) {
                         case LOADING:
                             binding.progressBar.setVisibility(View.VISIBLE);
@@ -58,13 +71,15 @@ public class WineFragment extends Fragment {
 
                         case ERROR:
                             binding.progressBar.setVisibility(View.GONE);
-                            //TODO - Use Coordinator layout and show a snackbar
-                            Toast.makeText(this.getActivity(), data.message, Toast.LENGTH_LONG).show();
+                            if (data.message != null) {
+                                Snackbar.make(binding.coordinator, data.message,
+                                        Snackbar.LENGTH_LONG).show();
+                            }
                             break;
 
                         case SUCCESS:
                             binding.progressBar.setVisibility(View.GONE);
-                            wineFragmentViewModel.setProductMatchesIfSearchedSuccess();
+                            wineFragmentViewModel.setProductMatchesListForSearch();
                             break;
                     }
                 });
@@ -73,6 +88,13 @@ public class WineFragment extends Fragment {
             return false;
         });
 
+
         return binding.getRoot();
+    }
+
+    private void setPairedWinesRecyclerView() {
+        pairedWineAdapter = new PairedWineAdapter();
+        binding.rvWineMatches.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        binding.rvWineMatches.setAdapter(pairedWineAdapter);
     }
 }

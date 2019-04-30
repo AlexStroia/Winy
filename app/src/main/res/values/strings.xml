@@ -24,6 +24,7 @@
     <string name="hint_wine_name">Example: Merlot</string>
     <string name="icon_wine">Wine icon</string>
     <string name="paired_wines">Paired wines:</string>
+    <string name="wine_content_description">Image with a wine</string>
 
     <!--SettingsFragment-->
     <string name="account">Account</string>

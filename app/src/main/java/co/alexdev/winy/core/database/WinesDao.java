@@ -19,9 +19,6 @@ public interface WinesDao {
     @Query("SELECT * FROM TABLE_PRODUCT_MATCHES")
     LiveData<List<ProductMatches>> loadAllWinesFromDatabase();
 
-    @Query("SELECT pairedWines FROM TABLE_PRODUCT_MATCHES WHERE food = :food LIMIT 1")
-    LiveData<String> getProductMatches(String food);
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(List<ProductMatches> productMatches);
 }
