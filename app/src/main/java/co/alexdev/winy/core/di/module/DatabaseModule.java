@@ -7,6 +7,7 @@ import androidx.room.Room;
 import javax.inject.Singleton;
 
 import co.alexdev.winy.core.database.PairedWinesDao;
+import co.alexdev.winy.core.database.PairingTextDao;
 import co.alexdev.winy.core.database.WinesDao;
 import co.alexdev.winy.core.database.WinyDatabase;
 import dagger.Module;
@@ -33,5 +34,11 @@ public class DatabaseModule {
     @Provides
     public PairedWinesDao providePairedWinesDao(WinyDatabase winyDatabase) {
         return winyDatabase.providePairedWinesDao();
+    }
+
+    @Singleton
+    @Provides
+    public PairingTextDao providePairingTextDao(WinyDatabase winyDatabase) {
+        return winyDatabase.providePairingTextDao();
     }
 }

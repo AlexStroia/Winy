@@ -41,6 +41,7 @@
     <dimen name="textview_product_matches_size">14sp</dimen>
     <dimen name="cardview_wine_types_height">124dp</dimen>
     <dimen name="separator_line_height">1dp</dimen>
+    <dimen name="badge_elevation">8dp</dimen>
 
     <!--Settings Fragment-->
     <dimen name="menu_button_width">224dp</dimen>

@@ -2,13 +2,10 @@ package co.alexdev.winy.feature.ui.product.wine;
 
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.widget.AdapterView;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
@@ -28,6 +25,7 @@ import co.alexdev.winy.core.di.module.ContextModule;
 import co.alexdev.winy.core.repository.WinePairingRepository;
 import co.alexdev.winy.core.util.factory.WineViewModelFactory;
 import co.alexdev.winy.databinding.FragmentWineBinding;
+import co.alexdev.winy.feature.ui.product.wine.uimodel.PairingTextViewModel;
 import co.alexdev.winy.feature.ui.product.wine.uimodel.WineFragmentViewModel;
 import co.alexdev.winy.feature.util.KeyboardManager;
 
@@ -66,17 +64,21 @@ public class WineFragment extends Fragment {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 wineFragmentViewModel.onSearchPressed(textView.getText().toString()).observe(this, data -> {
                     wineFragmentViewModel.food = textView.getText().toString();
-
                     wineFragmentViewModel.setPairedWinesViewModelList();
                     wineFragmentViewModel.pairedWinesViewModelLiveData.observe(this.getActivity()
                             , content -> {
                                 if (content != null && content.size() > 0) {
+                                    binding.cardview.setVisibility(View.VISIBLE);
                                     binding.tvPairingWineDescription.setVisibility(View.VISIBLE);
                                     pairedWineAdapter.submitList(content);
+                                    wineFragmentViewModel.pairingTextDescription().observe(this,
+                                            pairingText -> binding.tvPairingWineDescription.setText(pairingText.description));
                                 } else {
+                                    binding.cardview.setVisibility(View.GONE);
                                     binding.tvPairingWineDescription.setVisibility(View.GONE);
                                 }
                             });
+
                     switch (data.status) {
                         case LOADING:
                             binding.progressBar.setVisibility(View.VISIBLE);
@@ -112,12 +114,17 @@ public class WineFragment extends Fragment {
                 wineFragmentViewModel.food = searchedQuery;
 
                 wineFragmentViewModel.setPairedWinesViewModelList();
+
                 wineFragmentViewModel.pairedWinesViewModelLiveData.observe(this.getActivity()
                         , content -> {
                             if (content != null && content.size() > 0) {
+                                binding.cardview.setVisibility(View.VISIBLE);
                                 binding.tvPairingWineDescription.setVisibility(View.VISIBLE);
                                 pairedWineAdapter.submitList(content);
+                                wineFragmentViewModel.pairingTextDescription().observe(this,
+                                        pairingText -> binding.tvPairingWineDescription.setText(pairingText.description));
                             } else {
+                                binding.cardview.setVisibility(View.GONE);
                                 binding.tvPairingWineDescription.setVisibility(View.GONE);
                             }
                         });

@@ -56,7 +56,7 @@
                     app:layout_constraintBottom_toTopOf="@+id/rv_wine_recommendation"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_pairing_wine_description" />
+                    app:layout_constraintTop_toBottomOf="@+id/cardview" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_wine_matches"
@@ -83,14 +83,35 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent" />
 
-                <TextView
-                    android:id="@+id/tv_pairing_wine_description"
-                    android:layout_width="wrap_content"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardview"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/default_content_margin"
                     android:layout_marginTop="@dimen/default_content_margin"
+                    android:layout_marginEnd="@dimen/default_content_margin"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@android:color/transparent"
+                    app:cardElevation="@dimen/badge_elevation"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rv_wine_matches" />
+                    app:layout_constraintTop_toBottomOf="@+id/rv_wine_matches">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/cardview_edge">
+
+                        <TextView
+                            android:id="@+id/tv_pairing_wine_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/default_content_margin"
+                            android:layout_marginTop="@dimen/default_content_margin"
+                            android:layout_marginEnd="@dimen/default_content_margin"
+                            android:layout_marginBottom="@dimen/default_content_margin" />
+                    </FrameLayout>
+                </androidx.cardview.widget.CardView>
 
                 <ProgressBar
                     android:id="@+id/progressBar"

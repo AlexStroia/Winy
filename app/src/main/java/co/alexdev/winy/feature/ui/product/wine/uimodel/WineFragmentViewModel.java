@@ -1,7 +1,6 @@
 package co.alexdev.winy.feature.ui.product.wine.uimodel;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
@@ -9,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.alexdev.winy.core.model.wines.PairedWines;
+import co.alexdev.winy.core.model.wines.PairingText;
 import co.alexdev.winy.core.model.wines.ProductMatches;
 import co.alexdev.winy.core.repository.WinePairingRepository;
 import co.alexdev.winy.core.util.Resource;
@@ -64,6 +64,10 @@ public class WineFragmentViewModel extends ViewModel {
             }
             return productMatchesViewModels;
         });
+    }
+
+    public LiveData<PairingText> pairingTextDescription() {
+        return winePairingRepository.loadPairingTextByFood(food);
     }
 
     public void setPairedWinesViewModelList() {
