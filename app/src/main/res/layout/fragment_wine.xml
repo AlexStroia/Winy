@@ -39,6 +39,7 @@
                     android:inputType="text"
                     android:paddingStart="@dimen/default_content_padding"
                     android:paddingEnd="@dimen/default_content_padding"
+                    app:autocompleteItems="@{viewModel.foodNamesLiveData}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -61,7 +62,6 @@
                     android:id="@+id/rv_wine_matches"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     app:layout_constraintStart_toStartOf="@+id/autoCompleteTextView_wine"
                     app:layout_constraintTop_toBottomOf="@+id/tv_product_matches"
                     tools:visibility="visible">
@@ -108,6 +108,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/paired_wines"
+                    android:layout_marginTop="@dimen/default_content_margin"
                     android:visibility="visible"
                     app:layout_constraintStart_toStartOf="@+id/autoCompleteTextView_wine"
                     app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView_wine" />

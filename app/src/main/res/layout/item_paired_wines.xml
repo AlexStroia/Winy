@@ -19,7 +19,6 @@
             android:id="@+id/iv_wine_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/default_content_margin"
             android:layout_marginTop="@dimen/default_content_margin"
             android:contentDescription="@string/wine_content_description"
             app:layout_constraintStart_toStartOf="parent"

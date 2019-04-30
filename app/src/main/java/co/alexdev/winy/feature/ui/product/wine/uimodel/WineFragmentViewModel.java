@@ -18,10 +18,12 @@ public class WineFragmentViewModel extends ViewModel {
     public String food;
     public LiveData<List<ProductMatchesViewModel>> productMatchesViewModelLiveData;
     public LiveData<List<PairedWinesViewModel>> pairedWinesViewModelLiveData;
+    public LiveData<List<String>> foodNamesLiveData;
     private WinePairingRepository winePairingRepository;
 
     public WineFragmentViewModel(WinePairingRepository repository) {
         this.winePairingRepository = repository;
+        foodNamesLiveData = repository.loadAllFoodNames();
 
         productMatchesViewModelLiveData = Transformations.map(winePairingRepository.getAllWinesFromDatabase(), data -> {
             List<ProductMatchesViewModel> productMatchesViewModels = new ArrayList<>();
@@ -69,7 +71,7 @@ public class WineFragmentViewModel extends ViewModel {
                 Transformations.map(winePairingRepository.loadPairedWinesByFood(food), data -> {
                     List<PairedWinesViewModel> pairedWinesViewModelList = new ArrayList<>();
                     for (PairedWines pairedWines : data) {
-                        pairedWinesViewModelList.add(new PairedWinesViewModel(pairedWines.description));
+                        pairedWinesViewModelList.add(new PairedWinesViewModel(pairedWines.description.substring(0, 1).toUpperCase() + pairedWines.description.substring(1).toLowerCase()));
                     }
                     return pairedWinesViewModelList;
                 });

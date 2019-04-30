@@ -2,6 +2,7 @@ package co.alexdev.winy.feature.ui.product.wine;
 
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,13 +28,19 @@ import co.alexdev.winy.core.repository.WinePairingRepository;
 import co.alexdev.winy.core.util.factory.WineViewModelFactory;
 import co.alexdev.winy.databinding.FragmentWineBinding;
 import co.alexdev.winy.feature.ui.product.wine.uimodel.WineFragmentViewModel;
+import co.alexdev.winy.feature.util.KeyboardManager;
 
 
 public class WineFragment extends Fragment {
 
     private FragmentWineBinding binding;
+
     @Inject
     WinePairingRepository repository;
+
+    @Inject
+    KeyboardManager keyboardManager;
+
     private WineViewModelFactory factory;
     private WineFragmentViewModel wineFragmentViewModel;
     private PairedWineAdapter pairedWineAdapter;
@@ -60,10 +67,7 @@ public class WineFragment extends Fragment {
                     wineFragmentViewModel.food = textView.getText().toString();
 
                     wineFragmentViewModel.setPairedWinesViewModelList();
-                    wineFragmentViewModel.pairedWinesViewModelLiveData.observe(this.getActivity(), content -> {
-                        pairedWineAdapter.submitList(content);
-                    });
-
+                    wineFragmentViewModel.pairedWinesViewModelLiveData.observe(this.getActivity(), content -> pairedWineAdapter.submitList(content));
                     switch (data.status) {
                         case LOADING:
                             binding.progressBar.setVisibility(View.VISIBLE);
@@ -80,14 +84,17 @@ public class WineFragment extends Fragment {
                         case SUCCESS:
                             binding.progressBar.setVisibility(View.GONE);
                             wineFragmentViewModel.setProductMatchesListForSearch();
+                            binding.autoCompleteTextViewWine.clearFocus();
+
+                            new Handler().postDelayed(() -> binding.autoCompleteTextViewWine.getText().clear(), 250);
                             break;
                     }
                 });
+                keyboardManager.hideKeyboard();
                 return true;
             }
             return false;
         });
-
 
         return binding.getRoot();
     }
