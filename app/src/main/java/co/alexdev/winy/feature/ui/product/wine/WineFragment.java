@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
@@ -67,7 +68,15 @@ public class WineFragment extends Fragment {
                     wineFragmentViewModel.food = textView.getText().toString();
 
                     wineFragmentViewModel.setPairedWinesViewModelList();
-                    wineFragmentViewModel.pairedWinesViewModelLiveData.observe(this.getActivity(), content -> pairedWineAdapter.submitList(content));
+                    wineFragmentViewModel.pairedWinesViewModelLiveData.observe(this.getActivity()
+                            , content -> {
+                                if (content != null && content.size() > 0) {
+                                    binding.tvPairingWineDescription.setVisibility(View.VISIBLE);
+                                    pairedWineAdapter.submitList(content);
+                                } else {
+                                    binding.tvPairingWineDescription.setVisibility(View.GONE);
+                                }
+                            });
                     switch (data.status) {
                         case LOADING:
                             binding.progressBar.setVisibility(View.VISIBLE);
@@ -86,7 +95,7 @@ public class WineFragment extends Fragment {
                             wineFragmentViewModel.setProductMatchesListForSearch();
                             binding.autoCompleteTextViewWine.clearFocus();
 
-                            new Handler().postDelayed(() -> binding.autoCompleteTextViewWine.getText().clear(), 250);
+                            binding.autoCompleteTextViewWine.getText().clear();
                             break;
                     }
                 });
@@ -94,6 +103,47 @@ public class WineFragment extends Fragment {
                 return true;
             }
             return false;
+        });
+
+        binding.autoCompleteTextViewWine.setOnItemClickListener((parent, view, position, id) -> {
+            final String searchedQuery = parent.getItemAtPosition(position).toString();
+
+            wineFragmentViewModel.onSearchPressed(searchedQuery).observe(this, data -> {
+                wineFragmentViewModel.food = searchedQuery;
+
+                wineFragmentViewModel.setPairedWinesViewModelList();
+                wineFragmentViewModel.pairedWinesViewModelLiveData.observe(this.getActivity()
+                        , content -> {
+                            if (content != null && content.size() > 0) {
+                                binding.tvPairingWineDescription.setVisibility(View.VISIBLE);
+                                pairedWineAdapter.submitList(content);
+                            } else {
+                                binding.tvPairingWineDescription.setVisibility(View.GONE);
+                            }
+                        });
+                switch (data.status) {
+                    case LOADING:
+                        binding.progressBar.setVisibility(View.VISIBLE);
+                        break;
+
+                    case ERROR:
+                        binding.progressBar.setVisibility(View.GONE);
+                        if (data.message != null) {
+                            Snackbar.make(binding.coordinator, data.message,
+                                    Snackbar.LENGTH_LONG).show();
+                        }
+                        break;
+
+                    case SUCCESS:
+                        binding.progressBar.setVisibility(View.GONE);
+                        wineFragmentViewModel.setProductMatchesListForSearch();
+                        binding.autoCompleteTextViewWine.clearFocus();
+
+                        binding.autoCompleteTextViewWine.getText().clear();
+                        break;
+                }
+            });
+            keyboardManager.hideKeyboard();
         });
 
         return binding.getRoot();

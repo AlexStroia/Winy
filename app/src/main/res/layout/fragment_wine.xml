@@ -107,9 +107,9 @@
                     android:id="@+id/tv_product_matches"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/paired_wines"
                     android:layout_marginTop="@dimen/default_content_margin"
-                    android:visibility="visible"
+                    android:text="@string/paired_wines"
+                    android:visibility="gone"
                     app:layout_constraintStart_toStartOf="@+id/autoCompleteTextView_wine"
                     app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView_wine" />
 
