@@ -21,7 +21,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageView
@@ -31,12 +31,11 @@
                 android:layout_marginTop="@dimen/default_content_margin"
                 android:contentDescription="@string/icon_wine"
                 app:imageUrl="@{viewModel.imageUrl}"
+                loadingIndicator="@{progressBar}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/wine" />
 
             <View
@@ -64,6 +63,20 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/transparent_background"
                 tools:text="Feteasca Regala" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_content_margin"
+                android:layout_marginTop="@dimen/default_content_margin"
+                android:layout_marginBottom="@dimen/default_content_margin"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/transparent_background"
+                app:layout_constraintEnd_toEndOf="@+id/iv_wine"
+                app:layout_constraintStart_toStartOf="@+id/iv_wine"
+                app:layout_constraintTop_toTopOf="@+id/iv_wine" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
