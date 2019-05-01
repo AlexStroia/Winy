@@ -24,7 +24,7 @@ public class ImageBindings {
                     .load(Uri.parse(url))
                     .placeholder(R.drawable.ic_wine_placeholder)
                     .error(R.drawable.ic_wine_placeholder)
-                    .resize(150, 300)
+                    .resize(100, 300)
                     .into(image, new Callback() {
                         @Override
                         public void onSuccess() {

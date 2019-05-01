@@ -13,7 +13,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_content_margin"
         android:layout_marginEnd="@dimen/default_content_margin"
         android:elevation="@dimen/cardview_content_elevation"
@@ -26,12 +26,12 @@
 
             <ImageView
                 android:id="@+id/iv_wine"
+                loadingIndicator="@{progressBar}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_content_margin"
                 android:contentDescription="@string/icon_wine"
                 app:imageUrl="@{viewModel.imageUrl}"
-                loadingIndicator="@{progressBar}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
