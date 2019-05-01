@@ -68,21 +68,18 @@ public class WineFragment extends Fragment {
                     wineFragmentViewModel.pairedWinesViewModelLiveData.observe(this.getActivity()
                             , content -> {
                                 if (content != null && content.size() > 0) {
-                                    binding.cardview.setVisibility(View.VISIBLE);
-                                    binding.tvPairingWineDescription.setVisibility(View.VISIBLE);
+                                    showContent(true);
                                     pairedWineAdapter.submitList(content);
                                     wineFragmentViewModel.pairingTextDescription().observe(this,
                                             pairingText -> {
                                                 if (pairingText != null && !TextUtils.isEmpty(pairingText.description)) {
                                                     binding.tvPairingWineDescription.setText(pairingText.description);
                                                 } else {
-                                                    binding.cardview.setVisibility(View.GONE);
-                                                    binding.tvPairingWineDescription.setText("");
+                                                    showContent(false);
                                                 }
                                             });
                                 } else {
-                                    binding.cardview.setVisibility(View.GONE);
-                                    binding.tvPairingWineDescription.setVisibility(View.GONE);
+                                    showContent(false);
                                 }
                             });
 
@@ -104,7 +101,7 @@ public class WineFragment extends Fragment {
                             wineFragmentViewModel.setProductMatchesListForSearch();
                             binding.autoCompleteTextViewWine.clearFocus();
 
-                            //  binding.autoCompleteTextViewWine.getText().clear();
+                            binding.autoCompleteTextViewWine.getText().clear();
                             break;
                     }
                 });
@@ -125,21 +122,18 @@ public class WineFragment extends Fragment {
                 wineFragmentViewModel.pairedWinesViewModelLiveData.observe(this.getActivity()
                         , content -> {
                             if (content != null && content.size() > 0) {
-                                binding.cardview.setVisibility(View.VISIBLE);
-                                binding.tvPairingWineDescription.setVisibility(View.VISIBLE);
+                                showContent(true);
                                 pairedWineAdapter.submitList(content);
                                 wineFragmentViewModel.pairingTextDescription().observe(this,
                                         pairingText -> {
                                             if (pairingText != null && !TextUtils.isEmpty(pairingText.description)) {
                                                 binding.tvPairingWineDescription.setText(pairingText.description);
                                             } else {
-                                                binding.cardview.setVisibility(View.GONE);
-                                                binding.tvPairingWineDescription.setText("");
+                                                showContent(false);
                                             }
                                         });
                             } else {
-                                binding.cardview.setVisibility(View.GONE);
-                                binding.tvPairingWineDescription.setVisibility(View.GONE);
+                                showContent(false);
                             }
                         });
                 switch (data.status) {
@@ -160,7 +154,7 @@ public class WineFragment extends Fragment {
                         wineFragmentViewModel.setProductMatchesListForSearch();
                         binding.autoCompleteTextViewWine.clearFocus();
 
-                        //  binding.autoCompleteTextViewWine.getText().clear();
+                        binding.autoCompleteTextViewWine.getText().clear();
                         break;
                 }
             });
@@ -168,6 +162,12 @@ public class WineFragment extends Fragment {
         });
 
         return binding.getRoot();
+    }
+
+    private void showContent(Boolean shouldShow) {
+        binding.cardview.setVisibility(shouldShow ? View.VISIBLE : View.GONE);
+        binding.tvOurChoice.setVisibility(shouldShow ? View.VISIBLE : View.GONE);
+        binding.tvPairingWineDescription.setVisibility(shouldShow ? View.VISIBLE : View.GONE);
     }
 
     private void setPairedWinesRecyclerView() {

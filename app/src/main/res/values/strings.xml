@@ -25,6 +25,7 @@
     <string name="icon_wine">Wine icon</string>
     <string name="paired_wines">Paired wines:</string>
     <string name="wine_content_description">Image with a wine</string>
+    <string name="our_choice">Our choice:</string>
 
     <!--SettingsFragment-->
     <string name="account">Account</string>
