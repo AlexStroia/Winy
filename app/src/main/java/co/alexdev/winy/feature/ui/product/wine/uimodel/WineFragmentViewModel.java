@@ -25,21 +25,22 @@ public class WineFragmentViewModel extends ViewModel {
         this.winePairingRepository = repository;
         foodNamesLiveData = repository.loadAllFoodNames();
 
-        productMatchesViewModelLiveData = Transformations.map(winePairingRepository.getAllWinesFromDatabase(), data -> {
-            List<ProductMatchesViewModel> productMatchesViewModels = new ArrayList<>();
-            for (ProductMatches productMatches : data) {
-                productMatchesViewModels.add(new ProductMatchesViewModel(productMatches.id,
-                        productMatches.description,
-                        productMatches.price,
-                        productMatches.imageUrl,
-                        productMatches.averageRating,
-                        productMatches.ratingCount,
-                        productMatches.food,
-                        productMatches.score,
-                        productMatches.link));
-            }
-            return productMatchesViewModels;
-        });
+//        productMatchesViewModelLiveData = Transformations.map(winePairingRepository.getAllWinesFromDatabase(), data -> {
+//            List<ProductMatchesViewModel> productMatchesViewModels = new ArrayList<>();
+//            for (ProductMatches productMatches : data) {
+//                productMatchesViewModels.add(new ProductMatchesViewModel(productMatches.id,
+//                        productMatches.description,
+//                        productMatches.price,
+//                        productMatches.imageUrl,
+//                        productMatches.averageRating,
+//                        productMatches.ratingCount,
+//                        productMatches.food,
+//                        productMatches.title,
+//                        productMatches.score,
+//                        productMatches.link));
+//            }
+//            return productMatchesViewModels;
+//        });
     }
 
     public LiveData<Resource<List<ProductMatches>>> onSearchPressed() {
@@ -59,6 +60,7 @@ public class WineFragmentViewModel extends ViewModel {
                         productMatches.averageRating,
                         productMatches.ratingCount,
                         productMatches.food,
+                        productMatches.title,
                         productMatches.score,
                         productMatches.link));
             }
@@ -79,5 +81,24 @@ public class WineFragmentViewModel extends ViewModel {
                     }
                     return pairedWinesViewModelList;
                 });
+    }
+
+    public void setProductMatchesViewModelList() {
+        productMatchesViewModelLiveData = Transformations.map(winePairingRepository.getAllWinesFromDatabaseByFood(food), data -> {
+            List<ProductMatchesViewModel> productMatchesViewModels = new ArrayList<>();
+            for (ProductMatches productMatches : data) {
+                productMatchesViewModels.add(new ProductMatchesViewModel(productMatches.id,
+                        productMatches.description,
+                        productMatches.price,
+                        productMatches.imageUrl,
+                        productMatches.averageRating,
+                        productMatches.ratingCount,
+                        productMatches.food,
+                        productMatches.title,
+                        productMatches.score,
+                        productMatches.link));
+            }
+            return productMatchesViewModels;
+        });
     }
 }

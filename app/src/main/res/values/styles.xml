@@ -18,5 +18,7 @@
     <style name="RecyclerTextView" parent="android:Widget.TextView">
         <item name="android:layout_marginStart">@dimen/default_content_margin</item>
         <item name="android:layout_marginEnd">@dimen/default_content_margin</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/item_wine_textview_font_size</item>
     </style>
 </resources>

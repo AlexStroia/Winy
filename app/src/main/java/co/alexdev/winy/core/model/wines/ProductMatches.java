@@ -15,6 +15,7 @@ public class ProductMatches {
     public String imageUrl;
     public double averageRating;
     public int ratingCount;
+    public String title;
     public String food;
     public double score;
     public String link;
@@ -31,12 +32,13 @@ public class ProductMatches {
                 description.equals(that.description) &&
                 price.equals(that.price) &&
                 imageUrl.equals(that.imageUrl) &&
+                title.equals(that.title) &&
                 food.equals(that.food) &&
                 link.equals(that.link);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, description, price, imageUrl, averageRating, ratingCount, food, score, link);
+        return Objects.hash(id, description, price, imageUrl, averageRating, ratingCount, title, food, score, link);
     }
 }

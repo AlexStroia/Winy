@@ -13,8 +13,11 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="@dimen/cardview_content_elevation">
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/default_content_margin"
+        android:layout_marginEnd="@dimen/default_content_margin"
+        android:elevation="@dimen/cardview_content_elevation"
+        app:cardCornerRadius="@dimen/cardview_corner_radius">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -23,46 +26,45 @@
 
             <ImageView
                 android:id="@+id/iv_wine"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_content_margin"
                 android:contentDescription="@string/icon_wine"
-                app:imageUrl="@{viewModel.link}"
+                app:imageUrl="@{viewModel.imageUrl}"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_launcher_background" />
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/wine" />
 
-            <TextView
-                android:id="@+id/tv_wine_price"
-                style="@style/RecyclerTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_content_margin"
-                android:layout_marginTop="@dimen/default_content_margin"
-                android:layout_marginBottom="@dimen/default_content_margin"
-                android:maxLines="2"
-                android:text="@{viewModel.price}"
-                android:textColor="@color/colorAccent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_product_matches_description"
-                tools:text="Wine Price" />
+            <View
+                android:id="@+id/transparent_background"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/transparent_view_item_height"
+                android:background="@color/transparent_view"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_wine"
+                app:layout_constraintEnd_toEndOf="@+id/iv_wine"
+                app:layout_constraintStart_toStartOf="@+id/iv_wine" />
 
             <TextView
                 android:id="@+id/tv_product_matches_description"
                 style="@style/RecyclerTextView"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/item_wine_textview_width"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/default_content_margin"
                 android:layout_marginTop="@dimen/default_content_margin"
-                android:layout_marginEnd="@dimen/default_content_margin"
-                android:maxLines="3"
-                android:text="@{viewModel.description}"
+                android:layout_marginBottom="@dimen/default_content_padding"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{viewModel.title}"
+                app:layout_constraintBottom_toBottomOf="@+id/transparent_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_wine"
-                tools:text="Merlot, Cabernet, Sauvignon are a great choice for.." />
+                app:layout_constraintTop_toTopOf="@+id/transparent_background"
+                tools:text="Feteasca Regala" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>

@@ -28,6 +28,7 @@ import co.alexdev.winy.core.util.factory.WineViewModelFactory;
 import co.alexdev.winy.databinding.FragmentWineBinding;
 import co.alexdev.winy.feature.ui.product.wine.uimodel.WineFragmentViewModel;
 import co.alexdev.winy.feature.util.KeyboardManager;
+import co.alexdev.winy.feature.util.custom.RecyclerViewDecoration;
 
 
 public class WineFragment extends Fragment {
@@ -43,6 +44,7 @@ public class WineFragment extends Fragment {
     private WineViewModelFactory factory;
     private WineFragmentViewModel wineFragmentViewModel;
     private PairedWineAdapter pairedWineAdapter;
+    private WineAdapter wineAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,29 +61,15 @@ public class WineFragment extends Fragment {
         binding.setViewModel(wineFragmentViewModel);
 
         setPairedWinesRecyclerView();
+        setWinesRecyclerView();
 
         binding.autoCompleteTextViewWine.setOnEditorActionListener((textView, actionId, keyEvent) -> {
             wineFragmentViewModel.food = textView.getText().toString();
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 wineFragmentViewModel.onSearchPressed().observe(this, data -> {
-                    wineFragmentViewModel.setPairedWinesViewModelList();
-                    wineFragmentViewModel.pairedWinesViewModelLiveData.observe(this.getActivity()
-                            , content -> {
-                                if (content != null && content.size() > 0) {
-                                    showContent(true);
-                                    pairedWineAdapter.submitList(content);
-                                    wineFragmentViewModel.pairingTextDescription().observe(this,
-                                            pairingText -> {
-                                                if (pairingText != null && !TextUtils.isEmpty(pairingText.description)) {
-                                                    binding.tvPairingWineDescription.setText(pairingText.description);
-                                                } else {
-                                                    showContent(false);
-                                                }
-                                            });
-                                } else {
-                                    showContent(false);
-                                }
-                            });
+                    setViewModelObjectData();
+                    observePairedWinesViewModelLiveData();
+                    observeProductMatchesViewModelLiveData();
 
                     switch (data.status) {
                         case LOADING:
@@ -117,25 +105,11 @@ public class WineFragment extends Fragment {
 
             wineFragmentViewModel.onSearchPressed().observe(this, data -> {
 
-                wineFragmentViewModel.setPairedWinesViewModelList();
+                setViewModelObjectData();
 
-                wineFragmentViewModel.pairedWinesViewModelLiveData.observe(this.getActivity()
-                        , content -> {
-                            if (content != null && content.size() > 0) {
-                                showContent(true);
-                                pairedWineAdapter.submitList(content);
-                                wineFragmentViewModel.pairingTextDescription().observe(this,
-                                        pairingText -> {
-                                            if (pairingText != null && !TextUtils.isEmpty(pairingText.description)) {
-                                                binding.tvPairingWineDescription.setText(pairingText.description);
-                                            } else {
-                                                showContent(false);
-                                            }
-                                        });
-                            } else {
-                                showContent(false);
-                            }
-                        });
+                observePairedWinesViewModelLiveData();
+                observeProductMatchesViewModelLiveData();
+
                 switch (data.status) {
                     case LOADING:
                         binding.progressBar.setVisibility(View.VISIBLE);
@@ -164,6 +138,39 @@ public class WineFragment extends Fragment {
         return binding.getRoot();
     }
 
+    private void setViewModelObjectData() {
+        wineFragmentViewModel.setPairedWinesViewModelList();
+        wineFragmentViewModel.setProductMatchesViewModelList();
+    }
+
+    private void observePairedWinesViewModelLiveData() {
+        wineFragmentViewModel.pairedWinesViewModelLiveData.observe(this
+                , content -> {
+                    if (content != null && content.size() > 0) {
+                        showContent(true);
+                        pairedWineAdapter.submitList(content);
+                        wineFragmentViewModel.pairingTextDescription().observe(this,
+                                pairingText -> {
+                                    if (pairingText != null && !TextUtils.isEmpty(pairingText.description)) {
+                                        binding.tvPairingWineDescription.setText(pairingText.description);
+                                    } else {
+                                        showContent(false);
+                                    }
+                                });
+                    } else {
+                        showContent(false);
+                    }
+                });
+    }
+
+    private void observeProductMatchesViewModelLiveData() {
+        wineFragmentViewModel.productMatchesViewModelLiveData.observe(this, content -> {
+            if (content != null && content.size() > 0) {
+                wineAdapter.submitList(content);
+            }
+        });
+    }
+
     private void showContent(Boolean shouldShow) {
         binding.cardview.setVisibility(shouldShow ? View.VISIBLE : View.GONE);
         binding.tvOurChoice.setVisibility(shouldShow ? View.VISIBLE : View.GONE);
@@ -174,5 +181,12 @@ public class WineFragment extends Fragment {
         pairedWineAdapter = new PairedWineAdapter();
         binding.rvWineMatches.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         binding.rvWineMatches.setAdapter(pairedWineAdapter);
+    }
+
+    private void setWinesRecyclerView() {
+        wineAdapter = new WineAdapter();
+        binding.rvWineRecommendation.setLayoutManager(new LinearLayoutManager(this.getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        binding.rvWineRecommendation.setAdapter(wineAdapter);
+        binding.rvWineRecommendation.addItemDecoration(new RecyclerViewDecoration(8));
     }
 }

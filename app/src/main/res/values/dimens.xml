@@ -42,6 +42,11 @@
     <dimen name="cardview_wine_types_height">124dp</dimen>
     <dimen name="separator_line_height">1dp</dimen>
     <dimen name="badge_elevation">8dp</dimen>
+    <dimen name="textview_wine_item_padding_start">32dp</dimen>
+    <dimen name="textview_item_width">40dp</dimen>
+    <dimen name="transparent_view_item_height">48dp</dimen>
+    <dimen name="item_wine_textview_font_size">16sp</dimen>
+    <dimen name="item_wine_textview_width">120dp</dimen>
 
     <!--Settings Fragment-->
     <dimen name="menu_button_width">224dp</dimen>

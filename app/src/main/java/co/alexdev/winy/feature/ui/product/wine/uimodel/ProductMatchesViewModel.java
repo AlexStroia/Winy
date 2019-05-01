@@ -2,7 +2,6 @@ package co.alexdev.winy.feature.ui.product.wine.uimodel;
 
 import java.util.Objects;
 
-import co.alexdev.winy.core.model.wines.ProductMatches;
 
 public class ProductMatchesViewModel {
     public int id;
@@ -12,10 +11,11 @@ public class ProductMatchesViewModel {
     public double averageRating;
     public int ratingCount;
     public String food;
+    public String title;
     public double score;
     public String link;
 
-    public ProductMatchesViewModel(int id, String description, String price, String imageUrl, double averageRating, int ratingCount, String food, double score, String link) {
+    public ProductMatchesViewModel(int id, String description, String price, String imageUrl, double averageRating, int ratingCount, String food, String title, double score, String link) {
         this.id = id;
         this.description = description;
         this.price = price;
@@ -23,6 +23,7 @@ public class ProductMatchesViewModel {
         this.averageRating = averageRating;
         this.ratingCount = ratingCount;
         this.food = food;
+        this.title = title;
         this.score = score;
         this.link = link;
     }
@@ -30,8 +31,8 @@ public class ProductMatchesViewModel {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ProductMatches)) return false;
-        ProductMatches that = (ProductMatches) o;
+        if (!(o instanceof ProductMatchesViewModel)) return false;
+        ProductMatchesViewModel that = (ProductMatchesViewModel) o;
         return id == that.id &&
                 Double.compare(that.averageRating, averageRating) == 0 &&
                 ratingCount == that.ratingCount &&
@@ -40,11 +41,12 @@ public class ProductMatchesViewModel {
                 price.equals(that.price) &&
                 imageUrl.equals(that.imageUrl) &&
                 food.equals(that.food) &&
+                title.equals(that.title) &&
                 link.equals(that.link);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, description, price, imageUrl, averageRating, ratingCount, food, score, link);
+        return Objects.hash(id, description, price, imageUrl, averageRating, ratingCount, food, title, score, link);
     }
 }
