@@ -22,6 +22,7 @@ public class ImageBindings {
         if (!TextUtils.isEmpty(url)) {
             Picasso.get()
                     .load(Uri.parse(url))
+                    
                     .placeholder(R.drawable.ic_wine_placeholder)
                     .error(R.drawable.ic_wine_placeholder)
                     .resize(100, 300)
