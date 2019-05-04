@@ -40,4 +40,9 @@
 
     <!--SignupActivity-->
     <string name="wine_picture">Wine picture</string>
+
+    <!--Detail Activity-->
+    <string name="show_more">SHOW MORE</string>
+    <string name="rating">Rating</string>
+    <string name="avg_rating">Average Rating</string>
 </resources>

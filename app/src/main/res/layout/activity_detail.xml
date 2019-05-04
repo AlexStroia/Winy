@@ -29,13 +29,14 @@
             android:id="@+id/tv_wine_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserratregular"
             android:layout_marginStart="@dimen/default_content_margin"
             android:layout_marginTop="@dimen/default_content_margin"
             app:layout_constraintBottom_toTopOf="@+id/tv_wine_type"
             app:layout_constraintStart_toEndOf="@+id/iv_wine_icon"
             app:layout_constraintTop_toTopOf="@+id/iv_wine_icon"
             app:layout_constraintVertical_chainStyle="packed"
-            tools:text="App name" />
+            tools:text="Wine name" />
 
         <TextView
             android:id="@+id/tv_wine_type"
@@ -50,6 +51,7 @@
             android:id="@+id/tv_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserratregular"
             android:layout_marginTop="@dimen/default_content_padding"
             android:layout_marginBottom="@dimen/default_content_padding"
             android:background="@drawable/rounded_textview"
@@ -86,6 +88,8 @@
             android:id="@+id/tv_rating_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserratregular"
+            android:text="@string/rating"
             app:layout_constraintStart_toStartOf="@+id/tv_rating_grade"
             app:layout_constraintTop_toBottomOf="@+id/tv_rating_grade" />
 
@@ -97,24 +101,28 @@
             android:contentDescription="@null"
             app:layout_constraintBottom_toTopOf="@+id/tv_number_of_downloads"
             app:layout_constraintEnd_toStartOf="@+id/tv_number_of_downloads"
-            app:layout_constraintTop_toBottomOf="@+id/tv_downloads" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_average_rating" />
 
         <TextView
             android:id="@+id/tv_number_of_downloads"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_content_margin"
-            app:layout_constraintStart_toStartOf="@+id/tv_downloads"
+            android:fontFamily="@font/montserratregular"
+            app:layout_constraintStart_toStartOf="@+id/tv_average_rating"
             app:layout_constraintTop_toBottomOf="@+id/iv_wine_icon"
             tools:text="356" />
 
         <TextView
-            android:id="@+id/tv_downloads"
+            android:id="@+id/tv_average_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/default_content_margin"
+            android:fontFamily="@font/montserratregular"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_number_of_downloads" />
+            app:layout_constraintStart_toEndOf="@+id/tv_price"
+            app:layout_constraintTop_toBottomOf="@+id/tv_number_of_downloads"
+            tools:text="Average Rating" />
 
         <View
             android:id="@+id/bar_view"
@@ -155,10 +163,12 @@
             android:layout_marginTop="@dimen/default_content_margin"
             android:background="@null"
             android:textColor="@color/colorAccent"
-            android:textStyle="bold"
+            android:fontFamily="@font/montserratbold"
+            android:text="@string/show_more"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_description_content"
+            android:textSize="@dimen/show_more_text_size"
             tools:text="Show More" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

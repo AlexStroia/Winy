@@ -30,6 +30,7 @@ import co.alexdev.winy.core.model.wines.PairingText;
 import co.alexdev.winy.core.repository.WinePairingRepository;
 import co.alexdev.winy.core.util.factory.WineViewModelFactory;
 import co.alexdev.winy.databinding.FragmentWineBinding;
+import co.alexdev.winy.feature.ui.detail.DetailActivity;
 import co.alexdev.winy.feature.ui.product.wine.uimodel.PairedWinesViewModel;
 import co.alexdev.winy.feature.ui.product.wine.uimodel.ProductMatchesViewModel;
 import co.alexdev.winy.feature.ui.product.wine.uimodel.WineFragmentViewModel;
@@ -204,8 +205,10 @@ public class WineFragment extends Fragment {
     }
 
     private void setWinesRecyclerView() {
-        wineAdapter = new WineAdapter(position -> {
-
+        wineAdapter = new WineAdapter(wineId -> {
+            if (this.getActivity() != null) {
+                DetailActivity.startActivity(this.getActivity(), wineId);
+            }
         });
         binding.rvWineRecommendation.setLayoutManager(new LinearLayoutManager(this.getActivity(), LinearLayoutManager.HORIZONTAL, false));
         binding.rvWineRecommendation.setAdapter(wineAdapter);
