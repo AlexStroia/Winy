@@ -22,6 +22,9 @@ public interface WinesDao {
     @Query("SELECT food from TABLE_PAIRED_WINES")
     LiveData<List<String>> loadAllFoodNames();
 
+    @Query("SELECT * FROM TABLE_PRODUCT_MATCHES WHERE id=:id")
+    LiveData<ProductMatches> loadWineById(int id);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(List<ProductMatches> productMatches);
 }

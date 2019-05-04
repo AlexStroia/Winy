@@ -59,9 +59,10 @@
     <dimen name="help_activity_base_button_width">224dp</dimen>
 
     <!--Detail Activity-->
-    <dimen name="detail_icon_height_width">124dp</dimen>
+    <dimen name="detail_icon_height_width">64dp</dimen>
     <dimen name="default_content_elevation">8dp</dimen>
     <dimen name="show_more_text_size">18sp</dimen>
     <dimen name="fab_margin">48dp</dimen>
+    <dimen name="title_wine_width">248dp</dimen>
 
 </resources>

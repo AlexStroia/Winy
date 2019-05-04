@@ -92,7 +92,11 @@ public class WinePairingRepository {
         return winesDao.loadAllWines();
     }
 
-    public LiveData<List<ProductMatches>> getAllWinesFromDatabaseByFood(String food) {
+    public LiveData<ProductMatches> loadWineById(int id) {
+        return winesDao.loadWineById(id);
+    }
+
+    public LiveData<List<ProductMatches>> loadAllWinesFromDatabaseByFood(String food) {
         return winesDao.loadWines(food);
     }
 

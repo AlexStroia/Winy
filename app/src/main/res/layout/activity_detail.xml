@@ -6,6 +6,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="co.alexdev.winy.feature.ui.detail.uimodel.DetailActivityViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,44 +44,35 @@
 
                 <TextView
                     android:id="@+id/tv_wine_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/title_wine_width"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/default_content_margin"
-                    android:layout_marginTop="@dimen/default_content_margin"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="@dimen/default_content_margin"
                     android:fontFamily="@font/montserratbold"
+                    android:text="@{viewModel.productMatchesViewModelLiveData.title}"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/item_wine_textview_font_size"
-                    app:layout_constraintBottom_toTopOf="@+id/tv_wine_type"
+                    app:layout_constraintBottom_toTopOf="@+id/iv_wine_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/iv_wine_icon"
-                    app:layout_constraintTop_toTopOf="@+id/iv_wine_icon"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_wine_icon"
+                    app:layout_constraintVertical_bias="0.49"
                     app:layout_constraintVertical_chainStyle="packed"
                     tools:text="Wine name" />
-
-                <TextView
-                    android:id="@+id/tv_wine_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/montserratregular"
-                    app:layout_constraintBottom_toTopOf="@+id/tv_price"
-                    app:layout_constraintStart_toStartOf="@+id/tv_wine_name"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_wine_name"
-                    tools:text="Wine Type" />
 
                 <TextView
                     android:id="@+id/tv_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/default_content_padding"
-                    android:layout_marginBottom="@dimen/default_content_padding"
+                    android:layout_marginTop="@dimen/default_content_margin"
                     android:background="@drawable/rounded_textview"
                     android:paddingStart="@dimen/default_content_padding"
-                    android:paddingTop="@dimen/default_content_padding"
                     android:paddingEnd="@dimen/default_content_padding"
-                    android:paddingBottom="@dimen/default_content_padding"
-                    app:layout_constraintBottom_toBottomOf="@+id/iv_wine_icon"
-                    app:layout_constraintStart_toStartOf="@+id/tv_wine_type"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_wine_type"
+                    android:text="@{viewModel.productMatchesViewModelLiveData.price}"
+                    app:layout_constraintStart_toStartOf="@+id/tv_wine_name"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_wine_name"
                     tools:text="Wine Price" />
 
                 <ImageView
@@ -98,6 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/default_content_margin"
                     android:layout_marginTop="@dimen/default_content_margin"
+                    android:text="@{viewModel.productMatchesViewModelLiveData.ratingCount}"
                     app:layout_constraintStart_toEndOf="@+id/iv_star_icon"
                     app:layout_constraintTop_toBottomOf="@+id/iv_wine_icon"
                     tools:text="5.0" />
@@ -130,6 +125,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/default_content_margin"
                     android:layout_marginTop="@dimen/default_content_margin"
+                    android:text="@{viewModel.productMatchesViewModelLiveData.averageRating}"
                     app:layout_constraintStart_toStartOf="@+id/tv_average_rating_text"
                     app:layout_constraintTop_toBottomOf="@+id/iv_wine_icon"
                     tools:text="356" />
@@ -138,11 +134,11 @@
                     android:id="@+id/tv_average_rating_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/default_content_margin"
                     android:layout_marginTop="@dimen/default_content_margin"
+                    android:layout_marginEnd="@dimen/default_content_margin"
                     android:fontFamily="@font/montserratregular"
                     android:text="@string/avg_rating"
-                    app:layout_constraintStart_toEndOf="@+id/iv_like_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_average_rating_value" />
 
                 <View
@@ -175,6 +171,7 @@
                     android:maxLines="2"
                     android:paddingStart="@dimen/default_content_margin"
                     android:paddingEnd="@dimen/default_content_margin"
+                    android:text="@{viewModel.productMatchesViewModelLiveData.description}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_description"
@@ -209,12 +206,10 @@
                     android:id="@+id/iv_like_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/default_content_margin"
                     android:layout_marginEnd="@dimen/default_content_margin"
                     android:contentDescription="@string/like_content_description"
                     app:layout_constraintBottom_toTopOf="@+id/tv_average_rating_value"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_average_rating_value"
-                    app:layout_constraintStart_toEndOf="@+id/tv_price"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_average_rating_text"
                     app:layout_constraintTop_toBottomOf="@+id/tv_average_rating_text"
                     app:srcCompat="@drawable/ic_like" />
 

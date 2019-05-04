@@ -8,14 +8,14 @@ public class ProductMatchesViewModel {
     public String description;
     public String price;
     public String imageUrl;
-    public double averageRating;
-    public int ratingCount;
+    public String averageRating;
+    public String ratingCount;
     public String food;
     public String title;
-    public double score;
+    public String score;
     public String link;
 
-    public ProductMatchesViewModel(int id, String description, String price, String imageUrl, double averageRating, int ratingCount, String food, String title, double score, String link) {
+    public ProductMatchesViewModel(int id, String description, String price, String imageUrl, String averageRating, String ratingCount, String food, String title, String score, String link) {
         this.id = id;
         this.description = description;
         this.price = price;
@@ -34,14 +34,14 @@ public class ProductMatchesViewModel {
         if (!(o instanceof ProductMatchesViewModel)) return false;
         ProductMatchesViewModel that = (ProductMatchesViewModel) o;
         return id == that.id &&
-                Double.compare(that.averageRating, averageRating) == 0 &&
-                ratingCount == that.ratingCount &&
-                Double.compare(that.score, score) == 0 &&
                 description.equals(that.description) &&
                 price.equals(that.price) &&
                 imageUrl.equals(that.imageUrl) &&
+                averageRating.equals(that.averageRating) &&
+                ratingCount.equals(that.ratingCount) &&
                 food.equals(that.food) &&
                 title.equals(that.title) &&
+                score.equals(that.score) &&
                 link.equals(that.link);
     }
 

@@ -33,19 +33,13 @@ public class WineFragmentViewModel extends ViewModel {
     /*
      When a search occurs, the list is updated with the data returned for that specific search */
     public void setProductMatchesListForSearch() {
-        productMatchesViewModelLiveData = Transformations.map(winePairingRepository.getAllWinesFromDatabaseByFood(food), data -> {
+        productMatchesViewModelLiveData = Transformations.map(winePairingRepository.loadAllWinesFromDatabaseByFood(food), data -> {
             List<ProductMatchesViewModel> productMatchesViewModels = new ArrayList<>();
             for (ProductMatches productMatches : data) {
-                productMatchesViewModels.add(new ProductMatchesViewModel(productMatches.id,
-                        productMatches.description,
-                        productMatches.price,
-                        productMatches.imageUrl,
-                        productMatches.averageRating,
-                        productMatches.ratingCount,
-                        productMatches.food,
-                        productMatches.title,
-                        productMatches.score,
-                        productMatches.link));
+                productMatchesViewModels.add(new ProductMatchesViewModel(
+                        productMatches.id, productMatches.description, productMatches.price,
+                        productMatches.imageUrl, String.valueOf(productMatches.averageRating), String.valueOf(productMatches.ratingCount),
+                        productMatches.food, productMatches.title, String.valueOf(productMatches.score), productMatches.link));
             }
             return productMatchesViewModels;
         });
@@ -67,19 +61,13 @@ public class WineFragmentViewModel extends ViewModel {
     }
 
     public void setProductMatchesViewModelList() {
-        productMatchesViewModelLiveData = Transformations.map(winePairingRepository.getAllWinesFromDatabaseByFood(food), data -> {
+        productMatchesViewModelLiveData = Transformations.map(winePairingRepository.loadAllWinesFromDatabaseByFood(food), data -> {
             List<ProductMatchesViewModel> productMatchesViewModels = new ArrayList<>();
             for (ProductMatches productMatches : data) {
-                productMatchesViewModels.add(new ProductMatchesViewModel(productMatches.id,
-                        productMatches.description,
-                        productMatches.price,
-                        productMatches.imageUrl,
-                        productMatches.averageRating,
-                        productMatches.ratingCount,
-                        productMatches.food,
-                        productMatches.title,
-                        productMatches.score,
-                        productMatches.link));
+                productMatchesViewModels.add(new ProductMatchesViewModel(
+                        productMatches.id, productMatches.description, productMatches.price,
+                        productMatches.imageUrl, String.valueOf(productMatches.averageRating), String.valueOf(productMatches.ratingCount),
+                        productMatches.food, productMatches.title, String.valueOf(productMatches.score), productMatches.link));
             }
             return productMatchesViewModels;
         });
