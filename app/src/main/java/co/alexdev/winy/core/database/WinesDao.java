@@ -25,6 +25,9 @@ public interface WinesDao {
     @Query("SELECT * FROM TABLE_PRODUCT_MATCHES WHERE id=:id")
     LiveData<ProductMatches> loadWineById(int id);
 
+    @Query("UPDATE TABLE_PRODUCT_MATCHES SET isAddedToFavorite = :isAddedToFavorite WHERE id = :id")
+    void update(int id, boolean isAddedToFavorite);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(List<ProductMatches> productMatches);
 }

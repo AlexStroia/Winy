@@ -39,7 +39,8 @@ public class WineFragmentViewModel extends ViewModel {
                 productMatchesViewModels.add(new ProductMatchesViewModel(
                         productMatches.id, productMatches.description, productMatches.price,
                         productMatches.imageUrl, String.valueOf(productMatches.averageRating), String.valueOf(productMatches.ratingCount),
-                        productMatches.food, productMatches.title, String.valueOf(productMatches.score), productMatches.link));
+                        productMatches.isAddedToFavorite, productMatches.food, productMatches.title, String.valueOf(productMatches.score),
+                        productMatches.link));
             }
             return productMatchesViewModels;
         });
@@ -67,7 +68,8 @@ public class WineFragmentViewModel extends ViewModel {
                 productMatchesViewModels.add(new ProductMatchesViewModel(
                         productMatches.id, productMatches.description, productMatches.price,
                         productMatches.imageUrl, String.valueOf(productMatches.averageRating), String.valueOf(productMatches.ratingCount),
-                        productMatches.food, productMatches.title, String.valueOf(productMatches.score), productMatches.link));
+                        productMatches.isAddedToFavorite, productMatches.food, productMatches.title, String.valueOf(productMatches.score),
+                        productMatches.link));
             }
             return productMatchesViewModels;
         });

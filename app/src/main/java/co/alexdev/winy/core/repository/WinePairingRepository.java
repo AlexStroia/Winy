@@ -92,6 +92,10 @@ public class WinePairingRepository {
         return winesDao.loadAllWines();
     }
 
+    public void update(int id, boolean isAddedToFavorite) {
+        executor.getDiskIO().execute(() -> winesDao.update(id, isAddedToFavorite));
+    }
+
     public LiveData<ProductMatches> loadWineById(int id) {
         return winesDao.loadWineById(id);
     }

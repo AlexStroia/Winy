@@ -32,6 +32,7 @@ public class DatabaseUtils {
         if (productMatches != null && productMatches.size() > 0) {
             for (ProductMatches product : productMatches) {
                 product.food = food;
+                product.isAddedToFavorite = false;
                 products.add(product);
             }
         }
