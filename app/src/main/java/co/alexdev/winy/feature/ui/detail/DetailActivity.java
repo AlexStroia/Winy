@@ -1,9 +1,14 @@
 package co.alexdev.winy.feature.ui.detail;
 
 import android.animation.ObjectAnimator;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Pair;
+import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -19,6 +24,7 @@ import co.alexdev.winy.core.repository.WinePairingRepository;
 import co.alexdev.winy.core.util.factory.DetailViewModelFactory;
 import co.alexdev.winy.databinding.ActivityDetailBinding;
 import co.alexdev.winy.feature.ui.detail.uimodel.DetailActivityViewModel;
+import co.alexdev.winy.feature.ui.product.ProductActivity;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -52,8 +58,23 @@ public class DetailActivity extends AppCompatActivity {
         }
     }
 
-    public static void startActivity(Context context, int id) {
-        context.startActivity(new Intent(context, DetailActivity.class).putExtra(WINE_ID, id));
+    public static void startActivity(Context context, int id, ImageView imageView, TextView textView) {
+        ProductActivity productActivity = (ProductActivity) context;
+        Pair imagePair = Pair.create(imageView, imageView.getTransitionName());
+        Pair textPair = Pair.create(textView, textView.getTransitionName());
+
+        ActivityOptions optionsCompat = ActivityOptions.makeSceneTransitionAnimation(productActivity, imagePair, textPair);
+        productActivity.startActivity(new Intent(productActivity, DetailActivity.class).putExtra(WINE_ID, id), optionsCompat.toBundle());
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                supportFinishAfterTransition();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void expandCollapseAnimation(Boolean expand) {
