@@ -1,7 +1,6 @@
 package co.alexdev.winy.feature.ui.product.wine;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -14,8 +13,11 @@ import co.alexdev.winy.feature.ui.product.wine.uimodel.ProductMatchesViewModel;
 
 public class WineAdapter extends ListAdapter<ProductMatchesViewModel, WineAdapter.WinesViewHolder> {
 
-    protected WineAdapter() {
+    private static OnWineClickListener clickListener;
+
+    protected WineAdapter(OnWineClickListener clickListener) {
         super(new DiffCallbacks.WinesDiff());
+        this.clickListener = clickListener;
     }
 
     @NonNull
@@ -29,6 +31,10 @@ public class WineAdapter extends ListAdapter<ProductMatchesViewModel, WineAdapte
         holder.bind(getItem(position));
     }
 
+    interface OnWineClickListener {
+        void onWineClickListener(int position);
+    }
+
     static class WinesViewHolder extends RecyclerView.ViewHolder {
 
         private ItemWineBinding binding;
@@ -36,6 +42,7 @@ public class WineAdapter extends ListAdapter<ProductMatchesViewModel, WineAdapte
         public WinesViewHolder(ItemWineBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+            this.binding.getRoot().setOnClickListener(view -> clickListener.onWineClickListener(binding.getViewModel().id));
         }
 
         public void bind(ProductMatchesViewModel productMatchesViewModel) {

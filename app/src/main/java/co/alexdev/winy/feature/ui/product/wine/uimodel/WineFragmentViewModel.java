@@ -24,23 +24,6 @@ public class WineFragmentViewModel extends ViewModel {
     public WineFragmentViewModel(WinePairingRepository repository) {
         this.winePairingRepository = repository;
         foodNamesLiveData = repository.loadAllFoodNames();
-
-//        productMatchesViewModelLiveData = Transformations.map(winePairingRepository.getAllWinesFromDatabase(), data -> {
-//            List<ProductMatchesViewModel> productMatchesViewModels = new ArrayList<>();
-//            for (ProductMatches productMatches : data) {
-//                productMatchesViewModels.add(new ProductMatchesViewModel(productMatches.id,
-//                        productMatches.description,
-//                        productMatches.price,
-//                        productMatches.imageUrl,
-//                        productMatches.averageRating,
-//                        productMatches.ratingCount,
-//                        productMatches.food,
-//                        productMatches.title,
-//                        productMatches.score,
-//                        productMatches.link));
-//            }
-//            return productMatchesViewModels;
-//        });
     }
 
     public LiveData<Resource<List<ProductMatches>>> onSearchPressed() {

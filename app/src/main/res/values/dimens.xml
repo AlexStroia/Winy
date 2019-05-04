@@ -58,4 +58,8 @@
     <!--Help Activity-->
     <dimen name="help_activity_base_button_width">224dp</dimen>
 
+    <!--Detail Activity-->
+    <dimen name="detail_icon_height_width">124dp</dimen>
+    <dimen name="default_content_elevation">8dp</dimen>
+
 </resources>

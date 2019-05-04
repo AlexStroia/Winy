@@ -204,7 +204,9 @@ public class WineFragment extends Fragment {
     }
 
     private void setWinesRecyclerView() {
-        wineAdapter = new WineAdapter();
+        wineAdapter = new WineAdapter(position -> {
+
+        });
         binding.rvWineRecommendation.setLayoutManager(new LinearLayoutManager(this.getActivity(), LinearLayoutManager.HORIZONTAL, false));
         binding.rvWineRecommendation.setAdapter(wineAdapter);
         binding.rvWineRecommendation.addItemDecoration(new RecyclerViewDecoration(8));
