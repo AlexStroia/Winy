@@ -24,5 +24,6 @@
 
     <style name="ActivityDetailFontStyle" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/montserratregular</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 </resources>

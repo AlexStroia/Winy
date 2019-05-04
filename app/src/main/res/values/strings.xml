@@ -45,4 +45,8 @@
     <string name="show_more">SHOW MORE</string>
     <string name="rating">Rating</string>
     <string name="avg_rating">Average Rating</string>
+    <string name="star_content_description">An icon with a star</string>
+    <string name="like_content_description">An icon with a like</string>
+    <string name="wine_title_font_size">24sp</string>
+    <string name="description">Description</string>
 </resources>
