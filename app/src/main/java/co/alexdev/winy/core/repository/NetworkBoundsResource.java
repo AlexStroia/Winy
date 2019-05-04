@@ -1,11 +1,14 @@
-package co.alexdev.winy.core.util;
+package co.alexdev.winy.core.repository;
 
 import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.WorkerThread;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
+
 import co.alexdev.winy.core.api.ApiResponse;
+import co.alexdev.winy.core.util.Resource;
+import co.alexdev.winy.core.util.WinyExecutor;
 
 public abstract class NetworkBoundsResource<ResultType, RequestType> {
 

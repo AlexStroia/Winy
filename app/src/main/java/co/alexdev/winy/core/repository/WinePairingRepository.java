@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -21,7 +22,6 @@ import co.alexdev.winy.core.model.wines.PairedWines;
 import co.alexdev.winy.core.model.wines.PairingText;
 import co.alexdev.winy.core.model.wines.ProductMatches;
 import co.alexdev.winy.core.util.DatabaseUtils;
-import co.alexdev.winy.core.util.NetworkBoundsResource;
 import co.alexdev.winy.core.util.Resource;
 import co.alexdev.winy.core.util.WinyExecutor;
 
@@ -35,6 +35,7 @@ public class WinePairingRepository {
     private PairedWinesDao pairedWinesDao;
     private PairingTextDao pairingTextDao;
     private DatabaseUtils databaseUtils;
+    private RateLimiter<String> repoListRateLimit = new RateLimiter<>(10, TimeUnit.MINUTES);
 
     @Inject
     public WinePairingRepository(WinyExecutor executor, WineResponseService service, WinesDao winesDao,
@@ -65,7 +66,7 @@ public class WinePairingRepository {
 
             @Override
             protected boolean shouldFetch(@NonNull List<ProductMatches> data) {
-                return true;
+                return data == null || data.isEmpty() || repoListRateLimit.shouldFetch(food);
             }
 
             @NonNull
@@ -78,6 +79,11 @@ public class WinePairingRepository {
             @Override
             protected LiveData<ApiResponse<WinePairingResponse>> createCall() {
                 return service.getWines(food);
+            }
+
+            @Override
+            protected void onFetchFailed() {
+                repoListRateLimit.reset(food);
             }
         }.asLiveData();
     }

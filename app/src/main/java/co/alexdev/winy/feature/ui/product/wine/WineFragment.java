@@ -10,11 +10,14 @@ import android.view.inputmethod.EditorInfo;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.inject.Inject;
@@ -23,9 +26,12 @@ import co.alexdev.winy.R;
 import co.alexdev.winy.core.di.DaggerWinyComponent;
 import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.di.module.ContextModule;
+import co.alexdev.winy.core.model.wines.PairingText;
 import co.alexdev.winy.core.repository.WinePairingRepository;
 import co.alexdev.winy.core.util.factory.WineViewModelFactory;
 import co.alexdev.winy.databinding.FragmentWineBinding;
+import co.alexdev.winy.feature.ui.product.wine.uimodel.PairedWinesViewModel;
+import co.alexdev.winy.feature.ui.product.wine.uimodel.ProductMatchesViewModel;
 import co.alexdev.winy.feature.ui.product.wine.uimodel.WineFragmentViewModel;
 import co.alexdev.winy.feature.util.KeyboardManager;
 import co.alexdev.winy.feature.util.custom.RecyclerViewDecoration;
@@ -144,29 +150,43 @@ public class WineFragment extends Fragment {
     }
 
     private void observePairedWinesViewModelLiveData() {
-        wineFragmentViewModel.pairedWinesViewModelLiveData.observe(this
-                , content -> {
-                    if (content != null && content.size() > 0) {
-                        showContent(true);
-                        pairedWineAdapter.submitList(content);
-                        wineFragmentViewModel.pairingTextDescription().observe(this,
-                                pairingText -> {
+        LiveData<List<PairedWinesViewModel>> pairedWinesViewModelLiveData = wineFragmentViewModel.pairedWinesViewModelLiveData;
+        pairedWinesViewModelLiveData.observe(this, new Observer<List<PairedWinesViewModel>>() {
+            @Override
+            public void onChanged(List<PairedWinesViewModel> content) {
+                pairedWinesViewModelLiveData.removeObserver(this);
+                if (content != null && content.size() > 0) {
+                    showContent(true);
+                    pairedWineAdapter.submitList(content);
+                    LiveData<PairingText> pairingTextLiveData = wineFragmentViewModel.pairingTextDescription();
+                    pairingTextLiveData.observe(WineFragment.this,
+                            new Observer<PairingText>() {
+                                @Override
+                                public void onChanged(PairingText pairingText) {
+                                    pairingTextLiveData.removeObserver(this);
                                     if (pairingText != null && !TextUtils.isEmpty(pairingText.description)) {
                                         binding.tvPairingWineDescription.setText(pairingText.description);
                                     } else {
                                         showContent(false);
                                     }
-                                });
-                    } else {
-                        showContent(false);
-                    }
-                });
+                                }
+                            });
+                } else {
+                    showContent(false);
+                }
+            }
+        });
     }
 
     private void observeProductMatchesViewModelLiveData() {
-        wineFragmentViewModel.productMatchesViewModelLiveData.observe(this, content -> {
-            if (content != null && content.size() > 0) {
-                wineAdapter.submitList(content);
+        LiveData<List<ProductMatchesViewModel>> productMatchesViewModelLiveData = wineFragmentViewModel.productMatchesViewModelLiveData;
+        productMatchesViewModelLiveData.observe(this, new Observer<List<ProductMatchesViewModel>>() {
+            @Override
+            public void onChanged(List<ProductMatchesViewModel> content) {
+                if (content != null && content.size() > 0) {
+                    productMatchesViewModelLiveData.removeObserver(this);
+                    wineAdapter.submitList(content);
+                }
             }
         });
     }

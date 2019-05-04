@@ -26,6 +26,7 @@
     <string name="paired_wines">Paired wines:</string>
     <string name="wine_content_description">Image with a wine</string>
     <string name="our_choice">Our choice:</string>
+    <string name="no_data_found">No data has been found for %1$s</string>
 
     <!--SettingsFragment-->
     <string name="account">Account</string>
