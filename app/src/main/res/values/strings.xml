@@ -50,4 +50,5 @@
     <string name="wine_title_font_size">24sp</string>
     <string name="description">Description</string>
     <string name="show_less">SHOW LESS</string>
+    <string name="button_buy">BUY NOW</string>
 </resources>

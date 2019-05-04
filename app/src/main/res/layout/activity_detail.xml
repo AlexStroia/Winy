@@ -12,6 +12,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".feature.detail.DetailActivity">
@@ -33,7 +34,7 @@
                 <ImageView
                     android:id="@+id/iv_wine_icon"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/detail_icon_height_width"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/default_content_margin"
                     android:layout_marginTop="@dimen/default_content_margin"
                     android:layout_marginBottom="@dimen/default_content_margin"
@@ -222,12 +223,26 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_content_margin"
-                    android:layout_marginBottom="@dimen/default_content_margin"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_buy" />
+
+                <Button
+                    android:id="@+id/btn_buy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/button_buy_margin"
+                    android:layout_marginTop="@dimen/default_content_margin"
+                    android:layout_marginEnd="@dimen/button_buy_margin"
+                    android:background="@drawable/rounded_button"
+                    android:fontFamily="@font/montserratbold"
+                    android:text="@string/button_buy"
+                    android:textColor="@android:color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/btn_show" />
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
@@ -242,8 +257,8 @@
             android:clickable="true"
             android:focusable="true"
             android:onClick="@{() -> viewModel.insertToDatabase(viewModel.productMatchesViewModelLiveData)}"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:imageDrawable="@{viewModel.productMatchesViewModelLiveData.isAddedToFavorite}"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_heart_border" />
     </androidx.constraintlayout.widget.ConstraintLayout>

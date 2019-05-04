@@ -11,8 +11,6 @@ import androidx.databinding.BindingAdapter;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
-import co.alexdev.winy.R;
-
 
 public class ImageBindings {
 
@@ -23,8 +21,6 @@ public class ImageBindings {
                 progressBar.setVisibility(View.VISIBLE);
                 Picasso.get()
                         .load(Uri.parse(url))
-                        .placeholder(R.drawable.ic_wine_placeholder)
-                        .error(R.drawable.ic_wine_placeholder)
                         .resize(100, 300)
                         .into(image, new Callback() {
                             @Override
@@ -41,7 +37,6 @@ public class ImageBindings {
             } else {
                 Picasso.get()
                         .load(url)
-                        .placeholder(R.drawable.ic_wine_placeholder)
                         .resize(100, 300)
                         .into(image);
             }
