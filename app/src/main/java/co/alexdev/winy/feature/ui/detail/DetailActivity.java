@@ -29,12 +29,24 @@ import co.alexdev.winy.feature.ui.product.ProductActivity;
 public class DetailActivity extends AppCompatActivity {
 
     private static final String WINE_ID = "WINE_ID";
+    private static final String FOOD_NAME = "FOOD_NAME";
     @Inject
     WinePairingRepository repository;
     private ActivityDetailBinding binding;
     private DetailViewModelFactory factory;
     private DetailActivityViewModel viewModel;
     private boolean isExpanded = false;
+
+    public static void startActivity(Context context, int id, String food, ImageView imageView, TextView textView) {
+        ProductActivity productActivity = (ProductActivity) context;
+        Pair imagePair = Pair.create(imageView, imageView.getTransitionName());
+        Pair textPair = Pair.create(textView, textView.getTransitionName());
+
+        ActivityOptions optionsCompat = ActivityOptions.makeSceneTransitionAnimation(productActivity, imagePair, textPair);
+        productActivity.startActivity(new Intent(productActivity, DetailActivity.class)
+                .putExtra(WINE_ID, id)
+                .putExtra(FOOD_NAME, food), optionsCompat.toBundle());
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +57,8 @@ public class DetailActivity extends AppCompatActivity {
         winyComponent.inject(this);
         binding.setLifecycleOwner(this);
 
-        if (getIntent() != null && getIntent().hasExtra(WINE_ID)) {
-            factory = new DetailViewModelFactory(repository, getIntent().getIntExtra(WINE_ID, 0));
+        if (getIntent() != null && getIntent().hasExtra(WINE_ID) && getIntent().hasExtra(FOOD_NAME)) {
+            factory = new DetailViewModelFactory(repository, getIntent().getIntExtra(WINE_ID, 0), getIntent().getStringExtra(FOOD_NAME));
             viewModel = ViewModelProviders.of(this, factory).get(DetailActivityViewModel.class);
             binding.setViewModel(viewModel);
 
@@ -56,15 +68,6 @@ public class DetailActivity extends AppCompatActivity {
                 expandCollapseAnimation(isExpanded);
             });
         }
-    }
-
-    public static void startActivity(Context context, int id, ImageView imageView, TextView textView) {
-        ProductActivity productActivity = (ProductActivity) context;
-        Pair imagePair = Pair.create(imageView, imageView.getTransitionName());
-        Pair textPair = Pair.create(textView, textView.getTransitionName());
-
-        ActivityOptions optionsCompat = ActivityOptions.makeSceneTransitionAnimation(productActivity, imagePair, textPair);
-        productActivity.startActivity(new Intent(productActivity, DetailActivity.class).putExtra(WINE_ID, id), optionsCompat.toBundle());
     }
 
     @Override

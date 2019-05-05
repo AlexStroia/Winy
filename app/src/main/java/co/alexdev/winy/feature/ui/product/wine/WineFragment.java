@@ -49,7 +49,7 @@ public class WineFragment extends Fragment {
     KeyboardManager keyboardManager;
 
     private WineViewModelFactory factory;
-    private WineFragmentViewModel wineFragmentViewModel;
+    private WineFragmentViewModel viewModel;
     private PairedWineAdapter pairedWineAdapter;
     private WineAdapter wineAdapter;
 
@@ -61,19 +61,19 @@ public class WineFragment extends Fragment {
         component.inject(this);
         factory = new WineViewModelFactory(repository);
 
-        wineFragmentViewModel =
+        viewModel =
                 ViewModelProviders.of(this.getActivity(), factory).get(WineFragmentViewModel.class);
 
         binding.setLifecycleOwner(this);
-        binding.setViewModel(wineFragmentViewModel);
+        binding.setViewModel(viewModel);
 
         setPairedWinesRecyclerView();
         setWinesRecyclerView();
 
         binding.autoCompleteTextViewWine.setOnEditorActionListener((textView, actionId, keyEvent) -> {
-            wineFragmentViewModel.food = textView.getText().toString();
+            viewModel.food = textView.getText().toString();
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                wineFragmentViewModel.onSearchPressed().observe(this, data -> {
+                viewModel.onSearchPressed().observe(this, data -> {
                     setViewModelObjectData();
                     observePairedWinesViewModelLiveData();
                     observeProductMatchesViewModelLiveData();
@@ -93,7 +93,7 @@ public class WineFragment extends Fragment {
 
                         case SUCCESS:
                             binding.progressBar.setVisibility(View.GONE);
-                            wineFragmentViewModel.setProductMatchesListForSearch();
+                            viewModel.setProductMatchesListForSearch();
                             binding.autoCompleteTextViewWine.clearFocus();
 
                             binding.autoCompleteTextViewWine.getText().clear();
@@ -108,9 +108,9 @@ public class WineFragment extends Fragment {
 
         binding.autoCompleteTextViewWine.setOnItemClickListener((parent, view, position, id) -> {
             final String searchedQuery = parent.getItemAtPosition(position).toString();
-            wineFragmentViewModel.food = searchedQuery;
+            viewModel.food = searchedQuery;
 
-            wineFragmentViewModel.onSearchPressed().observe(this, data -> {
+            viewModel.onSearchPressed().observe(this, data -> {
 
                 setViewModelObjectData();
 
@@ -132,7 +132,7 @@ public class WineFragment extends Fragment {
 
                     case SUCCESS:
                         binding.progressBar.setVisibility(View.GONE);
-                        wineFragmentViewModel.setProductMatchesListForSearch();
+                        viewModel.setProductMatchesListForSearch();
                         binding.autoCompleteTextViewWine.clearFocus();
 
                         binding.autoCompleteTextViewWine.getText().clear();
@@ -146,12 +146,12 @@ public class WineFragment extends Fragment {
     }
 
     private void setViewModelObjectData() {
-        wineFragmentViewModel.setPairedWinesViewModelList();
-        wineFragmentViewModel.setProductMatchesViewModelList();
+        viewModel.setPairedWinesViewModelList();
+        viewModel.setProductMatchesViewModelList();
     }
 
     private void observePairedWinesViewModelLiveData() {
-        LiveData<List<PairedWinesViewModel>> pairedWinesViewModelLiveData = wineFragmentViewModel.pairedWinesViewModelLiveData;
+        LiveData<List<PairedWinesViewModel>> pairedWinesViewModelLiveData = viewModel.pairedWinesViewModelLiveData;
         pairedWinesViewModelLiveData.observe(this, new Observer<List<PairedWinesViewModel>>() {
             @Override
             public void onChanged(List<PairedWinesViewModel> content) {
@@ -159,7 +159,7 @@ public class WineFragment extends Fragment {
                 if (content != null && content.size() > 0) {
                     showContent(true);
                     pairedWineAdapter.submitList(content);
-                    LiveData<PairingText> pairingTextLiveData = wineFragmentViewModel.pairingTextDescription();
+                    LiveData<PairingText> pairingTextLiveData = viewModel.pairingTextDescription();
                     pairingTextLiveData.observe(WineFragment.this,
                             new Observer<PairingText>() {
                                 @Override
@@ -180,7 +180,7 @@ public class WineFragment extends Fragment {
     }
 
     private void observeProductMatchesViewModelLiveData() {
-        LiveData<List<ProductMatchesViewModel>> productMatchesViewModelLiveData = wineFragmentViewModel.productMatchesViewModelLiveData;
+        LiveData<List<ProductMatchesViewModel>> productMatchesViewModelLiveData = viewModel.productMatchesViewModelLiveData;
         productMatchesViewModelLiveData.observe(this, new Observer<List<ProductMatchesViewModel>>() {
             @Override
             public void onChanged(List<ProductMatchesViewModel> content) {
@@ -207,7 +207,7 @@ public class WineFragment extends Fragment {
     private void setWinesRecyclerView() {
         wineAdapter = new WineAdapter((wineId, imageView, textView) -> {
             if (this.getActivity() != null) {
-                DetailActivity.startActivity(this.getActivity(), wineId, imageView, textView);
+                DetailActivity.startActivity(this.getActivity(), wineId, viewModel.food, imageView, textView);
             }
         });
         binding.rvWineRecommendation.setLayoutManager(new LinearLayoutManager(this.getActivity(), LinearLayoutManager.HORIZONTAL, false));
