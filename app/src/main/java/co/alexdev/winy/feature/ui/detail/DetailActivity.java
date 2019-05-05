@@ -5,7 +5,6 @@ import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Pair;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import javax.inject.Inject;
@@ -27,7 +25,6 @@ import co.alexdev.winy.core.util.factory.DetailViewModelFactory;
 import co.alexdev.winy.databinding.ActivityDetailBinding;
 import co.alexdev.winy.feature.ui.detail.uimodel.DetailActivityViewModel;
 import co.alexdev.winy.feature.ui.product.ProductActivity;
-import co.alexdev.winy.feature.ui.product.wine.uimodel.ProductMatchesViewModel;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -57,13 +54,6 @@ public class DetailActivity extends AppCompatActivity {
                 isExpanded = !isExpanded;
                 setShowMoreText(isExpanded);
                 expandCollapseAnimation(isExpanded);
-            });
-
-            viewModel.productMatchesViewModelLiveData.observe(this, new Observer<ProductMatchesViewModel>() {
-                @Override
-                public void onChanged(ProductMatchesViewModel productMatchesViewModel) {
-                    Log.d("DetailActivity", "Value" + productMatchesViewModel.isAddedToFavorite);
-                }
             });
         }
     }

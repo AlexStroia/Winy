@@ -28,6 +28,9 @@ public interface WinesDao {
     @Query("UPDATE TABLE_PRODUCT_MATCHES SET isAddedToFavorite = :isAddedToFavorite WHERE id = :id")
     void update(int id, boolean isAddedToFavorite);
 
+    @Query("SELECT * FROM TABLE_PRODUCT_MATCHES WHERE food = :food and id != :id LIMIT 3")
+    LiveData<List<ProductMatches>> loadOtherProductMatches(String food, int id);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(List<ProductMatches> productMatches);
 }
