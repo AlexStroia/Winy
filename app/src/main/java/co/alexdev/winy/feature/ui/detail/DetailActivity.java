@@ -27,6 +27,7 @@ import co.alexdev.winy.databinding.ActivityDetailBinding;
 import co.alexdev.winy.feature.ui.detail.uimodel.DetailActivityViewModel;
 import co.alexdev.winy.feature.ui.product.ProductActivity;
 import co.alexdev.winy.feature.ui.product.wine.DetailWinesAdapter;
+import co.alexdev.winy.feature.util.bindings.FabBindings;
 import co.alexdev.winy.feature.util.bindings.ImageBindings;
 import co.alexdev.winy.feature.util.custom.RecyclerViewDecoration;
 
@@ -102,6 +103,7 @@ public class DetailActivity extends AppCompatActivity {
                 binding.tvRatingGrade.setText(detailActivityProductViewModel.ratingCount);
                 binding.tvAverageRatingValue.setText(detailActivityProductViewModel.averageRating);
                 ImageBindings.setImage(binding.ivWineIcon, detailActivityProductViewModel.imageUrl, null);
+                FabBindings.setImageDrawable(binding.fbFavorite, detailActivityProductViewModel.isAddedToFavorite);
                 binding.tvWineName.setText(detailActivityProductViewModel.title);
             });
         });
