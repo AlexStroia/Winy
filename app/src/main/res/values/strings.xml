@@ -49,6 +49,7 @@
     <string name="like_content_description">An icon with a like</string>
     <string name="wine_title_font_size">24sp</string>
     <string name="description">Description</string>
+    <string name="other_wines">Other wines</string>
     <string name="show_less">SHOW LESS</string>
     <string name="button_buy">BUY NOW</string>
 </resources>

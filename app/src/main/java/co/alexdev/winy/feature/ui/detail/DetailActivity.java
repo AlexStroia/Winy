@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import javax.inject.Inject;
 
@@ -25,6 +26,8 @@ import co.alexdev.winy.core.util.factory.DetailViewModelFactory;
 import co.alexdev.winy.databinding.ActivityDetailBinding;
 import co.alexdev.winy.feature.ui.detail.uimodel.DetailActivityViewModel;
 import co.alexdev.winy.feature.ui.product.ProductActivity;
+import co.alexdev.winy.feature.ui.product.wine.DetailWinesAdapter;
+import co.alexdev.winy.feature.util.custom.RecyclerViewDecoration;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -61,7 +64,7 @@ public class DetailActivity extends AppCompatActivity {
             factory = new DetailViewModelFactory(repository, getIntent().getIntExtra(WINE_ID, 0), getIntent().getStringExtra(FOOD_NAME));
             viewModel = ViewModelProviders.of(this, factory).get(DetailActivityViewModel.class);
             binding.setViewModel(viewModel);
-
+            setRecyclerView();
             binding.btnShow.setOnClickListener(view -> {
                 isExpanded = !isExpanded;
                 setShowMoreText(isExpanded);
@@ -87,6 +90,17 @@ public class DetailActivity extends AppCompatActivity {
                 expand ? binding.tvDescriptionContent.getLineCount() : 2);
         animation.setDuration(300);
         animation.start();
+    }
+
+    private void setRecyclerView() {
+        DetailWinesAdapter adapter = new DetailWinesAdapter((position, imageView, textView) -> {
+
+        });
+        binding.rvOtherWines.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        binding.rvOtherWines.addItemDecoration(new RecyclerViewDecoration(8));
+        viewModel.similarDetailProductActivityViewModelLiveData.observe(this, adapter::submitList);
+
+        binding.rvOtherWines.setAdapter(adapter);
     }
 
     private void setShowMoreText(boolean isExpanded) {

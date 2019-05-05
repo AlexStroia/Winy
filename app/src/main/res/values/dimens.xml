@@ -66,5 +66,8 @@
     <dimen name="title_wine_width">248dp</dimen>
     <dimen name="button_buy_margin">64dp</dimen>
     <dimen name="content_height">124dp</dimen>
-
+    <dimen name="recycler_top_margin">64dp</dimen>
+    <dimen name="recycler_item_height">148dp</dimen>
+    <dimen name="buy_button_width">164dp</dimen>
+    <dimen name="buy_button_height">32dp</dimen>
 </resources>
