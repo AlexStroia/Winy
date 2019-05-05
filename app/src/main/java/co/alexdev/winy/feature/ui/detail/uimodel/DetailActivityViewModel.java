@@ -19,12 +19,32 @@ public class DetailActivityViewModel extends ViewModel {
 
     public DetailActivityViewModel(WinePairingRepository repository, int wineId, String foodName) {
         this.repository = repository;
-        productMatchesViewModelLiveData = Transformations.map(repository.loadWineById(wineId), wine -> new DetailActivityProductViewModel(
+        productMatchesViewModelLiveData = getUiData(repository, wineId);
+
+        similarDetailProductActivityViewModelLiveData = getListLiveData(foodName, wineId, repository);
+    }
+
+    private LiveData<DetailActivityProductViewModel> getUiData(WinePairingRepository repository, int wineId) {
+        return Transformations.map(repository.loadWineById(wineId), wine -> new DetailActivityProductViewModel(
                 wine.id, wine.description, wine.price,
                 wine.imageUrl, wine.averageRating.substring(0, 3), String.valueOf(wine.ratingCount), wine.isAddedToFavorite,
                 wine.food, wine.title, String.valueOf(wine.score), wine.link));
+    }
 
-        similarDetailProductActivityViewModelLiveData = Transformations.map(repository.loadOtherProductMatches(foodName, wineId), wines -> {
+    public void insertToDatabase(DetailActivityProductViewModel detailActivityProductViewModel) {
+        repository.update(detailActivityProductViewModel.id, !detailActivityProductViewModel.isAddedToFavorite);
+    }
+
+    public LiveData<DetailActivityProductViewModel> updateUI(int clickedWineId) {
+        return productMatchesViewModelLiveData = getUiData(repository, clickedWineId);
+    }
+
+    public LiveData<List<DetailActivityProductViewModel>> updateRecycler(String foodName, int wineId) {
+        return getListLiveData(foodName, wineId, repository);
+    }
+
+    private LiveData<List<DetailActivityProductViewModel>> getListLiveData(String foodName, int wineId, WinePairingRepository repository) {
+        return Transformations.map(repository.loadOtherProductMatches(foodName, wineId), wines -> {
             List<DetailActivityProductViewModel> detailActivityProductViewModelList = new ArrayList<>();
             for (ProductMatches wine : wines) {
                 detailActivityProductViewModelList.add(new DetailActivityProductViewModel(
@@ -34,16 +54,5 @@ public class DetailActivityViewModel extends ViewModel {
             }
             return detailActivityProductViewModelList;
         });
-    }
-
-    public void insertToDatabase(DetailActivityProductViewModel detailActivityProductViewModel) {
-        repository.update(detailActivityProductViewModel.id, !detailActivityProductViewModel.isAddedToFavorite);
-    }
-
-    public LiveData<DetailActivityProductViewModel> updateUI(int clickedWineId) {
-        return productMatchesViewModelLiveData = Transformations.map(repository.loadWineById(clickedWineId), wine -> new DetailActivityProductViewModel(
-                wine.id, wine.description, wine.price,
-                wine.imageUrl, wine.averageRating.substring(0, 3), String.valueOf(wine.ratingCount), wine.isAddedToFavorite,
-                wine.food, wine.title, String.valueOf(wine.score), wine.link));
     }
 }

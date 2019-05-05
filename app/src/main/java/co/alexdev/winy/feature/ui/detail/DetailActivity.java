@@ -40,6 +40,7 @@ public class DetailActivity extends AppCompatActivity {
     private ActivityDetailBinding binding;
     private DetailViewModelFactory factory;
     private DetailActivityViewModel viewModel;
+    private DetailWinesAdapter adapter;
     private boolean isExpanded = false;
 
     public static void startActivity(Context context, int id, String food, ImageView imageView, TextView textView) {
@@ -95,30 +96,24 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void setRecyclerView() {
-        DetailWinesAdapter adapter = new DetailWinesAdapter((wineId, imageView, textView) -> {
-            viewModel.updateUI(wineId).observe(this, detailActivityProductViewModel -> {
-                binding.tvAverageRatingValue.setText(detailActivityProductViewModel.averageRating);
-                binding.tvDescriptionContent.setText(detailActivityProductViewModel.description);
-                binding.tvPrice.setText(detailActivityProductViewModel.price);
-                binding.tvRatingGrade.setText(detailActivityProductViewModel.ratingCount);
-                binding.tvAverageRatingValue.setText(detailActivityProductViewModel.averageRating);
-                ImageBindings.setImage(binding.ivWineIcon, detailActivityProductViewModel.imageUrl, null);
-                FabBindings.setImageDrawable(binding.fbFavorite, detailActivityProductViewModel.isAddedToFavorite);
-                binding.tvWineName.setText(detailActivityProductViewModel.title);
+        adapter = new DetailWinesAdapter(wineId -> viewModel.updateUI(wineId).observe(DetailActivity.this, detailActivityProductViewModel -> {
+            binding.tvAverageRatingValue.setText(detailActivityProductViewModel.averageRating);
+            binding.tvDescriptionContent.setText(detailActivityProductViewModel.description);
+            binding.tvPrice.setText(detailActivityProductViewModel.price);
+            binding.tvRatingGrade.setText(detailActivityProductViewModel.ratingCount);
+            binding.tvAverageRatingValue.setText(detailActivityProductViewModel.averageRating);
+            ImageBindings.setImage(binding.ivWineIcon, detailActivityProductViewModel.imageUrl, null);
+            FabBindings.setImageDrawable(binding.fbFavorite, detailActivityProductViewModel.isAddedToFavorite);
+            binding.tvWineName.setText(detailActivityProductViewModel.title);
+            viewModel.updateRecycler(detailActivityProductViewModel.food, detailActivityProductViewModel.id).observe(DetailActivity.this, list -> {
+                adapter.submitList(list);
             });
-        });
+        }));
         binding.rvOtherWines.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         binding.rvOtherWines.addItemDecoration(new RecyclerViewDecoration(8));
         viewModel.similarDetailProductActivityViewModelLiveData.observe(this, adapter::submitList);
 
         binding.rvOtherWines.setAdapter(adapter);
-//
-//        viewModel.productMatchesViewModelLiveData.observe(this, new Observer<DetailActivityProductViewModel>() {
-//            @Override
-//            public void onChanged(DetailActivityProductViewModel detailActivityProductViewModel) {
-//                Log.d("DetailActivityProduct", detailActivityProductViewModel.title);
-//            }
-//        });
     }
 
     private void setShowMoreText(boolean isExpanded) {

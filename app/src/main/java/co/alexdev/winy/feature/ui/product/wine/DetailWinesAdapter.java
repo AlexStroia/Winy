@@ -2,8 +2,6 @@ package co.alexdev.winy.feature.ui.product.wine;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ListAdapter;
@@ -34,7 +32,7 @@ public class DetailWinesAdapter extends ListAdapter<DetailActivityProductViewMod
     }
 
     public interface OnWineClickListener {
-        void onWineClickListener(int position, ImageView imageView, TextView textView);
+        void onWineClickListener(int wineId);
     }
 
     static class DetailWinesViewHolder extends RecyclerView.ViewHolder {
@@ -44,7 +42,7 @@ public class DetailWinesAdapter extends ListAdapter<DetailActivityProductViewMod
         DetailWinesViewHolder(ItemDetailActivityWineBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
-            this.binding.getRoot().setOnClickListener(view -> clickListener.onWineClickListener(binding.getViewModel().id, binding.ivWine, binding.tvProductMatchesDescription));
+            this.binding.getRoot().setOnClickListener(view -> clickListener.onWineClickListener(binding.getViewModel().id));
         }
 
         public void bind(DetailActivityProductViewModel detailProductViewModel) {
