@@ -27,6 +27,7 @@ import co.alexdev.winy.databinding.ActivityDetailBinding;
 import co.alexdev.winy.feature.ui.detail.uimodel.DetailActivityViewModel;
 import co.alexdev.winy.feature.ui.product.ProductActivity;
 import co.alexdev.winy.feature.ui.product.wine.DetailWinesAdapter;
+import co.alexdev.winy.feature.util.bindings.ImageBindings;
 import co.alexdev.winy.feature.util.custom.RecyclerViewDecoration;
 
 public class DetailActivity extends AppCompatActivity {
@@ -93,14 +94,29 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void setRecyclerView() {
-        DetailWinesAdapter adapter = new DetailWinesAdapter((position, imageView, textView) -> {
-
+        DetailWinesAdapter adapter = new DetailWinesAdapter((wineId, imageView, textView) -> {
+            viewModel.updateUI(wineId).observe(this, detailActivityProductViewModel -> {
+                binding.tvAverageRatingValue.setText(detailActivityProductViewModel.averageRating);
+                binding.tvDescriptionContent.setText(detailActivityProductViewModel.description);
+                binding.tvPrice.setText(detailActivityProductViewModel.price);
+                binding.tvRatingGrade.setText(detailActivityProductViewModel.ratingCount);
+                binding.tvAverageRatingValue.setText(detailActivityProductViewModel.averageRating);
+                ImageBindings.setImage(binding.ivWineIcon, detailActivityProductViewModel.imageUrl, null);
+                binding.tvWineName.setText(detailActivityProductViewModel.title);
+            });
         });
         binding.rvOtherWines.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         binding.rvOtherWines.addItemDecoration(new RecyclerViewDecoration(8));
         viewModel.similarDetailProductActivityViewModelLiveData.observe(this, adapter::submitList);
 
         binding.rvOtherWines.setAdapter(adapter);
+//
+//        viewModel.productMatchesViewModelLiveData.observe(this, new Observer<DetailActivityProductViewModel>() {
+//            @Override
+//            public void onChanged(DetailActivityProductViewModel detailActivityProductViewModel) {
+//                Log.d("DetailActivityProduct", detailActivityProductViewModel.title);
+//            }
+//        });
     }
 
     private void setShowMoreText(boolean isExpanded) {

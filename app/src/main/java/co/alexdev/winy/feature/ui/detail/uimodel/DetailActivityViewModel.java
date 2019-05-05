@@ -39,4 +39,11 @@ public class DetailActivityViewModel extends ViewModel {
     public void insertToDatabase(DetailActivityProductViewModel detailActivityProductViewModel) {
         repository.update(detailActivityProductViewModel.id, !detailActivityProductViewModel.isAddedToFavorite);
     }
+
+    public LiveData<DetailActivityProductViewModel> updateUI(int clickedWineId) {
+        return productMatchesViewModelLiveData = Transformations.map(repository.loadWineById(clickedWineId), wine -> new DetailActivityProductViewModel(
+                wine.id, wine.description, wine.price,
+                wine.imageUrl, wine.averageRating.substring(0, 3), String.valueOf(wine.ratingCount), wine.isAddedToFavorite,
+                wine.food, wine.title, String.valueOf(wine.score), wine.link));
+    }
 }
