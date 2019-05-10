@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".feature.ui.search.SearchActivity"
+            android:parentActivityName=".feature.ui.product.ProductActivity" />
+        <activity
             android:name=".feature.ui.detail.DetailActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".feature.ui.product.ProductActivity" />

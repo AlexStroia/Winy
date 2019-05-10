@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.alexdev.winy.feature.ui.search.uimodel.SearchActivityViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".feature.ui.search.SearchActivity">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/default_content_margin"
+            android:layout_marginTop="@dimen/default_content_margin"
+            android:layout_marginEnd="@dimen/default_content_margin"
+            android:layout_marginBottom="@dimen/default_content_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/at_search" />
+
+        <co.alexdev.winy.feature.util.custom.CustomAutoCompleteTextView
+            android:id="@+id/at_search"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/autocomplete_height"
+            android:layout_marginStart="@dimen/default_content_margin"
+            android:layout_marginTop="@dimen/default_content_margin"
+            android:layout_marginEnd="@dimen/default_content_margin"
+            android:hint="@string/search_by_wine"
+            android:onTextChanged="@{(text, start, before, count) -> viewModel.searchProductByName(text)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

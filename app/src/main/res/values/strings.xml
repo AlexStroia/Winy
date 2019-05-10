@@ -18,6 +18,7 @@
     <string name="tab_item_wine">Wine Pairing</string>
     <string name="tab_item_food">Dish Pairing</string>
     <string name="tab_item_random">Random</string>
+    <string name="product_search">Search</string>
 
     <!--Wine Fragment-->
     <string name="hint_food_name">Food name</string>
@@ -52,4 +53,7 @@
     <string name="other_wines">Other wines</string>
     <string name="show_less">SHOW LESS</string>
     <string name="button_buy">BUY NOW</string>
+
+    <!--Search Activity-->
+    <string name="search_by_wine">Search by wine product name</string>
 </resources>

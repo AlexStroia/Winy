@@ -1,19 +1,20 @@
 package co.alexdev.winy.feature.ui.product;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.material.tabs.TabLayout;
+
 import co.alexdev.winy.R;
 import co.alexdev.winy.databinding.ActivityProductBinding;
 import co.alexdev.winy.feature.ui.product.uimodel.ProductActivityViewModel;
-
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-
-import com.google.android.material.tabs.TabLayout;
 
 public class ProductActivity extends AppCompatActivity {
 
@@ -36,5 +37,19 @@ public class ProductActivity extends AppCompatActivity {
     public static void startActivity(Context context) {
         context.startActivity(new Intent(context, ProductActivity.class)
                 .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.mnu_search, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.search) {
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -108,6 +108,10 @@ public class WinePairingRepository {
         return winesDao.loadOtherProductMatches(food, id);
     }
 
+    public LiveData<List<ProductMatches>> loadWineByTitle(String title) {
+        return winesDao.loadWineByTitle(title);
+    }
+
     public LiveData<List<PairedWines>> loadPairedWinesByFood(String food) {
         return pairedWinesDao.loadPairedWinesByFood(food);
     }

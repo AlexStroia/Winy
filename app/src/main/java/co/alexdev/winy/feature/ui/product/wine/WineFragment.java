@@ -28,7 +28,7 @@ import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.di.module.ContextModule;
 import co.alexdev.winy.core.model.wines.PairingText;
 import co.alexdev.winy.core.repository.WinePairingRepository;
-import co.alexdev.winy.core.util.factory.WineViewModelFactory;
+import co.alexdev.winy.core.util.factory.BaseViewModelFactory;
 import co.alexdev.winy.databinding.FragmentWineBinding;
 import co.alexdev.winy.feature.ui.detail.DetailActivity;
 import co.alexdev.winy.feature.ui.product.wine.uimodel.PairedWinesViewModel;
@@ -48,7 +48,7 @@ public class WineFragment extends Fragment {
     @Inject
     KeyboardManager keyboardManager;
 
-    private WineViewModelFactory factory;
+    private BaseViewModelFactory factory;
     private WineFragmentViewModel viewModel;
     private PairedWineAdapter pairedWineAdapter;
     private WineAdapter wineAdapter;
@@ -59,7 +59,7 @@ public class WineFragment extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_wine, container, false);
         WinyComponent component = DaggerWinyComponent.builder().contextModule(new ContextModule(Objects.requireNonNull(getActivity()))).build();
         component.inject(this);
-        factory = new WineViewModelFactory(repository);
+        factory = new BaseViewModelFactory(repository);
 
         viewModel =
                 ViewModelProviders.of(this.getActivity(), factory).get(WineFragmentViewModel.class);
