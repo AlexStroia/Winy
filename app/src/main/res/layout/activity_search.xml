@@ -35,7 +35,7 @@
             android:layout_marginTop="@dimen/default_content_margin"
             android:layout_marginEnd="@dimen/default_content_margin"
             android:hint="@string/search_by_wine"
-            android:onTextChanged="@{(text, start, before, count) -> viewModel.searchProductByName(text)}"
+            android:onTextChanged="@{(text, start, before, count) -> viewModel.searchProductByName(text.toString())}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

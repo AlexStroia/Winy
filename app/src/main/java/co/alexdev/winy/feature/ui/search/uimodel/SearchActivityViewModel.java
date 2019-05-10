@@ -21,7 +21,7 @@ public class SearchActivityViewModel extends ViewModel {
     }
 
 
-    public LiveData<List<SearchActivityProductViewModel>> searchProductByName(String name) {
+    public void searchProductByName(String name) {
         products = Transformations.map(repository.loadWineByTitle(name), products -> {
             List<SearchActivityProductViewModel> searchActivityProductViewModelList = new ArrayList<>();
             for (ProductMatches wine : products) {
@@ -32,6 +32,5 @@ public class SearchActivityViewModel extends ViewModel {
             }
             return searchActivityProductViewModelList;
         });
-        return products;
     }
 }
