@@ -8,31 +8,29 @@ import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProviders;
-
-import com.google.android.material.tabs.TabLayout;
+import androidx.fragment.app.Fragment;
 
 import co.alexdev.winy.R;
 import co.alexdev.winy.databinding.ActivityProductBinding;
-import co.alexdev.winy.feature.ui.product.uimodel.ProductActivityViewModel;
+import co.alexdev.winy.feature.ui.favorite.FavoriteFragment;
 import co.alexdev.winy.feature.ui.search.SearchActivity;
 
 public class ProductActivity extends AppCompatActivity {
 
     private ActivityProductBinding mBinding;
-    private ProductActivityViewModel productActivityViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_product);
         mBinding.setLifecycleOwner(this);
-        productActivityViewModel = ViewModelProviders.of(this).get(ProductActivityViewModel.class);
-        mBinding.setViewModel(productActivityViewModel);
 
-        mBinding.tabLayout.setupWithViewPager(mBinding.viewPager);
-        mBinding.tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mBinding.viewPager));
-        mBinding.viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mBinding.tabLayout));
+        mBinding.bottomNavView.setOnNavigationItemSelectedListener(menuItem -> {
+            if (menuItem.getItemId() == R.id.favorites) {
+                changeFragment(new FavoriteFragment());
+            }
+            return false;
+        });
     }
 
     public static void startActivity(Context context) {
@@ -52,5 +50,9 @@ public class ProductActivity extends AppCompatActivity {
             SearchActivity.startActivity(this);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void changeFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, fragment).commit();
     }
 }

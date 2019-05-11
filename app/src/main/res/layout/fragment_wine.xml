@@ -46,12 +46,13 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_wine_matches"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/autoCompleteTextView_wine"
                     app:layout_constraintTop_toBottomOf="@+id/tv_product_matches"
-                    tools:visibility="visible">
-                </androidx.recyclerview.widget.RecyclerView>
+                    tools:visibility="visible"></androidx.recyclerview.widget.RecyclerView>
 
 
                 <androidx.recyclerview.widget.RecyclerView

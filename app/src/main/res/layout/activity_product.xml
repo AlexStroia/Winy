@@ -3,58 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="viewModel"
-            type="co.alexdev.winy.feature.ui.product.uimodel.ProductActivityViewModel" />
-    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
         tools:context=".feature.ui.product.ProductActivity">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavView"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/bottom_navigation_height"
-        android:background="@color/colorPrimary"
-        android:elevation="@dimen/bottom_navigation_elevation"
-        app:menu="@menu/bottom_nav_view"
-        style="@style/Widget.Design.BottomNavigationView"
-        app:itemTextColor="@color/bottom_navigation_selector"
-        app:itemIconTint="@color/bottom_navigation_selector"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <fragment
+            android:id="@+id/fragment"
+            android:name="co.alexdev.winy.feature.ui.product.ProductFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout="@layout/fragment_product" />
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:elevation="@dimen/tab_layout_elevation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tabIndicatorColor="@android:color/white"
-        app:tabIndicatorHeight="@dimen/tab_indicator_height"
-        app:tabMinWidth="@dimen/tab_spacing_between_items"
-        app:tabSelectedTextColor="@android:color/white"
-        app:tabTextColor="@android:color/black">
-
-    </com.google.android.material.tabs.TabLayout>
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/view_pager"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:items="@{viewModel.pagerAdapterTitles}"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavView"
+            style="@style/Widget.Design.BottomNavigationView"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/bottom_navigation_height"
+            android:background="@color/colorPrimary"
+            android:elevation="@dimen/bottom_navigation_elevation"
+            app:itemIconTint="@color/bottom_navigation_selector"
+            app:itemTextColor="@color/bottom_navigation_selector"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_nav_view" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
