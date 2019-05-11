@@ -59,9 +59,15 @@ public class ProductActivity extends AppCompatActivity {
     }
 
     private void changeFragment(Fragment fragment) {
+        int enterAnimation = R.anim.enter_from_right;
+        int exitAnimation = R.anim.exit_from_left;
+//        if (fragment instanceof WineFragment) {
+//            enterAnimation = R.anim.exit_from_left;
+//            exitAnimation = R.anim.enter_from_right;
+//        }
         getSupportFragmentManager()
                 .beginTransaction()
-                .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_from_left)
+                .setCustomAnimations(enterAnimation, exitAnimation)
                 .replace(R.id.fragment_container, fragment)
                 .commit();
     }
