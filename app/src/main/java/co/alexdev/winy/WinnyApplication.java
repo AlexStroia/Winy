@@ -4,7 +4,7 @@ import android.app.Application;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import co.alexdev.winy.feature.ui.product.ProductActivity;
+import co.alexdev.winy.feature.ui.product.Activity;
 
 public class WinnyApplication extends Application {
 
@@ -13,7 +13,7 @@ public class WinnyApplication extends Application {
         super.onCreate();
         //Check if is already a logged user
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            ProductActivity.startActivity(this);
+            Activity.startActivity(this);
         }
     }
 }

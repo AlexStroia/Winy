@@ -21,7 +21,7 @@ import co.alexdev.winy.core.util.Constants;
 import co.alexdev.winy.core.util.factory.SignupLoginViewModelFActory;
 import co.alexdev.winy.databinding.ActivityLoginBinding;
 import co.alexdev.winy.feature.ui.login.uimodel.ActivityLoginViewModel;
-import co.alexdev.winy.feature.ui.product.ProductActivity;
+import co.alexdev.winy.feature.ui.product.Activity;
 
 public class ActivityLogin extends AppCompatActivity {
 
@@ -44,7 +44,7 @@ public class ActivityLogin extends AppCompatActivity {
 
         activityLoginViewModel.loginStateEnumLiveData.observe(this, loggedState -> {
             if (Constants.FIREBASE_DATABASE.LOGIN_STATE.SUCCESS.equals(loggedState)) {
-                ProductActivity.startActivity(this);
+                Activity.startActivity(this);
             } else if (Constants.FIREBASE_DATABASE.LOGIN_STATE.LOADING.equals(loggedState)) {
                 binding.progressBar.setVisibility(View.VISIBLE);
             } else {

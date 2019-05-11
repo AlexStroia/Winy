@@ -25,7 +25,7 @@ import co.alexdev.winy.core.repository.WinePairingRepository;
 import co.alexdev.winy.core.util.factory.DetailViewModelFactory;
 import co.alexdev.winy.databinding.ActivityDetailBinding;
 import co.alexdev.winy.feature.ui.detail.uimodel.DetailActivityViewModel;
-import co.alexdev.winy.feature.ui.product.ProductActivity;
+import co.alexdev.winy.feature.ui.product.Activity;
 import co.alexdev.winy.feature.ui.product.wine.DetailWinesAdapter;
 import co.alexdev.winy.feature.util.bindings.FabBindings;
 import co.alexdev.winy.feature.util.bindings.ImageBindings;
@@ -44,12 +44,12 @@ public class DetailActivity extends AppCompatActivity {
     private boolean isExpanded = false;
 
     public static void startActivity(Context context, int id, String food, ImageView imageView, TextView textView) {
-        ProductActivity productActivity = (ProductActivity) context;
+        Activity activity = (Activity) context;
         Pair imagePair = Pair.create(imageView, imageView.getTransitionName());
         Pair textPair = Pair.create(textView, textView.getTransitionName());
 
-        ActivityOptions optionsCompat = ActivityOptions.makeSceneTransitionAnimation(productActivity, imagePair, textPair);
-        productActivity.startActivity(new Intent(productActivity, DetailActivity.class)
+        ActivityOptions optionsCompat = ActivityOptions.makeSceneTransitionAnimation(activity, imagePair, textPair);
+        activity.startActivity(new Intent(activity, DetailActivity.class)
                 .putExtra(WINE_ID, id)
                 .putExtra(FOOD_NAME, food), optionsCompat.toBundle());
     }
@@ -110,7 +110,7 @@ public class DetailActivity extends AppCompatActivity {
             });
         }));
         binding.rvOtherWines.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        binding.rvOtherWines.addItemDecoration(new RecyclerViewDecoration(8));
+        binding.rvOtherWines.addItemDecoration(new RecyclerViewDecoration(R.dimen.default_content_margin));
         viewModel.similarDetailProductActivityViewModelLiveData.observe(this, adapter::submitList);
 
         binding.rvOtherWines.setAdapter(adapter);

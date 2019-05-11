@@ -213,6 +213,6 @@ public class WineFragment extends Fragment {
         binding.rvWineRecommendation.setLayoutManager(new LinearLayoutManager(this.getActivity(), LinearLayoutManager.HORIZONTAL, false));
         binding.rvWineRecommendation.setAdapter(wineAdapter);
         binding.rvWineRecommendation.setHasFixedSize(true);
-        binding.rvWineRecommendation.addItemDecoration(new RecyclerViewDecoration(8));
+        binding.rvWineRecommendation.addItemDecoration(new RecyclerViewDecoration(R.dimen.default_content_margin));
     }
 }

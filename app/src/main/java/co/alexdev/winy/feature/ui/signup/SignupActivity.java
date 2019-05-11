@@ -19,7 +19,7 @@ import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.util.Constants;
 import co.alexdev.winy.core.util.factory.SignupLoginViewModelFActory;
 import co.alexdev.winy.databinding.ActivitySignupBinding;
-import co.alexdev.winy.feature.ui.product.ProductActivity;
+import co.alexdev.winy.feature.ui.product.Activity;
 import co.alexdev.winy.feature.ui.signup.uimodel.SignupActivityViewModel;
 
 public class SignupActivity extends AppCompatActivity {
@@ -46,7 +46,7 @@ public class SignupActivity extends AppCompatActivity {
         signupActivityViewModel.signupStateEnumLiveData.observe(this, signupStateEnum -> {
 
             if (Constants.FIREBASE_DATABASE.SIGNUP_STATE.SUCCES.equals(signupStateEnum)) {
-                ProductActivity.startActivity(this);
+                Activity.startActivity(this);
                 finish();
             } else if (Constants.FIREBASE_DATABASE.SIGNUP_STATE.FAILURE.equals(signupStateEnum)) {
                 binding.progressBar.setVisibility(View.GONE);

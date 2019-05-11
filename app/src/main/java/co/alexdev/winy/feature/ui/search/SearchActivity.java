@@ -25,7 +25,7 @@ import co.alexdev.winy.core.di.module.ContextModule;
 import co.alexdev.winy.core.repository.WinePairingRepository;
 import co.alexdev.winy.core.util.factory.BaseViewModelFactory;
 import co.alexdev.winy.databinding.ActivitySearchBinding;
-import co.alexdev.winy.feature.ui.product.ProductActivity;
+import co.alexdev.winy.feature.ui.product.Activity;
 import co.alexdev.winy.feature.ui.search.uimodel.SearchActivityViewModel;
 
 public class SearchActivity extends AppCompatActivity {
@@ -37,7 +37,7 @@ public class SearchActivity extends AppCompatActivity {
     private SearchActivityViewModel viewModel;
 
     public static void startActivity(Context context) {
-        ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation((ProductActivity) context);
+        ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context);
         context.startActivity(new Intent(context, SearchActivity.class), optionsCompat.toBundle());
     }
 
@@ -66,9 +66,9 @@ public class SearchActivity extends AppCompatActivity {
         SearchAdapter searchAdapter = new SearchAdapter(id -> {
 
         });
-
         binding.rvWines.setLayoutManager(new GridLayoutManager(this, 2));
         binding.rvWines.setAdapter(searchAdapter);
+        binding.rvWines.setHasFixedSize(true);
 
         binding.atSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -78,9 +78,7 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                viewModel.searchProductByName(charSequence.toString()).observe(SearchActivity.this, products -> {
-                    searchAdapter.submitList(products);
-                });
+                viewModel.searchProductByName(charSequence.toString()).observe(SearchActivity.this, searchAdapter::submitList);
             }
 
             @Override

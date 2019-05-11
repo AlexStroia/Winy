@@ -22,7 +22,7 @@ public interface WinesDao {
     @Query("SELECT * FROM TABLE_PRODUCT_MATCHES where title = :title")
     LiveData<List<ProductMatches>> loadWineByTitle(String title);
 
-    @Query("SELECT * FROM TABLE_PRODUCT_MATCHES where title LIKE :characters")
+    @Query("SELECT * FROM TABLE_PRODUCT_MATCHES where title LIKE '%' || :characters|| '%'")
     LiveData<List<ProductMatches>> loadWinesByCharacters(String characters);
 
     @Query("SELECT food from TABLE_PAIRED_WINES")
