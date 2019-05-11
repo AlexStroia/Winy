@@ -17,7 +17,7 @@ import co.alexdev.winy.databinding.ActivityProductBinding;
 import co.alexdev.winy.feature.ui.product.uimodel.ProductActivityViewModel;
 import co.alexdev.winy.feature.ui.search.SearchActivity;
 
-public class Activity extends AppCompatActivity {
+public class ProductActivity extends AppCompatActivity {
 
     private ActivityProductBinding mBinding;
     private ProductActivityViewModel productActivityViewModel;
@@ -36,7 +36,7 @@ public class Activity extends AppCompatActivity {
     }
 
     public static void startActivity(Context context) {
-        context.startActivity(new Intent(context, Activity.class)
+        context.startActivity(new Intent(context, ProductActivity.class)
                 .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
     }
 

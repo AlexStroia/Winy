@@ -11,7 +11,7 @@
     <string name="hint_birthdate">Birthdate</string>
     <string name="logo_content_description">Three bottles of wine and the application logo</string>
 
-    <!--Product Activity-->
+    <!--Product ProductActivity-->
     <string name="home_button_text">Home</string>
     <string name="home_button_favorites">Favorites</string>
     <string name="settings_button_text">Settings</string>
@@ -35,14 +35,14 @@
     <string name="about">About</string>
     <string name="logout">Logout</string>
 
-    <!--Help Activity-->
+    <!--Help ProductActivity-->
     <string name="report_a_problem">Report a problem</string>
     <string name="send_a_feedback">Send a feedback</string>
 
     <!--SignupActivity-->
     <string name="wine_picture">Wine picture</string>
 
-    <!--Detail Activity-->
+    <!--Detail ProductActivity-->
     <string name="show_more">SHOW MORE</string>
     <string name="rating">Rating</string>
     <string name="avg_rating">Average Rating</string>
@@ -54,6 +54,6 @@
     <string name="show_less">SHOW LESS</string>
     <string name="button_buy">BUY NOW</string>
 
-    <!--Search Activity-->
+    <!--Search ProductActivity-->
     <string name="search_by_wine">Search by wine product name</string>
 </resources>

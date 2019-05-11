@@ -15,7 +15,7 @@
     <!--LoginActivity-->
     <dimen name="login_activity_margin_top">64dp</dimen>
 
-    <!--Product Activity-->
+    <!--Product ProductActivity-->
     <dimen name="tab_spacing_between_items">504dp</dimen>
 
     <!--SignupActivity-->
@@ -25,7 +25,7 @@
     <dimen name="btn_signup_height">48dp</dimen>
     <dimen name="signup_button_width">128dp</dimen>
 
-    <!--Product Activity-->
+    <!--Product ProductActivity-->
     <dimen name="bottom_navigation_height">54dp</dimen>
     <dimen name="bottom_navigation_elevation">16dp</dimen>
     <dimen name="tab_layout_elevation">16dp</dimen>
@@ -55,10 +55,10 @@
     <dimen name="menu_account_margin_top">124dp</dimen>
     <dimen name="menu_logout_margin_bottom">124dp</dimen>
 
-    <!--Help Activity-->
+    <!--Help ProductActivity-->
     <dimen name="help_activity_base_button_width">224dp</dimen>
 
-    <!--Detail Activity-->
+    <!--Detail ProductActivity-->
     <dimen name="detail_icon_height_width">64dp</dimen>
     <dimen name="default_content_elevation">8dp</dimen>
     <dimen name="show_more_text_size">18sp</dimen>

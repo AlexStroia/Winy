@@ -16,6 +16,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 import co.alexdev.winy.R;
@@ -25,7 +27,8 @@ import co.alexdev.winy.core.di.module.ContextModule;
 import co.alexdev.winy.core.repository.WinePairingRepository;
 import co.alexdev.winy.core.util.factory.BaseViewModelFactory;
 import co.alexdev.winy.databinding.ActivitySearchBinding;
-import co.alexdev.winy.feature.ui.product.Activity;
+import co.alexdev.winy.feature.ui.detail.DetailActivity;
+import co.alexdev.winy.feature.ui.product.ProductActivity;
 import co.alexdev.winy.feature.ui.search.uimodel.SearchActivityViewModel;
 
 public class SearchActivity extends AppCompatActivity {
@@ -37,7 +40,7 @@ public class SearchActivity extends AppCompatActivity {
     private SearchActivityViewModel viewModel;
 
     public static void startActivity(Context context) {
-        ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context);
+        ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation((ProductActivity) context);
         context.startActivity(new Intent(context, SearchActivity.class), optionsCompat.toBundle());
     }
 
@@ -63,8 +66,10 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void setRecyclerView() {
-        SearchAdapter searchAdapter = new SearchAdapter(id -> {
-
+        SearchAdapter searchAdapter = new SearchAdapter((id, food) -> {
+            Bundle transitionBundle = ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle();
+            DetailActivity.startActivity(this, id, food, null, null, transitionBundle);
+            finish();
         });
         binding.rvWines.setLayoutManager(new GridLayoutManager(this, 2));
         binding.rvWines.setAdapter(searchAdapter);
@@ -78,6 +83,7 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() == 0) searchAdapter.submitList(new ArrayList<>());
                 viewModel.searchProductByName(charSequence.toString()).observe(SearchActivity.this, searchAdapter::submitList);
             }
 

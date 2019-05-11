@@ -25,8 +25,9 @@ import co.alexdev.winy.core.repository.WinePairingRepository;
 import co.alexdev.winy.core.util.factory.DetailViewModelFactory;
 import co.alexdev.winy.databinding.ActivityDetailBinding;
 import co.alexdev.winy.feature.ui.detail.uimodel.DetailActivityViewModel;
-import co.alexdev.winy.feature.ui.product.Activity;
+import co.alexdev.winy.feature.ui.product.ProductActivity;
 import co.alexdev.winy.feature.ui.product.wine.DetailWinesAdapter;
+import co.alexdev.winy.feature.ui.search.SearchActivity;
 import co.alexdev.winy.feature.util.bindings.FabBindings;
 import co.alexdev.winy.feature.util.bindings.ImageBindings;
 import co.alexdev.winy.feature.util.custom.RecyclerViewDecoration;
@@ -43,15 +44,22 @@ public class DetailActivity extends AppCompatActivity {
     private DetailWinesAdapter adapter;
     private boolean isExpanded = false;
 
-    public static void startActivity(Context context, int id, String food, ImageView imageView, TextView textView) {
-        Activity activity = (Activity) context;
-        Pair imagePair = Pair.create(imageView, imageView.getTransitionName());
-        Pair textPair = Pair.create(textView, textView.getTransitionName());
+    public static void startActivity(Context context, int id, String food, ImageView imageView, TextView textView, Bundle transitionBundle) {
+        if (context instanceof ProductActivity) {
+            ProductActivity productActivity = (ProductActivity) context;
 
-        ActivityOptions optionsCompat = ActivityOptions.makeSceneTransitionAnimation(activity, imagePair, textPair);
-        activity.startActivity(new Intent(activity, DetailActivity.class)
-                .putExtra(WINE_ID, id)
-                .putExtra(FOOD_NAME, food), optionsCompat.toBundle());
+            Pair imagePair = Pair.create(imageView, imageView.getTransitionName());
+            Pair textPair = Pair.create(textView, textView.getTransitionName());
+
+            ActivityOptions optionsCompat = ActivityOptions.makeSceneTransitionAnimation(productActivity, imagePair, textPair);
+            productActivity.startActivity(new Intent(productActivity, DetailActivity.class)
+                    .putExtra(WINE_ID, id)
+                    .putExtra(FOOD_NAME, food), optionsCompat.toBundle());
+        } else if (context instanceof SearchActivity) {
+            context.startActivity(new Intent(context, DetailActivity.class)
+                    .putExtra(WINE_ID, id)
+                    .putExtra(FOOD_NAME, food), transitionBundle);
+        }
     }
 
     @Override
@@ -63,16 +71,18 @@ public class DetailActivity extends AppCompatActivity {
         winyComponent.inject(this);
         binding.setLifecycleOwner(this);
 
-        if (getIntent() != null && getIntent().hasExtra(WINE_ID) && getIntent().hasExtra(FOOD_NAME)) {
-            factory = new DetailViewModelFactory(repository, getIntent().getIntExtra(WINE_ID, 0), getIntent().getStringExtra(FOOD_NAME));
-            viewModel = ViewModelProviders.of(this, factory).get(DetailActivityViewModel.class);
-            binding.setViewModel(viewModel);
-            setRecyclerView();
-            binding.btnShow.setOnClickListener(view -> {
-                isExpanded = !isExpanded;
-                setShowMoreText(isExpanded);
-                expandCollapseAnimation(isExpanded);
-            });
+        if (getIntent() != null) {
+            if (getIntent().hasExtra(WINE_ID) && getIntent().hasExtra(FOOD_NAME)) {
+                factory = new DetailViewModelFactory(repository, getIntent().getIntExtra(WINE_ID, 0), getIntent().getStringExtra(FOOD_NAME));
+                viewModel = ViewModelProviders.of(this, factory).get(DetailActivityViewModel.class);
+                binding.setViewModel(viewModel);
+                setRecyclerView();
+                binding.btnShow.setOnClickListener(view -> {
+                    isExpanded = !isExpanded;
+                    setShowMoreText(isExpanded);
+                    expandCollapseAnimation(isExpanded);
+                });
+            }
         }
     }
 

@@ -9,6 +9,14 @@
         <item name="android:windowContentTransitions">true</item>
     </style>
 
+    <style name="SearchActivityTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowExitTransition">@transition/explode</item>
+    </style>
+
     <style name="ButtonCornerRadiusTheme" parent="Base.TextAppearance.AppCompat.Widget.Button">
         <item name="android:background">@drawable/round_button_ripple</item>
         <item name="android:elevation">@dimen/button_elevation</item>

@@ -32,7 +32,7 @@ public class SearchAdapter extends ListAdapter<SearchProductViewModel, SearchAda
     }
 
     interface OnSearchItemClickListener {
-        void onSearchItemClick(int id);
+        void onSearchItemClick(int id, String food);
     }
 
     static class SearchWinesViewHolder extends RecyclerView.ViewHolder {
@@ -43,7 +43,7 @@ public class SearchAdapter extends ListAdapter<SearchProductViewModel, SearchAda
             super(binding.getRoot());
             this.binding = binding;
 
-            binding.getRoot().setOnClickListener(view -> listener.onSearchItemClick(binding.getViewModel().id));
+            binding.getRoot().setOnClickListener(view -> listener.onSearchItemClick(binding.getViewModel().id, binding.getViewModel().food));
         }
 
         public void bind(SearchProductViewModel viewModel) {
