@@ -88,7 +88,7 @@ public class WinePairingRepository {
         }.asLiveData();
     }
 
-    public LiveData<List<ProductMatches>> getAllWinesFromDatabase() {
+    public LiveData<List<ProductMatches>> loadAllWinesFromDatabase() {
         return winesDao.loadAllWines();
     }
 

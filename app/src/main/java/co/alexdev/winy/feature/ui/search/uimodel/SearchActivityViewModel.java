@@ -14,12 +14,20 @@ import co.alexdev.winy.core.repository.WinePairingRepository;
 public class SearchActivityViewModel extends ViewModel {
 
     private final WinePairingRepository repository;
-    private LiveData<List<SearchActivityProductViewModel>> products = new MutableLiveData<>();
+    public LiveData<List<SearchActivityProductViewModel>> products = new MutableLiveData<>();
+
+    public LiveData<List<String>> productsTitle;
 
     public SearchActivityViewModel(WinePairingRepository repository) {
         this.repository = repository;
+        productsTitle = Transformations.map(repository.loadAllWinesFromDatabase(), wines -> {
+            List<String> productTitles = new ArrayList<>();
+            for (ProductMatches productMatches : wines) {
+                productTitles.add(productMatches.title);
+            }
+            return productTitles;
+        });
     }
-
 
     public void searchProductByName(String name) {
         products = Transformations.map(repository.loadWineByTitle(name), products -> {

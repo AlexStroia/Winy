@@ -15,6 +15,7 @@ import com.google.android.material.tabs.TabLayout;
 import co.alexdev.winy.R;
 import co.alexdev.winy.databinding.ActivityProductBinding;
 import co.alexdev.winy.feature.ui.product.uimodel.ProductActivityViewModel;
+import co.alexdev.winy.feature.ui.search.SearchActivity;
 
 public class ProductActivity extends AppCompatActivity {
 
@@ -48,7 +49,7 @@ public class ProductActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.search) {
-
+            SearchActivity.startActivity(this);
         }
         return super.onOptionsItemSelected(item);
     }

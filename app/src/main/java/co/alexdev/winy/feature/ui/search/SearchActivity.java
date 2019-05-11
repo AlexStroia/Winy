@@ -1,5 +1,7 @@
 package co.alexdev.winy.feature.ui.search;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +28,10 @@ public class SearchActivity extends AppCompatActivity {
     private BaseViewModelFactory factory;
     private SearchActivityViewModel viewModel;
 
+    public static void startActivity(Context context) {
+        context.startActivity(new Intent(context, SearchActivity.class));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +39,7 @@ public class SearchActivity extends AppCompatActivity {
         WinyComponent winyComponent = DaggerWinyComponent.builder().contextModule(new ContextModule(this))
                 .build();
         winyComponent.inject(this);
+        binding.setLifecycleOwner(this);
         factory = new BaseViewModelFactory(repository);
         viewModel = ViewModelProviders.of(this, factory).get(SearchActivityViewModel.class);
 
