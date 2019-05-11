@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import co.alexdev.winy.R;
 import co.alexdev.winy.databinding.ActivityProductBinding;
 import co.alexdev.winy.feature.ui.favorite.FavoriteFragment;
+import co.alexdev.winy.feature.ui.product.wine.WineFragment;
 import co.alexdev.winy.feature.ui.search.SearchActivity;
 
 public class ProductActivity extends AppCompatActivity {
@@ -25,10 +26,15 @@ public class ProductActivity extends AppCompatActivity {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_product);
         mBinding.setLifecycleOwner(this);
 
+        changeFragment(new WineFragment());
+
         mBinding.bottomNavView.setOnNavigationItemSelectedListener(menuItem -> {
             if (menuItem.getItemId() == R.id.favorites) {
                 changeFragment(new FavoriteFragment());
+            } else if (menuItem.getItemId() == R.id.home) {
+                changeFragment(new WineFragment());
             }
+            menuItem.setChecked(true);
             return false;
         });
     }
@@ -53,6 +59,10 @@ public class ProductActivity extends AppCompatActivity {
     }
 
     private void changeFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, fragment).commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_from_left)
+                .replace(R.id.fragment_container, fragment)
+                .commit();
     }
 }
