@@ -8,7 +8,7 @@ import javax.inject.Singleton;
 import co.alexdev.winy.feature.ui.detail.uimodel.DetailActivityProductViewModel;
 import co.alexdev.winy.feature.ui.product.wine.uimodel.PairedWinesViewModel;
 import co.alexdev.winy.feature.ui.product.wine.uimodel.ProductMatchesViewModel;
-import co.alexdev.winy.feature.ui.search.uimodel.SearchActivityProductViewModel;
+import co.alexdev.winy.feature.ui.search.uimodel.SearchProductViewModel;
 
 @Singleton
 public class DiffCallbacks {
@@ -56,15 +56,15 @@ public class DiffCallbacks {
         }
     }
 
-    public static class SearchWinesDiff extends DiffUtil.ItemCallback<SearchActivityProductViewModel> {
+    public static class SearchWinesDiff extends DiffUtil.ItemCallback<SearchProductViewModel> {
 
         @Override
-        public boolean areItemsTheSame(@NonNull SearchActivityProductViewModel oldItem, @NonNull SearchActivityProductViewModel newItem) {
+        public boolean areItemsTheSame(@NonNull SearchProductViewModel oldItem, @NonNull SearchProductViewModel newItem) {
             return oldItem.id == newItem.id;
         }
 
         @Override
-        public boolean areContentsTheSame(@NonNull SearchActivityProductViewModel oldItem, @NonNull SearchActivityProductViewModel newItem) {
+        public boolean areContentsTheSame(@NonNull SearchProductViewModel oldItem, @NonNull SearchProductViewModel newItem) {
             return oldItem.equals(newItem);
         }
     }

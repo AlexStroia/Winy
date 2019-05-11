@@ -120,6 +120,10 @@ public class WinePairingRepository {
         return pairingTextDao.loadPairedTextByFood(food);
     }
 
+    public LiveData<List<ProductMatches>> loadWinesByCharacters(String characters) {
+        return winesDao.loadWinesByCharacters(characters);
+    }
+
     public LiveData<List<String>> loadAllFoodNames() {
         return winesDao.loadAllFoodNames();
     }

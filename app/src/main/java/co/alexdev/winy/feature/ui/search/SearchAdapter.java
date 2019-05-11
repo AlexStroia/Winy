@@ -1,5 +1,6 @@
 package co.alexdev.winy.feature.ui.search;
 
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -8,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import co.alexdev.winy.core.util.DiffCallbacks;
 import co.alexdev.winy.databinding.ItemSearchWineBinding;
-import co.alexdev.winy.feature.ui.search.uimodel.SearchActivityProductViewModel;
+import co.alexdev.winy.feature.ui.search.uimodel.SearchProductViewModel;
 
-public class SearchAdapter extends ListAdapter {
+public class SearchAdapter extends ListAdapter<SearchProductViewModel, SearchAdapter.SearchWinesViewHolder> {
 
     private static OnSearchItemClickListener listener;
 
@@ -21,13 +22,13 @@ public class SearchAdapter extends ListAdapter {
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+    public SearchWinesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new SearchWinesViewHolder(ItemSearchWineBinding.inflate(LayoutInflater.from(parent.getContext())));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull SearchWinesViewHolder holder, int position) {
+        holder.bind(getItem(position));
     }
 
     interface OnSearchItemClickListener {
@@ -45,7 +46,7 @@ public class SearchAdapter extends ListAdapter {
             binding.getRoot().setOnClickListener(view -> listener.onSearchItemClick(binding.getViewModel().id));
         }
 
-        public void bind(SearchActivityProductViewModel viewModel) {
+        public void bind(SearchProductViewModel viewModel) {
             binding.setViewModel(viewModel);
         }
     }

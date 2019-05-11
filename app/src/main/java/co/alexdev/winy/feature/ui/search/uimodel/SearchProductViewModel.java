@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import co.alexdev.winy.feature.ui.product.wine.uimodel.ProductMatchesViewModel;
 
-public class SearchActivityProductViewModel {
+public class SearchProductViewModel {
     public int id;
     public String description;
     public String price;
@@ -17,7 +17,7 @@ public class SearchActivityProductViewModel {
     public String score;
     public String link;
 
-    public SearchActivityProductViewModel(int id, String description, String price, String imageUrl, String averageRating, String ratingCount, Boolean isAddedToFavorite, String food, String title, String score, String link) {
+    public SearchProductViewModel(int id, String description, String price, String imageUrl, String averageRating, String ratingCount, Boolean isAddedToFavorite, String food, String title, String score, String link) {
         this.id = id;
         this.description = description;
         this.price = price;

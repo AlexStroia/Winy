@@ -14,7 +14,7 @@ import co.alexdev.winy.core.repository.WinePairingRepository;
 public class SearchActivityViewModel extends ViewModel {
 
     private final WinePairingRepository repository;
-    public LiveData<List<SearchActivityProductViewModel>> products = new MutableLiveData<>();
+    public LiveData<List<SearchProductViewModel>> products = new MutableLiveData<>();
 
     public LiveData<List<String>> productsTitle;
 
@@ -29,16 +29,17 @@ public class SearchActivityViewModel extends ViewModel {
         });
     }
 
-    public void searchProductByName(String name) {
-        products = Transformations.map(repository.loadWineByTitle(name), products -> {
-            List<SearchActivityProductViewModel> searchActivityProductViewModelList = new ArrayList<>();
+    public LiveData<List<SearchProductViewModel>> searchProductByName(String name) {
+        products = Transformations.map(repository.loadWinesByCharacters(name), products -> {
+            List<SearchProductViewModel> searchProductViewModelList = new ArrayList<>();
             for (ProductMatches wine : products) {
-                searchActivityProductViewModelList.add(new SearchActivityProductViewModel(
+                searchProductViewModelList.add(new SearchProductViewModel(
                         wine.id, wine.description, wine.price,
                         wine.imageUrl, wine.averageRating.substring(0, 3), String.valueOf(wine.ratingCount), wine.isAddedToFavorite,
                         wine.food, wine.title, String.valueOf(wine.score), wine.link));
             }
-            return searchActivityProductViewModelList;
+            return searchProductViewModelList;
         });
+        return products;
     }
 }

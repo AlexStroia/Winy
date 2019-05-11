@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="co.alexdev.winy.feature.ui.search.uimodel.SearchActivityProductViewModel" />
+            type="co.alexdev.winy.feature.ui.search.uimodel.SearchProductViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
