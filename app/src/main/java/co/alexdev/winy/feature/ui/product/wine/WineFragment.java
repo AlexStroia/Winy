@@ -35,7 +35,6 @@ import co.alexdev.winy.feature.ui.product.wine.uimodel.PairedWinesViewModel;
 import co.alexdev.winy.feature.ui.product.wine.uimodel.ProductMatchesViewModel;
 import co.alexdev.winy.feature.ui.product.wine.uimodel.WineFragmentViewModel;
 import co.alexdev.winy.feature.util.KeyboardManager;
-import co.alexdev.winy.feature.util.custom.RecyclerViewDecoration;
 
 
 public class WineFragment extends Fragment {
@@ -213,6 +212,5 @@ public class WineFragment extends Fragment {
         binding.rvWineRecommendation.setLayoutManager(new LinearLayoutManager(this.getActivity(), LinearLayoutManager.HORIZONTAL, false));
         binding.rvWineRecommendation.setAdapter(wineAdapter);
         binding.rvWineRecommendation.setHasFixedSize(true);
-        binding.rvWineRecommendation.addItemDecoration(new RecyclerViewDecoration(R.dimen.default_content_margin));
     }
 }
