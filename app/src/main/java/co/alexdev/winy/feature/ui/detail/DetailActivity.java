@@ -30,7 +30,6 @@ import co.alexdev.winy.feature.ui.product.wine.DetailWinesAdapter;
 import co.alexdev.winy.feature.ui.search.SearchActivity;
 import co.alexdev.winy.feature.util.bindings.FabBindings;
 import co.alexdev.winy.feature.util.bindings.ImageBindings;
-import co.alexdev.winy.feature.util.custom.RecyclerViewDecoration;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -120,7 +119,6 @@ public class DetailActivity extends AppCompatActivity {
             });
         }));
         binding.rvOtherWines.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        binding.rvOtherWines.addItemDecoration(new RecyclerViewDecoration(R.dimen.default_content_margin));
         viewModel.similarDetailProductActivityViewModelLiveData.observe(this, adapter::submitList);
 
         binding.rvOtherWines.setAdapter(adapter);

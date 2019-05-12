@@ -17,8 +17,6 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 
-import java.util.ArrayList;
-
 import javax.inject.Inject;
 
 import co.alexdev.winy.R;
@@ -70,7 +68,6 @@ public class SearchActivity extends AppCompatActivity {
         SearchAdapter searchAdapter = new SearchAdapter((id, food) -> {
             Bundle transitionBundle = ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle();
             DetailActivity.startActivity(this, id, food, null, null, transitionBundle);
-            finish();
         });
         binding.rvWines.setLayoutManager(new GridLayoutManager(this, 2));
         binding.rvWines.setAdapter(searchAdapter);
@@ -84,7 +81,6 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() == 0) searchAdapter.submitList(new ArrayList<>());
                 viewModel.searchProductByName(charSequence.toString()).observe(SearchActivity.this, searchAdapter::submitList);
             }
 
@@ -97,10 +93,9 @@ public class SearchActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                supportFinishAfterTransition();
-                return true;
+        if (item.getItemId() == android.R.id.home) {
+            supportFinishAfterTransition();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

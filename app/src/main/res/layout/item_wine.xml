@@ -11,75 +11,86 @@
             type="co.alexdev.winy.feature.ui.product.wine.uimodel.ProductMatchesViewModel" />
     </data>
 
-    <androidx.cardview.widget.CardView
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/content_height"
-        android:layout_marginStart="@dimen/default_content_margin"
-        android:layout_marginEnd="@dimen/default_content_margin"
-        android:elevation="@dimen/cardview_content_elevation"
-        app:cardCornerRadius="@dimen/cardview_corner_radius">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="@dimen/content_height"
+            android:layout_marginStart="@dimen/default_content_margin"
+            android:layout_marginEnd="@dimen/default_content_margin"
+            android:elevation="@dimen/cardview_content_elevation"
+            app:cardCornerRadius="@dimen/cardview_corner_radius"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/iv_wine"
-                loadingIndicator="@{progressBar}"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/content_height"
-                android:layout_marginTop="@dimen/default_content_margin"
-                android:contentDescription="@string/icon_wine"
-                android:transitionName="@string/shared_transition_string_image"
-                app:imageUrl="@{viewModel.imageUrl}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/wine" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <View
-                android:id="@+id/transparent_background"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/transparent_view_item_height"
-                android:background="@color/transparent_view"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_wine"
-                app:layout_constraintEnd_toEndOf="@+id/iv_wine"
-                app:layout_constraintStart_toStartOf="@+id/iv_wine" />
+                <ImageView
+                    android:id="@+id/iv_wine"
+                    loadingIndicator="@{progressBar}"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/content_height"
+                    android:layout_marginTop="@dimen/default_content_margin"
+                    android:contentDescription="@string/icon_wine"
+                    android:transitionName="@string/shared_transition_string_image"
+                    app:imageUrl="@{viewModel.imageUrl}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/wine" />
 
-            <TextView
-                android:id="@+id/tv_product_matches_description"
-                style="@style/RecyclerTextView"
-                android:layout_width="@dimen/item_wine_textview_width"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_content_margin"
-                android:layout_marginTop="@dimen/default_content_margin"
-                android:layout_marginBottom="@dimen/default_content_padding"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="@{viewModel.title}"
-                android:transitionName="@string/shared_transition_string_text_view"
-                app:layout_constraintBottom_toBottomOf="@+id/transparent_background"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/transparent_background"
-                tools:text="Feteasca Regala" />
+                <View
+                    android:id="@+id/transparent_background"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/transparent_view_item_height"
+                    android:background="@color/transparent_view"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_wine"
+                    app:layout_constraintStart_toStartOf="@+id/iv_wine" />
 
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_content_margin"
-                android:layout_marginTop="@dimen/default_content_margin"
-                android:layout_marginBottom="@dimen/default_content_margin"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/transparent_background"
-                app:layout_constraintEnd_toEndOf="@+id/iv_wine"
-                app:layout_constraintStart_toStartOf="@+id/iv_wine"
-                app:layout_constraintTop_toTopOf="@+id/iv_wine" />
+                <TextView
+                    android:id="@+id/tv_product_matches_description"
+                    style="@style/RecyclerTextView"
+                    android:layout_width="@dimen/item_wine_textview_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_content_margin"
+                    android:layout_marginTop="@dimen/default_content_margin"
+                    android:layout_marginBottom="@dimen/default_content_padding"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@{viewModel.title}"
+                    android:transitionName="@string/shared_transition_string_text_view"
+                    app:layout_constraintBottom_toBottomOf="@+id/transparent_background"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/transparent_background"
+                    tools:text="Feteasca Regala" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_content_margin"
+                    android:layout_marginTop="@dimen/default_content_margin"
+                    android:layout_marginBottom="@dimen/default_content_margin"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/transparent_background"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_wine"
+                    app:layout_constraintStart_toStartOf="@+id/iv_wine"
+                    app:layout_constraintTop_toTopOf="@+id/iv_wine" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
