@@ -70,4 +70,9 @@
     <dimen name="recycler_item_height">148dp</dimen>
     <dimen name="buy_button_width">164dp</dimen>
     <dimen name="buy_button_height">32dp</dimen>
+
+    <!--State Layouts-->
+    <dimen name="state_layout_text_height">22sp</dimen>
+    <dimen name="state_textview_content_margin">48dp</dimen>
+    <dimen name="state_image_width_height">112dp</dimen>
 </resources>

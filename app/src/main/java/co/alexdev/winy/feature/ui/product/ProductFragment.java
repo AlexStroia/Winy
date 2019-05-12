@@ -14,9 +14,6 @@ import com.google.android.material.tabs.TabLayout;
 import co.alexdev.winy.databinding.FragmentProductBinding;
 import co.alexdev.winy.feature.ui.product.uimodel.ProductActivityViewModel;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class ProductFragment extends Fragment {
 
     private FragmentProductBinding mBinding;

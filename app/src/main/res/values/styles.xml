@@ -34,4 +34,13 @@
         <item name="android:fontFamily">@font/montserratregular</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
+
+    <style name="StateLayoutTextStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/montserratbold</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/state_layout_text_height</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginStart">@dimen/state_textview_content_margin</item>
+        <item name="android:layout_marginEnd">@dimen/state_textview_content_margin</item>
+    </style>
 </resources>

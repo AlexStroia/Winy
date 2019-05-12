@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import com.kennyc.view.MultiStateView;
+
 import java.util.Objects;
 
 import javax.inject.Inject;
@@ -54,6 +56,12 @@ public class FavoriteFragment extends Fragment {
         binding.rvFavorite.setLayoutManager(new GridLayoutManager(this.getActivity(), 2));
         binding.rvFavorite.setAdapter(adapter);
         binding.rvFavorite.addItemDecoration(new RecyclerDecoration(8));
-        viewModel.favorites.observe(this, adapter::submitList);
+        viewModel.favorites.observe(this, data -> {
+            if (data.isEmpty()) {
+                binding.multistate.setViewState(MultiStateView.VIEW_STATE_EMPTY);
+            } else {
+                adapter.submitList(data);
+            }
+        });
     }
 }

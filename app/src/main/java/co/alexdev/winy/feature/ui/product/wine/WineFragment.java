@@ -130,10 +130,11 @@ public class WineFragment extends Fragment {
                         break;
 
                     case SUCCESS:
+                        binding.include.animate().alpha(0).start();
+                        binding.include.setVisibility(View.GONE);
                         binding.progressBar.setVisibility(View.GONE);
                         viewModel.setProductMatchesListForSearch();
                         binding.autoCompleteTextViewWine.clearFocus();
-
                         binding.autoCompleteTextViewWine.getText().clear();
                         break;
                 }

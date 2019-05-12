@@ -10,6 +10,8 @@
     <string name="hint_email_type2">Email</string>
     <string name="hint_birthdate">Birthdate</string>
     <string name="logo_content_description">Three bottles of wine and the application logo</string>
+    <string name="user_not_searched">You did not searched for anything.</string>
+    <string name="user_no_favorite">You did not added nothing to favorite.</string>
 
     <!--Product ProductActivity-->
     <string name="home_button_text">Home</string>

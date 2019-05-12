@@ -9,24 +9,31 @@
             type="co.alexdev.winy.feature.ui.favorite.uimodel.FavoriteViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.kennyc.view.MultiStateView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/multistate"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".feature.ui.favorite.FavoriteFragment">
+        app:msv_emptyView="@layout/layout_no_data_favorite">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_favorite"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/default_content_margin"
-            android:layout_marginTop="@dimen/default_content_margin"
-            android:layout_marginEnd="@dimen/default_content_margin"
-            android:layout_marginBottom="@dimen/default_content_margin"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            tools:context=".feature.ui.favorite.FavoriteFragment">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_favorite"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/default_content_margin"
+                android:layout_marginTop="@dimen/default_content_margin"
+                android:layout_marginEnd="@dimen/default_content_margin"
+                android:layout_marginBottom="@dimen/default_content_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.kennyc.view.MultiStateView>
 </layout>
