@@ -12,7 +12,6 @@ import co.alexdev.winy.feature.ui.product.wine.WineFragment;
 
 public class PagerStateAdapter extends FragmentStatePagerAdapter {
 
-
     private List<String> titles;
 
     public PagerStateAdapter(FragmentManager fm, List<String> titles) {

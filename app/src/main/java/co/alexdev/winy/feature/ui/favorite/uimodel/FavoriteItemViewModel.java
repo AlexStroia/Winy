@@ -33,22 +33,23 @@ public class FavoriteItemViewModel {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof co.alexdev.winy.feature.ui.product.wine.uimodel.ProductMatchesViewModel))
-            return false;
-        co.alexdev.winy.feature.ui.product.wine.uimodel.ProductMatchesViewModel that = (co.alexdev.winy.feature.ui.product.wine.uimodel.ProductMatchesViewModel) o;
+        if (!(o instanceof FavoriteItemViewModel)) return false;
+        FavoriteItemViewModel that = (FavoriteItemViewModel) o;
         return id == that.id &&
-                price.equals(that.price) &&
-                imageUrl.equals(that.imageUrl) &&
-                averageRating.equals(that.averageRating) &&
-                ratingCount.equals(that.ratingCount) &&
-                food.equals(that.food) &&
-                title.equals(that.title) &&
-                score.equals(that.score) &&
-                link.equals(that.link);
+                isAddedToFavorite == that.isAddedToFavorite &&
+                Objects.equals(description, that.description) &&
+                Objects.equals(price, that.price) &&
+                Objects.equals(imageUrl, that.imageUrl) &&
+                Objects.equals(averageRating, that.averageRating) &&
+                Objects.equals(ratingCount, that.ratingCount) &&
+                Objects.equals(food, that.food) &&
+                Objects.equals(title, that.title) &&
+                Objects.equals(score, that.score) &&
+                Objects.equals(link, that.link);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, price, imageUrl, averageRating, ratingCount, food, title, score, link);
+        return Objects.hash(id, description, price, imageUrl, averageRating, ratingCount, isAddedToFavorite, food, title, score, link);
     }
 }

@@ -40,6 +40,11 @@ public class ProductActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
     public static void startActivity(Context context) {
         context.startActivity(new Intent(context, ProductActivity.class)
                 .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));

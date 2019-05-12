@@ -13,9 +13,7 @@ import co.alexdev.winy.core.repository.BaseRepository;
 public class FavoriteViewModel extends ViewModel {
 
     public LiveData<List<FavoriteItemViewModel>> favorites;
-
     public FavoriteViewModel(BaseRepository repository) {
-
         favorites = Transformations.map(repository.loadFavoriteProducts(), products -> {
             List<FavoriteItemViewModel> favoriteItemViewModelList = new ArrayList<>();
             for (ProductMatches productMatches : products) {

@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="co.alexdev.winy.feature.ui.product.wine.uimodel.ProductMatchesViewModel" />
+            type="co.alexdev.winy.feature.ui.favorite.uimodel.FavoriteItemViewModel" />
     </data>
 
 
@@ -19,7 +19,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/content_height"
+            android:layout_height="@dimen/recycler_item_height"
             android:layout_marginStart="@dimen/default_content_margin"
             android:layout_marginEnd="@dimen/default_content_margin"
             android:elevation="@dimen/cardview_content_elevation"
@@ -41,10 +41,10 @@
                     android:layout_height="@dimen/content_height"
                     android:layout_marginTop="@dimen/default_content_margin"
                     android:contentDescription="@string/icon_wine"
-                    android:transitionName="@string/shared_transition_string_image"
                     app:imageUrl="@{viewModel.imageUrl}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/wine" />
@@ -69,7 +69,6 @@
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:text="@{viewModel.title}"
-                    android:transitionName="@string/shared_transition_string_text_view"
                     app:layout_constraintBottom_toBottomOf="@+id/transparent_background"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

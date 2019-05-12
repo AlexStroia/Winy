@@ -14,8 +14,11 @@ import co.alexdev.winy.feature.ui.favorite.uimodel.FavoriteItemViewModel;
 
 public class FavoriteAdapter extends ListAdapter<FavoriteItemViewModel, FavoriteAdapter.FavoriteViewHolder> {
 
-    protected FavoriteAdapter() {
+    private static OnFavoriteItemClickListener listener;
+
+    protected FavoriteAdapter(OnFavoriteItemClickListener listener) {
         super(new DiffCallbacks.FavoriteItemsDiff());
+        FavoriteAdapter.listener = listener;
     }
 
     @NonNull
@@ -26,11 +29,11 @@ public class FavoriteAdapter extends ListAdapter<FavoriteItemViewModel, Favorite
 
     @Override
     public void onBindViewHolder(@NonNull FavoriteViewHolder holder, int position) {
-
+        holder.setViewModel(getItem(position));
     }
 
-    interface OnFavoriteItemClick {
-        void onFavoriteItemClick(int id, ImageView imageView);
+    interface OnFavoriteItemClickListener {
+        void onFavoriteItemClick(int id, String food, ImageView imageView);
     }
 
     static class FavoriteViewHolder extends RecyclerView.ViewHolder {
@@ -40,6 +43,7 @@ public class FavoriteAdapter extends ListAdapter<FavoriteItemViewModel, Favorite
         public FavoriteViewHolder(ItemFavoriteWineBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+            this.binding.getRoot().setOnClickListener(view -> listener.onFavoriteItemClick(binding.getViewModel().id, binding.getViewModel().food, binding.ivWine));
         }
 
         public void setViewModel(FavoriteItemViewModel favoriteItemViewModel) {
