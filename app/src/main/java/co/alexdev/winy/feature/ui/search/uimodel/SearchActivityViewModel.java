@@ -9,16 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.alexdev.winy.core.model.wines.ProductMatches;
-import co.alexdev.winy.core.repository.WinePairingRepository;
+import co.alexdev.winy.core.repository.BaseRepository;
 
 public class SearchActivityViewModel extends ViewModel {
 
-    private final WinePairingRepository repository;
+    private final BaseRepository repository;
     public LiveData<List<SearchProductViewModel>> products = new MutableLiveData<>();
 
     public LiveData<List<String>> productsTitle;
 
-    public SearchActivityViewModel(WinePairingRepository repository) {
+    public SearchActivityViewModel(BaseRepository repository) {
         this.repository = repository;
         productsTitle = Transformations.map(repository.loadAllWinesFromDatabase(), wines -> {
             List<String> productTitles = new ArrayList<>();

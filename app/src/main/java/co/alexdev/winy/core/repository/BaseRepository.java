@@ -27,7 +27,7 @@ import co.alexdev.winy.core.util.WinyExecutor;
 
 
 @Singleton
-public class WinePairingRepository {
+public class BaseRepository {
 
     private WinyExecutor executor;
     private WineResponseService service;
@@ -38,8 +38,8 @@ public class WinePairingRepository {
     private RateLimiter<String> repoListRateLimit = new RateLimiter<>(10, TimeUnit.MINUTES);
 
     @Inject
-    public WinePairingRepository(WinyExecutor executor, WineResponseService service, WinesDao winesDao,
-                                 PairedWinesDao pairedWinesDao, PairingTextDao pairingTextDao, DatabaseUtils databaseUtils) {
+    public BaseRepository(WinyExecutor executor, WineResponseService service, WinesDao winesDao,
+                          PairedWinesDao pairedWinesDao, PairingTextDao pairingTextDao, DatabaseUtils databaseUtils) {
         this.executor = executor;
         this.service = service;
         this.winesDao = winesDao;
@@ -108,10 +108,6 @@ public class WinePairingRepository {
         return winesDao.loadOtherProductMatches(food, id);
     }
 
-    public LiveData<List<ProductMatches>> loadWineByTitle(String title) {
-        return winesDao.loadWineByTitle(title);
-    }
-
     public LiveData<List<PairedWines>> loadPairedWinesByFood(String food) {
         return pairedWinesDao.loadPairedWinesByFood(food);
     }
@@ -122,6 +118,10 @@ public class WinePairingRepository {
 
     public LiveData<List<ProductMatches>> loadWinesByCharacters(String characters) {
         return winesDao.loadWinesByCharacters(characters);
+    }
+
+    public LiveData<List<ProductMatches>> loadFavoriteProducts() {
+        return winesDao.loadFavoriteProducts();
     }
 
     public LiveData<List<String>> loadAllFoodNames() {

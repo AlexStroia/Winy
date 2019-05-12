@@ -10,7 +10,7 @@ import java.util.List;
 import co.alexdev.winy.core.model.wines.PairedWines;
 import co.alexdev.winy.core.model.wines.PairingText;
 import co.alexdev.winy.core.model.wines.ProductMatches;
-import co.alexdev.winy.core.repository.WinePairingRepository;
+import co.alexdev.winy.core.repository.BaseRepository;
 import co.alexdev.winy.core.util.Resource;
 
 public class WineFragmentViewModel extends ViewModel {
@@ -19,21 +19,21 @@ public class WineFragmentViewModel extends ViewModel {
     public LiveData<List<ProductMatchesViewModel>> productMatchesViewModelLiveData;
     public LiveData<List<PairedWinesViewModel>> pairedWinesViewModelLiveData;
     public LiveData<List<String>> foodNamesLiveData;
-    private WinePairingRepository winePairingRepository;
+    private BaseRepository baseRepository;
 
-    public WineFragmentViewModel(WinePairingRepository repository) {
-        this.winePairingRepository = repository;
+    public WineFragmentViewModel(BaseRepository repository) {
+        this.baseRepository = repository;
         foodNamesLiveData = repository.loadAllFoodNames();
     }
 
     public LiveData<Resource<List<ProductMatches>>> onSearchPressed() {
-        return winePairingRepository.getWinesByFoodName(food);
+        return baseRepository.getWinesByFoodName(food);
     }
 
     /*
      When a search occurs, the list is updated with the data returned for that specific search */
     public void setProductMatchesListForSearch() {
-        productMatchesViewModelLiveData = Transformations.map(winePairingRepository.loadAllWinesFromDatabaseByFood(food), data -> {
+        productMatchesViewModelLiveData = Transformations.map(baseRepository.loadAllWinesFromDatabaseByFood(food), data -> {
             List<ProductMatchesViewModel> productMatchesViewModels = new ArrayList<>();
             for (ProductMatches productMatches : data) {
                 productMatchesViewModels.add(new ProductMatchesViewModel(
@@ -47,12 +47,12 @@ public class WineFragmentViewModel extends ViewModel {
     }
 
     public LiveData<PairingText> pairingTextDescription() {
-        return winePairingRepository.loadPairingTextByFood(food);
+        return baseRepository.loadPairingTextByFood(food);
     }
 
     public void setPairedWinesViewModelList() {
         pairedWinesViewModelLiveData =
-                Transformations.map(winePairingRepository.loadPairedWinesByFood(food), data -> {
+                Transformations.map(baseRepository.loadPairedWinesByFood(food), data -> {
                     List<PairedWinesViewModel> pairedWinesViewModelList = new ArrayList<>();
                     for (PairedWines pairedWines : data) {
                         pairedWinesViewModelList.add(new PairedWinesViewModel(pairedWines.description.substring(0, 1).toUpperCase() + pairedWines.description.substring(1).toLowerCase()));
@@ -62,7 +62,7 @@ public class WineFragmentViewModel extends ViewModel {
     }
 
     public void setProductMatchesViewModelList() {
-        productMatchesViewModelLiveData = Transformations.map(winePairingRepository.loadAllWinesFromDatabaseByFood(food), data -> {
+        productMatchesViewModelLiveData = Transformations.map(baseRepository.loadAllWinesFromDatabaseByFood(food), data -> {
             List<ProductMatchesViewModel> productMatchesViewModels = new ArrayList<>();
             for (ProductMatches productMatches : data) {
                 productMatchesViewModels.add(new ProductMatchesViewModel(

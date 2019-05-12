@@ -27,7 +27,7 @@ import co.alexdev.winy.core.di.DaggerWinyComponent;
 import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.di.module.ContextModule;
 import co.alexdev.winy.core.model.wines.PairingText;
-import co.alexdev.winy.core.repository.WinePairingRepository;
+import co.alexdev.winy.core.repository.BaseRepository;
 import co.alexdev.winy.core.util.factory.BaseViewModelFactory;
 import co.alexdev.winy.databinding.FragmentWineBinding;
 import co.alexdev.winy.feature.ui.detail.DetailActivity;
@@ -42,7 +42,7 @@ public class WineFragment extends Fragment {
     private FragmentWineBinding binding;
 
     @Inject
-    WinePairingRepository repository;
+    BaseRepository repository;
 
     @Inject
     KeyboardManager keyboardManager;
@@ -204,9 +204,9 @@ public class WineFragment extends Fragment {
     }
 
     private void setWinesRecyclerView() {
-        wineAdapter = new WineAdapter((wineId, imageView, textView) -> {
+        wineAdapter = new WineAdapter((wineId, imageView) -> {
             if (this.getActivity() != null) {
-                DetailActivity.startActivity(this.getActivity(), wineId, viewModel.food, imageView, textView, null);
+                DetailActivity.startActivity(this.getActivity(), wineId, viewModel.food, imageView, null);
             }
         });
         binding.rvWineRecommendation.setLayoutManager(new LinearLayoutManager(this.getActivity(), LinearLayoutManager.HORIZONTAL, false));

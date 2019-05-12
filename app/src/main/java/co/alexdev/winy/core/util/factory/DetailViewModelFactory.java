@@ -4,17 +4,17 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import co.alexdev.winy.core.repository.WinePairingRepository;
+import co.alexdev.winy.core.repository.BaseRepository;
 import co.alexdev.winy.feature.ui.detail.uimodel.DetailActivityViewModel;
 
 public class DetailViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 
-    private WinePairingRepository repository;
+    private BaseRepository repository;
     private int wineId;
     private String foodName;
 
 
-    public DetailViewModelFactory(WinePairingRepository repository, int wineId, String foodName) {
+    public DetailViewModelFactory(BaseRepository repository, int wineId, String foodName) {
         this.repository = repository;
         this.wineId = wineId;
         this.foodName = foodName;

@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.util.Pair;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -21,7 +20,7 @@ import co.alexdev.winy.R;
 import co.alexdev.winy.core.di.DaggerWinyComponent;
 import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.di.module.ContextModule;
-import co.alexdev.winy.core.repository.WinePairingRepository;
+import co.alexdev.winy.core.repository.BaseRepository;
 import co.alexdev.winy.core.util.factory.DetailViewModelFactory;
 import co.alexdev.winy.databinding.ActivityDetailBinding;
 import co.alexdev.winy.feature.ui.detail.uimodel.DetailActivityViewModel;
@@ -36,21 +35,20 @@ public class DetailActivity extends AppCompatActivity {
     private static final String WINE_ID = "WINE_ID";
     private static final String FOOD_NAME = "FOOD_NAME";
     @Inject
-    WinePairingRepository repository;
+    BaseRepository repository;
     private ActivityDetailBinding binding;
     private DetailViewModelFactory factory;
     private DetailActivityViewModel viewModel;
     private DetailWinesAdapter adapter;
     private boolean isExpanded = false;
 
-    public static void startActivity(Context context, int id, String food, ImageView imageView, TextView textView, Bundle transitionBundle) {
+    public static void startActivity(Context context, int id, String food, ImageView imageView, Bundle transitionBundle) {
         if (context instanceof ProductActivity) {
             ProductActivity productActivity = (ProductActivity) context;
 
             Pair imagePair = Pair.create(imageView, imageView.getTransitionName());
-            Pair textPair = Pair.create(textView, textView.getTransitionName());
 
-            ActivityOptions optionsCompat = ActivityOptions.makeSceneTransitionAnimation(productActivity, imagePair, textPair);
+            ActivityOptions optionsCompat = ActivityOptions.makeSceneTransitionAnimation(productActivity, imagePair);
             productActivity.startActivity(new Intent(productActivity, DetailActivity.class)
                     .putExtra(WINE_ID, id)
                     .putExtra(FOOD_NAME, food), optionsCompat.toBundle());

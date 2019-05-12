@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="co.alexdev.winy.feature.ui.product.wine.uimodel.ProductMatchesViewModel" />
+            type="co.alexdev.winy.feature.ui.favorite.uimodel.FavoriteItemViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView

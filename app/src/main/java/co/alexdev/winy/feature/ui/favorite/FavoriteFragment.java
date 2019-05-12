@@ -7,25 +7,38 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
-import co.alexdev.winy.R;
+import java.util.Objects;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+import javax.inject.Inject;
+
+import co.alexdev.winy.core.di.DaggerWinyComponent;
+import co.alexdev.winy.core.di.WinyComponent;
+import co.alexdev.winy.core.di.module.ContextModule;
+import co.alexdev.winy.core.repository.BaseRepository;
+import co.alexdev.winy.core.util.factory.BaseViewModelFactory;
+import co.alexdev.winy.databinding.FragmentFavoriteBinding;
+import co.alexdev.winy.feature.ui.favorite.uimodel.FavoriteViewModel;
+
 public class FavoriteFragment extends Fragment {
 
-
-    public FavoriteFragment() {
-        // Required empty public constructor
-    }
-
+    @Inject
+    BaseRepository baseRepository;
+    private FragmentFavoriteBinding binding;
+    private FavoriteViewModel viewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favorite, container, false);
-    }
+        WinyComponent component = DaggerWinyComponent.builder().contextModule(new ContextModule(Objects.requireNonNull(getActivity()))).build();
+        component.inject(this);
+        binding = FragmentFavoriteBinding.inflate(inflater, container, false);
+        binding.setLifecycleOwner(this);
+        BaseViewModelFactory factory = new BaseViewModelFactory(baseRepository);
+        viewModel = ViewModelProviders.of(this, factory).get(FavoriteViewModel.class);
+        binding.setViewModel(viewModel);
 
+        return binding.getRoot();
+    }
 }

@@ -23,7 +23,7 @@ import co.alexdev.winy.R;
 import co.alexdev.winy.core.di.DaggerWinyComponent;
 import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.di.module.ContextModule;
-import co.alexdev.winy.core.repository.WinePairingRepository;
+import co.alexdev.winy.core.repository.BaseRepository;
 import co.alexdev.winy.core.util.factory.BaseViewModelFactory;
 import co.alexdev.winy.databinding.ActivitySearchBinding;
 import co.alexdev.winy.feature.ui.detail.DetailActivity;
@@ -33,7 +33,7 @@ import co.alexdev.winy.feature.ui.search.uimodel.SearchActivityViewModel;
 public class SearchActivity extends AppCompatActivity {
 
     @Inject
-    WinePairingRepository repository;
+    BaseRepository repository;
     private ActivitySearchBinding binding;
     private BaseViewModelFactory factory;
     private SearchActivityViewModel viewModel;
@@ -67,7 +67,7 @@ public class SearchActivity extends AppCompatActivity {
     private void setRecyclerView() {
         SearchAdapter searchAdapter = new SearchAdapter((id, food) -> {
             Bundle transitionBundle = ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle();
-            DetailActivity.startActivity(this, id, food, null, null, transitionBundle);
+            DetailActivity.startActivity(this, id, food, null, transitionBundle);
         });
         binding.rvWines.setLayoutManager(new GridLayoutManager(this, 2));
         binding.rvWines.setAdapter(searchAdapter);

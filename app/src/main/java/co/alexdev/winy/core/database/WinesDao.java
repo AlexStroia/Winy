@@ -19,9 +19,6 @@ public interface WinesDao {
     @Query("SELECT * FROM TABLE_PRODUCT_MATCHES")
     LiveData<List<ProductMatches>> loadAllWines();
 
-    @Query("SELECT * FROM TABLE_PRODUCT_MATCHES where title = :title")
-    LiveData<List<ProductMatches>> loadWineByTitle(String title);
-
     @Query("SELECT * FROM TABLE_PRODUCT_MATCHES where title LIKE '%' || :characters|| '%'")
     LiveData<List<ProductMatches>> loadWinesByCharacters(String characters);
 
@@ -36,6 +33,9 @@ public interface WinesDao {
 
     @Query("SELECT * FROM TABLE_PRODUCT_MATCHES WHERE food = :food and id != :id LIMIT 3")
     LiveData<List<ProductMatches>> loadOtherProductMatches(String food, int id);
+
+    @Query("SELECT * FROM TABLE_PRODUCT_MATCHES where isAddedToFavorite = 1")
+    LiveData<List<ProductMatches>> loadFavoriteProducts();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(List<ProductMatches> productMatches);

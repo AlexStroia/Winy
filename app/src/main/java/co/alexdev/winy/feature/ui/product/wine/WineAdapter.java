@@ -3,7 +3,6 @@ package co.alexdev.winy.feature.ui.product.wine;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ListAdapter;
@@ -19,7 +18,7 @@ public class WineAdapter extends ListAdapter<ProductMatchesViewModel, WineAdapte
 
     protected WineAdapter(OnWineClickListener clickListener) {
         super(new DiffCallbacks.WinesDiff());
-        this.clickListener = clickListener;
+        WineAdapter.clickListener = clickListener;
     }
 
     @NonNull
@@ -34,7 +33,7 @@ public class WineAdapter extends ListAdapter<ProductMatchesViewModel, WineAdapte
     }
 
     interface OnWineClickListener {
-        void onWineClickListener(int position, ImageView imageView, TextView textView);
+        void onWineClickListener(int position, ImageView imageView);
     }
 
     static class WinesViewHolder extends RecyclerView.ViewHolder {
@@ -44,7 +43,7 @@ public class WineAdapter extends ListAdapter<ProductMatchesViewModel, WineAdapte
         WinesViewHolder(ItemWineBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
-            this.binding.getRoot().setOnClickListener(view -> clickListener.onWineClickListener(binding.getViewModel().id, binding.ivWine, binding.tvProductMatchesDescription));
+            this.binding.getRoot().setOnClickListener(view -> clickListener.onWineClickListener(binding.getViewModel().id, binding.ivWine));
         }
 
         public void bind(ProductMatchesViewModel productMatchesViewModel) {

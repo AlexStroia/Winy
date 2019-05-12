@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil;
 import javax.inject.Singleton;
 
 import co.alexdev.winy.feature.ui.detail.uimodel.DetailActivityProductViewModel;
+import co.alexdev.winy.feature.ui.favorite.uimodel.FavoriteItemViewModel;
 import co.alexdev.winy.feature.ui.product.wine.uimodel.PairedWinesViewModel;
 import co.alexdev.winy.feature.ui.product.wine.uimodel.ProductMatchesViewModel;
 import co.alexdev.winy.feature.ui.search.uimodel.SearchProductViewModel;
@@ -65,6 +66,19 @@ public class DiffCallbacks {
 
         @Override
         public boolean areContentsTheSame(@NonNull SearchProductViewModel oldItem, @NonNull SearchProductViewModel newItem) {
+            return oldItem.equals(newItem);
+        }
+    }
+
+    public static class FavoriteItemsDiff extends DiffUtil.ItemCallback<FavoriteItemViewModel> {
+
+        @Override
+        public boolean areItemsTheSame(@NonNull FavoriteItemViewModel oldItem, @NonNull FavoriteItemViewModel newItem) {
+            return oldItem.id == newItem.id;
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull FavoriteItemViewModel oldItem, @NonNull FavoriteItemViewModel newItem) {
             return oldItem.equals(newItem);
         }
     }
