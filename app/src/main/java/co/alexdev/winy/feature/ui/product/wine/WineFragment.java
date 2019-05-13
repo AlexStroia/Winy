@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -30,6 +29,7 @@ import co.alexdev.winy.core.model.wines.PairingText;
 import co.alexdev.winy.core.repository.BaseRepository;
 import co.alexdev.winy.core.util.factory.BaseViewModelFactory;
 import co.alexdev.winy.databinding.FragmentWineBinding;
+import co.alexdev.winy.feature.BaseFragment;
 import co.alexdev.winy.feature.ui.detail.DetailActivity;
 import co.alexdev.winy.feature.ui.product.wine.uimodel.PairedWinesViewModel;
 import co.alexdev.winy.feature.ui.product.wine.uimodel.ProductMatchesViewModel;
@@ -37,7 +37,7 @@ import co.alexdev.winy.feature.ui.product.wine.uimodel.WineFragmentViewModel;
 import co.alexdev.winy.feature.util.KeyboardManager;
 
 
-public class WineFragment extends Fragment {
+public class WineFragment extends BaseFragment {
 
     private FragmentWineBinding binding;
 
@@ -130,8 +130,7 @@ public class WineFragment extends Fragment {
                         break;
 
                     case SUCCESS:
-                        binding.include.animate().alpha(0).start();
-                        binding.include.setVisibility(View.GONE);
+                        animateAlpha(binding.include, false);
                         binding.progressBar.setVisibility(View.GONE);
                         viewModel.setProductMatchesListForSearch();
                         binding.autoCompleteTextViewWine.clearFocus();

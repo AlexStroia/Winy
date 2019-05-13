@@ -10,7 +10,6 @@ import android.transition.Transition;
 import android.view.MenuItem;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
@@ -19,6 +18,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import javax.inject.Inject;
 
+import co.alexdev.winy.BaseActivity;
 import co.alexdev.winy.R;
 import co.alexdev.winy.core.di.DaggerWinyComponent;
 import co.alexdev.winy.core.di.WinyComponent;
@@ -30,7 +30,7 @@ import co.alexdev.winy.feature.ui.detail.DetailActivity;
 import co.alexdev.winy.feature.ui.product.ProductActivity;
 import co.alexdev.winy.feature.ui.search.uimodel.SearchActivityViewModel;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends BaseActivity {
 
     @Inject
     BaseRepository repository;
@@ -81,7 +81,16 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                viewModel.searchProductByName(charSequence.toString()).observe(SearchActivity.this, searchAdapter::submitList);
+                if (charSequence.length() == 0) {
+                    binding.rvWines.setAdapter(null);
+                    animateAlpha(binding.include, true);
+                    return;
+                }
+                viewModel.searchProductByName(charSequence.toString()).observe(SearchActivity.this, data -> {
+                    binding.rvWines.setAdapter(searchAdapter);
+                    animateAlpha(binding.include, false);
+                    searchAdapter.submitList(data);
+                });
             }
 
             @Override

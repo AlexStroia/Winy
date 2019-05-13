@@ -2,8 +2,10 @@ package co.alexdev.winy.core.util;
 
 public class Constants {
 
-    public static class AnimDurations {
+    public static class AnimValues {
         public static final int SLIDE_ANIM = 300;
+        public static final float MAX_ALPHA = 1;
+        public static final float MIN_ALPHA = 0;
     }
 
     public static class FIREBASE_DATABASE {

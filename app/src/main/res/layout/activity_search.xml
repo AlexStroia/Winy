@@ -36,14 +36,28 @@
             android:layout_marginStart="@dimen/default_content_margin"
             android:layout_marginTop="@dimen/default_content_margin"
             android:layout_marginEnd="@dimen/default_content_margin"
+            android:background="@drawable/autocomplete_background_unfocused"
+            android:hint="@string/search_by_wine"
             android:imeOptions="actionSearch"
             android:paddingStart="@dimen/default_content_padding"
             android:paddingEnd="@dimen/default_content_padding"
-            android:background="@drawable/autocomplete_background_unfocused"
-            android:hint="@string/search_by_wine"
             app:autocompleteItems="@{viewModel.productsTitle}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/layout_no_wine_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/default_content_margin"
+            android:layout_marginTop="@dimen/default_content_margin"
+            android:layout_marginEnd="@dimen/default_content_margin"
+            android:layout_marginBottom="@dimen/default_content_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/at_search" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
