@@ -9,6 +9,4 @@ public interface WineResponseService {
 
     @GET("pairing?maxPrice=50")
     LiveData<ApiResponse<WinePairingResponse>> getWines(@Query("food") String wineName);
-
-
 }

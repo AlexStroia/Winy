@@ -26,7 +26,7 @@ import co.alexdev.winy.core.di.DaggerWinyComponent;
 import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.di.module.ContextModule;
 import co.alexdev.winy.core.model.wines.PairingText;
-import co.alexdev.winy.core.repository.BaseRepository;
+import co.alexdev.winy.core.repository.WinesRepository;
 import co.alexdev.winy.core.util.factory.BaseViewModelFactory;
 import co.alexdev.winy.databinding.FragmentWineBinding;
 import co.alexdev.winy.feature.BaseFragment;
@@ -42,7 +42,7 @@ public class WineFragment extends BaseFragment {
     private FragmentWineBinding binding;
 
     @Inject
-    BaseRepository repository;
+    WinesRepository repository;
 
     @Inject
     KeyboardManager keyboardManager;

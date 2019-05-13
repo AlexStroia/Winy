@@ -20,7 +20,7 @@ import co.alexdev.winy.R;
 import co.alexdev.winy.core.di.DaggerWinyComponent;
 import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.di.module.ContextModule;
-import co.alexdev.winy.core.repository.BaseRepository;
+import co.alexdev.winy.core.repository.WinesRepository;
 import co.alexdev.winy.core.util.factory.DetailViewModelFactory;
 import co.alexdev.winy.databinding.ActivityDetailBinding;
 import co.alexdev.winy.feature.ui.detail.uimodel.DetailActivityViewModel;
@@ -35,7 +35,7 @@ public class DetailActivity extends AppCompatActivity {
     private static final String WINE_ID = "WINE_ID";
     private static final String FOOD_NAME = "FOOD_NAME";
     @Inject
-    BaseRepository repository;
+    WinesRepository repository;
     private ActivityDetailBinding binding;
     private DetailViewModelFactory factory;
     private DetailActivityViewModel viewModel;

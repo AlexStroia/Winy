@@ -27,7 +27,7 @@ import co.alexdev.winy.core.util.WinyExecutor;
 
 
 @Singleton
-public class BaseRepository {
+public class WinesRepository {
 
     private WinyExecutor executor;
     private WineResponseService service;
@@ -38,8 +38,8 @@ public class BaseRepository {
     private RateLimiter<String> repoListRateLimit = new RateLimiter<>(10, TimeUnit.MINUTES);
 
     @Inject
-    public BaseRepository(WinyExecutor executor, WineResponseService service, WinesDao winesDao,
-                          PairedWinesDao pairedWinesDao, PairingTextDao pairingTextDao, DatabaseUtils databaseUtils) {
+    public WinesRepository(WinyExecutor executor, WineResponseService service, WinesDao winesDao,
+                           PairedWinesDao pairedWinesDao, PairingTextDao pairingTextDao, DatabaseUtils databaseUtils) {
         this.executor = executor;
         this.service = service;
         this.winesDao = winesDao;

@@ -4,16 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import co.alexdev.winy.core.repository.BaseRepository;
+import co.alexdev.winy.core.repository.WinesRepository;
 import co.alexdev.winy.feature.ui.favorite.uimodel.FavoriteViewModel;
 import co.alexdev.winy.feature.ui.product.wine.uimodel.WineFragmentViewModel;
 import co.alexdev.winy.feature.ui.search.uimodel.SearchActivityViewModel;
 
 public class BaseViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 
-    private BaseRepository repository;
+    private WinesRepository repository;
 
-    public BaseViewModelFactory(BaseRepository repository) {
+    public BaseViewModelFactory(WinesRepository repository) {
         this.repository = repository;
     }
 

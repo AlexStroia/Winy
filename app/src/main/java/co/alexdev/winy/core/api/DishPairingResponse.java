@@ -8,5 +8,6 @@ public class DishPairingResponse {
 
     @SerializedName("text")
     public String textDescription;
+    @SerializedName("pairings")
     public List<String> pairings;
 }

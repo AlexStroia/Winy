@@ -8,12 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.alexdev.winy.core.model.wines.ProductMatches;
-import co.alexdev.winy.core.repository.BaseRepository;
+import co.alexdev.winy.core.repository.WinesRepository;
 
 public class FavoriteViewModel extends ViewModel {
 
     public LiveData<List<FavoriteItemViewModel>> favorites;
-    public FavoriteViewModel(BaseRepository repository) {
+
+    public FavoriteViewModel(WinesRepository repository) {
         favorites = Transformations.map(repository.loadFavoriteProducts(), products -> {
             List<FavoriteItemViewModel> favoriteItemViewModelList = new ArrayList<>();
             for (ProductMatches productMatches : products) {

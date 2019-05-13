@@ -3,6 +3,7 @@ package co.alexdev.winy.core.di.module;
 import javax.inject.Singleton;
 
 import co.alexdev.winy.BuildConfig;
+import co.alexdev.winy.core.api.DishResponseService;
 import co.alexdev.winy.core.api.WineResponseService;
 import co.alexdev.winy.core.util.livedata.LiveDataCallAdapterFactory;
 import dagger.Module;
@@ -29,5 +30,11 @@ public class ServiceModule {
     @Provides
     public WineResponseService createWineResponseService(Retrofit retrofit) {
         return retrofit.create(WineResponseService.class);
+    }
+
+    @Singleton
+    @Provides
+    public DishResponseService createDishResponseService(Retrofit retrofit) {
+        return retrofit.create(DishResponseService.class);
     }
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import co.alexdev.winy.core.model.dish.Dish;
 import co.alexdev.winy.core.model.wines.PairedWines;
 import co.alexdev.winy.core.model.wines.ProductMatches;
 
@@ -37,5 +38,16 @@ public class DatabaseUtils {
             }
         }
         return products;
+    }
+
+    public List<Dish> appendQueryAndDescriptionToDish(String searchedQuery, String description, List<String> pairings) {
+        List<Dish> dishes = new ArrayList<>();
+
+        if (!pairings.isEmpty()) {
+            for (String pairing : pairings) {
+                dishes.add(new Dish(searchedQuery, description, pairing));
+            }
+        }
+        return dishes;
     }
 }

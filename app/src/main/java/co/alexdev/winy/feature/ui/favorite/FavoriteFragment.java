@@ -19,7 +19,7 @@ import javax.inject.Inject;
 import co.alexdev.winy.core.di.DaggerWinyComponent;
 import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.di.module.ContextModule;
-import co.alexdev.winy.core.repository.BaseRepository;
+import co.alexdev.winy.core.repository.WinesRepository;
 import co.alexdev.winy.core.util.factory.BaseViewModelFactory;
 import co.alexdev.winy.databinding.FragmentFavoriteBinding;
 import co.alexdev.winy.feature.ui.detail.DetailActivity;
@@ -29,7 +29,7 @@ import co.alexdev.winy.feature.util.RecyclerDecoration;
 public class FavoriteFragment extends Fragment {
 
     @Inject
-    BaseRepository baseRepository;
+    WinesRepository winesRepository;
     private FragmentFavoriteBinding binding;
     private FavoriteViewModel viewModel;
 
@@ -42,7 +42,7 @@ public class FavoriteFragment extends Fragment {
         binding.setLifecycleOwner(this);
         binding.setViewModel(viewModel);
 
-        BaseViewModelFactory factory = new BaseViewModelFactory(baseRepository);
+        BaseViewModelFactory factory = new BaseViewModelFactory(winesRepository);
         viewModel = ViewModelProviders.of(this, factory).get(FavoriteViewModel.class);
 
         setRecycler();

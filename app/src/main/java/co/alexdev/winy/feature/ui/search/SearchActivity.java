@@ -24,7 +24,7 @@ import co.alexdev.winy.R;
 import co.alexdev.winy.core.di.DaggerWinyComponent;
 import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.di.module.ContextModule;
-import co.alexdev.winy.core.repository.BaseRepository;
+import co.alexdev.winy.core.repository.WinesRepository;
 import co.alexdev.winy.core.util.factory.BaseViewModelFactory;
 import co.alexdev.winy.databinding.ActivitySearchBinding;
 import co.alexdev.winy.feature.ui.detail.DetailActivity;
@@ -34,7 +34,7 @@ import co.alexdev.winy.feature.ui.search.uimodel.SearchActivityViewModel;
 public class SearchActivity extends BaseActivity {
 
     @Inject
-    BaseRepository repository;
+    WinesRepository repository;
     private ActivitySearchBinding binding;
     private BaseViewModelFactory factory;
     private SearchActivityViewModel viewModel;
