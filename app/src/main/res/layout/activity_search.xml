@@ -50,12 +50,10 @@
             android:id="@+id/include"
             layout="@layout/layout_no_food_search"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_content_margin"
             android:layout_marginTop="@dimen/default_content_margin"
             android:layout_marginEnd="@dimen/default_content_margin"
-            android:layout_marginBottom="@dimen/default_content_margin"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/at_search" />
