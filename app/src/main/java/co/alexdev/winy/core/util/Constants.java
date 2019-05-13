@@ -3,7 +3,6 @@ package co.alexdev.winy.core.util;
 public class Constants {
 
     public static class AnimValues {
-        public static final int SLIDE_ANIM = 300;
         public static final float MAX_ALPHA = 1;
         public static final float MIN_ALPHA = 0;
     }
@@ -28,9 +27,7 @@ public class Constants {
 
     public static class NETWORK {
         public static final String HEADER = "header";
-        public static final String X_RAPID_API_HOST = "X-RapidAPI-Host";
         public static final String X_RAPID_API_KEY = "X-RapidAPI-Key";
-        public static final String CONTENT_TYPE = "application/json; charset=utf-8";
     }
 }
 
