@@ -7,6 +7,6 @@ import retrofit2.http.Query;
 
 public interface DishResponseService {
 
-    @GET
+    @GET("dishes")
     LiveData<ApiResponse<DishPairingResponse>> getDish(@Query("wine") String wine);
 }

@@ -91,6 +91,7 @@ public class WineFragment extends BaseFragment {
                             break;
 
                         case SUCCESS:
+                            animateAlpha(binding.include, false);
                             binding.progressBar.setVisibility(View.GONE);
                             viewModel.setProductMatchesListForSearch();
                             binding.autoCompleteTextViewWine.clearFocus();

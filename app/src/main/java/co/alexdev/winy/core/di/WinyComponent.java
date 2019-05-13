@@ -9,6 +9,7 @@ import co.alexdev.winy.core.model.user.UserCredential;
 import co.alexdev.winy.feature.ui.detail.DetailActivity;
 import co.alexdev.winy.feature.ui.favorite.FavoriteFragment;
 import co.alexdev.winy.feature.ui.login.ActivityLogin;
+import co.alexdev.winy.feature.ui.product.dish.DishFragment;
 import co.alexdev.winy.feature.ui.product.wine.WineFragment;
 import co.alexdev.winy.feature.ui.search.SearchActivity;
 import co.alexdev.winy.feature.ui.signup.SignupActivity;
@@ -31,4 +32,6 @@ public interface WinyComponent {
     void inject(SearchActivity searchActivity);
 
     void inject(FavoriteFragment favoriteFragment);
+
+    void inject(DishFragment dishFragment);
 }

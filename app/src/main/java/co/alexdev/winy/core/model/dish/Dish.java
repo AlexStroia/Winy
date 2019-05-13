@@ -1,11 +1,13 @@
 package co.alexdev.winy.core.model.dish;
 
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import java.util.Objects;
 
 @Entity(tableName = "TABLE_DISH")
 public class Dish {
+    @PrimaryKey
     public int id;
     public String searchedQuery;
     public String description;

@@ -136,7 +136,7 @@
 
                 <include
                     android:id="@+id/include"
-                    layout="@layout/layout_no_wine_search"
+                    layout="@layout/layout_no_food_search"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/default_content_margin"
