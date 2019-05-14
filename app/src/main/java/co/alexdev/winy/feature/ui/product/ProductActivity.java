@@ -9,15 +9,21 @@ import android.view.MenuItem;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import co.alexdev.winy.R;
 import co.alexdev.winy.databinding.ActivityProductBinding;
 import co.alexdev.winy.feature.ui.favorite.FavoriteFragment;
+import co.alexdev.winy.feature.ui.product.settings.SettingsFragment;
 import co.alexdev.winy.feature.ui.search.SearchActivity;
 
 public class ProductActivity extends AppCompatActivity {
 
     private ActivityProductBinding mBinding;
+    private Fragment productFragment = new ProductFragment();
+    private Fragment favoritesFragment = new FavoriteFragment();
+    private Fragment settingsFragment = new SettingsFragment();
+    private Fragment activeFragment = productFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,15 +31,19 @@ public class ProductActivity extends AppCompatActivity {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_product);
         mBinding.setLifecycleOwner(this);
 
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, favoritesFragment).hide(favoritesFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, settingsFragment).hide(settingsFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, productFragment).commit();
+
         if (savedInstanceState == null) {
-            handleReplace(new ProductFragment());
+            handleFragmentChanging(productFragment);
         }
 
         mBinding.bottomNavView.setOnNavigationItemSelectedListener(menuItem -> {
             if (menuItem.getItemId() == R.id.favorites) {
-                handleReplace(new FavoriteFragment());
+                handleFragmentChanging(favoritesFragment);
             } else if (menuItem.getItemId() == R.id.home) {
-                handleReplace(new ProductFragment());
+                handleFragmentChanging(productFragment);
             }
             menuItem.setChecked(true);
             return false;
@@ -64,11 +74,16 @@ public class ProductActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void handleReplace(Fragment fragment) {
-        getSupportFragmentManager()
-                .beginTransaction()
-                .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_from_left)
-                .replace(R.id.fragment_container, fragment)
-                .commit();
+    private void handleFragmentChanging(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction().hide(activeFragment)
+                .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_from_left);
+        if (fragment instanceof ProductFragment) {
+            transaction.show(productFragment).commit();
+        } else if (fragment instanceof FavoriteFragment) {
+            transaction.show(favoritesFragment).commit();
+        } else if (fragment instanceof SettingsFragment) {
+            transaction.show(settingsFragment).commit();
+        }
+        activeFragment = fragment;
     }
 }
