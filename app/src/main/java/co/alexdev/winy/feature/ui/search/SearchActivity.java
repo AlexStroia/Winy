@@ -1,6 +1,5 @@
 package co.alexdev.winy.feature.ui.search;
 
-import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +8,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.transition.Slide;
 import android.transition.Transition;
-import android.util.Pair;
 import android.view.MenuItem;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
@@ -68,11 +66,9 @@ public class SearchActivity extends BaseActivity {
     }
 
     private void setRecyclerView() {
-        SearchAdapter searchAdapter = new SearchAdapter((id, imageView, food) -> {
-            Pair imagePair = Pair.create(imageView, imageView.getTransitionName());
-
-            ActivityOptions optionsCompat = ActivityOptions.makeSceneTransitionAnimation(this, imagePair);
-            DetailActivity.startActivity(this, id, food, imageView, optionsCompat.toBundle());
+        SearchAdapter searchAdapter = new SearchAdapter((id, food) -> {
+            Bundle transitionBundle = ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle();
+            DetailActivity.startActivity(this, id, food, null, transitionBundle);
         });
         binding.rvWines.setLayoutManager(new GridLayoutManager(this, 2));
         binding.rvWines.setAdapter(searchAdapter);
@@ -93,7 +89,9 @@ public class SearchActivity extends BaseActivity {
                 }
                 viewModel.searchProductByName(charSequence.toString()).observe(SearchActivity.this, data -> {
                     binding.rvWines.setAdapter(searchAdapter);
-                    new Handler().postDelayed(() -> animateAlpha(binding.include, false), 50);
+                    new Handler().postDelayed(() -> {
+                        animateAlpha(binding.include, false);
+                    }, 50);
                     searchAdapter.submitList(data);
                 });
             }

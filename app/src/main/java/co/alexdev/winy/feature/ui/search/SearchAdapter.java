@@ -2,7 +2,6 @@ package co.alexdev.winy.feature.ui.search;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ListAdapter;
@@ -33,7 +32,7 @@ public class SearchAdapter extends ListAdapter<SearchProductViewModel, SearchAda
     }
 
     interface OnSearchItemClickListener {
-        void onSearchItemClick(int id, ImageView imageView, String food);
+        void onSearchItemClick(int id, String food);
     }
 
     static class SearchWinesViewHolder extends RecyclerView.ViewHolder {
@@ -44,7 +43,7 @@ public class SearchAdapter extends ListAdapter<SearchProductViewModel, SearchAda
             super(binding.getRoot());
             this.binding = binding;
 
-            binding.getRoot().setOnClickListener(view -> listener.onSearchItemClick(binding.getViewModel().id, binding.ivWine, binding.getViewModel().food));
+            binding.getRoot().setOnClickListener(view -> listener.onSearchItemClick(binding.getViewModel().id, binding.getViewModel().food));
         }
 
         public void bind(SearchProductViewModel viewModel) {
