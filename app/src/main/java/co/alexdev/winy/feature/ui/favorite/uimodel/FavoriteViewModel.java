@@ -13,8 +13,26 @@ import co.alexdev.winy.core.repository.WinesRepository;
 public class FavoriteViewModel extends ViewModel {
 
     public LiveData<List<FavoriteItemViewModel>> favorites;
+    private WinesRepository repository;
 
     public FavoriteViewModel(WinesRepository repository) {
+        this.repository = repository;
+        init();
+    }
+
+    private static List<FavoriteItemViewModel> apply(List<ProductMatches> products) {
+        List<FavoriteItemViewModel> favoriteItemViewModelList = new ArrayList<>();
+        for (ProductMatches productMatches : products) {
+            favoriteItemViewModelList.add(new FavoriteItemViewModel(
+                    productMatches.id, productMatches.description, productMatches.price,
+                    productMatches.imageUrl, String.valueOf(productMatches.averageRating), String.valueOf(productMatches.ratingCount),
+                    productMatches.isAddedToFavorite, productMatches.food, productMatches.title, String.valueOf(productMatches.score),
+                    productMatches.link));
+        }
+        return favoriteItemViewModelList;
+    }
+
+    private void init() {
         favorites = Transformations.map(repository.loadFavoriteProducts(), products -> {
             List<FavoriteItemViewModel> favoriteItemViewModelList = new ArrayList<>();
             for (ProductMatches productMatches : products) {
@@ -26,5 +44,9 @@ public class FavoriteViewModel extends ViewModel {
             }
             return favoriteItemViewModelList;
         });
+    }
+
+    public LiveData<List<FavoriteItemViewModel>> loadFavProducts() {
+        return Transformations.map(repository.loadFavoriteProducts(), FavoriteViewModel::apply);
     }
 }

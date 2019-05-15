@@ -34,6 +34,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private static final String WINE_ID = "WINE_ID";
     private static final String FOOD_NAME = "FOOD_NAME";
+
     @Inject
     WinesRepository repository;
     private ActivityDetailBinding binding;
@@ -57,6 +58,17 @@ public class DetailActivity extends AppCompatActivity {
                     .putExtra(WINE_ID, id)
                     .putExtra(FOOD_NAME, food), transitionBundle);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!viewModel.shouldUseSharedElementTransition) {
+            getWindow().setSharedElementEnterTransition(null);
+            getWindow().setSharedElementReenterTransition(null);
+            binding.ivWineIcon.setTransitionName("");
+        }
+
+        super.onBackPressed();
     }
 
     @Override

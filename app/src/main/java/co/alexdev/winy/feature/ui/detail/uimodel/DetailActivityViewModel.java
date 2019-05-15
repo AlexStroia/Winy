@@ -16,6 +16,7 @@ public class DetailActivityViewModel extends ViewModel {
     public LiveData<DetailActivityProductViewModel> productMatchesViewModelLiveData;
     public LiveData<List<DetailActivityProductViewModel>> similarDetailProductActivityViewModelLiveData;
     private WinesRepository repository;
+    public boolean shouldUseSharedElementTransition;
 
     public DetailActivityViewModel(WinesRepository repository, int wineId, String foodName) {
         this.repository = repository;
@@ -32,6 +33,7 @@ public class DetailActivityViewModel extends ViewModel {
     }
 
     public void insertToDatabase(DetailActivityProductViewModel detailActivityProductViewModel) {
+        shouldUseSharedElementTransition = !detailActivityProductViewModel.isAddedToFavorite;
         repository.update(detailActivityProductViewModel.id, !detailActivityProductViewModel.isAddedToFavorite);
     }
 
