@@ -3,7 +3,6 @@ package co.alexdev.winy.feature.ui.search;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.transition.Slide;
@@ -89,9 +88,7 @@ public class SearchActivity extends BaseActivity {
                 }
                 viewModel.searchProductByName(charSequence.toString()).observe(SearchActivity.this, data -> {
                     binding.rvWines.setAdapter(searchAdapter);
-                    new Handler().postDelayed(() -> {
-                        animateAlpha(binding.include, false);
-                    }, 50);
+                    animateAlpha(binding.include, false);
                     searchAdapter.submitList(data);
                 });
             }

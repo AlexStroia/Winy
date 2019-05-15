@@ -20,10 +20,6 @@ import co.alexdev.winy.feature.ui.search.SearchActivity;
 public class ProductActivity extends AppCompatActivity {
 
     private ActivityProductBinding mBinding;
-    private Fragment productFragment = new ProductFragment();
-    private Fragment favoritesFragment = new FavoriteFragment();
-    private Fragment settingsFragment = new SettingsFragment();
-    private Fragment activeFragment = productFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,19 +27,15 @@ public class ProductActivity extends AppCompatActivity {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_product);
         mBinding.setLifecycleOwner(this);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, favoritesFragment).hide(favoritesFragment).commit();
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, settingsFragment).hide(settingsFragment).commit();
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, productFragment).commit();
-
         if (savedInstanceState == null) {
-            handleFragmentChanging(productFragment);
+            handleFragmentChanging(new ProductFragment());
         }
 
         mBinding.bottomNavView.setOnNavigationItemSelectedListener(menuItem -> {
             if (menuItem.getItemId() == R.id.favorites) {
-                handleFragmentChanging(favoritesFragment);
+                handleFragmentChanging(new FavoriteFragment());
             } else if (menuItem.getItemId() == R.id.home) {
-                handleFragmentChanging(productFragment);
+                handleFragmentChanging(new ProductFragment());
             }
             menuItem.setChecked(true);
             return false;
@@ -75,15 +67,13 @@ public class ProductActivity extends AppCompatActivity {
     }
 
     private void handleFragmentChanging(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction().hide(activeFragment)
-                .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_from_left);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_from_left);
         if (fragment instanceof ProductFragment) {
-            transaction.show(productFragment).commit();
+            transaction.replace(R.id.fragment_container, fragment).commit();
         } else if (fragment instanceof FavoriteFragment) {
-            transaction.show(favoritesFragment).commit();
+            transaction.replace(R.id.fragment_container, fragment).commit();
         } else if (fragment instanceof SettingsFragment) {
-            transaction.show(settingsFragment).commit();
+            transaction.replace(R.id.fragment_container, fragment).commit();
         }
-        activeFragment = fragment;
     }
 }
