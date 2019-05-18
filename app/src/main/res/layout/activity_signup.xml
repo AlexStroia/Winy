@@ -26,12 +26,13 @@
                 android:id="@+id/et_firstname"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:hint="@string/hint_firstname"
                 android:text="@={viewModel.userInformation.firstname}"
                 app:layout_constraintBottom_toTopOf="@+id/et_lastname"
                 app:layout_constraintEnd_toEndOf="@+id/et_lastname"
                 app:layout_constraintStart_toStartOf="@+id/et_lastname"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <co.alexdev.winy.feature.util.custom.CustomEditText
                 android:id="@+id/et_lastname"
@@ -88,23 +89,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="@dimen/ic_wine_width"
-                android:layout_height="@dimen/ic_wine_height"
-                android:layout_marginStart="@dimen/default_content_margin"
-                android:layout_marginTop="@dimen/default_content_margin"
-                android:layout_marginEnd="@dimen/default_content_margin"
-                android:layout_marginBottom="@dimen/default_content_margin"
-                android:contentDescription="@string/wine_picture"
-                android:rotation="20"
-                app:layout_constraintBottom_toTopOf="@+id/et_firstname"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="spread"
-                app:srcCompat="@drawable/ic_wine" />
 
             <ProgressBar
                 android:id="@+id/progressBar"

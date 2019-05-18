@@ -2,8 +2,8 @@
     <string name="app_name">Winy</string>
     <string name="login">Login</string>
     <string name="signup">Signup</string>
-    <string name="hint_email">Your e-mail goes here</string>
-    <string name="hint_password">Your password goes here</string>
+    <string name="hint_email">E-mail</string>
+    <string name="hint_password">Password</string>
     <string name="hint_firstname">Firstname</string>
     <string name="hint_lastname">Lastname</string>
     <string name="hint_password_type2">Password</string>
@@ -12,6 +12,10 @@
     <string name="logo_content_description">Three bottles of wine and the application logo</string>
     <string name="user_not_searched">You did not searched for anything.</string>
     <string name="user_no_favorite">You did not added nothing to favorite.</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="or_connect">Or connect with</string>
+    <string name="no_account">Don\'t have an account? Sign up.</string>
+    <string name="already_have_account"> Already have an account? Log in.</string>
 
     <!--Product ProductActivity-->
     <string name="home_button_text">Home</string>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="default_content_margin">8dp</dimen>
-    <dimen name="rounded_button_radius">30dp</dimen>
+    <dimen name="rounded_button_radius">12dp</dimen>
     <dimen name="default_content_padding">8dp</dimen>
     <dimen name="searchbar_corner_radius">8dp</dimen>
 
@@ -11,6 +11,9 @@
     <dimen name="button_elevation">16dp</dimen>
     <dimen name="rounded_button_margin">32dp</dimen>
     <dimen name="rounded_button_margin_top">16dp</dimen>
+    <dimen name="separator_margin_top">32dp</dimen>
+    <dimen name="line_width">132dp</dimen>
+    <dimen name="login_margin_content_top">128dp</dimen>
 
     <!--LoginActivity-->
     <dimen name="login_activity_margin_top">64dp</dimen>

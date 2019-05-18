@@ -23,6 +23,10 @@ public class Constants {
         public enum LOGIN_STATE {
             FAILURE, SUCCESS, NOT_SET, LOADING
         }
+
+        public enum AUTH_LAYOUT_STATE {
+            LOGIN, SIGNUP
+        }
     }
 
     public static class NETWORK {

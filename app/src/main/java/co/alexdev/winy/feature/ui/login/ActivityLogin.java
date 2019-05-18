@@ -1,7 +1,5 @@
 package co.alexdev.winy.feature.ui.login;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -52,9 +50,15 @@ public class ActivityLogin extends AppCompatActivity {
                 Snackbar.make(binding.coordinator, activityLoginViewModel.loginMessage, Snackbar.LENGTH_LONG).show();
             }
         });
-    }
 
-    public static void startActivity(Context context) {
-        context.startActivity(new Intent(context, ActivityLogin.class));
+        activityLoginViewModel.authLayoutState.observe(this, enumValue -> {
+            if (Constants.FIREBASE_DATABASE.AUTH_LAYOUT_STATE.SIGNUP.equals(enumValue)) {
+                binding.switcher.showNext();
+                binding.tvNoAccount.setText(R.string.already_have_account);
+            } else if (Constants.FIREBASE_DATABASE.AUTH_LAYOUT_STATE.LOGIN.equals(enumValue)) {
+                binding.switcher.showPrevious();
+                binding.tvNoAccount.setText(R.string.no_account);
+            }
+        });
     }
 }

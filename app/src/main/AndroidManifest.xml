@@ -22,12 +22,8 @@
         <activity android:name=".feature.ui.product.ProductActivity" />
         <activity
             android:name=".feature.ui.signup.SignupActivity"
-            android:launchMode="singleTop"
-            android:parentActivityName=".feature.ui.loginsignup.LoginSignupActivity" />
-        <activity
-            android:name=".feature.ui.login.ActivityLogin"
-            android:parentActivityName=".feature.ui.loginsignup.LoginSignupActivity" />
-        <activity android:name=".feature.ui.loginsignup.LoginSignupActivity">
+            android:launchMode="singleTop" />
+        <activity android:name=".feature.ui.login.ActivityLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
