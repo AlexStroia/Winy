@@ -58,7 +58,7 @@
 
                 <TextView
                     android:id="@+id/tv_wine_name"
-                    android:layout_width="@dimen/title_wine_width"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/default_content_margin"
                     android:layout_marginTop="@dimen/default_content_margin"
@@ -109,7 +109,7 @@
                     android:layout_marginTop="@dimen/default_content_margin"
                     android:text="@{viewModel.productMatchesViewModelLiveData.ratingCount}"
                     app:layout_constraintStart_toEndOf="@+id/iv_star_icon"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_wine_icon"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_buy"
                     tools:text="5.0" />
 
                 <TextView
@@ -142,7 +142,7 @@
                     android:layout_marginTop="@dimen/default_content_margin"
                     android:text="@{viewModel.productMatchesViewModelLiveData.averageRating}"
                     app:layout_constraintStart_toStartOf="@+id/tv_average_rating_text"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_wine_icon"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_buy"
                     tools:text="356" />
 
                 <TextView
