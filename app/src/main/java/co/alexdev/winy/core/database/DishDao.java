@@ -18,4 +18,10 @@ public interface DishDao {
 
     @Query("SELECT * FROM TABLE_DISH WHERE searchedQuery = :searchedQuery")
     LiveData<List<Dish>> loadDish(String searchedQuery);
+
+    @Query("SELECT searchedQuery FROM TABLE_DISH")
+    LiveData<List<String>> loadAutocompleteNames();
+
+    @Query("DELETE FROM TABLE_DISH where searchedQuery =:query")
+    void deleteAll(String query);
 }

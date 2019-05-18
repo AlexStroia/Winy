@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -33,6 +35,7 @@ public class DishFragment extends BaseFragment {
     KeyboardManager keyboardManager;
     private DishFragmentBinding binding;
     private DishViewModel viewModel;
+    private DishAdapter dishAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,37 +49,65 @@ public class DishFragment extends BaseFragment {
         binding.setLifecycleOwner(this);
         binding.setViewModel(viewModel);
 
+        setRecyclerView();
         binding.autoCompleteTextViewFood.setOnEditorActionListener((textView, actionId, keyEvent) -> {
-            viewModel.food = textView.getText().toString();
+            viewModel.wine = textView.getText().toString();
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                viewModel.onSearchPressed().observe(this, data -> {
-                    switch (data.status) {
-                        case LOADING:
-                            binding.progressBar.setVisibility(View.VISIBLE);
-                            break;
-
-                        case ERROR:
-                            binding.progressBar.setVisibility(View.GONE);
-                            if (data.message != null) {
-                                Snackbar.make(binding.coordinator, data.message,
-                                        Snackbar.LENGTH_LONG).show();
-                            }
-                            break;
-
-                        case SUCCESS:
-                            animateAlpha(binding.include, false);
-                            binding.progressBar.setVisibility(View.GONE);
-                            binding.autoCompleteTextViewFood.clearFocus();
-
-                            binding.autoCompleteTextViewFood.getText().clear();
-                            break;
-                    }
-
-                });
-
+                onSearchPressed();
             }
             return false;
         });
+
+        binding.autoCompleteTextViewFood.setOnItemClickListener((adapterView, view, i, l) -> {
+            String query = adapterView.getItemAtPosition(i).toString();
+            viewModel.wine = query;
+            onSearchPressed();
+        });
+
+        setRecyclerView();
         return binding.getRoot();
+    }
+
+    private void onSearchPressed() {
+        viewModel.onSearchPressed().observe(this, data -> {
+            switch (data.status) {
+                case LOADING:
+                    binding.progressBar.setVisibility(View.VISIBLE);
+                    break;
+
+                case ERROR:
+                    binding.progressBar.setVisibility(View.GONE);
+                    if (data.message != null) {
+                        Snackbar.make(binding.coordinator, data.message,
+                                Snackbar.LENGTH_LONG).show();
+                    }
+                    break;
+
+                case SUCCESS:
+                    animateAlpha(binding.include, false);
+                    binding.progressBar.setVisibility(View.GONE);
+                    binding.autoCompleteTextViewFood.clearFocus();
+                    viewModel.setProductsDish();
+
+                    viewModel.dishes.observe(this.getActivity(), dishItemViewModels -> {
+                        binding.cardview.setVisibility(View.VISIBLE);
+                        binding.tvPairingWineDescription.setText(viewModel.description);
+                        dishAdapter.submitList(dishItemViewModels);
+                    });
+
+                    keyboardManager.hideKeyboard();
+                    binding.autoCompleteTextViewFood.getText().clear();
+                    break;
+            }
+
+        });
+    }
+
+
+    public void setRecyclerView() {
+        dishAdapter = new DishAdapter();
+        binding.rvFoods.setLayoutManager(new LinearLayoutManager(this.getActivity(), RecyclerView.VERTICAL, false));
+        binding.rvFoods.setAdapter(dishAdapter);
+        binding.rvFoods.setHasFixedSize(true);
     }
 }

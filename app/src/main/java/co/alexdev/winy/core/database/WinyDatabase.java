@@ -8,7 +8,7 @@ import co.alexdev.winy.core.model.wines.PairedWines;
 import co.alexdev.winy.core.model.wines.PairingText;
 import co.alexdev.winy.core.model.wines.ProductMatches;
 
-@Database(entities = {ProductMatches.class, PairedWines.class, PairingText.class, Dish.class}, version = 15,
+@Database(entities = {ProductMatches.class, PairedWines.class, PairingText.class, Dish.class}, version = 16,
         exportSchema = false)
 public abstract class WinyDatabase extends RoomDatabase {
 

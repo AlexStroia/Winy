@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data class=".DishFragmentBinding">
 
@@ -10,8 +11,6 @@
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/coordinator"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -37,32 +36,34 @@
                     android:hint="@string/hint_wine_name"
                     android:imeOptions="actionSearch"
                     android:inputType="text"
+                    app:autocompleteItems="@{viewModel.dishAutocompleteItems}"
                     android:paddingStart="@dimen/default_content_padding"
                     android:paddingEnd="@dimen/default_content_padding"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardview"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:visibility="visible"
+                    android:layout_marginStart="@dimen/default_content_margin"
+                    android:layout_marginTop="@dimen/default_content_margin"
+                    android:layout_marginEnd="@dimen/default_content_margin"
+                    android:layout_marginBottom="@dimen/default_content_margin"
                     app:cardBackgroundColor="@android:color/transparent"
                     app:cardElevation="@dimen/badge_elevation"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView_food">
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rv_foods">
 
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/cardview_edge"
-                        android:visibility="gone">
+                        android:visibility="visible">
 
                         <TextView
                             android:id="@+id/tv_pairing_wine_description"
@@ -75,20 +76,17 @@
                     </FrameLayout>
                 </androidx.cardview.widget.CardView>
 
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_foods"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/default_content_margin"
-                    android:layout_marginTop="@dimen/default_content_margin"
                     android:layout_marginEnd="@dimen/default_content_margin"
-                    android:layout_marginBottom="@dimen/default_content_margin"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/cardview"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardview" />
+                    app:layout_constraintTop_toBottomOf="@id/autoCompleteTextView_food" />
 
                 <ProgressBar
                     android:id="@+id/progressBar"
@@ -104,16 +102,18 @@
                 <include
                     android:id="@+id/include"
                     layout="@layout/layout_no_wine_search"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/default_content_margin"
                     android:layout_marginTop="@dimen/default_content_margin"
                     android:layout_marginEnd="@dimen/default_content_margin"
                     android:layout_marginBottom="@dimen/default_content_margin"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/autoCompleteTextView_food" />
+                    app:layout_constraintTop_toBottomOf="@id/autoCompleteTextView_food"
+                    app:layout_constraintVertical_bias="0.0" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

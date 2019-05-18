@@ -19,7 +19,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_content_margin"
-            android:contentDescription="@string/wine_content_description"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_food" />
@@ -31,7 +30,7 @@
             android:layout_marginStart="@dimen/default_content_margin"
             android:layout_marginTop="@dimen/default_content_margin"
             android:layout_marginBottom="@dimen/default_content_margin"
-            android:text="@{viewModel.description}"
+            android:text="@{viewModel.food}"
             android:textSize="@dimen/textview_product_matches_size"
             app:layout_constraintBottom_toTopOf="@+id/iv_wine_image"
             app:layout_constraintStart_toEndOf="@+id/iv_wine_image"

@@ -4,17 +4,17 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import co.alexdev.winy.core.util.DiffCallbacks;
 import co.alexdev.winy.databinding.ItemDishBinding;
 import co.alexdev.winy.feature.ui.product.dish.uimodel.DishItemViewModel;
 
 public class DishAdapter extends ListAdapter<DishItemViewModel, DishAdapter.ViewHolder> {
 
-    protected DishAdapter(@NonNull DiffUtil.ItemCallback<DishItemViewModel> diffCallback) {
-        super(diffCallback);
+    protected DishAdapter() {
+        super(new DiffCallbacks.DishItemsDiff());
     }
 
     @NonNull

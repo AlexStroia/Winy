@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity(tableName = "TABLE_DISH")
 public class Dish {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int id;
     public String searchedQuery;
     public String description;

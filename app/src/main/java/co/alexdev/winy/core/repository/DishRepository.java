@@ -41,6 +41,7 @@ public class DishRepository {
 
             @Override
             protected void saveCallResult(@NonNull DishPairingResponse item) {
+                dishDao.deleteAll(searchedQuery);
                 dishDao.insert(databaseUtils
                         .appendQueryAndDescriptionToDish(searchedQuery,
                                 item.textDescription, item.pairings));
@@ -64,5 +65,13 @@ public class DishRepository {
                 return service.getDish(searchedQuery);
             }
         }.asLiveData();
+    }
+
+    public LiveData<List<Dish>> loadDishesFromDatabase(String wine) {
+        return dishDao.loadDish(wine);
+    }
+
+    public LiveData<List<String>> loadAutocompleteNames() {
+        return dishDao.loadAutocompleteNames();
     }
 }
