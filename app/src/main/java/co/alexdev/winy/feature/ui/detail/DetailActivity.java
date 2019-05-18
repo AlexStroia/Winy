@@ -94,9 +94,13 @@ public class DetailActivity extends AppCompatActivity {
                     expandCollapseAnimation(isExpanded);
                 });
                 setRecyclerView();
-
-
-                binding.btnBuy.setOnClickListener((view) -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(viewModel.url))));
+                
+                binding.btnBuy.setOnClickListener((view) -> {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(viewModel.url));
+                    if (intent.resolveActivity(getPackageManager()) != null) {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(viewModel.url)));
+                    }
+                });
             }
         }
     }
