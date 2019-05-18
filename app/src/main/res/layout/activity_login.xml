@@ -79,14 +79,13 @@
                 android:id="@+id/ib_facebook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_content_margin"
                 android:layout_marginEnd="@dimen/default_content_margin"
                 android:background="@null"
                 android:contentDescription="@null"
                 app:layout_constraintEnd_toStartOf="@+id/ib_google_plus"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/separator2"
+                app:layout_constraintTop_toTopOf="@+id/ib_google_plus"
                 app:srcCompat="@drawable/ic_facebook" />
 
             <TextView
