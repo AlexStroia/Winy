@@ -122,7 +122,6 @@
                 android:layout_marginTop="@dimen/separator_margin_top"
                 android:layout_marginEnd="@dimen/default_content_margin"
                 android:onClick="@{() -> viewModel.showLayout()}"
-                android:text="@string/no_account"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/switcher"
                 app:layout_constraintTop_toBottomOf="@+id/switcher" />

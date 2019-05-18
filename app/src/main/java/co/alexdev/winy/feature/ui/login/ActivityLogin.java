@@ -1,6 +1,8 @@
 package co.alexdev.winy.feature.ui.login;
 
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,6 +42,10 @@ public class ActivityLogin extends AppCompatActivity {
         activityLoginViewModel = ViewModelProviders.of(this, factory).get(ActivityLoginViewModel.class);
         binding.setViewModel(activityLoginViewModel);
 
+        Spanned no_account = Html.fromHtml(getString(R.string.already_have_account));
+        Spanned already_have = Html.fromHtml(getString(R.string.no_account));
+        binding.tvNoAccount.setText(no_account);
+
         activityLoginViewModel.loginStateEnumLiveData.observe(this, loggedState -> {
             if (Constants.FIREBASE_DATABASE.LOGIN_STATE.SUCCESS.equals(loggedState)) {
                 ProductActivity.startActivity(this);
@@ -54,10 +60,10 @@ public class ActivityLogin extends AppCompatActivity {
         activityLoginViewModel.authLayoutState.observe(this, enumValue -> {
             if (Constants.FIREBASE_DATABASE.AUTH_LAYOUT_STATE.SIGNUP.equals(enumValue)) {
                 binding.switcher.showNext();
-                binding.tvNoAccount.setText(R.string.already_have_account);
+                binding.tvNoAccount.setText(no_account);
             } else if (Constants.FIREBASE_DATABASE.AUTH_LAYOUT_STATE.LOGIN.equals(enumValue)) {
                 binding.switcher.showPrevious();
-                binding.tvNoAccount.setText(R.string.no_account);
+                binding.tvNoAccount.setText(already_have);
             }
         });
     }
