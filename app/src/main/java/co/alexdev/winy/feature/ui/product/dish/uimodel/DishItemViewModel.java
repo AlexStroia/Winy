@@ -4,10 +4,12 @@ import java.util.Objects;
 
 public class DishItemViewModel {
 
+    public String id;
     public String description;
     public String food;
 
-    public DishItemViewModel(String description, String food) {
+    public DishItemViewModel(String id, String description, String food) {
+        this.id = id;
         this.description = description;
         this.food = food;
     }
@@ -17,12 +19,13 @@ public class DishItemViewModel {
         if (this == o) return true;
         if (!(o instanceof DishItemViewModel)) return false;
         DishItemViewModel that = (DishItemViewModel) o;
-        return Objects.equals(description, that.description) &&
+        return Objects.equals(id, that.id) &&
+                Objects.equals(description, that.description) &&
                 Objects.equals(food, that.food);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(description, food);
+        return Objects.hash(id, description, food);
     }
 }
