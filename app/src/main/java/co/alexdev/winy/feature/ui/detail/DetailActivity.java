@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Pair;
@@ -93,6 +94,9 @@ public class DetailActivity extends AppCompatActivity {
                     expandCollapseAnimation(isExpanded);
                 });
                 setRecyclerView();
+
+
+                binding.btnBuy.setOnClickListener((view) -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(viewModel.url))));
             }
         }
     }
@@ -117,6 +121,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private void setRecyclerView() {
         adapter = new DetailWinesAdapter(wineId -> viewModel.updateUI(wineId).observe(DetailActivity.this, detailActivityProductViewModel -> {
+            viewModel.url = detailActivityProductViewModel.link;
             binding.tvAverageRatingValue.setText(detailActivityProductViewModel.averageRating);
             binding.tvDescriptionContent.setVisibility(TextUtils.isEmpty(detailActivityProductViewModel.description) ? View.GONE : View.VISIBLE);
             binding.btnShow.setVisibility(TextUtils.isEmpty(detailActivityProductViewModel.description) ? View.GONE : View.VISIBLE);

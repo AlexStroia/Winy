@@ -15,6 +15,7 @@ public class DetailActivityViewModel extends ViewModel {
 
     public LiveData<DetailActivityProductViewModel> productMatchesViewModelLiveData;
     public LiveData<List<DetailActivityProductViewModel>> similarDetailProductActivityViewModelLiveData;
+    public String url = "";
     private WinesRepository repository;
     public boolean shouldUseSharedElementTransition;
 
