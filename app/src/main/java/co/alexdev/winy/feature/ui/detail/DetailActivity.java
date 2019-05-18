@@ -5,8 +5,10 @@ import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Pair;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -85,22 +87,21 @@ public class DetailActivity extends AppCompatActivity {
                 factory = new DetailViewModelFactory(repository, getIntent().getIntExtra(WINE_ID, 0), getIntent().getStringExtra(FOOD_NAME));
                 viewModel = ViewModelProviders.of(this, factory).get(DetailActivityViewModel.class);
                 binding.setViewModel(viewModel);
-                setRecyclerView();
                 binding.btnShow.setOnClickListener(view -> {
                     isExpanded = !isExpanded;
                     setShowMoreText(isExpanded);
                     expandCollapseAnimation(isExpanded);
                 });
+                setRecyclerView();
             }
         }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                supportFinishAfterTransition();
-                return true;
+        if (item.getItemId() == android.R.id.home) {
+            supportFinishAfterTransition();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -117,6 +118,9 @@ public class DetailActivity extends AppCompatActivity {
     private void setRecyclerView() {
         adapter = new DetailWinesAdapter(wineId -> viewModel.updateUI(wineId).observe(DetailActivity.this, detailActivityProductViewModel -> {
             binding.tvAverageRatingValue.setText(detailActivityProductViewModel.averageRating);
+            binding.tvDescriptionContent.setVisibility(TextUtils.isEmpty(detailActivityProductViewModel.description) ? View.GONE : View.VISIBLE);
+            binding.btnShow.setVisibility(TextUtils.isEmpty(detailActivityProductViewModel.description) ? View.GONE : View.VISIBLE);
+            binding.tvDescription.setVisibility(TextUtils.isEmpty(detailActivityProductViewModel.description) ? View.GONE : View.VISIBLE);
             binding.tvDescriptionContent.setText(detailActivityProductViewModel.description);
             binding.tvPrice.setText(detailActivityProductViewModel.price);
             binding.tvRatingGrade.setText(detailActivityProductViewModel.ratingCount);
@@ -129,8 +133,11 @@ public class DetailActivity extends AppCompatActivity {
             });
         }));
         binding.rvOtherWines.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        viewModel.similarDetailProductActivityViewModelLiveData.observe(this, adapter::submitList);
 
+        viewModel.similarDetailProductActivityViewModelLiveData.observe(this, data -> {
+            binding.tvOtherWines.setVisibility(data.isEmpty() ? View.GONE : View.VISIBLE);
+            adapter.submitList(data);
+        });
         binding.rvOtherWines.setAdapter(adapter);
     }
 
