@@ -20,9 +20,6 @@
         <activity android:name=".feature.ui.help.HelpActivity" />
         <activity android:name=".feature.ui.account.AccountActivity" />
         <activity android:name=".feature.ui.product.ProductActivity" />
-        <activity
-            android:name=".feature.ui.signup.SignupActivity"
-            android:launchMode="singleTop" />
         <activity android:name=".feature.ui.login.ActivityLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,5 +1,6 @@
 package co.alexdev.winy.feature.ui.login;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -155,6 +156,10 @@ public class ActivityLogin extends AppCompatActivity {
                         Snackbar.make(binding.coordinator, Constants.FIREBASE_DATABASE.MESSAGES.AUTHENTICATION_FAILED, Snackbar.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    public static void startActivity(Context context) {
+        context.startActivity(new Intent(context, ActivityLogin.class));
     }
 
     @Override
