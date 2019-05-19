@@ -7,6 +7,10 @@ public class Constants {
         public static final float MIN_ALPHA = 0;
     }
 
+    public enum AUTH_LAYOUT_STATE {
+        LOGIN, SIGNUP
+    }
+
     public static class FIREBASE_DATABASE {
         public static final String USER_REFERENCE = "users";
 
@@ -23,16 +27,12 @@ public class Constants {
         public enum LOGIN_STATE {
             FAILURE, SUCCESS, NOT_SET, LOADING
         }
-
-        public enum AUTH_LAYOUT_STATE {
-            LOGIN, SIGNUP
-        }
     }
 
     public static class NETWORK {
         public static final String HEADER = "header";
         public static final String X_RAPID_API_KEY = "X-RapidAPI-Key";
     }
-}
+    }
 
 

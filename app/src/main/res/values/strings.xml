@@ -16,6 +16,7 @@
     <string name="or_connect">Or connect with</string>
     <string name="no_account"><![CDATA[Don\'t have an account? <u><b>Sign up.</b></u>]]></string>
     <string name="already_have_account"><![CDATA[Already have an account? <u><b>Log in.</b></u>]]></string>
+    <string name="reset_password">Reset password</string>
 
     <!--Product ProductActivity-->
     <string name="home_button_text">Home</string>

@@ -21,22 +21,21 @@ import co.alexdev.winy.core.util.Validator;
 public class ActivityLoginViewModel extends ViewModel implements LifecycleObserver {
 
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    public MutableLiveData<Enum> authLayoutStateLiveData = new MutableLiveData<>();
+    public String loginMessage = "";
 
     private Constants.FIREBASE_DATABASE.LOGIN_STATE loginState = Constants.FIREBASE_DATABASE.LOGIN_STATE.NOT_SET;
-    public String loginMessage = "";
 
     public UserCredential userCredential;
     public UserInformation userInformation = new UserInformation();
     public String userMessage;
-    public MutableLiveData<Enum> authLayoutState = new MutableLiveData<>();
-
     public MutableLiveData<Enum> loginStateEnumLiveData = new MutableLiveData<>();
-    private String userUID;
-    private Constants.FIREBASE_DATABASE.SIGNUP_STATE signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.NOT_SET;
-
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private FirebaseAuth.AuthStateListener authStateListener;
-    private boolean isSignupShown = false;
+    private Constants.FIREBASE_DATABASE.SIGNUP_STATE signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.NOT_SET;
+    private Constants.AUTH_LAYOUT_STATE layoutState = Constants.AUTH_LAYOUT_STATE.LOGIN;
+    private String userUID;
+
 
     public ActivityLoginViewModel(UserCredential userCredential) {
         this.userCredential = userCredential;
@@ -72,11 +71,24 @@ public class ActivityLoginViewModel extends ViewModel implements LifecycleObserv
         });
     }
 
-    public void showLayout() {
-        isSignupShown = !isSignupShown;
-        authLayoutState.setValue(!isSignupShown ? Constants.FIREBASE_DATABASE.AUTH_LAYOUT_STATE.SIGNUP : Constants.FIREBASE_DATABASE.AUTH_LAYOUT_STATE.LOGIN);
+    public void forgotPassword() {
+
     }
 
+    public void showLayout() {
+        switch (layoutState) {
+
+            case LOGIN:
+                layoutState = Constants.AUTH_LAYOUT_STATE.SIGNUP;
+                break;
+
+            case SIGNUP:
+                layoutState = Constants.AUTH_LAYOUT_STATE.LOGIN;
+                break;
+        }
+
+        authLayoutStateLiveData.setValue(layoutState);
+    }
 
     public void signupUser() {
         signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.STARTED;

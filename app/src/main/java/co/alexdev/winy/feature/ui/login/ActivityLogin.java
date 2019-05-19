@@ -42,9 +42,9 @@ public class ActivityLogin extends AppCompatActivity {
         activityLoginViewModel = ViewModelProviders.of(this, factory).get(ActivityLoginViewModel.class);
         binding.setViewModel(activityLoginViewModel);
 
-        Spanned no_account = Html.fromHtml(getString(R.string.already_have_account));
-        Spanned already_have = Html.fromHtml(getString(R.string.no_account));
-        binding.tvNoAccount.setText(no_account);
+        Spanned alreadyHave = Html.fromHtml(getString(R.string.already_have_account));
+        Spanned dontHave = Html.fromHtml(getString(R.string.no_account));
+        binding.tvNoAccount.setText(dontHave);
 
         activityLoginViewModel.loginStateEnumLiveData.observe(this, loggedState -> {
             if (Constants.FIREBASE_DATABASE.LOGIN_STATE.SUCCESS.equals(loggedState)) {
@@ -57,14 +57,22 @@ public class ActivityLogin extends AppCompatActivity {
             }
         });
 
-        activityLoginViewModel.authLayoutState.observe(this, enumValue -> {
-            if (Constants.FIREBASE_DATABASE.AUTH_LAYOUT_STATE.SIGNUP.equals(enumValue)) {
-                binding.switcher.showNext();
-                binding.tvNoAccount.setText(no_account);
-            } else if (Constants.FIREBASE_DATABASE.AUTH_LAYOUT_STATE.LOGIN.equals(enumValue)) {
-                binding.switcher.showPrevious();
-                binding.tvNoAccount.setText(already_have);
+        activityLoginViewModel.authLayoutStateLiveData.observe(this, enumValue -> {
+
+            if (Constants.AUTH_LAYOUT_STATE.SIGNUP.equals(enumValue)) {
+                showRightContent(true, alreadyHave);
+            } else if (Constants.AUTH_LAYOUT_STATE.LOGIN.equals(enumValue)) {
+                showRightContent(false, dontHave);
             }
         });
+    }
+
+    private void showRightContent(boolean showSignup, Spanned message) {
+        if (showSignup) {
+            binding.switcher.showNext();
+        } else {
+            binding.switcher.showPrevious();
+        }
+        binding.tvNoAccount.setText(message);
     }
 }
