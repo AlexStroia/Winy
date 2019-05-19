@@ -43,4 +43,13 @@
         <item name="android:layout_marginStart">@dimen/state_textview_content_margin</item>
         <item name="android:layout_marginEnd">@dimen/state_textview_content_margin</item>
     </style>
+
+    <style name="SettingsTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/montserratregular</item>
+        <item name="android:layout_marginTop">@dimen/textview_padding_top</item>
+        <item name="android:gravity">center|start</item>
+        <item name="android:textSize">@dimen/settings_text_view_height</item>
+        <item name="android:paddingStart">@dimen/textview_padding_start</item>
+        <item name="android:foreground">@drawable/ripple</item>
+    </style>
 </resources>

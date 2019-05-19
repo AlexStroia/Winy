@@ -12,7 +12,6 @@ import co.alexdev.winy.feature.ui.login.ActivityLogin;
 import co.alexdev.winy.feature.ui.product.dish.DishFragment;
 import co.alexdev.winy.feature.ui.product.wine.WineFragment;
 import co.alexdev.winy.feature.ui.search.SearchActivity;
-import co.alexdev.winy.feature.ui.signup.SignupActivity;
 import dagger.Component;
 
 @Singleton
@@ -20,8 +19,6 @@ import dagger.Component;
 public interface WinyComponent {
 
     UserCredential userCredential();
-
-    void inject(SignupActivity signupActivity);
 
     void inject(ActivityLogin activityLogin);
 

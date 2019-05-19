@@ -31,7 +31,7 @@ import co.alexdev.winy.core.di.DaggerWinyComponent;
 import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.di.module.ContextModule;
 import co.alexdev.winy.core.util.Constants;
-import co.alexdev.winy.core.util.factory.SignupLoginViewModelFActory;
+import co.alexdev.winy.core.util.factory.LoginViewModelFactory;
 import co.alexdev.winy.databinding.ActivityLoginBinding;
 import co.alexdev.winy.feature.ui.login.uimodel.ActivityLoginViewModel;
 import co.alexdev.winy.feature.ui.product.ProductActivity;
@@ -43,7 +43,7 @@ public class ActivityLogin extends AppCompatActivity {
 
     private static final int GOOGLE_SIGN = 101;
     @Inject
-    SignupLoginViewModelFActory factory;
+    LoginViewModelFactory factory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,7 +122,6 @@ public class ActivityLogin extends AppCompatActivity {
 
     private void initGoogleSignInSignUp() {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
 

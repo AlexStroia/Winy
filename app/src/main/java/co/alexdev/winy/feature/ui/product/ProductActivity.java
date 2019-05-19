@@ -36,6 +36,8 @@ public class ProductActivity extends AppCompatActivity {
                 handleFragmentChanging(new FavoriteFragment());
             } else if (menuItem.getItemId() == R.id.home) {
                 handleFragmentChanging(new ProductFragment());
+            } else if (menuItem.getItemId() == R.id.settings) {
+                handleFragmentChanging(new SettingsFragment());
             }
             menuItem.setChecked(true);
             return false;
