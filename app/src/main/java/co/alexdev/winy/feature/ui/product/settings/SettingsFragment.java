@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import java.util.Objects;
 
+import co.alexdev.winy.R;
 import co.alexdev.winy.databinding.FragmentSettingsBinding;
 import co.alexdev.winy.feature.BaseFragment;
 import co.alexdev.winy.feature.ui.login.ActivityLogin;
@@ -28,10 +29,16 @@ public class SettingsFragment extends BaseFragment {
         binding.setLifecycleOwner(this);
         viewModel = ViewModelProviders.of(this).get(SettingsFragmentViewModel.class);
         binding.setViewModel(viewModel);
-        binding.btnLogout.setOnClickListener(view -> {
+        binding.btnLogout.setOnClickListener(view -> showAlertDialog());
+        return binding.getRoot();
+    }
+
+
+    public void showAlertDialog() {
+        alertDialogBuilder.setPositiveButton(R.string.yes, (dialogInterface, i) -> {
             viewModel.signoutUser();
             ActivityLogin.startActivity(Objects.requireNonNull(this.getActivity()));
-        });
-        return binding.getRoot();
+        }).setNegativeButton(R.string.no, (dialogInterface, i) -> {
+        }).setMessage(R.string.logout_message).show();
     }
 }
