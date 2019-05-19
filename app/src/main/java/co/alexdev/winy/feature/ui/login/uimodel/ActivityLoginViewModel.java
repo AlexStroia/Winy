@@ -20,7 +20,7 @@ import co.alexdev.winy.core.util.Validator;
 
 public class ActivityLoginViewModel extends ViewModel implements LifecycleObserver {
 
-    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    public FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     public MutableLiveData<Enum> authLayoutStateLiveData = new MutableLiveData<>();
     public String loginMessage = "";
 

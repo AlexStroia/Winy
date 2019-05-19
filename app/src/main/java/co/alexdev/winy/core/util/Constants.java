@@ -18,6 +18,7 @@ public class Constants {
             public static final String SUCCES = "You have successfully registered and logged in.";
             public static final String ERROR = "Please complete all required fields.";
             public static final String EMAIL = "Your email format is invalid.";
+            public static final String AUTHENTICATION_FAILED = "Authentication Failed.";
         }
 
         public enum SIGNUP_STATE {
