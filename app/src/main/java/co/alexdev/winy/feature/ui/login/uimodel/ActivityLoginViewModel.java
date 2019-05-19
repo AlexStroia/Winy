@@ -30,6 +30,7 @@ public class ActivityLoginViewModel extends ViewModel implements LifecycleObserv
     public UserInformation userInformation = new UserInformation();
     public String userMessage;
     public MutableLiveData<Enum> loginStateEnumLiveData = new MutableLiveData<>();
+    public MutableLiveData<Enum> signupStateEnumLiveData = new MutableLiveData<>();
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private FirebaseAuth.AuthStateListener authStateListener;
     private Constants.FIREBASE_DATABASE.SIGNUP_STATE signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.NOT_SET;
@@ -92,13 +93,13 @@ public class ActivityLoginViewModel extends ViewModel implements LifecycleObserv
 
     public void signupUser() {
         signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.STARTED;
-        loginStateEnumLiveData.setValue(signupState);
+        signupStateEnumLiveData.setValue(signupState);
 
         if (!Validator.isEmailValid(userCredential.getEmail()) || !Validator.isPasswordValid(userCredential.getPassword())
                 && !Validator.isFirstNameValid(userInformation.getFirstname()) || !Validator.isLastNameValid(userInformation.getLastname())) {
             signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.FAILURE;
             userMessage = Constants.FIREBASE_DATABASE.MESSAGES.ERROR;
-            loginStateEnumLiveData.setValue(signupState);
+            signupStateEnumLiveData.setValue(signupState);
             return;
         }
 
@@ -116,7 +117,7 @@ public class ActivityLoginViewModel extends ViewModel implements LifecycleObserv
                         signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.FAILURE;
                         userMessage = Objects.requireNonNull(task.getException()).getMessage();
                     }
-                    loginStateEnumLiveData.setValue(signupState);
+                    signupStateEnumLiveData.setValue(signupState);
                 });
     }
 

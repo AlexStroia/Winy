@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 
 import javax.inject.Inject;
 
@@ -41,11 +42,53 @@ public class ActivityLogin extends AppCompatActivity {
         binding.setLifecycleOwner(this);
         activityLoginViewModel = ViewModelProviders.of(this, factory).get(ActivityLoginViewModel.class);
         binding.setViewModel(activityLoginViewModel);
+        getLifecycle().addObserver(activityLoginViewModel);
+
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            ProductActivity.startActivity(this);
+            finish();
+        }
 
         Spanned alreadyHave = Html.fromHtml(getString(R.string.already_have_account));
         Spanned dontHave = Html.fromHtml(getString(R.string.no_account));
         binding.tvNoAccount.setText(dontHave);
 
+        observeLoginState();
+
+        observeSignupState();
+
+        observeAuthLayoutState(alreadyHave, dontHave);
+    }
+
+    private void observeAuthLayoutState(Spanned alreadyHave, Spanned dontHave) {
+        activityLoginViewModel.authLayoutStateLiveData.observe(this, enumValue -> {
+
+            if (Constants.AUTH_LAYOUT_STATE.SIGNUP.equals(enumValue)) {
+                showRightContent(true, alreadyHave);
+            } else if (Constants.AUTH_LAYOUT_STATE.LOGIN.equals(enumValue)) {
+                showRightContent(false, dontHave);
+            }
+        });
+    }
+
+    private void observeSignupState() {
+        activityLoginViewModel.signupStateEnumLiveData.observe(this, signupStateEnum -> {
+
+            if (Constants.FIREBASE_DATABASE.SIGNUP_STATE.SUCCES.equals(signupStateEnum)) {
+                ProductActivity.startActivity(this);
+                finish();
+            } else if (Constants.FIREBASE_DATABASE.SIGNUP_STATE.FAILURE.equals(signupStateEnum)) {
+                binding.progressBar.setVisibility(View.GONE);
+                Snackbar.make(binding.coordinator, activityLoginViewModel.userMessage, Snackbar.LENGTH_LONG).show();
+            } else if (Constants.FIREBASE_DATABASE.SIGNUP_STATE.STARTED.equals(signupStateEnum)) {
+                binding.progressBar.setVisibility(View.VISIBLE);
+            } else {
+                binding.progressBar.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    private void observeLoginState() {
         activityLoginViewModel.loginStateEnumLiveData.observe(this, loggedState -> {
             if (Constants.FIREBASE_DATABASE.LOGIN_STATE.SUCCESS.equals(loggedState)) {
                 ProductActivity.startActivity(this);
@@ -54,15 +97,6 @@ public class ActivityLogin extends AppCompatActivity {
             } else {
                 binding.progressBar.setVisibility(View.GONE);
                 Snackbar.make(binding.coordinator, activityLoginViewModel.loginMessage, Snackbar.LENGTH_LONG).show();
-            }
-        });
-
-        activityLoginViewModel.authLayoutStateLiveData.observe(this, enumValue -> {
-
-            if (Constants.AUTH_LAYOUT_STATE.SIGNUP.equals(enumValue)) {
-                showRightContent(true, alreadyHave);
-            } else if (Constants.AUTH_LAYOUT_STATE.LOGIN.equals(enumValue)) {
-                showRightContent(false, dontHave);
             }
         });
     }

@@ -34,10 +34,12 @@
 
                 <include
                     android:id="@+id/content_login"
+                    app:viewModel="@{viewModel}"
                     layout="@layout/content_login" />
 
                 <include
                     android:id="@+id/content_signup"
+                    app:viewModel="@{viewModel}"
                     layout="@layout/content_signup" />
 
             </ViewFlipper>
