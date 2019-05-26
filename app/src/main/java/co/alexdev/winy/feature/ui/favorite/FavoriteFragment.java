@@ -32,7 +32,7 @@ public class FavoriteFragment extends BaseFragment {
     WinesRepository winesRepository;
     private FragmentFavoriteBinding binding;
     private FavoriteViewModel viewModel;
-    private static final String TAG = "FavoriteFragment";
+    public static final String TAG = "FavoriteFragment";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

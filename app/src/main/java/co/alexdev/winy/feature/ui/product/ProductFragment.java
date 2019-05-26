@@ -19,6 +19,7 @@ public class ProductFragment extends BaseFragment {
 
     private FragmentProductBinding mBinding;
     private ProductActivityViewModel productActivityViewModel;
+    public static final String TAG = "ProductFragment";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

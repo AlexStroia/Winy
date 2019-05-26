@@ -20,6 +20,7 @@ public class SettingsFragment extends BaseFragment {
 
     private FragmentSettingsBinding binding;
     private SettingsFragmentViewModel viewModel;
+    public static final String TAG = "SettingsFragment";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
