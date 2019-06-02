@@ -22,6 +22,7 @@ import co.alexdev.winy.core.di.DaggerWinyComponent;
 import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.di.module.ContextModule;
 import co.alexdev.winy.core.repository.DishRepository;
+import co.alexdev.winy.core.util.AnalyticsManager;
 import co.alexdev.winy.core.util.factory.BaseViewModelFactory;
 import co.alexdev.winy.feature.BaseFragment;
 import co.alexdev.winy.feature.util.KeyboardManager;
@@ -33,9 +34,12 @@ public class DishFragment extends BaseFragment {
     DishRepository repository;
     @Inject
     KeyboardManager keyboardManager;
+    @Inject
+    AnalyticsManager analyticsManager;
     private DishFragmentBinding binding;
     private DishViewModel viewModel;
     private DishAdapter dishAdapter;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,7 +47,7 @@ public class DishFragment extends BaseFragment {
 
         WinyComponent component = DaggerWinyComponent.builder().contextModule(new ContextModule(Objects.requireNonNull(getActivity()))).build();
         component.inject(this);
-        BaseViewModelFactory factory = new BaseViewModelFactory(repository);
+        BaseViewModelFactory factory = new BaseViewModelFactory(repository, analyticsManager);
         viewModel = ViewModelProviders.of(this, factory).get(DishViewModel.class);
         binding = DishFragmentBinding.inflate(inflater, container, false);
         binding.setLifecycleOwner(this);

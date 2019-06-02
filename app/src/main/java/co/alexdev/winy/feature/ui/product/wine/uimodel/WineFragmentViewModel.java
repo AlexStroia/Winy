@@ -11,6 +11,7 @@ import co.alexdev.winy.core.model.wines.PairedWines;
 import co.alexdev.winy.core.model.wines.PairingText;
 import co.alexdev.winy.core.model.wines.ProductMatches;
 import co.alexdev.winy.core.repository.WinesRepository;
+import co.alexdev.winy.core.util.AnalyticsManager;
 import co.alexdev.winy.core.util.Resource;
 
 public class WineFragmentViewModel extends ViewModel {
@@ -21,12 +22,16 @@ public class WineFragmentViewModel extends ViewModel {
     public LiveData<List<String>> foodNamesLiveData;
     private WinesRepository winesRepository;
 
-    public WineFragmentViewModel(WinesRepository repository) {
+    private AnalyticsManager analyticsManager;
+
+    public WineFragmentViewModel(WinesRepository repository, AnalyticsManager analyticsManager) {
         this.winesRepository = repository;
+        this.analyticsManager = analyticsManager;
         foodNamesLiveData = repository.loadAllFoodNames();
     }
 
     public LiveData<Resource<List<ProductMatches>>> onSearchPressed() {
+        analyticsManager.searchFood(food);
         return winesRepository.getWinesByFoodName(food);
     }
 

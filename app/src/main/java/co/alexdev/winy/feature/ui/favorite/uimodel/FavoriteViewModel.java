@@ -9,14 +9,17 @@ import java.util.List;
 
 import co.alexdev.winy.core.model.wines.ProductMatches;
 import co.alexdev.winy.core.repository.WinesRepository;
+import co.alexdev.winy.core.util.AnalyticsManager;
 
 public class FavoriteViewModel extends ViewModel {
 
     public LiveData<List<FavoriteItemViewModel>> favorites;
     private WinesRepository repository;
+    private AnalyticsManager analyticsManager;
 
-    public FavoriteViewModel(WinesRepository repository) {
+    public FavoriteViewModel(WinesRepository repository, AnalyticsManager analyticsManager) {
         this.repository = repository;
+        this.analyticsManager = analyticsManager;
         init();
     }
 

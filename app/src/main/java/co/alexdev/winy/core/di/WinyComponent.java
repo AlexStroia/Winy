@@ -2,6 +2,7 @@ package co.alexdev.winy.core.di;
 
 import javax.inject.Singleton;
 
+import co.alexdev.winy.core.di.module.AnalyticsModule;
 import co.alexdev.winy.core.di.module.DatabaseModule;
 import co.alexdev.winy.core.di.module.ServiceModule;
 import co.alexdev.winy.core.di.module.UserCredentialModule;
@@ -15,7 +16,7 @@ import co.alexdev.winy.feature.ui.search.SearchActivity;
 import dagger.Component;
 
 @Singleton
-@Component(modules = {UserCredentialModule.class, DatabaseModule.class, ServiceModule.class})
+@Component(modules = {UserCredentialModule.class, DatabaseModule.class, ServiceModule.class, AnalyticsModule.class})
 public interface WinyComponent {
 
     UserCredential userCredential();

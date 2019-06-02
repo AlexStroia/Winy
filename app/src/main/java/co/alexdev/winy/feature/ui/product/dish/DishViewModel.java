@@ -10,6 +10,7 @@ import java.util.List;
 
 import co.alexdev.winy.core.model.dish.Dish;
 import co.alexdev.winy.core.repository.DishRepository;
+import co.alexdev.winy.core.util.AnalyticsManager;
 import co.alexdev.winy.core.util.Resource;
 import co.alexdev.winy.feature.ui.product.dish.uimodel.DishItemViewModel;
 
@@ -20,9 +21,11 @@ public class DishViewModel extends ViewModel {
     public LiveData<List<String>> dishAutocompleteItems;
     LiveData<List<DishItemViewModel>> dishes = new MutableLiveData<>();
     private DishRepository repository;
+    private AnalyticsManager analyticsManager;
 
-    public DishViewModel(DishRepository dishRepository) {
+    public DishViewModel(DishRepository dishRepository, AnalyticsManager analyticsManager) {
         this.repository = dishRepository;
+        this.analyticsManager = analyticsManager;
         dishAutocompleteItems = repository.loadAutocompleteNames();
     }
 

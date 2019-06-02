@@ -15,6 +15,7 @@ import java.util.Objects;
 
 import co.alexdev.winy.core.model.user.UserCredential;
 import co.alexdev.winy.core.model.user.UserInformation;
+import co.alexdev.winy.core.util.AnalyticsManager;
 import co.alexdev.winy.core.util.Constants;
 import co.alexdev.winy.core.util.Validator;
 
@@ -37,11 +38,13 @@ public class ActivityLoginViewModel extends ViewModel implements LifecycleObserv
     private Constants.AUTH_LAYOUT_STATE layoutState = Constants.AUTH_LAYOUT_STATE.LOGIN;
     private String userUID;
 
+    private AnalyticsManager analyticsManager;
 
-    public ActivityLoginViewModel(UserCredential userCredential) {
+    public ActivityLoginViewModel(UserCredential userCredential, AnalyticsManager analyticsManager) {
         this.userCredential = userCredential;
         this.userCredential.setEmail("");
         this.userCredential.setPassword("");
+        this.analyticsManager = analyticsManager;
     }
 
     public void loginUser() {
@@ -64,6 +67,7 @@ public class ActivityLoginViewModel extends ViewModel implements LifecycleObserv
         firebaseAuth.signInWithEmailAndPassword(userCredential.getEmail(), userCredential.getPassword()).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 loginState = Constants.FIREBASE_DATABASE.LOGIN_STATE.SUCCESS;
+                analyticsManager.login(FirebaseAuth.getInstance().getCurrentUser().getUid());
             } else {
                 loginMessage = Objects.requireNonNull(task.getException()).getMessage();
                 loginState = Constants.FIREBASE_DATABASE.LOGIN_STATE.FAILURE;
@@ -110,6 +114,7 @@ public class ActivityLoginViewModel extends ViewModel implements LifecycleObserv
                             firebaseDatabase.getReference().child(Constants.FIREBASE_DATABASE.USER_REFERENCE)
                                     .child(userUID)
                                     .setValue(userInformation);
+                            analyticsManager.signup(userUID);
                             userMessage = Constants.FIREBASE_DATABASE.MESSAGES.SUCCES;
                             signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.SUCCES;
                         }

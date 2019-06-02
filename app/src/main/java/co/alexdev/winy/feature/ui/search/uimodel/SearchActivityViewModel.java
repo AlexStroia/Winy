@@ -10,6 +10,7 @@ import java.util.List;
 
 import co.alexdev.winy.core.model.wines.ProductMatches;
 import co.alexdev.winy.core.repository.WinesRepository;
+import co.alexdev.winy.core.util.AnalyticsManager;
 
 public class SearchActivityViewModel extends ViewModel {
 
@@ -17,9 +18,12 @@ public class SearchActivityViewModel extends ViewModel {
     public LiveData<List<SearchProductViewModel>> products = new MutableLiveData<>();
 
     public LiveData<List<String>> productsTitle;
+    private AnalyticsManager analyticsManager;
 
-    public SearchActivityViewModel(WinesRepository repository) {
+    public SearchActivityViewModel(WinesRepository repository, AnalyticsManager analyticsManager) {
         this.repository = repository;
+        this.analyticsManager = analyticsManager;
+
         productsTitle = Transformations.map(repository.loadAllWinesFromDatabase(), wines -> {
             List<String> productTitles = new ArrayList<>();
             for (ProductMatches productMatches : wines) {

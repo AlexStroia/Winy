@@ -43,6 +43,7 @@ public class ActivityLogin extends AppCompatActivity {
     private ActivityLoginViewModel activityLoginViewModel;
 
     private static final int GOOGLE_SIGN = 101;
+
     @Inject
     LoginViewModelFactory factory;
 
