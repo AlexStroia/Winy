@@ -80,6 +80,7 @@
     <dimen name="textview_padding_top">32dp</dimen>
     <dimen name="textview_padding_start">32dp</dimen>
     <dimen name="textview_view_height">48dp</dimen>
+    <dimen name="container_height">72dp</dimen>
 
     <!--State Layouts-->
     <dimen name="state_layout_text_height">22sp</dimen>

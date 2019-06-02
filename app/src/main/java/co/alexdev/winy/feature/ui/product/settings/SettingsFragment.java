@@ -20,7 +20,6 @@ public class SettingsFragment extends BaseFragment {
 
     private FragmentSettingsBinding binding;
     private SettingsFragmentViewModel viewModel;
-    public static final String TAG = "SettingsFragment";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,7 +29,7 @@ public class SettingsFragment extends BaseFragment {
         binding.setLifecycleOwner(this);
         viewModel = ViewModelProviders.of(this).get(SettingsFragmentViewModel.class);
         binding.setViewModel(viewModel);
-        binding.btnLogout.setOnClickListener(view -> showAlertDialog());
+        binding.containerLogout.setOnClickListener(view -> showAlertDialog());
         return binding.getRoot();
     }
 
