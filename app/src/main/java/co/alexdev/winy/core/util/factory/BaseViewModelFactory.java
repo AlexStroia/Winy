@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 import co.alexdev.winy.core.repository.DishRepository;
 import co.alexdev.winy.core.repository.WinesRepository;
 import co.alexdev.winy.core.util.AnalyticsManager;
+import co.alexdev.winy.core.util.PreferenceManager;
 import co.alexdev.winy.feature.ui.favorite.uimodel.FavoriteViewModel;
 import co.alexdev.winy.feature.ui.product.dish.DishViewModel;
 import co.alexdev.winy.feature.ui.product.wine.uimodel.WineFragmentViewModel;
@@ -17,10 +18,12 @@ public class BaseViewModelFactory extends ViewModelProvider.NewInstanceFactory {
     private WinesRepository repository;
     private DishRepository dishRepository;
     private AnalyticsManager analyticsManager;
+    private PreferenceManager preferenceManager;
 
-    public BaseViewModelFactory(WinesRepository repository, AnalyticsManager analyticsManager) {
+    public BaseViewModelFactory(WinesRepository repository, AnalyticsManager analyticsManager, PreferenceManager preferenceManager) {
         this.repository = repository;
         this.analyticsManager = analyticsManager;
+        this.preferenceManager = preferenceManager;
     }
 
     public BaseViewModelFactory(DishRepository dishRepository, AnalyticsManager analyticsManager) {
@@ -32,7 +35,7 @@ public class BaseViewModelFactory extends ViewModelProvider.NewInstanceFactory {
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         if (modelClass.isAssignableFrom(WineFragmentViewModel.class)) {
-            return (T) new WineFragmentViewModel(repository, analyticsManager);
+            return (T) new WineFragmentViewModel(repository, analyticsManager, preferenceManager);
         } else if (modelClass.isAssignableFrom(SearchActivityViewModel.class)) {
             return (T) new SearchActivityViewModel(repository, analyticsManager);
         } else if (modelClass.isAssignableFrom(FavoriteViewModel.class)) {

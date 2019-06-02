@@ -28,6 +28,7 @@ import co.alexdev.winy.core.di.module.ContextModule;
 import co.alexdev.winy.core.model.wines.PairingText;
 import co.alexdev.winy.core.repository.WinesRepository;
 import co.alexdev.winy.core.util.AnalyticsManager;
+import co.alexdev.winy.core.util.PreferenceManager;
 import co.alexdev.winy.core.util.factory.BaseViewModelFactory;
 import co.alexdev.winy.databinding.FragmentWineBinding;
 import co.alexdev.winy.feature.BaseFragment;
@@ -51,6 +52,9 @@ public class WineFragment extends BaseFragment {
     @Inject
     AnalyticsManager analyticsManager;
 
+    @Inject
+    PreferenceManager preferenceManager;
+
     private BaseViewModelFactory factory;
     private WineFragmentViewModel viewModel;
     private PairedWineAdapter pairedWineAdapter;
@@ -62,7 +66,7 @@ public class WineFragment extends BaseFragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_wine, container, false);
         WinyComponent component = DaggerWinyComponent.builder().contextModule(new ContextModule(Objects.requireNonNull(getActivity()))).build();
         component.inject(this);
-        factory = new BaseViewModelFactory(repository, analyticsManager);
+        factory = new BaseViewModelFactory(repository, analyticsManager, preferenceManager);
 
         viewModel = ViewModelProviders.of(this.getActivity(), factory).get(WineFragmentViewModel.class);
 
@@ -149,7 +153,7 @@ public class WineFragment extends BaseFragment {
     }
 
     private void setViewModelObjectData() {
-        viewModel.setPairedWinesViewModelList();
+        viewModel.setPairedWinesViewModelList(Objects.requireNonNull(this.getActivity()).getApplicationContext());
         viewModel.setProductMatchesViewModelList();
     }
 

@@ -25,6 +25,7 @@ import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.di.module.ContextModule;
 import co.alexdev.winy.core.repository.WinesRepository;
 import co.alexdev.winy.core.util.AnalyticsManager;
+import co.alexdev.winy.core.util.PreferenceManager;
 import co.alexdev.winy.core.util.factory.BaseViewModelFactory;
 import co.alexdev.winy.databinding.ActivitySearchBinding;
 import co.alexdev.winy.feature.ui.detail.DetailActivity;
@@ -37,6 +38,8 @@ public class SearchActivity extends BaseActivity {
     WinesRepository repository;
     @Inject
     AnalyticsManager analyticsManager;
+    @Inject
+    PreferenceManager preferenceManager;
 
     private ActivitySearchBinding binding;
     private BaseViewModelFactory factory;
@@ -56,7 +59,7 @@ public class SearchActivity extends BaseActivity {
                 .build();
         winyComponent.inject(this);
         binding.setLifecycleOwner(this);
-        factory = new BaseViewModelFactory(repository, analyticsManager);
+        factory = new BaseViewModelFactory(repository, analyticsManager, preferenceManager);
         viewModel = ViewModelProviders.of(this, factory).get(SearchActivityViewModel.class);
 
         setRecyclerView();

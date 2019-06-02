@@ -20,6 +20,7 @@ import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.di.module.ContextModule;
 import co.alexdev.winy.core.repository.WinesRepository;
 import co.alexdev.winy.core.util.AnalyticsManager;
+import co.alexdev.winy.core.util.PreferenceManager;
 import co.alexdev.winy.core.util.factory.BaseViewModelFactory;
 import co.alexdev.winy.databinding.FragmentFavoriteBinding;
 import co.alexdev.winy.feature.BaseFragment;
@@ -33,6 +34,8 @@ public class FavoriteFragment extends BaseFragment {
     WinesRepository winesRepository;
     @Inject
     AnalyticsManager analyticsManager;
+    @Inject
+    PreferenceManager preferenceManager;
 
     private FragmentFavoriteBinding binding;
     private FavoriteViewModel viewModel;
@@ -46,7 +49,7 @@ public class FavoriteFragment extends BaseFragment {
         binding = FragmentFavoriteBinding.inflate(inflater, container, false);
         binding.setLifecycleOwner(this);
 
-        BaseViewModelFactory factory = new BaseViewModelFactory(winesRepository, analyticsManager);
+        BaseViewModelFactory factory = new BaseViewModelFactory(winesRepository, analyticsManager, preferenceManager);
         viewModel = ViewModelProviders.of(this, factory).get(FavoriteViewModel.class);
         binding.setViewModel(viewModel);
         return binding.getRoot();

@@ -50,7 +50,6 @@ public class DishRepository {
             @Override
             protected boolean shouldFetch(@NonNull List<Dish> data) {
                 return data == null || data.isEmpty() || repoListRateLimit.shouldFetch(searchedQuery);
-
             }
 
             @NonNull
