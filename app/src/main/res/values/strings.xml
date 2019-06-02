@@ -67,8 +67,17 @@
     <!--Search ProductActivity-->
     <string name="search_by_wine">e.g. "Franciscan Estate Merlot"</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="appwidget_text">EXAMPLE</string>
+    <!--Widget-->
     <string name="add_widget">Add widget</string>
+
+    <!--Content description-->
+    <string name="content_description_food_dish">An dish with food</string>
+    <string name="content_description_base_profiel">An base profile icon</string>
+    <string name="content_description_help_icon">Help icon profile</string>
+    <string name="content_description_logout_button">Logout button image</string>
+    <string name="content_description_wine">An wine icon</string>
+    <string name="content_description_rating">A star icon for rating</string>
+    <string name="download_icon_image">Download icon image</string>
+    <string name="facebook_button_image">Facebook button image</string>
+    <string name="content_description_google_button">Google button image</string>
 </resources>

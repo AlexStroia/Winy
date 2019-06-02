@@ -11,14 +11,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/user_not_searched"
-        app:layout_constraintBottom_toTopOf="@+id/iv_wine_glasses"
+        app:layout_constraintBottom_toTopOf="@+id/iv_food"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <ImageView
-        android:id="@+id/iv_wine_glasses"
+        android:id="@+id/iv_food"
         android:layout_width="@dimen/state_image_width_height"
         android:layout_height="@dimen/state_image_width_height"
         android:layout_marginStart="@dimen/default_content_margin"

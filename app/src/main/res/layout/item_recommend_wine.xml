@@ -16,7 +16,7 @@
             android:id="@+id/iv_wine"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:contentDescription="@null"
+            android:contentDescription="@string/content_description_wine"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

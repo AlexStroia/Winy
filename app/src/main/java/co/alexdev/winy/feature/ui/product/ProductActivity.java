@@ -19,7 +19,6 @@ import co.alexdev.winy.feature.ui.search.SearchActivity;
 public class ProductActivity extends AppCompatActivity {
 
     private ActivityProductBinding mBinding;
-    private String TAG = "";
 
     private ProductFragment productFragment = new ProductFragment();
     private SettingsFragment settingsFragment = new SettingsFragment();
@@ -34,28 +33,21 @@ public class ProductActivity extends AppCompatActivity {
         mBinding.setLifecycleOwner(this);
 
         if (savedInstanceState == null) {
-
-
             getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_from_left).add(R.id.fragment_container, settingsFragment).hide(settingsFragment).commit();
             getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_from_left).add(R.id.fragment_container, favoriteFragment).hide(favoriteFragment).commit();
             getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_from_left).add(R.id.fragment_container, productFragment).commit();
-
-            //  handleFragmentChanging(productFragment);
         }
 
         mBinding.bottomNavView.setOnNavigationItemSelectedListener(menuItem -> {
             if (menuItem.getItemId() == R.id.favorites) {
                 getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_from_left).hide(activeFragment).show(favoriteFragment).commit();
                 activeFragment = favoriteFragment;
-                // handleFragmentChanging(new FavoriteFragment());
             } else if (menuItem.getItemId() == R.id.home) {
                 getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_from_left).hide(activeFragment).show(productFragment).commit();
                 activeFragment = productFragment;
-                //   handleFragmentChanging(new ProductFragment());
             } else if (menuItem.getItemId() == R.id.settings) {
                 getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_from_left).hide(activeFragment).show(settingsFragment).commit();
                 activeFragment = settingsFragment;
-                //     handleFragmentChanging(new SettingsFragment());
             }
             menuItem.setChecked(true);
             return false;
@@ -85,43 +77,5 @@ public class ProductActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-//    private void handleFragmentChanging(Fragment fragment) {
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_from_left);
-//
-//        Fragment currentFragment = getSupportFragmentManager().getPrimaryNavigationFragment();
-//        if (currentFragment != null) {
-//            transaction.detach(fragment);
-//        }
-//
-//        Fragment fragmentTemp = getSupportFragmentManager().findFragmentByTag(TAG);
-//
-//        if (fragmentTemp == null) {
-//            fragmentTemp = fragment;
-//            if (fragmentTemp instanceof ProductFragment) {
-//                TAG = ProductFragment.TAG;
-//                transaction.add(R.id.fragment_container, fragmentTemp, TAG);
-//            } else if (fragment instanceof FavoriteFragment) {
-//                TAG = FavoriteFragment.TAG;
-//                transaction.add(R.id.fragment_container, fragment, TAG);
-//            } else if (fragment instanceof SettingsFragment) {
-//                TAG = SettingsFragment.TAG;
-//                transaction.add(R.id.fragment_container, fragment, TAG);
-//            }
-//        } else {
-//            transaction.attach(fragmentTemp);
-//        }
-//
-//        transaction.setPrimaryNavigationFragment(fragmentTemp).commit();
-//
-////        if (fragment instanceof ProductFragment) {
-////            TAG = ProductFragment.TAG;
-////            transaction.add(R.id.fragment_container, fragment, TAG).commit();
-////        } else if (fragment instanceof FavoriteFragment) {
-////            transaction.replace(R.id.fragment_container, fragment, FavoriteFragment.TAG).commit();
-////        } else if (fragment instanceof SettingsFragment) {
-////            transaction.replace(R.id.fragment_container, fragment, SettingsFragment.TAG).commit();
-////        }
-//    }
 }
 

@@ -114,6 +114,10 @@ public class DetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Expand or collapse the TextView to its max lines
+     * or to a minimum number of lines which is equal to two.
+     */
     private void expandCollapseAnimation(Boolean expand) {
         ObjectAnimator animation = ObjectAnimator.ofInt(
                 binding.tvDescriptionContent,

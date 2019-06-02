@@ -48,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/default_content_margin"
                     android:layout_marginBottom="@dimen/default_content_margin"
-                    android:contentDescription="@null"
+                    android:contentDescription="@string/content_description_wine"
                     android:transitionName="@string/shared_transition_string_image"
                     app:imageUrl="@{viewModel.productMatchesViewModelLiveData.imageUrl}"
                     app:layout_constraintBottom_toTopOf="@+id/tv_wine_name"
@@ -95,7 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/default_content_margin"
-                    android:contentDescription="@null"
+                    android:contentDescription="@string/content_description_rating"
                     app:layout_constraintBottom_toTopOf="@+id/tv_rating_grade"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_rating_text" />
@@ -128,7 +128,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/default_content_padding"
-                    android:contentDescription="@null"
+                    android:contentDescription="@string/download_icon_image"
                     app:layout_constraintBottom_toTopOf="@+id/tv_average_rating_value"
                     app:layout_constraintEnd_toStartOf="@+id/tv_average_rating_value"
                     app:layout_constraintTop_toBottomOf="@+id/tv_average_rating_text" />
