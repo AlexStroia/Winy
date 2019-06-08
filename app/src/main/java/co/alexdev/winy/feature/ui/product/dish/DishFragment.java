@@ -50,13 +50,12 @@ public class DishFragment extends BaseFragment {
         component.inject(this);
         BaseViewModelFactory factory = new BaseViewModelFactory(repository, analyticsManager);
         viewModel = ViewModelProviders.of(this, factory).get(DishViewModel.class);
-
-        AdRequest adRequest = new AdRequest.Builder().build();
-        binding.adView.loadAd(adRequest);
-
         binding = DishFragmentBinding.inflate(inflater, container, false);
         binding.setLifecycleOwner(this);
         binding.setViewModel(viewModel);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+//        binding.adView.loadAd(adRequest);
 
         setRecyclerView();
         binding.autoCompleteTextViewFood.setOnEditorActionListener((textView, actionId, keyEvent) -> {

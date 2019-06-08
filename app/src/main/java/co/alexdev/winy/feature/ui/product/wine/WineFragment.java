@@ -69,7 +69,6 @@ public class WineFragment extends BaseFragment {
         component.inject(this);
 
         AdRequest adRequest = new AdRequest.Builder().build();
-        adRequest.isTestDevice(this.getActivity());
         binding.adView.loadAd(adRequest);
 
         factory = new BaseViewModelFactory(repository, analyticsManager, preferenceManager);

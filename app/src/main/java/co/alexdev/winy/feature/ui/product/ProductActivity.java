@@ -44,7 +44,7 @@ public class ProductActivity extends AppCompatActivity {
 
         mBinding.bottomNavView.setOnNavigationItemSelectedListener(menuItem -> {
             if (menuItem.getItemId() == R.id.favorites) {
-                getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_from_left).hide(activeFragment).show(favoriteFragment).commit();
+                getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_from_left).hide(activeFragment).detach(favoriteFragment).attach(favoriteFragment).show(favoriteFragment).commit();
                 activeFragment = favoriteFragment;
             } else if (menuItem.getItemId() == R.id.home) {
                 getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_from_left).hide(activeFragment).show(productFragment).commit();
