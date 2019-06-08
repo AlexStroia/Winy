@@ -31,6 +31,8 @@ import co.alexdev.winy.R;
 import co.alexdev.winy.core.di.DaggerWinyComponent;
 import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.di.module.ContextModule;
+import co.alexdev.winy.core.repository.AuthenticationRepository;
+import co.alexdev.winy.core.util.AnalyticsManager;
 import co.alexdev.winy.core.util.Constants;
 import co.alexdev.winy.core.util.factory.LoginViewModelFactory;
 import co.alexdev.winy.databinding.ActivityLoginBinding;
@@ -45,6 +47,10 @@ public class ActivityLogin extends AppCompatActivity {
     private static final int GOOGLE_SIGN = 101;
 
     @Inject
+    AnalyticsManager analyticsManager;
+
+    AuthenticationRepository authenticationRepository;
+
     LoginViewModelFactory factory;
 
     @Override
@@ -53,8 +59,10 @@ public class ActivityLogin extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         WinyComponent component = DaggerWinyComponent.builder().contextModule(new ContextModule(this)).build();
         component.inject(this);
+        authenticationRepository = component.provideAuthRepository();
 
         binding.setLifecycleOwner(this);
+        factory = new LoginViewModelFactory(analyticsManager, authenticationRepository);
         activityLoginViewModel = ViewModelProviders.of(this, factory).get(ActivityLoginViewModel.class);
         binding.setViewModel(activityLoginViewModel);
         getLifecycle().addObserver(activityLoginViewModel);
@@ -67,6 +75,7 @@ public class ActivityLogin extends AppCompatActivity {
         Spanned alreadyHave = Html.fromHtml(getString(R.string.already_have_account));
         Spanned dontHave = Html.fromHtml(getString(R.string.no_account));
         binding.tvNoAccount.setText(dontHave);
+        Log.d("AccountActivity", "" + authenticationRepository.toString());
 
         observeLoginState();
 

@@ -27,7 +27,6 @@ public class DishRepository {
     private DatabaseUtils databaseUtils;
     private RateLimiter<String> repoListRateLimit = new RateLimiter<>(10, TimeUnit.MINUTES);
 
-
     @Inject
     public DishRepository(WinyExecutor executor, DishResponseService service, DishDao dishDao, DatabaseUtils databaseUtils) {
         this.executor = executor;

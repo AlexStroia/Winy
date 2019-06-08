@@ -14,15 +14,17 @@ import co.alexdev.winy.feature.ui.login.uimodel.ActivityLoginViewModel;
 public class LoginViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 
     private AnalyticsManager analyticsManager;
+    private AuthenticationRepository authenticationRepository;
 
     @Inject
-    public LoginViewModelFactory(AnalyticsManager analyticsManager) {
+    public LoginViewModelFactory(AnalyticsManager analyticsManager, AuthenticationRepository authenticationRepository) {
         this.analyticsManager = analyticsManager;
+        this.authenticationRepository = authenticationRepository;
     }
 
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        return (T) new ActivityLoginViewModel(analyticsManager);
+        return (T) new ActivityLoginViewModel(analyticsManager, authenticationRepository);
     }
 }

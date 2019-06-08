@@ -1,5 +1,7 @@
 package co.alexdev.winy.core.model.user;
 
+import android.text.TextUtils;
+
 import javax.inject.Singleton;
 
 @Singleton
@@ -16,6 +18,9 @@ public class UserCredential {
     }
 
     public String getPassword() {
+        if (TextUtils.isEmpty(password)) {
+            password = "";
+        }
         return password;
     }
 
