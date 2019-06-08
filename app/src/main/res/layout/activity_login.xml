@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.alexdev.winy.feature.ui.login.uimodel.ActivityLoginViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:transitionGroup="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".feature.ui.login.ActivityLogin">
+
+            <ViewFlipper
+                android:id="@+id/switcher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/login_margin_content_top"
+                android:inAnimation="@android:anim/slide_in_left"
+                android:outAnimation="@android:anim/slide_out_right"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <include
+                    android:id="@+id/content_login"
+                    layout="@layout/content_login"
+                    app:viewModel="@{viewModel}" />
+
+                <include
+                    android:id="@+id/content_signup"
+                    layout="@layout/content_signup"
+                    app:viewModel="@{viewModel}" />
+
+            </ViewFlipper>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/default_content_margin"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/separator"
+                android:layout_width="@dimen/line_width"
+                android:layout_height="@dimen/separator_line_height"
+                android:layout_marginTop="@dimen/separator_margin_top"
+                android:layout_marginEnd="@dimen/default_content_margin"
+                android:background="@color/colorPrimary"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_no_account" />
+
+            <View
+                android:id="@+id/separator2"
+                android:layout_width="@dimen/line_width"
+                android:layout_height="@dimen/separator_line_height"
+                android:layout_marginStart="@dimen/default_content_margin"
+                android:layout_marginTop="@dimen/separator_margin_top"
+                android:background="@color/colorPrimary"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_no_account" />
+
+            <ImageButton
+                android:id="@+id/ib_facebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/default_content_margin"
+                android:background="@null"
+                android:contentDescription="@string/facebook_button_image"
+                android:elevation="@dimen/default_content_elevation"
+                android:visibility="gone"
+                app:layout_constraintEnd_toStartOf="@+id/ib_google_plus"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/ib_google_plus"
+                app:srcCompat="@drawable/ic_facebook" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_content_margin"
+                android:layout_marginEnd="@dimen/default_content_margin"
+                android:text="@string/or_connect"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/separator2"
+                app:layout_constraintEnd_toStartOf="@+id/separator"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/separator2"
+                app:layout_constraintTop_toBottomOf="@+id/separator"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageButton
+                android:id="@+id/ib_google_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_content_margin"
+                android:layout_marginTop="@dimen/default_content_margin"
+                android:background="@null"
+                android:contentDescription="@string/content_description_google_button"
+                android:elevation="@dimen/default_content_elevation"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ib_facebook"
+                app:layout_constraintTop_toBottomOf="@+id/separator"
+                app:srcCompat="@drawable/ic_google_plus" />
+
+            <TextView
+                android:id="@+id/tv_no_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_content_margin"
+                android:layout_marginTop="@dimen/separator_margin_top"
+                android:layout_marginEnd="@dimen/default_content_margin"
+                android:onClick="@{() -> viewModel.showLayout()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/switcher"
+                app:layout_constraintTop_toBottomOf="@+id/switcher" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

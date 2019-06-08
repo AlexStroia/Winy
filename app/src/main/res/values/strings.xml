@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">Winy</string>
+    <string name="login">Login</string>
+    <string name="signup">Signup</string>
+    <string name="hint_email">E-mail</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_firstname">Firstname</string>
+    <string name="hint_lastname">Lastname</string>
+    <string name="hint_password_type2">Password</string>
+    <string name="hint_email_type2">Email</string>
+    <string name="hint_birthdate">Birthdate</string>
+    <string name="logo_content_description">Three bottles of wine and the application logo</string>
+    <string name="user_not_searched">You did not searched for anything.</string>
+    <string name="user_no_favorite">You did not added nothing to favorite.</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="or_connect">Or connect with</string>
+    <string name="no_account"><![CDATA[Don\'t have an account? <u><b>Sign up.</b></u>]]></string>
+    <string name="already_have_account"><![CDATA[Already have an account? <u><b>Log in.</b></u>]]></string>
+    <string name="reset_password">Reset password</string>
+
+    <!--Product ProductActivity-->
+    <string name="home_button_text">Home</string>
+    <string name="home_button_favorites">Favorites</string>
+    <string name="settings_button_text">Settings</string>
+    <string name="tab_item_wine">Wine Pairing</string>
+    <string name="tab_item_food">Dish Pairing</string>
+    <string name="tab_item_random">Random</string>
+    <string name="product_search">Search</string>
+
+    <!--Wine Fragment-->
+    <string name="hint_food_name">e.g. "steak", "salmon", "italian"</string>
+    <string name="hint_wine_name">e.g. "merlot", "riesling", or "malbec"</string>
+    <string name="icon_wine">Wine icon</string>
+    <string name="paired_wines">Paired wines:</string>
+    <string name="wine_content_description">Image with a wine</string>
+    <string name="our_choice">Our choice:</string>
+    <string name="no_data_found">No data has been found for %1$s</string>
+
+    <!--SettingsFragment-->
+    <string name="account">Account</string>
+    <string name="help">Report a problem</string>
+    <string name="about">About</string>
+    <string name="logout">Logout</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="logout_message">Are you sure you want to logout?</string>
+
+    <!--Help ProductActivity-->
+    <string name="report_a_problem">Report a problem</string>
+    <string name="send_a_feedback">Send a feedback</string>
+
+    <!--SignupActivity-->
+    <string name="wine_picture">Wine picture</string>
+
+    <!--Detail ProductActivity-->
+    <string name="show_more">SHOW MORE</string>
+    <string name="rating">Rating</string>
+    <string name="avg_rating">Average Rating</string>
+    <string name="star_content_description">An icon with a star</string>
+    <string name="like_content_description">An icon with a like</string>
+    <string name="wine_title_font_size">24sp</string>
+    <string name="description">Description</string>
+    <string name="other_wines">Other wines</string>
+    <string name="show_less">SHOW LESS</string>
+    <string name="button_buy">BUY NOW</string>
+
+    <!--Search ProductActivity-->
+    <string name="search_by_wine">e.g. "Franciscan Estate Merlot"</string>
+
+    <!--Widget-->
+    <string name="add_widget">Add widget</string>
+
+    <!--Content description-->
+    <string name="content_description_food_dish">An dish with food</string>
+    <string name="content_description_base_profiel">An base profile icon</string>
+    <string name="content_description_help_icon">Help icon profile</string>
+    <string name="content_description_logout_button">Logout button image</string>
+    <string name="content_description_wine">An wine icon</string>
+    <string name="content_description_rating">A star icon for rating</string>
+    <string name="download_icon_image">Download icon image</string>
+    <string name="facebook_button_image">Facebook button image</string>
+    <string name="content_description_google_button">Google button image</string>
+</resources>

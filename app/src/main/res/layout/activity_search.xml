@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.alexdev.winy.feature.ui.search.uimodel.SearchActivityViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:transitionGroup="true"
+        tools:context=".feature.ui.search.SearchActivity">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_wines"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/default_content_margin"
+            android:layout_marginTop="@dimen/default_content_margin"
+            android:layout_marginEnd="@dimen/default_content_margin"
+            android:layout_marginBottom="@dimen/default_content_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/at_search" />
+
+        <co.alexdev.winy.feature.util.custom.CustomAutoCompleteTextView
+            android:id="@+id/at_search"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/autocomplete_height"
+            android:layout_marginStart="@dimen/default_content_margin"
+            android:layout_marginTop="@dimen/default_content_margin"
+            android:layout_marginEnd="@dimen/default_content_margin"
+            android:background="@drawable/autocomplete_background_unfocused"
+            android:hint="@string/search_by_wine"
+            android:imeOptions="actionSearch"
+            android:paddingStart="@dimen/default_content_padding"
+            android:paddingEnd="@dimen/default_content_padding"
+            app:autocompleteItems="@{viewModel.productsTitle}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/layout_no_food_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_content_margin"
+            android:layout_marginTop="@dimen/default_content_margin"
+            android:layout_marginEnd="@dimen/default_content_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/at_search" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

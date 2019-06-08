@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="shared_transition_string_image">SHARED_TRANSITION_STRING_IMAGEVIEW</string>
+    <string name="shared_transition_string_text_view">SHARED_TRANSITION_STRING_TEXTVIEW</string>
+</resources>

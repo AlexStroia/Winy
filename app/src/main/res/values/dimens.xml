@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_content_margin">8dp</dimen>
+    <dimen name="rounded_button_radius">12dp</dimen>
+    <dimen name="default_content_padding">8dp</dimen>
+    <dimen name="searchbar_corner_radius">8dp</dimen>
+
+    <!--LoginSignupActivity-->
+    <dimen name="button_width">180dp</dimen>
+    <dimen name="button_height">64dp</dimen>
+    <dimen name="button_elevation">16dp</dimen>
+    <dimen name="rounded_button_margin">32dp</dimen>
+    <dimen name="rounded_button_margin_top">16dp</dimen>
+    <dimen name="separator_margin_top">32dp</dimen>
+    <dimen name="line_width">132dp</dimen>
+    <dimen name="login_margin_content_top">128dp</dimen>
+
+    <!--LoginActivity-->
+    <dimen name="login_activity_margin_top">64dp</dimen>
+
+    <!--Product ProductActivity-->
+    <dimen name="tab_spacing_between_items">504dp</dimen>
+
+    <!--SignupActivity-->
+    <dimen name="signup_button_margin_bottom">128dp</dimen>
+    <dimen name="ic_wine_height">181dp</dimen>
+    <dimen name="ic_wine_width">120dp</dimen>
+    <dimen name="btn_signup_height">48dp</dimen>
+    <dimen name="signup_button_width">128dp</dimen>
+
+    <!--Product ProductActivity-->
+    <dimen name="bottom_navigation_height">54dp</dimen>
+    <dimen name="bottom_navigation_elevation">16dp</dimen>
+    <dimen name="tab_layout_elevation">16dp</dimen>
+    <dimen name="tab_indicator_height">5dp</dimen>
+
+    <!--Wine Fragment-->
+    <dimen name="autocomplete_stroke_width_unfocused">1dp</dimen>
+    <dimen name="autocomplete_stroke_width_focused">2dp</dimen>
+    <dimen name="autocomplete_height">54dp</dimen>
+    <dimen name="view_height">72dp</dimen>
+    <dimen name="cardview_content_elevation">16dp</dimen>
+    <dimen name="cardview_corner_radius">8dp</dimen>
+    <dimen name="textview_product_matches_size">14sp</dimen>
+    <dimen name="cardview_wine_types_height">124dp</dimen>
+    <dimen name="separator_line_height">1dp</dimen>
+    <dimen name="badge_elevation">8dp</dimen>
+    <dimen name="textview_wine_item_padding_start">32dp</dimen>
+    <dimen name="textview_item_width">40dp</dimen>
+    <dimen name="transparent_view_item_height">48dp</dimen>
+    <dimen name="item_wine_textview_font_size">16sp</dimen>
+    <dimen name="item_wine_textview_width">120dp</dimen>
+    <dimen name="textview_our_choice_size">18sp</dimen>
+    <dimen name="item_wine_layout_height">300dp</dimen>
+
+    <!--Settings Fragment-->
+    <dimen name="menu_button_width">224dp</dimen>
+    <dimen name="menu_account_margin_top">124dp</dimen>
+    <dimen name="menu_logout_margin_bottom">124dp</dimen>
+
+    <!--Help ProductActivity-->
+    <dimen name="help_activity_base_button_width">224dp</dimen>
+
+    <!--Detail ProductActivity-->
+    <dimen name="detail_icon_height_width">64dp</dimen>
+    <dimen name="default_content_elevation">8dp</dimen>
+    <dimen name="show_more_text_size">18sp</dimen>
+    <dimen name="fab_margin">48dp</dimen>
+    <dimen name="title_wine_width">248dp</dimen>
+    <dimen name="button_buy_margin">64dp</dimen>
+    <dimen name="content_height">124dp</dimen>
+    <dimen name="recycler_top_margin">64dp</dimen>
+    <dimen name="recycler_item_height">148dp</dimen>
+    <dimen name="buy_button_width">164dp</dimen>
+    <dimen name="buy_button_height">32dp</dimen>
+
+    <!--Settings Activity-->
+    <dimen name="settings_view_height">48dp</dimen>
+    <dimen name="settings_text_view_height">18sp</dimen>
+    <dimen name="textview_padding_top">32dp</dimen>
+    <dimen name="textview_padding_start">32dp</dimen>
+    <dimen name="textview_view_height">48dp</dimen>
+    <dimen name="container_height">72dp</dimen>
+
+    <!--State Layouts-->
+    <dimen name="state_layout_text_height">22sp</dimen>
+    <dimen name="state_textview_content_margin">48dp</dimen>
+    <dimen name="state_image_width_height">112dp</dimen>
+
+    <!--
+Refer to App Widget Documentation for margin information
+http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
+    -->
+    <dimen name="widget_margin">8dp</dimen>
+</resources>
