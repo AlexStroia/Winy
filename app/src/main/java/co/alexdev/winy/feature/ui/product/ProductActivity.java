@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.ads.MobileAds;
+
 import co.alexdev.winy.R;
 import co.alexdev.winy.databinding.ActivityProductBinding;
 import co.alexdev.winy.feature.ui.favorite.FavoriteFragment;
@@ -31,6 +33,8 @@ public class ProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_product);
         mBinding.setLifecycleOwner(this);
+
+        MobileAds.initialize(this, getString(R.string.CA_APP_ID_WINE));
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_from_left).add(R.id.fragment_container, settingsFragment).hide(settingsFragment).commit();

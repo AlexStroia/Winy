@@ -148,6 +148,20 @@
                     app:layout_constraintStart_toStartOf="@+id/tv_our_choice"
                     app:layout_constraintTop_toBottomOf="@id/autoCompleteTextView_wine" />
 
+                <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/adView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/default_content_margin"
+                    ads:adSize="BANNER"
+                    ads:adUnitId="@string/CA_APP_UNIT_ID_WINE"
+                    ads:layout_constraintBottom_toBottomOf="parent"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toBottomOf="@+id/rv_wine_recommendation"/>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

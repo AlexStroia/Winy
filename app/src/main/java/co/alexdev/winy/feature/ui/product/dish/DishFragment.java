@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Objects;
@@ -49,6 +50,10 @@ public class DishFragment extends BaseFragment {
         component.inject(this);
         BaseViewModelFactory factory = new BaseViewModelFactory(repository, analyticsManager);
         viewModel = ViewModelProviders.of(this, factory).get(DishViewModel.class);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        binding.adView.loadAd(adRequest);
+
         binding = DishFragmentBinding.inflate(inflater, container, false);
         binding.setLifecycleOwner(this);
         binding.setViewModel(viewModel);

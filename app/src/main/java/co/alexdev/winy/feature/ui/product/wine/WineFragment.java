@@ -14,6 +14,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
@@ -66,6 +67,11 @@ public class WineFragment extends BaseFragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_wine, container, false);
         WinyComponent component = DaggerWinyComponent.builder().contextModule(new ContextModule(Objects.requireNonNull(getActivity()))).build();
         component.inject(this);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adRequest.isTestDevice(this.getActivity());
+        binding.adView.loadAd(adRequest);
+
         factory = new BaseViewModelFactory(repository, analyticsManager, preferenceManager);
 
         viewModel = ViewModelProviders.of(this.getActivity(), factory).get(WineFragmentViewModel.class);

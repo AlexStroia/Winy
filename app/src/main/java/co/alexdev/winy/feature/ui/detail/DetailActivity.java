@@ -17,6 +17,11 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import javax.inject.Inject;
 
 import co.alexdev.winy.R;
@@ -82,6 +87,12 @@ public class DetailActivity extends AppCompatActivity {
                 .build();
         winyComponent.inject(this);
         binding.setLifecycleOwner(this);
+
+//        MobileAds.initialize(this, getString(R.string.CA_APP_ID_WINE));
+
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("plmmm").build();
+        binding.adView.loadAd(adRequest);
+
 
         if (getIntent() != null) {
             if (getIntent().hasExtra(WINE_ID) && getIntent().hasExtra(FOOD_NAME)) {
