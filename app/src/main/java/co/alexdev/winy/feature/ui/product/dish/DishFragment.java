@@ -56,12 +56,6 @@ public class DishFragment extends BaseFragment {
         binding.setViewModel(viewModel);
 
         AdRequest adRequest = new AdRequest.Builder().build();
-        binding.adView.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                binding.adView.setVisibility(View.VISIBLE);
-            }
-        });
         binding.adView.loadAd(adRequest);
 
         setRecyclerView();
@@ -85,6 +79,7 @@ public class DishFragment extends BaseFragment {
 
     private void onSearchPressed() {
         viewModel.onSearchPressed().observe(this, data -> {
+            binding.adView.setVisibility(View.VISIBLE);
             switch (data.status) {
                 case LOADING:
                     binding.progressBar.setVisibility(View.VISIBLE);

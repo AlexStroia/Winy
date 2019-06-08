@@ -159,6 +159,7 @@ public class DetailActivity extends AppCompatActivity {
             viewModel.updateRecycler(detailActivityProductViewModel.food, detailActivityProductViewModel.id).observe(DetailActivity.this, list -> {
                 adapter.submitList(list);
             });
+            binding.tvOtherWines.setVisibility(View.VISIBLE);
         }));
         binding.rvOtherWines.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 

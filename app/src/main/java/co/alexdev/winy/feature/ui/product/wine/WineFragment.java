@@ -70,12 +70,6 @@ public class WineFragment extends BaseFragment {
         component.inject(this);
 
         AdRequest adRequest = new AdRequest.Builder().build();
-        binding.adView.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                binding.adView.setVisibility(View.VISIBLE);
-            }
-        });
         binding.adView.loadAd(adRequest);
 
         factory = new BaseViewModelFactory(repository, analyticsManager, preferenceManager);
@@ -92,6 +86,7 @@ public class WineFragment extends BaseFragment {
             viewModel.food = textView.getText().toString();
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 viewModel.onSearchPressed().observe(this, data -> {
+                    binding.adView.setVisibility(View.VISIBLE);
                     setViewModelObjectData();
                     observePairedWinesViewModelLiveData();
                     observeProductMatchesViewModelLiveData();
@@ -130,7 +125,7 @@ public class WineFragment extends BaseFragment {
             viewModel.food = searchedQuery;
 
             viewModel.onSearchPressed().observe(this, data -> {
-
+                binding.adView.setVisibility(View.VISIBLE);
                 setViewModelObjectData();
 
                 observePairedWinesViewModelLiveData();

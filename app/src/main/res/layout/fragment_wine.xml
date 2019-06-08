@@ -161,7 +161,8 @@
                     ads:layout_constraintBottom_toBottomOf="parent"
                     ads:layout_constraintEnd_toEndOf="parent"
                     ads:layout_constraintStart_toStartOf="parent"
-                    ads:layout_constraintTop_toBottomOf="@+id/rv_wine_recommendation"/>
+                    ads:layout_constraintTop_toBottomOf="@id/rv_wine_recommendation"
+                />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>

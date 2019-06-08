@@ -6,14 +6,22 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="Ad" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="ads" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="AvailableLibraryUpdateStorage">
+    <last-search-timestamp>1560002761283</last-search-timestamp>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="510a3a59-5537-4ce4-a870-a1558ac83845" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/ProductActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/ProductActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/detail/DetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/detail/DetailActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/dish/DishFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/dish/DishFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/wine/WineFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/wine/WineFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_dish.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_dish.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_wine.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_wine.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/" />
@@ -66,73 +74,103 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="362">
+              <caret line="45" column="18" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-manifest" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/wine/WineFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="89" column="49" lean-forward="true" selection-start-line="89" selection-start-column="49" selection-end-line="89" selection-end-column="49" />
+            <state relative-caret-position="156">
+              <caret line="127" column="30" selection-start-line="127" selection-start-column="16" selection-end-line="127" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/wine/uimodel/WineFragmentViewModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="174">
+              <caret line="38" column="62" selection-start-line="38" selection-start-column="62" selection-end-line="38" selection-end-column="62" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_dish.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="327">
+              <caret line="125" column="45" selection-start-line="125" selection-start-column="45" selection-end-line="125" selection-end-column="45" />
+            </state>
+          </provider>
           <provider editor-type-id="android-designer2" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="123" column="75" selection-start-line="123" selection-start-column="75" selection-end-line="123" selection-end-column="75" />
-              <folding>
-                <element signature="e#6860#6889#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/ProductActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
-              <caret line="46" column="162" selection-start-line="46" selection-start-column="162" selection-end-line="46" selection-end-column="162" />
-              <folding>
-                <element signature="e#1295#1329#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/BaseActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/dish/DishFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="54" column="41" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
+            <state relative-caret-position="55">
+              <caret line="80" column="59" lean-forward="true" selection-start-line="80" selection-start-column="59" selection-end-line="80" selection-end-column="59" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_product.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="430">
+              <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_wine.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="311">
+              <caret line="163" column="76" selection-start-line="163" selection-end-line="164" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml">
-          <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="271" column="47" selection-start-line="271" selection-start-column="47" selection-end-line="271" selection-end-column="47" />
+            <state relative-caret-position="378">
+              <caret line="121" column="64" selection-start-line="121" selection-start-column="64" selection-end-line="121" selection-end-column="64" />
               <folding>
-                <element signature="e#15238#15269#0" expanded="true" />
+                <element signature="e#1712#1733#0" expanded="true" />
+                <element signature="e#5712#5743#0" expanded="true" />
+                <element signature="e#7713#7744#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/detail/DetailActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="344">
+              <caret line="152" column="74" selection-start-line="152" selection-start-column="74" selection-end-line="152" selection-end-column="74" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/core/repository/AuthenticationRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -144,17 +182,43 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="valueResourceFile" />
+        <option value="Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>misc.xml</find>
       <find>R.layout.activity_login</find>
       <find>misc.xm</find>
       <find>fragment_dish</find>
       <find>fragment_detail</find>
       <find>DishFragment</find>
+      <find>Report a problem</find>
+      <find>16dp</find>
+      <find>adView</find>
+      <find>Fragment</find>
+      <find>userInformation</find>
+      <find>ActivitySign</find>
+      <find>Authenticatio</find>
+      <find>rounded_button_</find>
+      <find>First name</find>
+      <find>First na</find>
+      <find>factory</find>
+      <find>S</find>
+      <find>SettingsFragment</find>
+      <find>account</find>
+      <find>ForgotPa</find>
+      <find>Password</find>
+      <find>password</find>
+      <find>Forgot pass</find>
+      <find>content_login</find>
+      <find>on</find>
+      <find>onSearchPressed</find>
+      <find>WineFrag</find>
+      <find>other_wines</find>
+      <find>8dp</find>
+      <find>binding.adView</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -169,26 +233,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_account.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_help.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_logout.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/ripple.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/settings_selector.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/settings/SettingsFragmentViewModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/BaseFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/ProductFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/core/di/module/AnalyticsModule.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/core/util/AnalyticsManager.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/search/uimodel/SearchActivityViewModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/favorite/uimodel/FavoriteViewModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/dish/DishViewModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/core/util/factory/LoginViewModelFactory.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/login/ActivityLogin.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/login/uimodel/ActivityLoginViewModel.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/WinnyApplication.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/settings/SettingsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/core/di/module/PreferenceModule.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/core/repository/DishRepository.java" />
@@ -197,33 +248,48 @@
         <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/search/SearchActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/favorite/FavoriteFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/core/util/WidgetService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/core/di/WinyComponent.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/core/util/WinyWidgetService.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/widget/WinyWidget.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/wine/uimodel/WineFragmentViewModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/winy_widget.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_no_food_search.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_recommend_wine.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/core/util/PreferenceManager.java" />
         <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/detail/DetailActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/ads.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_dish.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_wine.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/ProductActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/settings/uimodel/SettingsFragmentViewModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/core/model/user/AuthUser.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/login_gradient_button.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/rounded_button.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/core/di/WinyComponent.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/round_button_ripple.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_account.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/account/AccountActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/settings/SettingsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/core/repository/AuthenticationRepository.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/core/util/factory/LoginViewModelFactory.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/login/uimodel/ActivityLoginViewModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/login/ActivityLogin.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_login.xml" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/wine/WineFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_wine.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/detail/DetailActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_dish.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/dish/DishFragment.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-100" />
+    <option name="y" value="20" />
     <option name="width" value="1925" />
     <option name="height" value="1040" />
   </component>
@@ -233,6 +299,22 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Winy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Winy" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="Winy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Winy" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Non-Source Files'; set:Project Non-Source Files; class com.jetbrains.cidr.lang.search.scopes.ProjectSourcesScopeProvider$NonSourceFilesScope">
@@ -278,33 +360,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Winy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Winy" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="Winy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Winy" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="AndroidView">
         <subPane>
           <expand>
             <path>
               <item name="Winy" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="Winy" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
             </path>
             <path>
               <item name="Winy" type="1abcf292:AndroidViewProjectNode" />
@@ -348,7 +409,17 @@
               <item name="winy" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="feature" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="favorite" type="462c0819:PsiDirectoryNode" />
+              <item name="product" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Winy" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="winy" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="feature" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="product" type="462c0819:PsiDirectoryNode" />
+              <item name="dish" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Winy" type="1abcf292:AndroidViewProjectNode" />
@@ -372,10 +443,17 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DEBUGGABLE_DEVICE" value="Pixel_API_28 [emulator-5554]" />
+    <property name="DEBUGGABLE_PROCESS" value="co.alexdev.winy" />
+    <property name="DEBUGGER_ID" value="Auto" />
+    <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="device.picker.selection" value="Pixel_API_28" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="PsdUISettings">
+    <option name="MODULE_TAB" value="Signing Configs" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -466,20 +544,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1555148450753</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Added autocomplete textview functionality for search activity">
-      <created>1557552275417</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1557552275417</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Added search adapter implementation">
-      <created>1557555790713</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1557555790713</updated>
     </task>
     <task id="LOCAL-00050" summary="Search activity layout improvments">
       <created>1557558633847</created>
@@ -810,40 +874,54 @@
       <option name="project" value="LOCAL" />
       <updated>1559980441938</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fix favorite fragment bug">
+      <created>1559982272846</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1559982272846</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Account Info WIP">
+      <created>1559989669666</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1559989669667</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1540" height="832" extended-state="0" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info id="Build Variants" order="1" side_tool="true" />
-      <window_info id="Project" order="2" visible="true" weight="0.21081081" />
+      <window_info id="Build Variants" order="1" sideWeight="0.104803495" side_tool="true" visible="true" weight="0.25100672" />
+      <window_info id="Project" order="2" sideWeight="0.8951965" visible="true" weight="0.25100672" />
       <window_info id="Structure" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Designer" order="5" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" visible="true" weight="0.28212702" />
-      <window_info anchor="bottom" id="Debug" />
-      <window_info anchor="bottom" id="Find" weight="0.18611522" />
-      <window_info anchor="bottom" id="Logcat" order="0" weight="0.044313148" />
+      <window_info anchor="bottom" id="Logcat" order="0" sideWeight="0.747651" weight="0.043923866" />
       <window_info anchor="bottom" id="Android Profiler" order="1" />
       <window_info anchor="bottom" id="Version Control" order="2" />
       <window_info anchor="bottom" id="TODO" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="6" weight="0.3308715" />
-      <window_info anchor="right" id="Preview" />
-      <window_info anchor="right" id="Assistant" weight="0.32972974" />
+      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50067115" side_tool="true" visible="true" weight="0.329429" />
+      <window_info anchor="bottom" id="Build" order="6" sideWeight="0.4986577" weight="0.16398244" />
+      <window_info anchor="bottom" id="Run" order="7" weight="0.40409955" />
+      <window_info active="true" anchor="bottom" id="Debug" order="8" sideWeight="0.49932885" visible="true" weight="0.329429" />
+      <window_info anchor="bottom" id="Find" order="9" sideWeight="0.49932885" weight="0.15519765" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Gradle" order="1" />
       <window_info anchor="right" id="Capture Analysis" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Android WiFi ADB" order="4" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
+      <window_info anchor="right" id="Assistant" order="6" weight="0.32972974" />
+      <window_info anchor="right" id="Preview" order="7" />
     </layout>
     <layout-to-restore>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
@@ -894,7 +972,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge branch 'master' of https://github.com/AlexandruStroiaDev/Winy&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml" />
     <MESSAGE value="Added ads" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added ads" />
+    <MESSAGE value="Fix favorite fragment bug" />
+    <MESSAGE value="Account Info WIP" />
+    <option name="LAST_COMMIT_MESSAGE" value="Account Info WIP" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -937,25 +1017,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/detail/DetailActivity.java</url>
-          <line>155</line>
+          <line>159</line>
           <properties />
           <option name="timeStamp" value="131" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/detail/DetailActivity.java</url>
-          <line>145</line>
+          <line>149</line>
           <properties />
           <option name="timeStamp" value="132" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/detail/DetailActivity.java</url>
-          <line>143</line>
+          <line>147</line>
           <properties />
           <option name="timeStamp" value="134" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/detail/DetailActivity.java</url>
-          <line>161</line>
+          <line>166</line>
           <properties />
           <option name="timeStamp" value="135" />
         </line-breakpoint>
@@ -973,25 +1053,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/login/uimodel/ActivityLoginViewModel.java</url>
-          <line>104</line>
+          <line>103</line>
           <properties />
           <option name="timeStamp" value="154" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/login/uimodel/ActivityLoginViewModel.java</url>
-          <line>112</line>
+          <line>111</line>
           <properties />
           <option name="timeStamp" value="155" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/login/uimodel/ActivityLoginViewModel.java</url>
-          <line>121</line>
+          <line>120</line>
           <properties />
           <option name="timeStamp" value="156" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/login/uimodel/ActivityLoginViewModel.java</url>
-          <line>125</line>
+          <line>124</line>
           <properties />
           <option name="timeStamp" value="157" />
         </line-breakpoint>
@@ -1042,6 +1122,12 @@
           <line>71</line>
           <properties />
           <option name="timeStamp" value="168" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/wine/WineFragment.java</url>
+          <line>127</line>
+          <properties />
+          <option name="timeStamp" value="169" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/signup/uimodel/SignupActivityViewModel.java</url>
@@ -1109,16 +1195,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/login/ActivityLogin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="57" column="44" selection-start-line="57" selection-start-column="44" selection-end-line="57" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/google-services.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1133,28 +1209,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="114" selection-start-line="114" selection-end-line="114" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35">
-          <caret line="24" column="19" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/detail/DetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="93" selection-start-line="93" selection-end-line="93" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build/generated/source/apt/debug/co/alexdev/winy/DataBinderMapperImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -1162,45 +1216,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/ads.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_wine.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="156" column="75" selection-start-line="156" selection-start-column="75" selection-end-line="156" selection-end-column="75" />
-          <folding>
-            <element signature="e#8656#8685#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="271" column="47" selection-start-line="271" selection-start-column="47" selection-end-line="271" selection-end-column="47" />
-          <folding>
-            <element signature="e#15238#15269#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/BaseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1218,38 +1237,309 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_dish.xml">
-      <provider editor-type-id="android-designer2" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/BaseActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="123" column="75" selection-start-line="123" selection-start-column="75" selection-end-line="123" selection-end-column="75" />
+        <state relative-caret-position="323">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
           <folding>
-            <element signature="e#6860#6889#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/favorite/FavoriteAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/generated/data_binding_base_class_source_out/debug/dataBindingGenBaseClassesDebug/out/co/alexdev/winy/databinding/FragmentSettingsBinding.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="13" column="59" selection-start-line="13" selection-start-column="59" selection-end-line="13" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/settings/uimodel/SettingsFragmentViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="44" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/core/model/user/UserInformation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/core/model/user/AuthUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/dish/DishViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="25" column="14" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/login_gradient_button.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="8" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/rounded_button.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="19" column="61" selection-start-line="19" selection-start-column="61" selection-end-line="19" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/core/di/WinyComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="33" column="51" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/round_button_ripple.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_signup.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="74" column="43" selection-start-line="74" selection-start-column="43" selection-end-line="74" selection-end-column="43" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/core/repository/DishRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_account.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="13" column="65" selection-start-line="13" selection-start-column="65" selection-end-line="13" selection-end-column="65" />
+          <folding>
+            <element signature="e#620#651#0" expanded="true" />
+            <element signature="e#608#631#0" expanded="true" />
+            <element signature="e#1127#1158#0" expanded="true" />
+            <element signature="e#1084#1115#0" expanded="true" />
+            <element signature="e#957#979#0" expanded="true" />
+            <element signature="e#1653#1684#0" expanded="true" />
+            <element signature="e#1569#1600#0" expanded="true" />
+            <element signature="e#1327#1353#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/ProductActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="25" column="65" selection-start-line="25" selection-start-column="65" selection-end-line="25" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/settings/SettingsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1683#1694#0" expanded="true" />
+            <element signature="e#1984#2012#0" expanded="true" />
+            <element signature="e#2042#2072#0" expanded="true" />
+            <element signature="e#2107#2143#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/core/util/factory/LoginViewModelFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/account/AccountActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="13" column="56" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/login/uimodel/ActivityLoginViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="76" selection-start-line="76" selection-end-line="76" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/login/ActivityLogin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="52" column="68" selection-start-line="52" selection-start-column="68" selection-end-line="52" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="46" selection-start-line="36" selection-start-column="46" selection-end-line="36" selection-end-column="46" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_login.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="1326">
+          <caret line="78" column="18" selection-start-line="78" selection-start-column="18" selection-end-line="78" selection-end-column="18" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/core/repository/AuthenticationRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="52" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/core/model/user/UserCredential.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="45" column="18" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/wine/uimodel/WineFragmentViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="38" column="62" selection-start-line="38" selection-start-column="62" selection-end-line="38" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_wine.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="163" column="76" selection-start-line="163" selection-end-line="164" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_product.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/detail/DetailActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="152" column="74" selection-start-line="152" selection-start-column="74" selection-end-line="152" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="121" column="64" selection-start-line="121" selection-start-column="64" selection-end-line="121" selection-end-column="64" />
+          <folding>
+            <element signature="e#1712#1733#0" expanded="true" />
+            <element signature="e#5712#5743#0" expanded="true" />
+            <element signature="e#7713#7744#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_dish.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="125" column="45" selection-start-line="125" selection-start-column="45" selection-end-line="125" selection-end-column="45" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/dish/DishFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="54" column="41" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
+        <state relative-caret-position="55">
+          <caret line="80" column="59" lean-forward="true" selection-start-line="80" selection-start-column="59" selection-end-line="80" selection-end-column="59" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/wine/WineFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="89" column="49" lean-forward="true" selection-start-line="89" selection-start-column="49" selection-end-line="89" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/alexdev/winy/feature/ui/product/ProductActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="46" column="162" selection-start-line="46" selection-start-column="162" selection-end-line="46" selection-end-column="162" />
-          <folding>
-            <element signature="e#1295#1329#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="156">
+          <caret line="127" column="30" selection-start-line="127" selection-start-column="16" selection-end-line="127" selection-end-column="30" />
         </state>
       </provider>
     </entry>
