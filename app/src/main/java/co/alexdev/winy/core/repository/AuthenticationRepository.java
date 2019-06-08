@@ -5,6 +5,8 @@ import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -153,6 +155,21 @@ public class AuthenticationRepository {
         };
     }
 
+    public void forgotPassword(String email) {
+        if(!TextUtils.isEmpty(email)) {
+            FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            listener.onForgotPassword(Constants.FIREBASE_DATABASE.MESSAGES.FORGOT_EMAIL_SENT);
+                        } else {
+                            listener.onForgotPassword(Constants.FIREBASE_DATABASE.MESSAGES.FORGOT_EMAIL_INCORECT);
+                        }
+                    });
+        } else {
+            listener.onForgotPassword(Constants.FIREBASE_DATABASE.MESSAGES.EMAIL);
+        }
+    }
+
     public void setListener(OnUserStateListener authStateListener) {
         this.listener = authStateListener;
     }
@@ -161,5 +178,7 @@ public class AuthenticationRepository {
         void onUserSignup(String userMessage, Constants.FIREBASE_DATABASE.SIGNUP_STATE signup_state);
 
         void onUserLogin(String loginMessage, Constants.FIREBASE_DATABASE.LOGIN_STATE login_state);
+
+        void onForgotPassword(String message);
     }
 }

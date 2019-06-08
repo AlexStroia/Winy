@@ -25,6 +25,7 @@ public class ActivityLoginViewModel extends ViewModel implements LifecycleObserv
     public String userMessage;
     public MutableLiveData<Enum> loginStateEnumLiveData = new MutableLiveData<>();
     public MutableLiveData<Enum> signupStateEnumLiveData = new MutableLiveData<>();
+    public MutableLiveData<String> forgotPassLiveData = new MutableLiveData<>();
     private Constants.AUTH_LAYOUT_STATE layoutState = Constants.AUTH_LAYOUT_STATE.LOGIN;
 
     private AuthenticationRepository authenticationRepository;
@@ -43,8 +44,8 @@ public class ActivityLoginViewModel extends ViewModel implements LifecycleObserv
         authenticationRepository.loginUser(userCredential);
     }
 
-    public void forgotPassword() {
-
+    public void forgotPassword(String email) {
+        authenticationRepository.forgotPassword(email);
     }
 
     public void showLayout() {
@@ -71,7 +72,7 @@ public class ActivityLoginViewModel extends ViewModel implements LifecycleObserv
         authenticationRepository.registerAuthStateListener();
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     void checkIfUserHasLogged() {
         authenticationRepository.checkIfUserHasLogged();
     }
@@ -93,5 +94,10 @@ public class ActivityLoginViewModel extends ViewModel implements LifecycleObserv
         this.loginMessage = loginMessage;
         analyticsManager.login(authenticationRepository.userUID);
         loginStateEnumLiveData.setValue(login_state);
+    }
+
+    @Override
+    public void onForgotPassword(String message) {
+        forgotPassLiveData.setValue(message);
     }
 }

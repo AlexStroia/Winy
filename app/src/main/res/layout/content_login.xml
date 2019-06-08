@@ -84,7 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/default_content_margin"
-                android:onClick="@{() -> viewModel.forgotPassword()}"
+                android:onClick="@{() -> viewModel.forgotPassword(viewModel.userCredential.email)}"
                 android:text="@string/forgot_password"
                 android:textColor="@color/colorPrimary"
                 android:visibility="visible"

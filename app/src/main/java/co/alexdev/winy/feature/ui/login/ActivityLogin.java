@@ -81,6 +81,10 @@ public class ActivityLogin extends AppCompatActivity {
 
         observeSignupState();
 
+        activityLoginViewModel.forgotPassLiveData.observe(this, message -> {
+            Snackbar.make(binding.coordinator, message, Snackbar.LENGTH_LONG).show();
+        });
+
         observeAuthLayoutState(alreadyHave, dontHave);
     }
 
