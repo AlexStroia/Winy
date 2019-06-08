@@ -4,4 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.ui.account.AccountActivity" />
+    tools:context=".feature.ui.account.AccountActivity" >
+
+    <TextView
+        android:id="@+id/tv_account_email"
+        style="@style/SettingsTextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_content_margin"
+        android:layout_marginEnd="@dimen/default_content_margin"
+        android:text="@string/account_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_account_first_name"
+        style="@style/SettingsTextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_content_margin"
+        android:layout_marginEnd="@dimen/default_content_margin"
+        android:text="@string/account_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_account_email" />
+
+    <TextView
+        android:id="@+id/tv_account_first_lastname"
+        style="@style/SettingsTextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_content_margin"
+        android:layout_marginEnd="@dimen/default_content_margin"
+        android:text="@string/account_lastname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_account_first_name" />
+</androidx.constraintlayout.widget.ConstraintLayout>

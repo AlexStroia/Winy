@@ -2,6 +2,7 @@
 <resources>
     <dimen name="default_content_margin">8dp</dimen>
     <dimen name="rounded_button_radius">12dp</dimen>
+    <dimen name="medium_content_margin">16dp</dimen>
     <dimen name="default_content_padding">8dp</dimen>
     <dimen name="searchbar_corner_radius">8dp</dimen>
 

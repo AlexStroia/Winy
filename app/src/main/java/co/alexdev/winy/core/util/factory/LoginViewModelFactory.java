@@ -7,23 +7,22 @@ import androidx.lifecycle.ViewModelProvider;
 import javax.inject.Inject;
 
 import co.alexdev.winy.core.model.user.UserCredential;
+import co.alexdev.winy.core.repository.AuthenticationRepository;
 import co.alexdev.winy.core.util.AnalyticsManager;
 import co.alexdev.winy.feature.ui.login.uimodel.ActivityLoginViewModel;
 
 public class LoginViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 
-    private UserCredential userCredential;
     private AnalyticsManager analyticsManager;
 
     @Inject
-    public LoginViewModelFactory(UserCredential userCredential, AnalyticsManager analyticsManager) {
-        this.userCredential = userCredential;
+    public LoginViewModelFactory(AnalyticsManager analyticsManager) {
         this.analyticsManager = analyticsManager;
     }
 
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        return (T) new ActivityLoginViewModel(userCredential, analyticsManager);
+        return (T) new ActivityLoginViewModel(analyticsManager);
     }
 }

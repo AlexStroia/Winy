@@ -94,7 +94,7 @@
                 app:srcCompat="@drawable/ic_facebook" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/tv_connect_with"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/default_content_margin"
@@ -106,7 +106,7 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/separator2"
                 app:layout_constraintTop_toBottomOf="@+id/separator"
-                app:layout_constraintVertical_bias="0.0" />
+                />
 
             <ImageButton
                 android:id="@+id/ib_google_plus"

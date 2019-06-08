@@ -14,6 +14,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -69,6 +70,12 @@ public class WineFragment extends BaseFragment {
         component.inject(this);
 
         AdRequest adRequest = new AdRequest.Builder().build();
+        binding.adView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                binding.adView.setVisibility(View.VISIBLE);
+            }
+        });
         binding.adView.loadAd(adRequest);
 
         factory = new BaseViewModelFactory(repository, analyticsManager, preferenceManager);

@@ -27,7 +27,7 @@ public class ActivityLoginViewModel extends ViewModel implements LifecycleObserv
 
     private Constants.FIREBASE_DATABASE.LOGIN_STATE loginState = Constants.FIREBASE_DATABASE.LOGIN_STATE.NOT_SET;
 
-    public UserCredential userCredential;
+    public UserCredential userCredential = new UserCredential();
     public UserInformation userInformation = new UserInformation();
     public String userMessage;
     public MutableLiveData<Enum> loginStateEnumLiveData = new MutableLiveData<>();
@@ -40,8 +40,7 @@ public class ActivityLoginViewModel extends ViewModel implements LifecycleObserv
 
     private AnalyticsManager analyticsManager;
 
-    public ActivityLoginViewModel(UserCredential userCredential, AnalyticsManager analyticsManager) {
-        this.userCredential = userCredential;
+    public ActivityLoginViewModel(AnalyticsManager analyticsManager) {
         this.userCredential.setEmail("");
         this.userCredential.setPassword("");
         this.analyticsManager = analyticsManager;

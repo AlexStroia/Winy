@@ -30,11 +30,11 @@
             android:theme="@style/SearchActivityTheme" />
         <activity
             android:name=".feature.ui.detail.DetailActivity"
-            android:parentActivityName=".feature.ui.product.ProductActivity" />
-        <activity android:name=".feature.ui.help.HelpActivity" />
-        <activity android:name=".feature.ui.account.AccountActivity" />
-        <activity android:name=".feature.ui.product.ProductActivity" />
-        <activity android:name=".feature.ui.login.ActivityLogin">
+            android:parentActivityName=".feature.ui.product.ProductActivity" android:launchMode="singleTop" />
+        <activity android:name=".feature.ui.help.HelpActivity" android:launchMode="singleTop" />
+        <activity android:name=".feature.ui.account.AccountActivity" android:parentActivityName=".feature.ui.product.ProductActivity" android:launchMode="singleTop"/>
+        <activity android:name=".feature.ui.product.ProductActivity" android:launchMode="singleTop" />
+        <activity android:name=".feature.ui.login.ActivityLogin" android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

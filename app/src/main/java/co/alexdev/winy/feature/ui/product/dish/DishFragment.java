@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -55,7 +56,13 @@ public class DishFragment extends BaseFragment {
         binding.setViewModel(viewModel);
 
         AdRequest adRequest = new AdRequest.Builder().build();
-//        binding.adView.loadAd(adRequest);
+        binding.adView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                binding.adView.setVisibility(View.VISIBLE);
+            }
+        });
+        binding.adView.loadAd(adRequest);
 
         setRecyclerView();
         binding.autoCompleteTextViewFood.setOnEditorActionListener((textView, actionId, keyEvent) -> {
