@@ -9,11 +9,9 @@ import javax.inject.Singleton;
 public class PreferenceManager {
 
     public static final String WINES = "WINES";
-    private Context context;
     private SharedPreferences preferenceManager;
 
     public PreferenceManager(Context context) {
-        this.context = context;
         preferenceManager = android.preference.PreferenceManager.getDefaultSharedPreferences(context);
     }
 
