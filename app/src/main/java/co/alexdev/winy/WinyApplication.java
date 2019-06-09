@@ -7,7 +7,7 @@ import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.di.module.ContextModule;
 
 
-public class WinnyApplication extends Application {
+public class WinyApplication extends Application {
 
     private static WinyComponent winyComponent;
 

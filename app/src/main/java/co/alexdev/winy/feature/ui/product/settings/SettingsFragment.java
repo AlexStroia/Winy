@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProviders;
 import java.util.Objects;
 
 import co.alexdev.winy.R;
-import co.alexdev.winy.WinnyApplication;
+import co.alexdev.winy.WinyApplication;
 import co.alexdev.winy.core.util.factory.BaseSettingsFactory;
 import co.alexdev.winy.databinding.FragmentSettingsBinding;
 import co.alexdev.winy.feature.BaseFragment;
@@ -32,7 +32,7 @@ public class SettingsFragment extends BaseFragment {
 
         binding = FragmentSettingsBinding.inflate(inflater, container, false);
         binding.setLifecycleOwner(this);
-        BaseSettingsFactory factory = new BaseSettingsFactory(WinnyApplication.getDaggerComponent().provideAuthRepository());
+        BaseSettingsFactory factory = new BaseSettingsFactory(WinyApplication.getDaggerComponent().provideAuthRepository());
 
         viewModel = ViewModelProviders.of(this, factory).get(SettingsFragmentViewModel.class);
         binding.setViewModel(viewModel);

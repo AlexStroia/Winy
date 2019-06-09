@@ -3,7 +3,7 @@
     package="co.alexdev.winy">
 
     <application
-        android:name=".WinnyApplication"
+        android:name=".WinyApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher_background"
         android:label="@string/app_name"

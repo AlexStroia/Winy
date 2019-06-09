@@ -23,7 +23,7 @@ import java.util.Objects;
 import javax.inject.Inject;
 
 import co.alexdev.winy.R;
-import co.alexdev.winy.WinnyApplication;
+import co.alexdev.winy.WinyApplication;
 import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.model.wines.PairingText;
 import co.alexdev.winy.core.repository.WinesRepository;
@@ -64,7 +64,7 @@ public class WineFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_wine, container, false);
-        WinyComponent component = WinnyApplication.getDaggerComponent();
+        WinyComponent component = WinyApplication.getDaggerComponent();
         component.inject(this);
 
         AdRequest adRequest = new AdRequest.Builder().build();

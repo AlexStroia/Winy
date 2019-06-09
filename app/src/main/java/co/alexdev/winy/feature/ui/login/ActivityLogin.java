@@ -25,7 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import co.alexdev.winy.R;
-import co.alexdev.winy.WinnyApplication;
+import co.alexdev.winy.WinyApplication;
 import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.util.Constants;
 import co.alexdev.winy.core.util.factory.LoginViewModelFactory;
@@ -46,7 +46,7 @@ public class ActivityLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
-        WinyComponent component = WinnyApplication.getDaggerComponent();
+        WinyComponent component = WinyApplication.getDaggerComponent();
 
         binding.setLifecycleOwner(this);
 

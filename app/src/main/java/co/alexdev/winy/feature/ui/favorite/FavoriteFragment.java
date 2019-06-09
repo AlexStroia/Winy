@@ -11,14 +11,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.kennyc.view.MultiStateView;
 
-import java.util.Objects;
-
 import javax.inject.Inject;
 
-import co.alexdev.winy.WinnyApplication;
-import co.alexdev.winy.core.di.DaggerWinyComponent;
+import co.alexdev.winy.WinyApplication;
 import co.alexdev.winy.core.di.WinyComponent;
-import co.alexdev.winy.core.di.module.ContextModule;
 import co.alexdev.winy.core.repository.WinesRepository;
 import co.alexdev.winy.core.util.AnalyticsManager;
 import co.alexdev.winy.core.util.PreferenceManager;
@@ -45,7 +41,7 @@ public class FavoriteFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        WinyComponent component = WinnyApplication.getDaggerComponent();
+        WinyComponent component = WinyApplication.getDaggerComponent();
 
         component.inject(this);
         binding = FragmentFavoriteBinding.inflate(inflater, container, false);

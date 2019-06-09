@@ -10,10 +10,8 @@ import androidx.annotation.Nullable;
 
 import javax.inject.Inject;
 
-import co.alexdev.winy.WinnyApplication;
-import co.alexdev.winy.core.di.DaggerWinyComponent;
+import co.alexdev.winy.WinyApplication;
 import co.alexdev.winy.core.di.WinyComponent;
-import co.alexdev.winy.core.di.module.ContextModule;
 import co.alexdev.winy.feature.widget.WinyWidget;
 
 public class WinyWidgetService extends IntentService {
@@ -48,7 +46,7 @@ public class WinyWidgetService extends IntentService {
     public void onCreate() {
         super.onCreate();
 
-        WinyComponent winyComponent = WinnyApplication.getDaggerComponent();
+        WinyComponent winyComponent = WinyApplication.getDaggerComponent();
         winyComponent.inject(this);
     }
 }

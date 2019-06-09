@@ -5,7 +5,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
 import co.alexdev.winy.R;
-import co.alexdev.winy.WinnyApplication;
+import co.alexdev.winy.WinyApplication;
 import co.alexdev.winy.core.repository.AuthenticationRepository;
 import co.alexdev.winy.core.util.factory.BaseSettingsFactory;
 import co.alexdev.winy.databinding.ActivityAccountBinding;
@@ -27,7 +27,7 @@ public class AccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_account);
         binding.setLifecycleOwner(this);
-        authenticationRepository = WinnyApplication.getDaggerComponent().provideAuthRepository();
+        authenticationRepository = WinyApplication.getDaggerComponent().provideAuthRepository();
 
         BaseSettingsFactory factory = new BaseSettingsFactory(authenticationRepository);
         viewModel = ViewModelProviders.of(this, factory).get(AccountActivityViewModel.class);

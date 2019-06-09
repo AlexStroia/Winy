@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Pair;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,17 +19,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 
 import javax.inject.Inject;
 
 import co.alexdev.winy.R;
-import co.alexdev.winy.WinnyApplication;
-import co.alexdev.winy.core.di.DaggerWinyComponent;
+import co.alexdev.winy.WinyApplication;
 import co.alexdev.winy.core.di.WinyComponent;
-import co.alexdev.winy.core.di.module.ContextModule;
 import co.alexdev.winy.core.repository.WinesRepository;
 import co.alexdev.winy.core.util.factory.DetailViewModelFactory;
 import co.alexdev.winy.databinding.ActivityDetailBinding;
@@ -86,7 +80,7 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
-        WinyComponent winyComponent = WinnyApplication.getDaggerComponent();
+        WinyComponent winyComponent = WinyApplication.getDaggerComponent();
 
         winyComponent.inject(this);
         binding.setLifecycleOwner(this);
