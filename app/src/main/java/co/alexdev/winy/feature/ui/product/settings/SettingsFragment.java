@@ -41,6 +41,9 @@ public class SettingsFragment extends BaseFragment {
     private void showAlertDialog() {
         alertDialogBuilder.setPositiveButton(R.string.yes, (dialogInterface, i) -> {
             viewModel.signoutUser();
+            if (this.getActivity() != null) {
+                this.getActivity().finish();
+            }
             ActivityLogin.startActivity(Objects.requireNonNull(this.getActivity()));
         }).setNegativeButton(R.string.no, (dialogInterface, i) -> {
         }).setMessage(R.string.logout_message).show();

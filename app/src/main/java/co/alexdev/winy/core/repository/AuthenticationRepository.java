@@ -42,8 +42,8 @@ public class AuthenticationRepository {
     private Constants.FIREBASE_DATABASE.LOGIN_STATE loginState = Constants.FIREBASE_DATABASE.LOGIN_STATE.NOT_SET;
 
     public String userUID;
-    private UserInformation userInformation;
-    private UserCredential userCredential;
+    private UserInformation userInformation = new UserInformation();
+    private UserCredential userCredential = new UserCredential();
 
     @Inject
     public AuthenticationRepository() {
