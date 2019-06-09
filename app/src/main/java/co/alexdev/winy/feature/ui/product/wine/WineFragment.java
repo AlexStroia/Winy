@@ -14,7 +14,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -25,9 +24,7 @@ import javax.inject.Inject;
 
 import co.alexdev.winy.R;
 import co.alexdev.winy.WinnyApplication;
-import co.alexdev.winy.core.di.DaggerWinyComponent;
 import co.alexdev.winy.core.di.WinyComponent;
-import co.alexdev.winy.core.di.module.ContextModule;
 import co.alexdev.winy.core.model.wines.PairingText;
 import co.alexdev.winy.core.repository.WinesRepository;
 import co.alexdev.winy.core.util.AnalyticsManager;
@@ -128,7 +125,6 @@ public class WineFragment extends BaseFragment {
             viewModel.onSearchPressed().observe(this, data -> {
                 binding.adView.setVisibility(View.VISIBLE);
                 setViewModelObjectData();
-
                 observePairedWinesViewModelLiveData();
                 observeProductMatchesViewModelLiveData();
 

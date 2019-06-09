@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Pair;
 import android.view.MenuItem;
 import android.view.View;
@@ -109,8 +110,11 @@ public class DetailActivity extends AppCompatActivity {
                     setShowMoreText(isExpanded);
                     expandCollapseAnimation(isExpanded);
                 });
+
                 setRecyclerView();
-                
+
+                viewModel.productMatchesViewModelLiveData.observe(this, product -> viewModel.url = product.link);
+
                 binding.btnBuy.setOnClickListener((view) -> {
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(viewModel.url));
                     if (intent.resolveActivity(getPackageManager()) != null) {
@@ -144,24 +148,26 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void setRecyclerView() {
-        adapter = new DetailWinesAdapter(wineId -> viewModel.updateUI(wineId).observe(DetailActivity.this, detailActivityProductViewModel -> {
-            viewModel.url = detailActivityProductViewModel.link;
-            binding.tvAverageRatingValue.setText(detailActivityProductViewModel.averageRating);
-            binding.tvDescriptionContent.setVisibility(TextUtils.isEmpty(detailActivityProductViewModel.description) ? View.GONE : View.VISIBLE);
-            binding.btnShow.setVisibility(TextUtils.isEmpty(detailActivityProductViewModel.description) ? View.GONE : View.VISIBLE);
-            binding.tvDescription.setVisibility(TextUtils.isEmpty(detailActivityProductViewModel.description) ? View.GONE : View.VISIBLE);
-            binding.tvDescriptionContent.setText(detailActivityProductViewModel.description);
-            binding.tvPrice.setText(detailActivityProductViewModel.price);
-            binding.tvRatingGrade.setText(detailActivityProductViewModel.ratingCount);
-            binding.tvAverageRatingValue.setText(detailActivityProductViewModel.averageRating);
-            ImageBindings.setImage(binding.ivWineIcon, detailActivityProductViewModel.imageUrl, null);
-            FabBindings.setImageDrawable(binding.fbFavorite, detailActivityProductViewModel.isAddedToFavorite);
-            binding.tvWineName.setText(detailActivityProductViewModel.title);
-            viewModel.updateRecycler(detailActivityProductViewModel.food, detailActivityProductViewModel.id).observe(DetailActivity.this, list -> {
-                adapter.submitList(list);
-            });
-            binding.tvOtherWines.setVisibility(View.VISIBLE);
-        }));
+        adapter = new DetailWinesAdapter(wineId ->
+                viewModel.updateUI(wineId).observe(DetailActivity.this, detailActivityProductViewModel -> {
+                    viewModel.url = detailActivityProductViewModel.link;
+                    binding.btnBuy.setVisibility(TextUtils.isEmpty(viewModel.url) ? View.GONE : View.VISIBLE);
+                    binding.tvAverageRatingValue.setText(detailActivityProductViewModel.averageRating);
+                    binding.tvDescriptionContent.setVisibility(TextUtils.isEmpty(detailActivityProductViewModel.description) ? View.GONE : View.VISIBLE);
+                    binding.btnShow.setVisibility(TextUtils.isEmpty(detailActivityProductViewModel.description) ? View.GONE : View.VISIBLE);
+                    binding.tvDescription.setVisibility(TextUtils.isEmpty(detailActivityProductViewModel.description) ? View.GONE : View.VISIBLE);
+                    binding.tvDescriptionContent.setText(detailActivityProductViewModel.description);
+                    binding.tvPrice.setText(detailActivityProductViewModel.price);
+                    binding.tvRatingGrade.setText(detailActivityProductViewModel.ratingCount);
+                    binding.tvAverageRatingValue.setText(detailActivityProductViewModel.averageRating);
+                    ImageBindings.setImage(binding.ivWineIcon, detailActivityProductViewModel.imageUrl, null);
+                    FabBindings.setImageDrawable(binding.fbFavorite, detailActivityProductViewModel.isAddedToFavorite);
+                    binding.tvWineName.setText(detailActivityProductViewModel.title);
+                    viewModel.updateRecycler(detailActivityProductViewModel.food, detailActivityProductViewModel.id).observe(DetailActivity.this, list -> {
+                        adapter.submitList(list);
+                    });
+                    binding.tvOtherWines.setVisibility(View.VISIBLE);
+                }));
         binding.rvOtherWines.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         viewModel.similarDetailProductActivityViewModelLiveData.observe(this, data -> {

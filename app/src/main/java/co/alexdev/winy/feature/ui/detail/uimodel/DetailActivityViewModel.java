@@ -23,6 +23,7 @@ public class DetailActivityViewModel extends ViewModel {
         this.repository = repository;
         productMatchesViewModelLiveData = getUiData(repository, wineId);
 
+
         similarDetailProductActivityViewModelLiveData = getListLiveData(foodName, wineId, repository);
     }
 
@@ -39,7 +40,10 @@ public class DetailActivityViewModel extends ViewModel {
     }
 
     public LiveData<DetailActivityProductViewModel> updateUI(int clickedWineId) {
-        return productMatchesViewModelLiveData = getUiData(repository, clickedWineId);
+        return Transformations.map(repository.loadWineById(clickedWineId), wine -> new DetailActivityProductViewModel(
+                wine.id, wine.description, wine.price,
+                wine.imageUrl, wine.averageRating.substring(0, 3), String.valueOf(wine.ratingCount), wine.isAddedToFavorite,
+                wine.food, wine.title, String.valueOf(wine.score), wine.link));
     }
 
     public LiveData<List<DetailActivityProductViewModel>> updateRecycler(String foodName, int wineId) {

@@ -3,6 +3,14 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'io.fabric'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('../winy_keystore.jks')
+            storePassword 'nt10alex'
+            keyAlias = 'winy_keystore'
+            keyPassword 'nt10alex'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "co.alexdev.winy"
@@ -15,6 +23,7 @@ android {
 
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             buildConfigField 'String', 'BASE_URL', '"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/wine/"'
             buildConfigField('String', "X_RAPID_API_HOST_HEADER", X_RAPID_API_HOST_HEADER)
             buildConfigField('String', "API_KEY", API_KEY)

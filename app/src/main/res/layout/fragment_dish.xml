@@ -50,13 +50,11 @@
                     android:layout_marginStart="@dimen/default_content_margin"
                     android:layout_marginTop="@dimen/default_content_margin"
                     android:layout_marginEnd="@dimen/default_content_margin"
-                    android:layout_marginBottom="@dimen/default_content_margin"
+                    android:visibility="gone"
                     app:cardBackgroundColor="@android:color/transparent"
                     app:cardElevation="@dimen/badge_elevation"
-                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rv_foods">
 
                     <FrameLayout
@@ -81,12 +79,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/default_content_margin"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="@dimen/default_content_margin"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                    app:layout_constraintBottom_toTopOf="@id/cardview"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/autoCompleteTextView_food" />
+                    app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView_food" />
 
                 <ProgressBar
                     android:id="@+id/progressBar"
@@ -122,14 +120,14 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/default_content_margin"
-                    ads:adSize="BANNER"
+                    android:layout_marginBottom="@dimen/default_content_margin"
                     android:visibility="gone"
+                    ads:adSize="BANNER"
                     ads:adUnitId="@string/CA_APP_UNIT_ID_DISH"
                     ads:layout_constraintBottom_toBottomOf="parent"
                     ads:layout_constraintEnd_toEndOf="parent"
-                    ads:layout_constraintTop_toBottomOf="@id/rv_foods"
                     ads:layout_constraintStart_toStartOf="parent"
-                    />
+                    ads:layout_constraintTop_toBottomOf="@id/cardview" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>

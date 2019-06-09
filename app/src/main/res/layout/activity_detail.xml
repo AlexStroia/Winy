@@ -107,7 +107,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/default_content_margin"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/default_content_margin"
                     android:text="@{viewModel.productMatchesViewModelLiveData.ratingCount}"
                     app:layout_constraintStart_toEndOf="@+id/iv_star_icon"
                     app:layout_constraintTop_toBottomOf="@+id/iv_wine_icon"
@@ -161,7 +161,7 @@
                     android:id="@+id/bar_view"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/separator_line_height"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/default_content_margin"
                     android:background="@color/divider"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -235,7 +235,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/default_content_margin"
                     android:layout_marginTop="@dimen/default_content_margin"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_other_wines" />
@@ -258,14 +257,15 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/default_content_margin"
+                    android:layout_marginBottom="@dimen/default_content_margin"
+                    android:visibility="visible"
                     ads:adSize="BANNER"
-                    android:visibility="gone"
                     ads:adUnitId="@string/CA_APP_UNIT_ID_DETAIL"
                     ads:layout_constraintBottom_toBottomOf="parent"
                     ads:layout_constraintEnd_toEndOf="parent"
                     ads:layout_constraintStart_toStartOf="parent"
-                    ads:layout_constraintTop_toBottomOf="@id/rv_other_wines"
-                   />
+                    ads:layout_constraintTop_toBottomOf="@id/rv_other_wines" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
