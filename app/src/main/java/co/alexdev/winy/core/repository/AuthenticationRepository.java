@@ -4,20 +4,12 @@ package co.alexdev.winy.core.repository;
 import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.Objects;
-
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
 import co.alexdev.winy.core.model.user.CachedUser;
 import co.alexdev.winy.core.model.user.UserCredential;
 import co.alexdev.winy.core.model.user.UserInformation;
@@ -26,7 +18,6 @@ import co.alexdev.winy.core.util.Validator;
 
 import static co.alexdev.winy.core.util.Constants.FIREBASE_DATABASE.USER_REFERENCE;
 
-@Singleton
 public class AuthenticationRepository {
 
     public CachedUser cachedUser;
@@ -34,6 +25,7 @@ public class AuthenticationRepository {
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private FirebaseAuth.AuthStateListener authStateListener;
     private OnUserStateListener listener;
+    private OnProfileReceivedListener profileReceivedListener;
 
     public String userMessage;
     public String loginMessage = "";
@@ -45,7 +37,6 @@ public class AuthenticationRepository {
     private UserInformation userInformation = new UserInformation();
     private UserCredential userCredential = new UserCredential();
 
-    @Inject
     public AuthenticationRepository() {
     }
 
@@ -66,11 +57,12 @@ public class AuthenticationRepository {
                     if (task.isSuccessful()) {
                         if (!TextUtils.isEmpty(userUID)) {
                             firebaseDatabase.getReference().child(USER_REFERENCE)
-                                    .child(userUID)
+                                    .child(Objects.requireNonNull(task.getResult()).getUser().getUid())
                                     .setValue(userInformation);
                             userMessage = Constants.FIREBASE_DATABASE.MESSAGES.SUCCES;
                             signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.SUCCES;
                             cachedUser = new CachedUser(userCredential, userInformation);
+                            profileReceivedListener.onProfileReceivedListener(cachedUser);
                             listener.onUserSignup(userMessage, signupState);
                         }
                     } else {
@@ -116,9 +108,10 @@ public class AuthenticationRepository {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     userInformation = dataSnapshot.getValue(UserInformation.class);
-                    userCredential.setEmail(firebaseAuth.getCurrentUser().getEmail());
+                    userCredential.setEmail(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getEmail());
                     if (cachedUser == null) {
                         cachedUser = new CachedUser(userCredential, userInformation);
+                        profileReceivedListener.onProfileReceivedListener(cachedUser);
                     }
                 }
             }
@@ -132,6 +125,8 @@ public class AuthenticationRepository {
     }
 
     public void registerAuthStateListener() {
+        authStateListener = firebaseAuth -> {
+        };
         firebaseAuth.addAuthStateListener(authStateListener);
     }
 
@@ -142,21 +137,14 @@ public class AuthenticationRepository {
     }
 
     public void checkIfUserHasLogged() {
-        authStateListener = firebaseAuth -> {
-            if (firebaseAuth.getCurrentUser() != null) {
-                userUID = firebaseAuth.getCurrentUser().getUid();
-                userCredential.setEmail(firebaseAuth.getCurrentUser().getEmail());
-                fetchUserData();
-                if (cachedUser == null) {
-                    userCredential.setEmail(firebaseAuth.getCurrentUser().getEmail());
-                    cachedUser = new CachedUser(userCredential, userInformation);
-                }
-            }
-        };
+        if (firebaseAuth.getCurrentUser() != null) {
+            userUID = firebaseAuth.getCurrentUser().getUid();
+            fetchUserData();
+        }
     }
 
     public void forgotPassword(String email) {
-        if(!TextUtils.isEmpty(email)) {
+        if (!TextUtils.isEmpty(email)) {
             FirebaseAuth.getInstance().sendPasswordResetEmail(email)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
@@ -170,8 +158,12 @@ public class AuthenticationRepository {
         }
     }
 
-    public void setListener(OnUserStateListener authStateListener) {
+    public void setUserStateListener(OnUserStateListener authStateListener) {
         this.listener = authStateListener;
+    }
+
+    public void setCachedUserListener(OnProfileReceivedListener listener) {
+        this.profileReceivedListener = listener;
     }
 
     public interface OnUserStateListener {
@@ -180,5 +172,9 @@ public class AuthenticationRepository {
         void onUserLogin(String loginMessage, Constants.FIREBASE_DATABASE.LOGIN_STATE login_state);
 
         void onForgotPassword(String message);
+    }
+
+    public interface OnProfileReceivedListener {
+        void onProfileReceivedListener(CachedUser cachedUser);
     }
 }

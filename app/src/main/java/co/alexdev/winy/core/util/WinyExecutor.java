@@ -9,7 +9,9 @@ import java.util.concurrent.Executors;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-@Singleton
+import co.alexdev.winy.core.di.SingletoneScope;
+
+@SingletoneScope
 public class WinyExecutor {
 
     private Executor diskIO;

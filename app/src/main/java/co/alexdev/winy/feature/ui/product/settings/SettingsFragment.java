@@ -13,6 +13,8 @@ import androidx.lifecycle.ViewModelProviders;
 import java.util.Objects;
 
 import co.alexdev.winy.R;
+import co.alexdev.winy.WinnyApplication;
+import co.alexdev.winy.core.util.factory.BaseSettingsFactory;
 import co.alexdev.winy.databinding.FragmentSettingsBinding;
 import co.alexdev.winy.feature.BaseFragment;
 import co.alexdev.winy.feature.ui.account.AccountActivity;
@@ -30,11 +32,15 @@ public class SettingsFragment extends BaseFragment {
 
         binding = FragmentSettingsBinding.inflate(inflater, container, false);
         binding.setLifecycleOwner(this);
-        viewModel = ViewModelProviders.of(this).get(SettingsFragmentViewModel.class);
+        BaseSettingsFactory factory = new BaseSettingsFactory(WinnyApplication.getDaggerComponent().provideAuthRepository());
+
+        viewModel = ViewModelProviders.of(this, factory).get(SettingsFragmentViewModel.class);
         binding.setViewModel(viewModel);
         binding.containerLogout.setOnClickListener(view -> showAlertDialog());
         binding.containerReport.setOnClickListener(view -> openMailApp());
         binding.containerAccount.setOnClickListener(view -> AccountActivity.startActivity(Objects.requireNonNull(this.getActivity())));
+
+        viewModel.cachedUser.observe(this, cachedUser -> binding.containerAccount.setVisibility(cachedUser == null ? View.GONE : View.VISIBLE));
         return binding.getRoot();
     }
 

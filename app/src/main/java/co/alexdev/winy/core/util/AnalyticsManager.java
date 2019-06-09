@@ -8,8 +8,10 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import co.alexdev.winy.core.di.SingletoneScope;
 
-@Singleton
+
+@SingletoneScope
 public class AnalyticsManager {
 
     private static final String USER_SIGN_UP = "USER_SIGN_UP";

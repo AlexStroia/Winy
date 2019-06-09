@@ -5,7 +5,9 @@ import android.content.SharedPreferences;
 
 import javax.inject.Singleton;
 
-@Singleton
+import co.alexdev.winy.core.di.SingletoneScope;
+
+@SingletoneScope
 public class PreferenceManager {
 
     public static final String WINES = "WINES";

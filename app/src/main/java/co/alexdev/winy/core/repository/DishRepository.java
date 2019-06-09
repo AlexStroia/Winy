@@ -13,12 +13,13 @@ import co.alexdev.winy.core.api.ApiResponse;
 import co.alexdev.winy.core.api.DishPairingResponse;
 import co.alexdev.winy.core.api.DishResponseService;
 import co.alexdev.winy.core.database.DishDao;
+import co.alexdev.winy.core.di.SingletoneScope;
 import co.alexdev.winy.core.model.dish.Dish;
 import co.alexdev.winy.core.util.DatabaseUtils;
 import co.alexdev.winy.core.util.Resource;
 import co.alexdev.winy.core.util.WinyExecutor;
 
-@Singleton
+@SingletoneScope
 public class DishRepository {
 
     private WinyExecutor executor;

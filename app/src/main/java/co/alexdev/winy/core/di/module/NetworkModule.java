@@ -3,6 +3,7 @@ package co.alexdev.winy.core.di.module;
 import javax.inject.Singleton;
 
 import co.alexdev.winy.BuildConfig;
+import co.alexdev.winy.core.di.SingletoneScope;
 import co.alexdev.winy.core.util.Constants;
 import dagger.Module;
 import dagger.Provides;
@@ -15,13 +16,13 @@ import okhttp3.logging.HttpLoggingInterceptor;
 public class NetworkModule {
 
     @Provides
-    @Singleton
+    @SingletoneScope
     public HttpLoggingInterceptor interceptor() {
         return new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
     }
 
     @Provides
-    @Singleton
+    @SingletoneScope
     public Interceptor requestInterceptor() {
         return chain -> {
             Request originalRequest = chain.request();
@@ -35,7 +36,7 @@ public class NetworkModule {
     }
 
     @Provides
-    @Singleton
+    @SingletoneScope
     public OkHttpClient okHttpClient(HttpLoggingInterceptor loggingInterceptor, Interceptor requestInterceptor) {
         return new OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)

@@ -6,11 +6,12 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import co.alexdev.winy.core.di.SingletoneScope;
 import co.alexdev.winy.core.model.dish.Dish;
 import co.alexdev.winy.core.model.wines.PairedWines;
 import co.alexdev.winy.core.model.wines.ProductMatches;
 
-@Singleton
+@SingletoneScope
 public class DatabaseUtils {
 
     @Inject

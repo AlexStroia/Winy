@@ -15,6 +15,7 @@ import java.util.Objects;
 
 import javax.inject.Inject;
 
+import co.alexdev.winy.WinnyApplication;
 import co.alexdev.winy.core.di.DaggerWinyComponent;
 import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.di.module.ContextModule;
@@ -44,7 +45,8 @@ public class FavoriteFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        WinyComponent component = DaggerWinyComponent.builder().contextModule(new ContextModule(Objects.requireNonNull(getActivity()))).build();
+        WinyComponent component = WinnyApplication.getDaggerComponent();
+
         component.inject(this);
         binding = FragmentFavoriteBinding.inflate(inflater, container, false);
         binding.setLifecycleOwner(this);

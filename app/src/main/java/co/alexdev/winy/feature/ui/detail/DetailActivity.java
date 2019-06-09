@@ -26,6 +26,7 @@ import com.google.android.gms.ads.MobileAds;
 import javax.inject.Inject;
 
 import co.alexdev.winy.R;
+import co.alexdev.winy.WinnyApplication;
 import co.alexdev.winy.core.di.DaggerWinyComponent;
 import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.di.module.ContextModule;
@@ -84,8 +85,8 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
-        WinyComponent winyComponent = DaggerWinyComponent.builder().contextModule(new ContextModule(this))
-                .build();
+        WinyComponent winyComponent = WinnyApplication.getDaggerComponent();
+
         winyComponent.inject(this);
         binding.setLifecycleOwner(this);
 

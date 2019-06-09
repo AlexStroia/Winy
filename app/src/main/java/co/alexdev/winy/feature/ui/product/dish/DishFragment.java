@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -20,6 +19,7 @@ import java.util.Objects;
 import javax.inject.Inject;
 
 import co.alexdev.winy.DishFragmentBinding;
+import co.alexdev.winy.WinnyApplication;
 import co.alexdev.winy.core.di.DaggerWinyComponent;
 import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.di.module.ContextModule;
@@ -42,12 +42,11 @@ public class DishFragment extends BaseFragment {
     private DishViewModel viewModel;
     private DishAdapter dishAdapter;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        WinyComponent component = DaggerWinyComponent.builder().contextModule(new ContextModule(Objects.requireNonNull(getActivity()))).build();
+        WinyComponent component = WinnyApplication.getDaggerComponent();
         component.inject(this);
         BaseViewModelFactory factory = new BaseViewModelFactory(repository, analyticsManager);
         viewModel = ViewModelProviders.of(this, factory).get(DishViewModel.class);

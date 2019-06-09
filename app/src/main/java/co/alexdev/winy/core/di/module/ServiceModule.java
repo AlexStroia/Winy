@@ -5,6 +5,7 @@ import javax.inject.Singleton;
 import co.alexdev.winy.BuildConfig;
 import co.alexdev.winy.core.api.DishResponseService;
 import co.alexdev.winy.core.api.WineResponseService;
+import co.alexdev.winy.core.di.SingletoneScope;
 import co.alexdev.winy.core.util.livedata.LiveDataCallAdapterFactory;
 import dagger.Module;
 import dagger.Provides;
@@ -15,8 +16,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module(includes = NetworkModule.class)
 public class ServiceModule {
 
-    @Singleton
     @Provides
+    @SingletoneScope
     public Retrofit retrofit(OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
                 .baseUrl(BuildConfig.BASE_URL)
@@ -26,14 +27,14 @@ public class ServiceModule {
                 .build();
     }
 
-    @Singleton
     @Provides
+    @SingletoneScope
     public WineResponseService createWineResponseService(Retrofit retrofit) {
         return retrofit.create(WineResponseService.class);
     }
 
-    @Singleton
     @Provides
+    @SingletoneScope
     public DishResponseService createDishResponseService(Retrofit retrofit) {
         return retrofit.create(DishResponseService.class);
     }

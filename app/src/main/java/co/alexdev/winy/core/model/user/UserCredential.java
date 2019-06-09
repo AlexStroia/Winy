@@ -4,7 +4,9 @@ import android.text.TextUtils;
 
 import javax.inject.Singleton;
 
-@Singleton
+import co.alexdev.winy.core.di.SingletoneScope;
+
+@SingletoneScope
 public class UserCredential {
     private String email;
     private String password;

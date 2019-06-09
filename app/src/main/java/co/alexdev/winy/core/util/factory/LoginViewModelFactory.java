@@ -16,7 +16,6 @@ public class LoginViewModelFactory extends ViewModelProvider.NewInstanceFactory 
     private AnalyticsManager analyticsManager;
     private AuthenticationRepository authenticationRepository;
 
-    @Inject
     public LoginViewModelFactory(AnalyticsManager analyticsManager, AuthenticationRepository authenticationRepository) {
         this.analyticsManager = analyticsManager;
         this.authenticationRepository = authenticationRepository;

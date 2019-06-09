@@ -18,6 +18,7 @@ import co.alexdev.winy.core.api.WineResponseService;
 import co.alexdev.winy.core.database.PairedWinesDao;
 import co.alexdev.winy.core.database.PairingTextDao;
 import co.alexdev.winy.core.database.WinesDao;
+import co.alexdev.winy.core.di.SingletoneScope;
 import co.alexdev.winy.core.model.wines.PairedWines;
 import co.alexdev.winy.core.model.wines.PairingText;
 import co.alexdev.winy.core.model.wines.ProductMatches;
@@ -26,7 +27,7 @@ import co.alexdev.winy.core.util.Resource;
 import co.alexdev.winy.core.util.WinyExecutor;
 
 
-@Singleton
+@SingletoneScope
 public class WinesRepository {
 
     private WinyExecutor executor;

@@ -20,6 +20,7 @@ import javax.inject.Inject;
 
 import co.alexdev.winy.BaseActivity;
 import co.alexdev.winy.R;
+import co.alexdev.winy.WinnyApplication;
 import co.alexdev.winy.core.di.DaggerWinyComponent;
 import co.alexdev.winy.core.di.WinyComponent;
 import co.alexdev.winy.core.di.module.ContextModule;
@@ -55,8 +56,7 @@ public class SearchActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setAnimation();
         binding = DataBindingUtil.setContentView(this, R.layout.activity_search);
-        WinyComponent winyComponent = DaggerWinyComponent.builder().contextModule(new ContextModule(this))
-                .build();
+        WinyComponent winyComponent = WinnyApplication.getDaggerComponent();
         winyComponent.inject(this);
         binding.setLifecycleOwner(this);
         factory = new BaseViewModelFactory(repository, analyticsManager, preferenceManager);

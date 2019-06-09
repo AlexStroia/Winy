@@ -24,15 +24,9 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-
-import javax.inject.Inject;
-
 import co.alexdev.winy.R;
-import co.alexdev.winy.core.di.DaggerWinyComponent;
+import co.alexdev.winy.WinnyApplication;
 import co.alexdev.winy.core.di.WinyComponent;
-import co.alexdev.winy.core.di.module.ContextModule;
-import co.alexdev.winy.core.repository.AuthenticationRepository;
-import co.alexdev.winy.core.util.AnalyticsManager;
 import co.alexdev.winy.core.util.Constants;
 import co.alexdev.winy.core.util.factory.LoginViewModelFactory;
 import co.alexdev.winy.databinding.ActivityLoginBinding;
@@ -46,28 +40,23 @@ public class ActivityLogin extends AppCompatActivity {
 
     private static final int GOOGLE_SIGN = 101;
 
-    @Inject
-    AnalyticsManager analyticsManager;
-
-    AuthenticationRepository authenticationRepository;
-
     LoginViewModelFactory factory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
-        WinyComponent component = DaggerWinyComponent.builder().contextModule(new ContextModule(this)).build();
-        component.inject(this);
-        authenticationRepository = component.provideAuthRepository();
+        WinyComponent component = WinnyApplication.getDaggerComponent();
 
         binding.setLifecycleOwner(this);
-        factory = new LoginViewModelFactory(analyticsManager, authenticationRepository);
+
+        factory = new LoginViewModelFactory(component.provideAnalyticsManager(), component.provideAuthRepository());
         activityLoginViewModel = ViewModelProviders.of(this, factory).get(ActivityLoginViewModel.class);
         binding.setViewModel(activityLoginViewModel);
         getLifecycle().addObserver(activityLoginViewModel);
 
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            activityLoginViewModel.checkIfUserHasLogged();
             ProductActivity.startActivity(this);
             finish();
         }
@@ -75,7 +64,6 @@ public class ActivityLogin extends AppCompatActivity {
         Spanned alreadyHave = Html.fromHtml(getString(R.string.already_have_account));
         Spanned dontHave = Html.fromHtml(getString(R.string.no_account));
         binding.tvNoAccount.setText(dontHave);
-        Log.d("AccountActivity", "" + authenticationRepository.toString());
 
         observeLoginState();
 

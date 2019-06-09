@@ -7,7 +7,9 @@ import android.view.inputmethod.InputMethodManager;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-@Singleton
+import co.alexdev.winy.core.di.SingletoneScope;
+
+@SingletoneScope
 public class KeyboardManager {
 
     private Context context;

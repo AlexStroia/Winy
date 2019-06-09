@@ -37,7 +37,7 @@ public class ActivityLoginViewModel extends ViewModel implements LifecycleObserv
         this.userCredential.setPassword("");
         this.analyticsManager = analyticsManager;
         this.authenticationRepository = authenticationRepository;
-        authenticationRepository.setListener(this);
+        authenticationRepository.setUserStateListener(this);
     }
 
     public void loginUser() {
@@ -72,8 +72,7 @@ public class ActivityLoginViewModel extends ViewModel implements LifecycleObserv
         authenticationRepository.registerAuthStateListener();
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    void checkIfUserHasLogged() {
+    public void checkIfUserHasLogged() {
         authenticationRepository.checkIfUserHasLogged();
     }
 

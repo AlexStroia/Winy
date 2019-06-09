@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.DiffUtil;
 
 import javax.inject.Singleton;
 
+import co.alexdev.winy.core.di.SingletoneScope;
 import co.alexdev.winy.feature.ui.detail.uimodel.DetailActivityProductViewModel;
 import co.alexdev.winy.feature.ui.favorite.uimodel.FavoriteItemViewModel;
 import co.alexdev.winy.feature.ui.product.dish.uimodel.DishItemViewModel;
@@ -12,7 +13,7 @@ import co.alexdev.winy.feature.ui.product.wine.uimodel.PairedWinesViewModel;
 import co.alexdev.winy.feature.ui.product.wine.uimodel.ProductMatchesViewModel;
 import co.alexdev.winy.feature.ui.search.uimodel.SearchProductViewModel;
 
-@Singleton
+@SingletoneScope
 public class DiffCallbacks {
 
     public static class WinesDiff extends DiffUtil.ItemCallback<ProductMatchesViewModel> {
