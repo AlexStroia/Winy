@@ -4,12 +4,15 @@ package co.alexdev.winy.core.repository;
 import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import java.util.Objects;
+
 import co.alexdev.winy.core.model.user.CachedUser;
 import co.alexdev.winy.core.model.user.UserCredential;
 import co.alexdev.winy.core.model.user.UserInformation;
@@ -55,16 +58,14 @@ public class AuthenticationRepository {
         firebaseAuth.createUserWithEmailAndPassword(userCredential.getEmail(), userCredential.getPassword())
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        if (!TextUtils.isEmpty(userUID)) {
-                            firebaseDatabase.getReference().child(USER_REFERENCE)
-                                    .child(Objects.requireNonNull(task.getResult()).getUser().getUid())
-                                    .setValue(userInformation);
-                            userMessage = Constants.FIREBASE_DATABASE.MESSAGES.SUCCES;
-                            signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.SUCCES;
-                            cachedUser = new CachedUser(userCredential, userInformation);
-                            profileReceivedListener.onProfileReceivedListener(cachedUser);
-                            listener.onUserSignup(userMessage, signupState);
-                        }
+                        firebaseDatabase.getReference().child(USER_REFERENCE)
+                                .child(Objects.requireNonNull(task.getResult()).getUser().getUid())
+                                .setValue(userInformation);
+                        userMessage = Constants.FIREBASE_DATABASE.MESSAGES.SUCCES;
+                        signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.SUCCES;
+                        cachedUser = new CachedUser(userCredential, userInformation);
+                        profileReceivedListener.onProfileReceivedListener(cachedUser);
+                        listener.onUserSignup(userMessage, signupState);
                     } else {
                         signupState = Constants.FIREBASE_DATABASE.SIGNUP_STATE.FAILURE;
                         userMessage = Objects.requireNonNull(task.getException()).getMessage();

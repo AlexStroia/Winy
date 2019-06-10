@@ -1,6 +1,8 @@
 package co.alexdev.winy.feature.ui.product.settings;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -25,6 +27,7 @@ public class SettingsFragment extends BaseFragment {
 
     private FragmentSettingsBinding binding;
     private SettingsFragmentViewModel viewModel;
+    public static final String PRIVACY_URL = "https://winy.flycricket.io/privacy.html";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,7 +42,12 @@ public class SettingsFragment extends BaseFragment {
         binding.containerLogout.setOnClickListener(view -> showAlertDialog());
         binding.containerReport.setOnClickListener(view -> openMailApp());
         binding.containerAccount.setOnClickListener(view -> AccountActivity.startActivity(Objects.requireNonNull(this.getActivity())));
-
+        binding.containerPrivacy.setOnClickListener(view -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(PRIVACY_URL));
+            if(intent.resolveActivity(Objects.requireNonNull(getActivity()).getPackageManager()) != null) {
+                startActivity(intent);
+            }
+        });
         viewModel.cachedUser.observe(this, cachedUser -> binding.containerAccount.setVisibility(cachedUser == null ? View.GONE : View.VISIBLE));
         return binding.getRoot();
     }

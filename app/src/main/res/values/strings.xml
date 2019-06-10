@@ -39,6 +39,7 @@
     <!--SettingsFragment-->
     <string name="account">Account</string>
     <string name="help">Report a problem</string>
+    <string name="privacy">Privacy Policy</string>
     <string name="about">About</string>
     <string name="logout">Logout</string>
     <string name="yes">Yes</string>

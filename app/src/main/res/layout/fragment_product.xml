@@ -28,7 +28,7 @@
             app:tabIndicatorHeight="@dimen/tab_indicator_height"
             app:tabMinWidth="@dimen/tab_spacing_between_items"
             app:tabSelectedTextColor="@android:color/white"
-            app:tabTextColor="@android:color/black">
+            app:tabTextColor="@color/lightGray">
         </com.google.android.material.tabs.TabLayout>
 
         <androidx.viewpager.widget.ViewPager
