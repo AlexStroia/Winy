@@ -758,6 +758,7 @@
     <property name="ExportApk.ApkPath" value="C:\Users\Alex\Desktop\UdacityCapstone\Winy\app" />
     <property name="ExportApk.BuildVariants" value="release" />
     <property name="ExportApk.SignV2" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="device.picker.selection" value="Pixel_2_API_28" />
     <property name="extract.method.default.visibility" value="private" />
